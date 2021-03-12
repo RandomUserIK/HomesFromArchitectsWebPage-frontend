@@ -1,0 +1,23 @@
+os: linux
+dist: bionic
+sudo: required
+language: node_js
+node_js:
+  - "14"
+
+before_script:
+  - npm install -g @angular/cli
+
+script:
+  ./build.sh
+
+branches:
+  only:
+    - main
+    - dev
+    - /^Sparta-.*$/
+    - /^refactor/*$/
+    - /^fix/*$/
+
+notifications:
+  email: false
