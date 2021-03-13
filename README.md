@@ -1,2 +1,2 @@
-# SpartaWebPage-frontend
-Project for Sparta Athletic webpage 
+# HomesFromArchitectsWebPage-frontend [![Build Status](https://travis-ci.org/RandomUserIK/HomesFromArchitectsWebPage-frontend.svg?branch=dev)](https://travis-ci.org/RandomUserIK/HomesFromArchitectsWebPage-frontend) [![Total alerts](https://img.shields.io/lgtm/alerts/g/RandomUserIK/SpartaWebPage-frontend.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/RandomUserIK/SpartaWebPage-frontend/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/RandomUserIK/SpartaWebPage-frontend.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/RandomUserIK/SpartaWebPage-frontend/context:javascript)
+Project for Homes from Architects webpage

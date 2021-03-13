@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'SpartaWebPage-frontend'`, () => {
+  it(`should have as title 'HomesFromArchitectsWebPage-frontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('SpartaWebPage-frontend');
+    expect(app.title).toEqual('HomesFromArchitectsWebPage-frontend');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('SpartaWebPage-frontend app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('HomesFromArchitectsWebPage-frontend app is running!');
   });
 });
