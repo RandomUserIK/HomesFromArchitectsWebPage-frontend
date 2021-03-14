@@ -1,0 +1,20 @@
+{
+  "providers": {
+    "auth": {
+      "address": "http://localhost:8080/",
+      "authentication": "Basic",
+      "endpoints": {
+        "login": "/auth/login",
+        "logout": "/auth/logout",
+        "signup": "/auth/signup"
+      },
+      "sessionBearer": "X-Auth-Token"
+    },
+    "resources": [
+      {
+        "name": "main",
+        "address": "http://localhost:8080/post/add",
+        "format": "json"
+      }]
+  }
+}
