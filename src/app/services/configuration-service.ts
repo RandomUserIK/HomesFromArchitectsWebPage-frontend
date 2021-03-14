@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AbstractConfigurationService} from './application-configuration-service';
-import {default as naeConfig} from '../resources/config.json';
+import {default as hfaConfig} from '../resources/config.json';
 import {ApplicationProperties} from '../interfaces/application-properties';
 
 @Injectable({
@@ -9,6 +9,6 @@ import {ApplicationProperties} from '../interfaces/application-properties';
 export class ConfigurationService extends AbstractConfigurationService {
 
   constructor() {
-    super(naeConfig as ApplicationProperties);
+    super(hfaConfig as ApplicationProperties);
   }
 }

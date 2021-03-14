@@ -5,16 +5,15 @@
       "authentication": "Basic",
       "endpoints": {
         "login": "/auth/login",
-        "logout": "/auth/logout",
-        "signup": "/auth/signup"
+        "logout": "/auth/logout"
       },
       "sessionBearer": "X-Auth-Token"
     },
     "resources": [
       {
-        "name": "main",
+        "name": "upload-photo",
         "address": "http://localhost:8080/post/add",
-        "format": "json"
+        "format": "application/json"
       }]
   }
 }
