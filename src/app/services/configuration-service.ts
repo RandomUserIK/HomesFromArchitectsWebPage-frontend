@@ -9,6 +9,6 @@ import {ApplicationProperties} from '../interfaces/application-properties';
 export class ConfigurationService extends AbstractConfigurationService {
 
   constructor() {
-    super(naeConfig as unknown as ApplicationProperties);
+    super(naeConfig as ApplicationProperties);
   }
 }
