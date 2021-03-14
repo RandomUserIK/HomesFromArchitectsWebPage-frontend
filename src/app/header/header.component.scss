@@ -1,3 +1,9 @@
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1071;
+}
+
 #instagram-logo {
   left: 0;
   top: 25px;
@@ -25,4 +31,16 @@
 
 #contact-text {
   position: relative;
+}
+
+a {
+  font-size: 0.9rem;
+}
+
+ul {
+  width: 100%;
+}
+
+li {
+  margin-left: 3.7%;
 }
