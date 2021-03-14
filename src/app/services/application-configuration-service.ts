@@ -2,11 +2,14 @@ import {Injectable} from '@angular/core';
 import {ApplicationProperties} from '../interfaces/application-properties';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
-export abstract class AbstractConfigurationService{
+export abstract class AbstractConfigurationService {
+
+  private static deepCopy(obj: object): object {
+    return JSON.parse(JSON.stringify(obj));
+  }
 
   protected constructor(protected configuration: ApplicationProperties) {
   }
@@ -28,10 +31,6 @@ export abstract class AbstractConfigurationService{
 
   private createConfigurationCopy(): any {
     return AbstractConfigurationService.deepCopy(this.configuration);
-  }
-
-  private static deepCopy(obj: object): object {
-    return JSON.parse(JSON.stringify(obj));
   }
 
 }
