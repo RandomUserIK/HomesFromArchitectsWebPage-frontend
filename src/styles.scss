@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import "theme";
+@import "~bootstrap/scss/bootstrap";
+
+html {
+  font-size: 0.7rem;
+  margin: 0 5%;
+
+  h1 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 576px) {
+  html {
+    font-size: 1rem;
+
+    h1{
+      font-size: 2rem;
+    }
+  }
+}
