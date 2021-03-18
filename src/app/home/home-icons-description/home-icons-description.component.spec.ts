@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconsDescriptionComponent } from './icons-description.component';
+import { HomeIconsDescriptionComponent } from './home-icons-description.component';
 
 describe('IconsDescriptionComponent', () => {
-  let component: IconsDescriptionComponent;
-  let fixture: ComponentFixture<IconsDescriptionComponent>;
+  let component: HomeIconsDescriptionComponent;
+  let fixture: ComponentFixture<HomeIconsDescriptionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IconsDescriptionComponent ]
+      declarations: [ HomeIconsDescriptionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IconsDescriptionComponent);
+    fixture = TestBed.createComponent(HomeIconsDescriptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
