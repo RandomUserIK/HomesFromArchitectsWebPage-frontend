@@ -1,0 +1,30 @@
+import {Inject, Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {map} from "rxjs/operators";
+import {Observable} from "rxjs";
+import {InstagramSearchResult} from "../models/instagram-search-result";
+
+export const INSTAGRAM_API_KEY =
+  'IGQVJWcEl3QVlZAWVRZAN0ZA6c19lY3E0bGdwOWNjQnJ1ZA291OExRQ3ZAESndYNVZAGcXc5bWhEenpTMGVDLWdPUnRyOTJoU1lqaVItdXpBVFNpUDVSOXduUVN2Ml9oVUNCSmJHREM5YWJmOVZAfR1JWRVlNNQZDZD';
+export const INSTAGRAM_API_URL =
+  'https://graph.instagram.com/me/media';
+
+
+@Injectable()
+export class InstagramSearchService {
+
+  constructor(private http: HttpClient,
+              @Inject(INSTAGRAM_API_KEY) private apiKey: string,
+              @Inject(INSTAGRAM_API_URL) private apiUrl: string) {
+  }
+
+  public search(): Observable<InstagramSearchResult> {
+    const params: string = [
+      `fields=id,caption,media_url`,
+      `access_token=${this.apiKey}`
+    ].join('&');
+
+    const queryUrl = `${this.apiUrl}?${params}`;
+    return this.http.get<InstagramSearchResult>(queryUrl).pipe();
+  }
+}
