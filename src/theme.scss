@@ -3,3 +3,30 @@ $theme-colors: (
   "secondary": #02bceb,
   "light-grey": #656565
 );
+
+
+.title-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.italic-text {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: map_get($theme-colors, "light-grey");
+}
+
+.link-text {
+  color: map_get($theme-colors, "light-grey");
+  text-decoration: underline;
+}
+
+.link-text:hover {
+  color: map_get($theme-colors, "primary");
+}
+
+.image-size {
+  width: auto;
+  height: 100%;
+}
+
