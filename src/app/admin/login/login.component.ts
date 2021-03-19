@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from './services/login.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthenticationService} from '../authentication/services/authentication.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'admin-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   public submitted = false;
 
   constructor(private _formBuilder: FormBuilder,
-              private _loginService: LoginService) {
+              private _authService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get formControls() {
+  get formControls(): { [p: string]: AbstractControl } {
     return this.loginForm.controls;
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.submitted = true;
 
     if (this.loginForm.invalid) {
@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
+    this._authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
+      .subscribe((response) => {
+        console.log(response);
+        this.loading = false;
+      }, (error) => console.log(error));
   }
 
 }
