@@ -3,10 +3,10 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
-import {HomeModule} from "./home/home.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HomeModule} from './home/home.module';
+import {HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
-import {IvyGalleryModule} from "angular-gallery";
+import {IvyGalleryModule} from 'angular-gallery';
 
 @NgModule({
   declarations: [

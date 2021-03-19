@@ -1,8 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {InstagramSearchResult} from "../models/instagram-search-result";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {InstagramSearchResult} from '../models/instagram-search-result';
 
 export const INSTAGRAM_API_KEY =
   'IGQVJXbEFLYWp5RjRJTTB2OTlLVUVYTWF3YmJlTmZArV1p5WUd1S3ZARcjNXX1IyWWp1eVFwVWdwNGtHY01PbHN3TGZAnZA0hVM0hGdlZAqWFd2eVY3UDI4b3ZA1c0YwbVhVbjVlR0ZAvRlJGQkJONWFfZAlNOUQZDZD';
