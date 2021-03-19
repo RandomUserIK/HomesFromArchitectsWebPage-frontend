@@ -18,12 +18,12 @@ export interface ProjectData {
   'projectName'?: string;
   'rooms'?: number;
   'selfHelpBuild'?: number;
-  'textSections'?: TextSections[];
+  'textSections'?: TextSection[];
   'titlePhoto'?: string;
   'totalLivingArea'?: number;
 }
 
-export interface TextSections {
+export interface TextSection {
   'id'?: number;
   'title'?: string;
   'text': string;
