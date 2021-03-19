@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {InstagramSearchResult} from "../models/instagram-search-result";
 
 export const INSTAGRAM_API_KEY =
-  'IGQVJWcEl3QVlZAWVRZAN0ZA6c19lY3E0bGdwOWNjQnJ1ZA291OExRQ3ZAESndYNVZAGcXc5bWhEenpTMGVDLWdPUnRyOTJoU1lqaVItdXpBVFNpUDVSOXduUVN2Ml9oVUNCSmJHREM5YWJmOVZAfR1JWRVlNNQZDZD';
+  'IGQVJXbEFLYWp5RjRJTTB2OTlLVUVYTWF3YmJlTmZArV1p5WUd1S3ZARcjNXX1IyWWp1eVFwVWdwNGtHY01PbHN3TGZAnZA0hVM0hGdlZAqWFd2eVY3UDI4b3ZA1c0YwbVhVbjVlR0ZAvRlJGQkJONWFfZAlNOUQZDZD';
 export const INSTAGRAM_API_URL =
   'https://graph.instagram.com/me/media';
 

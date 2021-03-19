@@ -4,7 +4,6 @@ $theme-colors: (
   "light-grey": #656565
 );
 
-
 .title-text {
   font-size: 1.5rem;
   font-weight: bold;
@@ -25,8 +24,6 @@ $theme-colors: (
   color: map_get($theme-colors, "primary");
 }
 
-.image-size {
-  width: auto;
-  height: 100%;
+.basic-light-grey-text {
+  color: map_get($theme-colors, "light-grey");
 }
-

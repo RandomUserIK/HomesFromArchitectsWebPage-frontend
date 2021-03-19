@@ -6,6 +6,7 @@ import {HeaderComponent} from './header/header.component';
 import {HomeModule} from "./home/home.module";
 import {HttpClientModule} from "@angular/common/http";
 import { FooterComponent } from './footer/footer.component';
+import {IvyGalleryModule} from "angular-gallery";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     HomeModule,
     HttpClientModule,
+    IvyGalleryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

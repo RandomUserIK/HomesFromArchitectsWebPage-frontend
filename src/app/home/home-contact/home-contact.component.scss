@@ -1,3 +1,15 @@
 .background-color {
   background-color: #f8f8f8;
 }
+
+svg {
+  height: 25%;
+  width: 25%;
+}
+
+@media (min-width: 576px) {
+  svg {
+    height: 25%;
+    width: 25%;
+  }
+}

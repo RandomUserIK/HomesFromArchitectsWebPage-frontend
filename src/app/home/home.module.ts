@@ -9,7 +9,6 @@ import {HomeIndividualProjectDescriptionComponent} from "./home-individual-proje
 import {InstagramSearchService} from "./services/instagram-search.service";
 import {youTubeSearchInjectables} from "./services/InstagramSearchInjectables";
 import { HomeInstagramGalleryComponent } from './home-instagram-gallery/home-instagram-gallery.component';
-import { HomeInstagramPostComponent } from './home-instagram-post/home-instagram-post.component';
 import { HomeContactComponent } from './home-contact/home-contact.component';
 
 
@@ -23,7 +22,6 @@ import { HomeContactComponent } from './home-contact/home-contact.component';
     HomeInteriorDescriptionComponent,
     HomeIndividualProjectDescriptionComponent,
     HomeInstagramGalleryComponent,
-    HomeInstagramPostComponent,
     HomeContactComponent,
   ],
   exports: [

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {InstagramSearchService} from "../services/instagram-search.service";
-import {InstagramSearchResult} from "../models/instagram-search-result";
+import {Gallery} from "angular-gallery";
 
 @Component({
   selector: 'app-home-instagram-gallery',
@@ -9,27 +9,39 @@ import {InstagramSearchResult} from "../models/instagram-search-result";
 })
 export class HomeInstagramGalleryComponent implements OnInit {
 
-  public posts: InstagramSearchResult;
+  public posts: Array<{ path: string }> = [];
   public loading: boolean = true;
 
 
-  constructor(private instagramSearchService: InstagramSearchService) {
+  constructor(private instagramSearchService: InstagramSearchService,
+              private gallery: Gallery) {
   }
 
   ngOnInit(): void {
     this.instagramSearchService.search().subscribe(
       (results) => {
         this.loading = false;
-        this.posts = results;
+        results.data.forEach((post) => {
+          if (this.posts.length < 6)
+            this.posts.push({path: post.media_url});
+        })
       },
       (error) => {
-        console.log(error)
         this.loading = false;
       },
       () => {
         this.loading = false;
       }
     );
+
+
   }
 
+  showGallery(index: number) {
+    let prop = {
+      images: this.posts,
+      index
+    };
+    this.gallery.load(prop);
+  }
 }
