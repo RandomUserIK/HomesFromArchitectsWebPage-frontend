@@ -15,6 +15,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {AuthGuardService} from "./auth/services/auth-guard.service";
 import {PublicViewComponent} from './public-view/public-view.component';
 import {AdminViewComponent} from './admin-view/admin-view.component';
+import {AdminModule} from './admin/admin.module';
 
 const routes: Routes = [
   {
@@ -46,6 +47,8 @@ const routes: Routes = [
     HttpClientModule,
     IvyGalleryModule,
     RouterModule.forRoot(routes)
+    BrowserModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
