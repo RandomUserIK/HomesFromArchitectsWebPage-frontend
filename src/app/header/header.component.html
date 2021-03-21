@@ -7,30 +7,32 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-dark px-50" href="#">Domov</a>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link px-50" routerLink="/">Domov</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/projekty">Projekty</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Projekty</a>
+          <a class="nav-link">Interiérový dizajn</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Interiérový dizajn</a>
+          <a class="nav-link">Individuálne projekty</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Individuálne projekty</a>
+          <a class="nav-link">Obsah projektu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Obsah projektu</a>
+          <a class="nav-link">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="#">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="#">
+          <a class="nav-link">
             <span id="contact-text">
               Kontakty
-              <img src="/assets/facebook-logo.png" class="contact-logo d-none  d-lg-inline" id="instagram-logo" alt="instagram">
-              <img src="/assets/instagram-logo.png" class="contact-logo d-none  d-lg-inline" id="facebook-logo" alt="facebook">
+              <img src="/assets/facebook-logo.png" class="contact-logo d-none  d-lg-inline" id="instagram-logo"
+                   alt="instagram">
+              <img src="/assets/instagram-logo.png" class="contact-logo d-none  d-lg-inline" id="facebook-logo"
+                   alt="facebook">
             </span>
             <span class="d-inline  d-lg-none">
             <img src="/assets/facebook-logo.png" class="contact-logo ml-1" alt="instagram">

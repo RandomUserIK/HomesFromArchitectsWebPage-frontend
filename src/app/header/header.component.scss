@@ -1,3 +1,5 @@
+@import "src/theme";
+
 .sticky {
   position: sticky;
   top: 0;
@@ -22,7 +24,7 @@
 }
 
 .navbar {
-  background-color: white!important;
+  background-color: #ffffff !important;
 }
 
 #contact-text {
@@ -39,4 +41,16 @@ ul {
 
 li {
   margin-left: 3.7%;
+}
+
+.nav-item > a {
+  color: black;
+}
+
+.navbar-nav > .active > a {
+  color: map_get($theme-colors, "primary");
+}
+
+.nav-item > a:hover {
+  color: map_get($theme-colors, "primary");
 }
