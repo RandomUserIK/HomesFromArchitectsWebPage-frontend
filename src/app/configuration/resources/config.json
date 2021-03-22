@@ -11,10 +11,14 @@
     },
     "resources": [
       {
-        "name": "upload-photo",
-        "address": "http://localhost:8080/post/add",
+        "name": "photo-endpoint",
+        "address": "http://localhost:8080/photo",
         "format": "application/json"
-      }
-    ]
+      },
+      {
+        "name": "project-endpoint",
+        "address": "http://localhost:8080/project",
+        "format": "application/json"
+      }]
   }
 }

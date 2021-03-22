@@ -1,5 +1,5 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -46,8 +46,7 @@ const routes: Routes = [
     HomeModule,
     HttpClientModule,
     IvyGalleryModule,
-    RouterModule.forRoot(routes)
-    BrowserModule,
+    RouterModule.forRoot(routes),
     AdminModule
   ],
   providers: [],
