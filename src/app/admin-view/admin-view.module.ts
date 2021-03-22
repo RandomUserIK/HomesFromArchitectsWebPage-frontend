@@ -4,25 +4,29 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ConfigurationService} from '../configuration/services/configuration-service';
 import {LoginComponent} from './login/login.component';
-import {AuthenticationService} from './authentication/services/authentication.service';
+import {RouterModule} from '@angular/router';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    AdminHeaderComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
-    LoginComponent
+    LoginComponent,
+    AdminHeaderComponent
   ],
   providers: [
-    AuthenticationService,
     ConfigurationService
   ]
 })
-export class AdminModule {
+export class AdminViewModule {
 }

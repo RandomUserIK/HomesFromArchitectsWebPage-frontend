@@ -12,13 +12,14 @@
     "resources": [
       {
         "name": "photo-endpoint",
-        "address": "http://localhost:8080/photo",
+        "address": "http://localhost:8090/api/photo",
         "format": "application/json"
       },
       {
         "name": "project-endpoint",
-        "address": "http://localhost:8080/project",
+        "address": "http://localhost:8090/api/project",
         "format": "application/json"
-      }]
+      }
+    ]
   }
 }

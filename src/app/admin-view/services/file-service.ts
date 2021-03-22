@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ConfigurationService} from '../../services/configuration-service';
-import {ProjectService} from '../../projects/services/project-service';
+import {ProjectService} from '../projects/services/project-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {EndpointConfigData} from '../interfaces/enpoint-config-data';
+import {ConfigurationService} from "../../configuration/services/configuration-service";
 
 @Injectable({
   providedIn: 'root'

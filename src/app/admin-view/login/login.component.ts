@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthenticationService} from '../authentication/services/authentication.service';
+import {AuthService} from '../../auth/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'admin-login',
@@ -11,9 +12,11 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public loading = false;
   public submitted = false;
+  public error: string = null;
 
   constructor(private _formBuilder: FormBuilder,
-              private _authService: AuthenticationService) {
+              private _authService: AuthService,
+              private _router: Router) {
   }
 
   ngOnInit() {
@@ -39,7 +42,13 @@ export class LoginComponent implements OnInit {
       .subscribe((response) => {
         console.log(response);
         this.loading = false;
-      }, (error) => console.log(error));
+        this._router.navigate(['/admin']);
+      }, (error) => {
+        this.loading = false;
+        this.error = error;
+        console.log(error);
+      });
   }
+
 
 }

@@ -1,8 +1,8 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ConfigurationService} from '../../services/configuration-service';
 import {Observable} from 'rxjs';
 import {ProjectData} from '../interfaces/project-data';
-import {EndpointConfigData} from '../../admin/interfaces/enpoint-config-data';
+import {EndpointConfigData} from '../../interfaces/enpoint-config-data';
+import {ConfigurationService} from "../../../configuration/services/configuration-service";
 
 export class ProjectService {
 
