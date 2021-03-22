@@ -1,13 +1,9 @@
-import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ConfigurationService} from '../../../services/configuration-service';
+import {ConfigurationService} from '../../services/configuration-service';
 import {Observable} from 'rxjs';
 import {ProjectData} from '../interfaces/project-data';
-import {EndpointConfigData} from '../interfaces/enpoint-config-data';
+import {EndpointConfigData} from '../../admin/interfaces/enpoint-config-data';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ProjectService {
 
   private resource: EndpointConfigData;
