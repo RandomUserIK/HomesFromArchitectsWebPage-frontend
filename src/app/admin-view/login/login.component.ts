@@ -36,17 +36,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     this.loading = true;
     this._authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
-      .subscribe((response) => {
-        console.log(response);
+      .subscribe((_) => {
         this.loading = false;
         this._router.navigate(['/admin']);
       }, (error) => {
         this.loading = false;
         this.error = error;
-        console.log(error);
       });
   }
 
