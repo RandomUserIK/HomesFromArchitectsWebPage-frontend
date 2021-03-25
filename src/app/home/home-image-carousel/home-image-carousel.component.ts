@@ -7,6 +7,6 @@ import {Component} from '@angular/core';
 })
 export class HomeImageCarouselComponent {
 
-  carouselItems = ["slide1.png", "slide2.png"];
+  carouselItems = ['slide1.png', 'slide2.png'];
 
 }
