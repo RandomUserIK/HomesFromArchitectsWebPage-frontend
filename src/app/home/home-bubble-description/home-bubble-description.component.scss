@@ -1,0 +1,24 @@
+svg {
+  fill: #cecece;
+}
+
+.light-grey-background {
+  background: #e8e8e8;
+}
+
+.sb3:before {
+  content: "";
+  position: absolute;
+  border-left: 20px solid transparent;
+  border-right: 20px solid #e8e8e8;
+  border-top: 20px solid #e8e8e8;
+  border-bottom: 20px solid transparent;
+  right: 19px;
+  bottom: -19px;
+}
+
+@media (min-width: 768px) {
+  h1.xl-font {
+    font-size: 3rem;
+  }
+}

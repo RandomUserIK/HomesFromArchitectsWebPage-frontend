@@ -1,0 +1,29 @@
+$theme-colors: (
+  "primary": #ffbe00,
+  "secondary": #02bceb,
+  "light-grey": #656565
+);
+
+.title-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.italic-text {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: map_get($theme-colors, "light-grey");
+}
+
+.link-text {
+  color: map_get($theme-colors, "light-grey");
+  text-decoration: underline;
+}
+
+.link-text:hover {
+  color: map_get($theme-colors, "primary");
+}
+
+.basic-light-grey-text {
+  color: map_get($theme-colors, "light-grey");
+}

@@ -1,0 +1,10 @@
+<div class="col text-center mt-5">
+  <img src="assets/instagram.png" alt="instagram">
+</div>
+<div class="row">
+  <div class="col-md-4 p-2" *ngFor="let post of posts; let i = index">
+    <img [src]="post.path" class="gallery-img img-fluid d-none d-md-block" alt="" (click)="showGallery(i)">
+    <img [src]="post.path" class="gallery-img img-fluid d-block d-md-none" alt="">
+  </div>
+</div>
+
