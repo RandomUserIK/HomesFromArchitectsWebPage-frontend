@@ -6,4 +6,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./home-image-carousel.component.scss']
 })
 export class HomeImageCarouselComponent {
+
+  carouselItems = ['slide1.png', 'slide2.png'];
+
 }

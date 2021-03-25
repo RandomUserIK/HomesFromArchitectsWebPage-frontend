@@ -7,7 +7,7 @@ import {HomeIconsDescriptionComponent} from './home-icons-description/home-icons
 import {HomeInteriorDescriptionComponent} from './home-interior-description/home-interior-description.component';
 import {HomeIndividualProjectDescriptionComponent} from './home-individual-project-description/home-individual-project-description.component';
 import {InstagramSearchService} from './services/instagram-search.service';
-import {youTubeSearchInjectables} from './services/InstagramSearchInjectables';
+import {instagramSearchInjectables} from './services/InstagramSearchInjectables';
 import { HomeInstagramGalleryComponent } from './home-instagram-gallery/home-instagram-gallery.component';
 import { HomeContactComponent } from './home-contact/home-contact.component';
 
@@ -29,7 +29,7 @@ import { HomeContactComponent } from './home-contact/home-contact.component';
   ],
   providers: [
     InstagramSearchService,
-    youTubeSearchInjectables
+    instagramSearchInjectables
   ],
   imports: [
     CommonModule
