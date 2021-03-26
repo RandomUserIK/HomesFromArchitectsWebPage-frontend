@@ -27,7 +27,6 @@ export class AuthService {
 
   public login(username: string, password: string): Observable<AuthResponse> {
     const request: AuthRequest = {username, password};
-    const key = 'login';
     return this._httpClient.post<AuthResponse>(
       this._resource.address + this._resource.endpoints[this.ENDPOINT_LOGIN], request)
       .pipe(

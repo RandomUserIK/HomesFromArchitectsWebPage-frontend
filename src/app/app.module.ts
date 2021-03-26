@@ -21,7 +21,6 @@ const routes: Routes = [
   {
     path: '', component: PublicViewComponent, children: [
       {path: '', component: HomeComponent},
-      //TODO
       // {path: 'projekty', component: ProjectsComponent},
       // {path: 'projekty/:id', component: ProjectComponent},
     ]

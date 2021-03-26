@@ -26,7 +26,7 @@ export class HomeInstagramGalleryComponent implements OnInit {
             this.posts.push({path: post.media_url});
         })
       },
-      (error) => {
+      () => {
         this.loading = false;
       },
       () => {
