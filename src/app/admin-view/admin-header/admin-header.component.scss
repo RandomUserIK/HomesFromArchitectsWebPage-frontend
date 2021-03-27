@@ -1,0 +1,9 @@
+@import "src/theme";
+
+.navbar-nav > .active > a {
+  color: map_get($theme-colors, "primary");
+}
+
+.nav-item > a:hover {
+  color: map_get($theme-colors, "primary");
+}

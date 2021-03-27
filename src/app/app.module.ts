@@ -31,7 +31,7 @@ const routes: Routes = [
     component: AdminViewComponent,
     canActivate: [AuthGuardService],
     children: [
-      // {path: 'projekty', component: ProjectsComponent}
+      // {path: 'projekty', component: ProjectsComponent, data: {section: 'projects'}}
     ]
   },
   {path: 'auth/home', component: HomeComponent, canActivate: [AuthGuardService]},
@@ -45,7 +45,6 @@ const routes: Routes = [
     FooterComponent,
     NotFoundComponent,
     PublicViewComponent,
-    AdminViewComponent,
   ],
   imports: [
     BrowserModule,

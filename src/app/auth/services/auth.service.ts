@@ -75,13 +75,14 @@ export class AuthService {
       this.user.next(loadedUser);
       const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
       this.autoLogout(expirationDuration);
+      this.router.navigate(['/admin']);
     }
   }
 
   public logout(): void {
     this.user.next(null);
+    localStorage.removeItem('user');
     this.router.navigate(['auth']);
-    localStorage.removeItem('token');
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
@@ -90,7 +91,7 @@ export class AuthService {
   public autoLogout(expirationDuration: number): void {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
-    }, 2000)
+    }, 100000000000)
   }
 
 }
