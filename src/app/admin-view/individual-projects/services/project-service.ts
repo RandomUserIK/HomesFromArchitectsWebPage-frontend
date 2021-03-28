@@ -3,7 +3,9 @@ import {Observable} from 'rxjs';
 import {ProjectData} from '../interfaces/project-data';
 import {EndpointConfigData} from '../../interfaces/enpoint-config-data';
 import {ConfigurationService} from "../../../configuration/services/configuration-service";
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class ProjectService {
 
   private resource: EndpointConfigData;
@@ -21,9 +23,10 @@ export class ProjectService {
       });
   }
 
-  public getProjects(): Observable<ProjectData[]> {
+  public getProjects(page: number): Observable<ProjectData[]> {
+    console.log(this.resource.address + '/all')
     return this.httpClient
-      .get<ProjectData[]>(this.resource.address + '/all');
+      .get<ProjectData[]>(`${this.resource.address}/all?page=${page}`);
   }
 
   public getProject(projectId: number): Observable<ProjectData> {

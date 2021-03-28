@@ -8,6 +8,8 @@ import {RouterModule} from '@angular/router';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import {AdminViewComponent} from './admin-view.component';
 import { IndividualProjectsComponent } from './individual-projects/individual-projects.component';
+import { AbstractProductsListComponent } from './abstract-products-list/abstract-products-list.component';
+import {ProjectService} from './individual-projects/services/project-service';
 
 
 
@@ -16,7 +18,8 @@ import { IndividualProjectsComponent } from './individual-projects/individual-pr
     LoginComponent,
     AdminHeaderComponent,
     AdminViewComponent,
-    IndividualProjectsComponent
+    IndividualProjectsComponent,
+    AbstractProductsListComponent
   ],
   imports: [
     CommonModule,
@@ -28,10 +31,12 @@ import { IndividualProjectsComponent } from './individual-projects/individual-pr
   exports: [
     LoginComponent,
     AdminHeaderComponent,
-    AdminViewComponent
+    AdminViewComponent,
+    AbstractProductsListComponent
   ],
   providers: [
-    ConfigurationService
+    ConfigurationService,
+    ProjectService
   ]
 })
 export class AdminViewModule {

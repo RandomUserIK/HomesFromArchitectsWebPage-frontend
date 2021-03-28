@@ -7,3 +7,7 @@
 .nav-item > a:hover {
   color: map_get($theme-colors, "primary");
 }
+
+a {
+  font-size: 1.2rem;
+}
