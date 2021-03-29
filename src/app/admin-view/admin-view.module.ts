@@ -9,8 +9,9 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import {AdminViewComponent} from './admin-view.component';
 import { IndividualProjectsComponent } from './individual-projects/individual-projects.component';
 import { AbstractProductsListComponent } from './abstract-products-list/abstract-products-list.component';
-import {ProjectService} from './individual-projects/services/project-service';
+import {ProductListService} from './individual-projects/services/product-list-service';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -20,7 +21,8 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
     AdminHeaderComponent,
     AdminViewComponent,
     IndividualProjectsComponent,
-    AbstractProductsListComponent
+    AbstractProductsListComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,7 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [
     ConfigurationService,
-    ProjectService
+    ProductListService
   ]
 })
 export class AdminViewModule {

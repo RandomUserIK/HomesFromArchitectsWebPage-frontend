@@ -1,0 +1,11 @@
+<form class="form-header mb-3" onsubmit="return false;" method="GET">
+  <div class="row">
+    <div class="input-group col-4">
+      <input type="text" #searchInput (keyup)="doSearch(searchInput.value)" class="form-control"
+             placeholder="Hľadaj podľa názvu">
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary" (click)="doSearch(searchInput.value)" type="submit">Hľadaj</button>
+      </div>
+    </div>
+  </div>
+</form>

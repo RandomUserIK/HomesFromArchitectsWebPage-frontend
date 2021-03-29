@@ -33,7 +33,7 @@ const routes: Routes = [
     component: AdminViewComponent,
     canActivate: [AuthGuardService],
     children: [
-      {path: 'projekty', component: AbstractProductsListComponent, data: {section: 'projects'}}
+      {path: ':id', component: AbstractProductsListComponent, data: {section: 'projects'}}
     ]
   },
   {path: 'auth/home', component: HomeComponent, canActivate: [AuthGuardService]},
