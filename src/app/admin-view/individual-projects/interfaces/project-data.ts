@@ -1,3 +1,11 @@
+export interface IndividualProjectsData {
+  individualProjects: Array<ProjectData>;
+  currentPage: number;
+  totalElements: number;
+  elementsPerPage: number;
+
+}
+
 export interface ProjectData {
   'id'?: number;
   'projectName'?: string;

@@ -1,4 +1,8 @@
 <div class="mt-4">
+<!--  <div class="spinner-border text-primary" role="status">-->
+<!--    <span class="sr-only">Loading...</span>-->
+<!--  </div>-->
+
   <div class="card mt-1" *ngFor="let product of products">
     <div class="card-body">
       <div class="row">
@@ -28,18 +32,12 @@
       </div>
     </div>
   </div>
-
-  <div class="mt-2 row justify-content-end">
-    <div class="col-4">
-      <nav>
-        <ul class="pagination justify-content-end">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
-    </div>
+  <div class="mt-2 row">
+      <ngb-pagination class="col d-flex justify-content-end"
+                      [pageSize]="pageSize"
+                      [(page)]="currentPage"
+                      [collectionSize]="totalElements"
+                      (pageChange)="listProducts()">
+      </ngb-pagination>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ProjectData} from '../interfaces/project-data';
+import {IndividualProjectsData, ProjectData} from '../interfaces/project-data';
 import {EndpointConfigData} from '../../interfaces/enpoint-config-data';
 import {ConfigurationService} from "../../../configuration/services/configuration-service";
 import {Injectable} from '@angular/core';
@@ -23,10 +23,9 @@ export class ProjectService {
       });
   }
 
-  public getProjects(page: number): Observable<ProjectData[]> {
-    console.log(this.resource.address + '/all')
+  public getProjects(page: number): Observable<IndividualProjectsData> {
     return this.httpClient
-      .get<ProjectData[]>(`${this.resource.address}/all?page=${page}`);
+      .get<IndividualProjectsData>(`${this.resource.address}/all?page=${page}`);
   }
 
   public getProject(projectId: number): Observable<ProjectData> {

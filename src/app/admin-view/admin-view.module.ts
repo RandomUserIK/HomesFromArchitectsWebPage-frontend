@@ -10,6 +10,7 @@ import {AdminViewComponent} from './admin-view.component';
 import { IndividualProjectsComponent } from './individual-projects/individual-projects.component';
 import { AbstractProductsListComponent } from './abstract-products-list/abstract-products-list.component';
 import {ProjectService} from './individual-projects/services/project-service';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -26,7 +27,8 @@ import {ProjectService} from './individual-projects/services/project-service';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgbPaginationModule
   ],
   exports: [
     LoginComponent,

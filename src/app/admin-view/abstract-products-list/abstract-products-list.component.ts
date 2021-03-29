@@ -11,21 +11,35 @@ import {Subscription} from 'rxjs';
 export class AbstractProductsListComponent implements OnInit, OnDestroy {
 
   products: Array<ProjectData>;
-  productsSubscription: Subscription;
+  productsSubscriptions: Array<Subscription> = [];
+  loading = true;
+  pageSize = 9;
+  totalElements = 0;
+  currentPage = 1;
 
   constructor(private _projectsService: ProjectService) {
   }
 
   ngOnInit(): void {
-    this.productsSubscription = this._projectsService.getProjects(0).subscribe(products => {
-        this.products = products;
-        console.log(this.products)
+    this.productsSubscriptions.push(this._projectsService.getProjects(this.currentPage - 1).subscribe(data => {
+        this.products = data.individualProjects;
+        this.currentPage = data.currentPage + 1;
+        this.totalElements = data.totalElements;
       }
-    );
+    ));
   }
 
   ngOnDestroy(): void {
-    this.productsSubscription.unsubscribe();
+    this.productsSubscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
+  listProducts() {
+    this.productsSubscriptions.push(
+      this._projectsService.getProjects(this.currentPage - 1).subscribe(data => {
+          this.products = data.individualProjects;
+          this.currentPage = data.currentPage + 1;
+          this.totalElements = data.totalElements;
+        }
+      ));
+  }
 }

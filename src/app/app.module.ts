@@ -17,6 +17,7 @@ import {LoginComponent} from './admin-view/login/login.component';
 import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
 import {AdminViewComponent} from './admin-view/admin-view.component';
 import {AbstractProductsListComponent} from './admin-view/abstract-products-list/abstract-products-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -54,6 +55,7 @@ const routes: Routes = [
     IvyGalleryModule,
     AdminViewModule,
     RouterModule.forRoot(routes),
+    NgbModule,
   ],
   providers: [
     {
