@@ -1,4 +1,4 @@
-@import "src/theme";
+@import "../../../../theme";
 
 .navbar-nav > .active > a {
   color: map_get($theme-colors, "primary");

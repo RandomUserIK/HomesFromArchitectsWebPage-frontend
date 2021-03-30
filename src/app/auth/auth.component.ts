@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../auth/services/auth.service';
+import {AuthService} from './services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'admin-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class AuthComponent implements OnInit {
   public loginForm: FormGroup;
   public loading = false;
   public submitted = false;

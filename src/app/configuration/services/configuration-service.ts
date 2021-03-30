@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {AbstractConfigurationService} from './application-configuration-service';
 import {default as hfaConfig} from '../resources/config.json';
-import {ApplicationProperties} from '../interfaces/application-properties';
-import {EndpointConfigData} from '../interfaces/enpoint-config-data';
+import {ApplicationProperties} from '../models/application-properties';
+import {EndpointConfigData} from '../models/enpoint-config-data';
 
 @Injectable({
   providedIn: 'root'

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ProductListService} from '../individual-projects/services/product-list-service';
+import {ProductListService} from './product-list-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import {EndpointConfigData} from '../../configuration/interfaces/enpoint-config-data';
+import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
 import {ConfigurationService} from "../../configuration/services/configuration-service";
 
 @Injectable({

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductListService} from '../individual-projects/services/product-list-service';
-import {ProjectData} from '../individual-projects/interfaces/project-data';
+import {ProductListService} from '../../services/product-list-service';
+import {ProjectData} from '../../models/project-data';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {switchMap} from 'rxjs/operators';

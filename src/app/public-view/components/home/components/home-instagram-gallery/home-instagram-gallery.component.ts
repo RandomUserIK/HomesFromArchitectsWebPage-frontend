@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {InstagramSearchService} from '../services/instagram-search.service';
+import {InstagramSearchService} from '../../services/instagram-search.service';
 import {Gallery} from 'angular-gallery';
 
 @Component({

@@ -1,7 +1,7 @@
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {Auth} from '../../configuration/interfaces/application-properties';
+import {Auth} from '../../configuration/models/application-properties';
 import {ConfigurationService} from '../../configuration/services/configuration-service';
 import {AuthRequest} from '../models/auth-request';
 import {AuthResponse} from '../models/auth-response';

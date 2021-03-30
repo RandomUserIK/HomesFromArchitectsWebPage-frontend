@@ -3,24 +3,30 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigurationService} from '../configuration/services/configuration-service';
-import {LoginComponent} from './login/login.component';
-import {RouterModule} from '@angular/router';
-import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
 import {AdminViewComponent} from './admin-view.component';
-import { IndividualProjectsComponent } from './individual-projects/individual-projects.component';
-import { AbstractProductsListComponent } from './abstract-products-list/abstract-products-list.component';
-import {ProductListService} from './individual-projects/services/product-list-service';
+import {AbstractProductsListComponent} from './components/abstract-products-list/abstract-products-list.component';
+import {ProductListService} from './services/product-list-service';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-import { SearchComponent } from './search/search.component';
+import {SearchComponent} from './components/search/search.component';
+import {AuthGuardService} from '../auth/services/auth-guard.service';
 
-
+const routes: Routes = [
+  {
+    path: '',
+    component: AdminViewComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      {path: ':id', component: AbstractProductsListComponent}
+    ]
+  }
+]
 
 @NgModule({
   declarations: [
-    LoginComponent,
     AdminHeaderComponent,
     AdminViewComponent,
-    IndividualProjectsComponent,
     AbstractProductsListComponent,
     SearchComponent
   ],
@@ -29,14 +35,8 @@ import { SearchComponent } from './search/search.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     NgbPaginationModule
-  ],
-  exports: [
-    LoginComponent,
-    AdminHeaderComponent,
-    AdminViewComponent,
-    AbstractProductsListComponent
   ],
   providers: [
     ConfigurationService,
