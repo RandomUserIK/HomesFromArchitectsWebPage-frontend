@@ -2,7 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IndividualProjectsData, ProjectData} from '../models/project-data';
 import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
-import {ConfigurationService} from "../../configuration/services/configuration-service";
+import {ConfigurationService} from '../../configuration/services/configuration-service';
 import {Injectable} from '@angular/core';
 
 

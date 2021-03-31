@@ -17,7 +17,7 @@ export class ProductsListComponent implements OnInit {
   pageSize = 9;
   totalElements = 0;
   currentPage = 1;
-  keyword: string = ""
+  keyword = ''
 
   constructor(private _productListService: ProductListService, private route: ActivatedRoute) {
   }
@@ -31,7 +31,7 @@ export class ProductsListComponent implements OnInit {
 
   public handleProductList(productsType: string, currentPage: number): Observable<any> {
     this.loading = true;
-    if (this.keyword == "") {
+    if (this.keyword === '') {
       return this.searchAll(productsType, currentPage);
     } else {
       return this.searchByKeyword(productsType, currentPage);
@@ -39,14 +39,14 @@ export class ProductsListComponent implements OnInit {
   }
 
   public onPageChange(): void {
-    this.handleProductList(this.route.snapshot.params['id'], this.currentPage - 1)
+    this.handleProductList(this.route.snapshot.params.id, this.currentPage - 1)
       .subscribe(this.processData())
   }
 
   public onSearchKeyword(value: string) {
     this.keyword = value;
     this._productListService
-      .searchByKeyword(this.route.snapshot.params['id'], this.currentPage - 1, this.keyword)
+      .searchByKeyword(this.route.snapshot.params.id, this.currentPage - 1, this.keyword)
       .subscribe(this.processData());
   }
 
