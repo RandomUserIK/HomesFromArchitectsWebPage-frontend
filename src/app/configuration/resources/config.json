@@ -1,0 +1,25 @@
+{
+  "providers": {
+    "auth": {
+      "address": "http://localhost:8090/",
+      "authentication": "Basic",
+      "endpoints": {
+        "login": "api/auth/login",
+        "logout": "api/auth/logout"
+      },
+      "sessionBearer": "X-Auth-Token"
+    },
+    "resources": [
+      {
+        "name": "photo-endpoint",
+        "address": "http://localhost:8090/api/photo",
+        "format": "application/json"
+      },
+      {
+        "name": "project-endpoint",
+        "address": "http://localhost:8090/api/project",
+        "format": "application/json"
+      }
+    ]
+  }
+}
