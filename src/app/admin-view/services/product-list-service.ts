@@ -39,7 +39,6 @@ export class ProductListService {
   }
 
   searchByKeyword(productsType: string, currentPage: number, keyword:string): Observable<IndividualProjectsData> {
-    console.log(`${this.resource.address}/${productsType}/keyword?page=${currentPage}&keyword=${keyword}`)
     return this.httpClient
       .get<IndividualProjectsData>(`${this.resource.address}/${productsType}/keyword?page=${currentPage}&keyword=${keyword}`);
   }

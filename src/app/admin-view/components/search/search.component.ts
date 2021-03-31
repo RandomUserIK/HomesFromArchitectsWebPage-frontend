@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -7,15 +9,24 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+
+  form = new FormGroup({
+    'searchInput': new FormControl('')
+  });
+
+  get getSearchInput() {
+    return this.form.controls['searchInput'].value;
+  }
+
   @Output() searchValue = new EventEmitter<string>();
 
-  constructor() {
-  }
-
   ngOnInit(): void {
+    this.form.controls['searchInput'].valueChanges.subscribe(
+      value => this.searchValue.emit(value)
+    );
   }
 
-  doSearch(value: string) {
+  public doSearch(value: string) {
     this.searchValue.emit(value);
   }
 

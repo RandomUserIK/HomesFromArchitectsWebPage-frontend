@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {IvyGalleryModule} from 'angular-gallery';
-import {RouterModule, Routes} from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -26,8 +26,8 @@ const routes: Routes = [
     AuthModule,
     HttpClientModule,
     IvyGalleryModule,
-    RouterModule.forRoot(routes),
     NgbModule,
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
   ],
   providers: [
     {

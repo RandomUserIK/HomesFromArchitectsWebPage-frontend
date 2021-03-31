@@ -2,11 +2,10 @@ import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfigurationService} from '../configuration/services/configuration-service';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
 import {AdminViewComponent} from './admin-view.component';
-import {AbstractProductsListComponent} from './components/abstract-products-list/abstract-products-list.component';
+import {ProductsListComponent} from './components/products-list/products-list.component';
 import {ProductListService} from './services/product-list-service';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {SearchComponent} from './components/search/search.component';
@@ -18,7 +17,7 @@ const routes: Routes = [
     component: AdminViewComponent,
     canActivate: [AuthGuardService],
     children: [
-      {path: ':id', component: AbstractProductsListComponent}
+      {path: ':id', component: ProductsListComponent}
     ]
   }
 ]
@@ -27,7 +26,7 @@ const routes: Routes = [
   declarations: [
     AdminHeaderComponent,
     AdminViewComponent,
-    AbstractProductsListComponent,
+    ProductsListComponent,
     SearchComponent
   ],
   imports: [
@@ -39,7 +38,6 @@ const routes: Routes = [
     NgbPaginationModule
   ],
   providers: [
-    ConfigurationService,
     ProductListService
   ]
 })
