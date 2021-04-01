@@ -7,7 +7,7 @@ import {Injectable} from '@angular/core';
 
 
 @Injectable()
-export class ProductListService {
+export class ProjectsListService {
 
   private resource: EndpointConfigData;
 
@@ -24,9 +24,9 @@ export class ProductListService {
       });
   }
 
-  public searchAll(productsType: string , page: number): Observable<IndividualProjectsData> {
+  public searchAll(projectType: string , page: number): Observable<IndividualProjectsData> {
     return this.httpClient
-      .get<IndividualProjectsData>(`${this.resource.address}/${productsType}/all?page=${page}`);
+      .get<IndividualProjectsData>(`${this.resource.address}/${projectType}/all?page=${page}`);
   }
 
   public getProject(projectId: number): Observable<ProjectData> {
@@ -38,9 +38,9 @@ export class ProductListService {
       });
   }
 
-  searchByKeyword(productsType: string, currentPage: number, keyword:string): Observable<IndividualProjectsData> {
+  searchByKeyword(projectType: string, currentPage: number, keyword:string): Observable<IndividualProjectsData> {
     return this.httpClient
-      .get<IndividualProjectsData>(`${this.resource.address}/${productsType}/keyword?page=${currentPage}&keyword=${keyword}`);
+      .get<IndividualProjectsData>(`${this.resource.address}/${projectType}/keyword?page=${currentPage}&keyword=${keyword}`);
   }
 
 }

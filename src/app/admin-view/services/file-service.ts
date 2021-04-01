@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ProductListService} from './product-list-service';
+import {ProjectsListService} from './projects-list-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
 import {ConfigurationService} from "../../configuration/services/configuration-service";
@@ -15,7 +15,7 @@ export class FileService {
 
   constructor(private httpClient: HttpClient,
               private applicationConfigService: ConfigurationService,
-              private projectService: ProductListService,
+              private projectService: ProjectsListService,
               private sanitizer: DomSanitizer) {
     this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'photo-endpoint');
   }

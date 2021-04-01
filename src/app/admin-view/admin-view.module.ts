@@ -5,8 +5,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
 import {AdminViewComponent} from './admin-view.component';
-import {ProductsListComponent} from './components/products-list/products-list.component';
-import {ProductListService} from './services/product-list-service';
+import {ProjectsListComponent} from './components/projects-list/projects-list.component';
+import {ProjectsListService} from './services/projects-list-service';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {SearchComponent} from './components/search/search.component';
 import {AuthGuardService} from '../auth/services/auth-guard.service';
@@ -17,7 +17,7 @@ const routes: Routes = [
     component: AdminViewComponent,
     canActivate: [AuthGuardService],
     children: [
-      {path: ':id', component: ProductsListComponent}
+      {path: ':id', component: ProjectsListComponent}
     ]
   }
 ]
@@ -26,7 +26,7 @@ const routes: Routes = [
   declarations: [
     AdminHeaderComponent,
     AdminViewComponent,
-    ProductsListComponent,
+    ProjectsListComponent,
     SearchComponent
   ],
   imports: [
@@ -38,7 +38,7 @@ const routes: Routes = [
     NgbPaginationModule
   ],
   providers: [
-    ProductListService
+    ProjectsListService
   ]
 })
 export class AdminViewModule {
