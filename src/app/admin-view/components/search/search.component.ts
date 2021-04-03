@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',

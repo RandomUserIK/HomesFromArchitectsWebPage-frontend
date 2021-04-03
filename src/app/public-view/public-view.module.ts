@@ -6,13 +6,16 @@ import {HomeComponent} from './components/home/home.component';
 import {HomeModule} from './components/home/home.module';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
+import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
+import {SearchHeaderComponent} from './components/search-header/search-header.component';
+import {DropDownFilterComponent} from './components/search-header/components/drop-down-filter/drop-down-filter.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
     path: '', component: PublicViewComponent, children: [
       {path: '', component: HomeComponent},
-      // {path: 'projekty', component: ProjectsComponent},
-      // {path: 'projekty/:id', component: ProjectComponent},
+      {path: ':id', component: ProjectsGalleryComponent},
     ]
   },
 ]
@@ -21,12 +24,16 @@ const routes: Routes = [
   declarations: [
     PublicViewComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProjectsGalleryComponent,
+    SearchHeaderComponent,
+    DropDownFilterComponent
   ],
   imports: [
     CommonModule,
     HomeModule,
-    RouterModule.forChild(routes)
+    ReactiveFormsModule,
+    RouterModule.forChild(routes),
   ]
 })
 export class PublicViewModule {

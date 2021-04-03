@@ -6,7 +6,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
 import {AdminViewComponent} from './admin-view.component';
 import {ProjectsListComponent} from './components/projects-list/projects-list.component';
-import {ProjectsListService} from './services/projects-list-service';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {SearchComponent} from './components/search/search.component';
 import {AuthGuardService} from '../auth/services/auth-guard.service';
@@ -36,9 +35,6 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forChild(routes),
     NgbPaginationModule
-  ],
-  providers: [
-    ProjectsListService
   ]
 })
 export class AdminViewModule {

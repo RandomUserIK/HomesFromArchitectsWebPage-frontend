@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ProjectsListService} from '../../services/projects-list-service';
+import {ProjectsService} from '../../../services/projects-service';
 import {ProjectData} from '../../models/project-data';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
@@ -19,7 +19,7 @@ export class ProjectsListComponent implements OnInit {
   currentPage = 1;
   keyword = ''
 
-  constructor(private _projectsListService: ProjectsListService, private route: ActivatedRoute) {
+  constructor(private _projectsListService: ProjectsService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -29,12 +29,14 @@ export class ProjectsListComponent implements OnInit {
       })).subscribe(this.processData());
   }
 
-  public handleProjectsList(projectType: string, currentPage: number): Observable<any> {
+
+
+  public handleProjectsList(category: string, currentPage: number): Observable<any> {
     this.loading = true;
     if (this.keyword === '') {
-      return this.searchAll(projectType, currentPage);
+      return this.searchAll(category, currentPage);
     } else {
-      return this.searchByKeyword(projectType, currentPage);
+      return this.searchByKeyword(category, currentPage);
     }
   }
 
@@ -50,12 +52,12 @@ export class ProjectsListComponent implements OnInit {
       .subscribe(this.processData());
   }
 
-  private searchAll(projectType: string, currentPage: number): Observable<any> {
-    return this._projectsListService.searchAll(projectType, currentPage);
+  private searchAll(category: string, currentPage: number): Observable<any> {
+    return this._projectsListService.searchAll(category, currentPage);
   }
 
-  private searchByKeyword(projectType: string, currentPage: number): Observable<any> {
-    return this._projectsListService.searchByKeyword(projectType, currentPage, this.keyword);
+  private searchByKeyword(category: string, currentPage: number): Observable<any> {
+    return this._projectsListService.searchByKeyword(category, currentPage, this.keyword);
   }
 
   private processData() {
@@ -66,5 +68,4 @@ export class ProjectsListComponent implements OnInit {
       this.loading = false;
     }
   }
-
 }
