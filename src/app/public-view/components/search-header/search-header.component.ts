@@ -1,59 +1,38 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
-import {DropDownFilterModel} from './models/drop-down-filter-model';
+import {ENUMERATION_FILTERS, EnumerationFilterModel} from './models/enumeration-filter-model';
 
 @Component({
   selector: 'app-search-header',
   templateUrl: './search-header.component.html',
-  styleUrls: ['./search-header.component.scss']
+  styleUrls: ['./search-header.component.scss'],
+  providers: [{provide: ENUMERATION_FILTERS, useValue: ENUMERATION_FILTERS}]
 })
 export class SearchHeaderComponent implements OnInit {
 
   searchForm: FormGroup;
-  dropDownFilters: Array<DropDownFilterModel> = [
-    {
-      formControlId: 'houseType',
-      title: 'Typ domu',
-      values: ['bungalow', 'storey']
-    },
-    {
-      formControlId: 'price',
-      title: 'Cena',
-      values: ['100000', '200000', '300000']
-    }
-  ];
 
-  constructor() {
+  constructor(@Inject(ENUMERATION_FILTERS) public enumerationFilters: Array<EnumerationFilterModel>) {
   }
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
       'projectName': new FormControl(),
-      // 'enumerationFilters': new FormGroup({
-      //   'houseType': new FormControl(),
-      //   'price': new FormControl()
-      // }),
-      'enumerationFilters': new FormGroup(this.getDropdownFilterIds()),
+      'enumerationFilters': new FormGroup(this.getEnumerationFilterIds()),
     });
 
     this.searchForm.valueChanges.subscribe(value => console.log(value))
   }
 
-  get enumerationFilters() {
-    const filters = []
-    Object.keys((this.searchForm.get('enumerationFilters') as FormGroup).controls).map((key) => {
-      filters.push(key)
-    });
-    return filters;
-  }
-
-  private getDropdownFilterIds(): { [key: string]: AbstractControl } {
+  private getEnumerationFilterIds(): { [key: string]: AbstractControl } {
     let formControls: { [key: string]: AbstractControl } = {};
-    for (let filter of this.dropDownFilters) {
+    for (let filter of this.enumerationFilters) {
       formControls[filter.formControlId] = new FormControl();
     }
-    console.log(formControls)
     return formControls;
   }
 
+  public resetFilters(): void {
+    this.searchForm.reset();
+  }
 }

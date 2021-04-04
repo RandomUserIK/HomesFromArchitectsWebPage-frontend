@@ -8,7 +8,6 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {SearchHeaderComponent} from './components/search-header/search-header.component';
-import {DropDownFilterComponent} from './components/search-header/components/drop-down-filter/drop-down-filter.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
@@ -26,8 +25,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     ProjectsGalleryComponent,
-    SearchHeaderComponent,
-    DropDownFilterComponent
+    SearchHeaderComponent
   ],
   imports: [
     CommonModule,

@@ -32,6 +32,8 @@ export class ProjectsGalleryComponent implements OnInit {
         return this.projectsService.searchAll(params.id, this.currentPage - 1);
       })
     ).subscribe(this.processData())
+
+    this.activatedRoute.params.subscribe(value => console.log(value));
   }
 
   private processData() {
