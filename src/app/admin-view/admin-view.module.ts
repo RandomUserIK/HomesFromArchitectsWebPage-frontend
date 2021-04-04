@@ -1,31 +1,44 @@
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
-import {ConfigurationService} from '../configuration/services/configuration-service';
-import {LoginComponent} from './login/login.component';
-import {RouterModule} from '@angular/router';
-import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
+import {AdminViewComponent} from './admin-view.component';
+import {ProjectsListComponent} from './components/projects-list/projects-list.component';
+import {ProjectsListService} from './services/projects-list-service';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import {SearchComponent} from './components/search/search.component';
+import {AuthGuardService} from '../auth/services/auth-guard.service';
 
-
+const routes: Routes = [
+  {
+    path: '',
+    component: AdminViewComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      {path: ':id', component: ProjectsListComponent}
+    ]
+  }
+]
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    AdminViewComponent,
+    ProjectsListComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
-    RouterModule
-  ],
-  exports: [
-    LoginComponent,
-    AdminHeaderComponent
+    RouterModule.forChild(routes),
+    NgbPaginationModule
   ],
   providers: [
-    ConfigurationService
+    ProjectsListService
   ]
 })
 export class AdminViewModule {

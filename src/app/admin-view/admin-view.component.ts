@@ -23,6 +23,6 @@ export class AdminViewComponent implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.test.unsubscribe();
+    // this.test.unsubscribe();
   }
 }

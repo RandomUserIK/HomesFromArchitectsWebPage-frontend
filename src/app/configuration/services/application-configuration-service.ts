@@ -1,4 +1,4 @@
-import {ApplicationProperties} from '../interfaces/application-properties';
+import {ApplicationProperties} from '../models/application-properties';
 
 
 export abstract class AbstractConfigurationService {

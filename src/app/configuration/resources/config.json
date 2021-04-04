@@ -17,7 +17,7 @@
       },
       {
         "name": "project-endpoint",
-        "address": "http://localhost:8090/api/project",
+        "address": "http://localhost:8090/api",
         "format": "application/json"
       }
     ]

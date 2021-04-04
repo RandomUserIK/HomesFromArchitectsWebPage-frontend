@@ -1,0 +1,32 @@
+@import "../../../../theme";
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.contact-logo {
+  width: 25px;
+  height: 25px;
+}
+
+ul {
+  width: 100%;
+}
+
+li {
+  margin-left: 1.5%;
+}
+
+.nav-item > a {
+  color: black;
+}
+
+.navbar-nav > .active > a {
+  color: map_get($theme-colors, "primary");
+}
+
+.nav-item > a:hover {
+  color: map_get($theme-colors, "primary");
+}
