@@ -17,16 +17,16 @@ export class SearchHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
-      'projectName': new FormControl(),
-      'enumerationFilters': new FormGroup(this.getEnumerationFilterIds()),
+      projectName: new FormControl(),
+      enumerationFilters: new FormGroup(this.getEnumerationFilterIds()),
     });
 
     this.searchForm.valueChanges.subscribe(value => console.log(value))
   }
 
   private getEnumerationFilterIds(): { [key: string]: AbstractControl } {
-    let formControls: { [key: string]: AbstractControl } = {};
-    for (let filter of this.enumerationFilters) {
+    const formControls: { [key: string]: AbstractControl } = {};
+    for (const filter of this.enumerationFilters) {
       formControls[filter.formControlId] = new FormControl();
     }
     return formControls;
