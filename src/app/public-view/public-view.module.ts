@@ -17,6 +17,7 @@ import {ProjectInteriorComponent} from './components/project/components/project-
 import {ProjectChangesComponent} from './components/project/components/project-changes/project-changes.component';
 import {ProjectContentComponent} from './components/project/components/project-content/project-content.component';
 import {ProjectCustomizedProposalComponent} from './components/project/components/project-customized-proposal/project-customized-proposal.component';
+import { ProjectTextSectionComponent } from './components/project/components/project-description/components/project-text-section/project-text-section.component';
 
 const routes: Routes = [
   {
@@ -43,7 +44,8 @@ const routes: Routes = [
     ProjectInteriorComponent,
     ProjectChangesComponent,
     ProjectContentComponent,
-    ProjectCustomizedProposalComponent
+    ProjectCustomizedProposalComponent,
+    ProjectTextSectionComponent
   ],
   imports: [
     CommonModule,
