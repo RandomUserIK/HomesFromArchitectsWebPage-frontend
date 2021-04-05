@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectsService} from '../../../services/projects-service';
-import {ProjectData} from '../../models/project-data';
+import {ProjectData} from '../../../models/project-data';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {switchMap} from 'rxjs/operators';

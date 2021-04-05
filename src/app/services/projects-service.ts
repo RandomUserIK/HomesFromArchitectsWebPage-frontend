@@ -1,9 +1,10 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IndividualProjectsData, ProjectData} from '../admin-view/models/project-data';
+import {ProjectData} from '../models/project-data';
 import {EndpointConfigData} from '../configuration/models/enpoint-config-data';
 import {ConfigurationService} from '../configuration/services/configuration-service';
 import {Injectable} from '@angular/core';
+import {PageableProjectsData} from '../models/pageable-projects-data';
 
 
 @Injectable({
@@ -18,17 +19,20 @@ export class ProjectsService {
     this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'project-endpoint');
   }
 
-  public createProject(data: ProjectData): Observable<string> {
+  public getAllOnPageAndCategory(page: number, category: string): Observable<PageableProjectsData> {
     return this.httpClient
-      .post(this.resource.address + '/add', data, {
-        headers: new HttpHeaders({Accept: '*/*'}),
-        responseType: 'text'
-      });
+      .get<PageableProjectsData>(`${this.resource.address}/projects/categorical?page=${page}&category=${category}`);
   }
 
-  public searchAll(category: string , page: number): Observable<IndividualProjectsData> {
+  public getAllOnPageAndCategoryAndQuery(page: number, categoryId: string, query: string): Observable<PageableProjectsData> {
+    console.log(`${this.resource.address}/projects/filter?page=${page}&${query}&category=${categoryId}`)
     return this.httpClient
-      .get<IndividualProjectsData>(`${this.resource.address}/projects?category=${category}&page=${page}`);
+      .get<PageableProjectsData>(`${this.resource.address}/projects/filter?page=${page}&${query}&category=${categoryId}`);
+  }
+
+  public searchAll(category: string, page: number): Observable<PageableProjectsData> {
+    return this.httpClient
+      .get<PageableProjectsData>(`${this.resource.address}/projects?category=${category}&page=${page}`);
   }
 
   public getProject(projectId: number): Observable<ProjectData> {
@@ -40,9 +44,9 @@ export class ProjectsService {
       });
   }
 
-  searchByKeyword(category: string, currentPage: number, keyword:string): Observable<IndividualProjectsData> {
+  searchByKeyword(category: string, currentPage: number, keyword: string): Observable<PageableProjectsData> {
     return this.httpClient
-      .get<IndividualProjectsData>(`${this.resource.address}/${category}/keyword?page=${currentPage}&keyword=${keyword}`);
+      .get<PageableProjectsData>(`${this.resource.address}/${category}/keyword?page=${currentPage}&keyword=${keyword}`);
   }
 
 }

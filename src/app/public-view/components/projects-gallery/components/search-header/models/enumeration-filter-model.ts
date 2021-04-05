@@ -6,9 +6,9 @@ export interface EnumerationFilterModel {
 
 export const ENUMERATION_FILTERS: Array<EnumerationFilterModel> = [
   {
-    formControlId: 'houseType',
-    title: 'Typ domu',
-    values: ['bungalow', 'storey']
+    formControlId: 'persons',
+    title: 'Počet osôb',
+    values: ['3', '4', '5']
   },
   {
     formControlId: 'price',

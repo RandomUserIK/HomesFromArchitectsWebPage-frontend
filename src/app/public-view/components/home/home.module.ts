@@ -7,7 +7,7 @@ import {HomeIconsDescriptionComponent} from './components/home-icons-description
 import {HomeInteriorDescriptionComponent} from './components/home-interior-description/home-interior-description.component';
 import {HomeIndividualProjectDescriptionComponent} from './components/home-individual-project-description/home-individual-project-description.component';
 import {InstagramSearchService} from './services/instagram-search.service';
-import {instagramSearchInjectables} from './services/InstagramSearchInjectables';
+import {instagramSearchInjectables} from './services/Instagram-search-injectables';
 import { HomeInstagramGalleryComponent } from './components/home-instagram-gallery/home-instagram-gallery.component';
 import { HomeContactComponent } from './components/home-contact/home-contact.component';
 

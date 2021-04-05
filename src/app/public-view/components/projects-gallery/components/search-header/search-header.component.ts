@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {ENUMERATION_FILTERS, EnumerationFilterModel} from './models/enumeration-filter-model';
+import {SearchHeaderService} from './services/search-header.service';
 
 @Component({
   selector: 'app-search-header',
@@ -12,7 +13,8 @@ export class SearchHeaderComponent implements OnInit {
 
   searchForm: FormGroup;
 
-  constructor(@Inject(ENUMERATION_FILTERS) public enumerationFilters: Array<EnumerationFilterModel>) {
+  constructor(@Inject(ENUMERATION_FILTERS) public enumerationFilters: Array<EnumerationFilterModel>,
+              private searchHeaderService: SearchHeaderService) {
   }
 
   ngOnInit(): void {
@@ -20,8 +22,10 @@ export class SearchHeaderComponent implements OnInit {
       projectName: new FormControl(),
       enumerationFilters: new FormGroup(this.getEnumerationFilterIds()),
     });
-
-    this.searchForm.valueChanges.subscribe(value => console.log(value))
+    this.searchForm.valueChanges.subscribe(searchFormValue => {
+      let query = this.searchHeaderService.buildQuery(searchFormValue)
+      this.searchHeaderService.searchHeaderState.next(query);
+    })
   }
 
   private getEnumerationFilterIds(): { [key: string]: AbstractControl } {
