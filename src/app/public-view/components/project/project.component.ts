@@ -3,8 +3,7 @@ import {ProjectData} from '../../../admin-view/models/project-data';
 
 @Component({
   selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  templateUrl: './project.component.html'
 })
 export class ProjectComponent implements OnInit {
 
@@ -34,6 +33,7 @@ export class ProjectComponent implements OnInit {
       minimumParcelWidth: 20,
       heatingSource: 'tepelné čerpadlo',
       heatingType: 'podlahové vykurovanie',
+      photoPaths: ['slide1.png', 'slide2.png'],
       textSections: [
         {
           id: 1,

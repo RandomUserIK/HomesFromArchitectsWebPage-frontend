@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TextSection} from '../../../../../admin-view/models/project-data';
 
 @Component({
   selector: 'app-project-description',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./project-description.component.scss']
 })
 export class ProjectDescriptionComponent implements OnInit {
+
+  @Input() textSections: Array<TextSection>;
 
   constructor() {
   }
