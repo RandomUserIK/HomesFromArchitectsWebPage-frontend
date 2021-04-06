@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {HomeImageCarouselComponent} from './components/home-image-carousel/home-image-carousel.component';
 import {HomeComponent} from './home.component';
 import {HomeBubbleDescriptionComponent} from './components/home-bubble-description/home-bubble-description.component';
@@ -8,8 +8,8 @@ import {HomeInteriorDescriptionComponent} from './components/home-interior-descr
 import {HomeIndividualProjectDescriptionComponent} from './components/home-individual-project-description/home-individual-project-description.component';
 import {InstagramSearchService} from './services/instagram-search.service';
 import {instagramSearchInjectables} from './services/Instagram-search-injectables';
-import { HomeInstagramGalleryComponent } from './components/home-instagram-gallery/home-instagram-gallery.component';
-import { HomeContactComponent } from './components/home-contact/home-contact.component';
+import {HomeInstagramGalleryComponent} from './components/home-instagram-gallery/home-instagram-gallery.component';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -21,18 +21,17 @@ import { HomeContactComponent } from './components/home-contact/home-contact.com
     HomeInteriorDescriptionComponent,
     HomeIndividualProjectDescriptionComponent,
     HomeInstagramGalleryComponent,
-    HomeContactComponent,
   ],
     exports: [
-        HomeComponent,
-        HomeContactComponent
+        HomeComponent
     ],
   providers: [
     InstagramSearchService,
     instagramSearchInjectables
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

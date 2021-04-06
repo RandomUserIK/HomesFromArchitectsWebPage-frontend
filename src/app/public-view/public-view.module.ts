@@ -10,8 +10,9 @@ import {ProjectsGalleryComponent} from './components/projects-gallery/projects-g
 import {SearchHeaderComponent} from './components/projects-gallery/components/search-header/search-header.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-import { LoadingComponent } from './components/loading/loading.component';
-import { EmptySearchResultComponent } from './components/projects-gallery/components/empty-search-result/empty-search-result.component';
+import {LoadingComponent} from './components/loading/loading.component';
+import {EmptySearchResultComponent} from './components/projects-gallery/components/empty-search-result/empty-search-result.component';
+import {SharedModule} from './components/shared/shared.module';
 
 const routes: Routes = [
   {
@@ -51,6 +52,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     NgbPaginationModule,
+    SharedModule
   ]
 })
 export class PublicViewModule {
