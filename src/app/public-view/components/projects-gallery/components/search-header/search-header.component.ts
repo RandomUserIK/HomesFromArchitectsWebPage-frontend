@@ -23,7 +23,7 @@ export class SearchHeaderComponent implements OnInit {
       enumerationFilters: new FormGroup(this.getEnumerationFilterIds()),
     });
     this.searchForm.valueChanges.subscribe(searchFormValue => {
-      let query = this.searchHeaderService.buildQuery(searchFormValue)
+      const query = this.searchHeaderService.buildQuery(searchFormValue);
       this.searchHeaderService.searchHeaderState.next(query);
     })
   }

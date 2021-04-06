@@ -13,6 +13,7 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoadingComponent} from './components/loading/loading.component';
 import {EmptySearchResultComponent} from './components/projects-gallery/components/empty-search-result/empty-search-result.component';
 import {SharedModule} from './components/shared/shared.module';
+import { ProjectGalleryComponent } from './components/projects-gallery/components/project-gallery/project-gallery.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
     SearchHeaderComponent,
     LoadingComponent,
     EmptySearchResultComponent,
+    ProjectGalleryComponent,
   ],
   imports: [
     CommonModule,
