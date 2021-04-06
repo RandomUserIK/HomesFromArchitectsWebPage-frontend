@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ProjectData} from '../../../../../admin-view/models/project-data';
 
 @Component({
   selector: 'app-project-price-comparison',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./project-price-comparison.component.scss']
 })
 export class ProjectPriceComparisonComponent implements OnInit {
+
+  @Input() project: ProjectData;
 
   constructor() {
   }

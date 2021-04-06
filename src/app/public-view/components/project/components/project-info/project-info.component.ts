@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ProjectData} from '../../../../../admin-view/models/project-data';
 
 @Component({
   selector: 'app-project-info',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./project-info.component.scss']
 })
 export class ProjectInfoComponent implements OnInit {
+
+  @Input() project: ProjectData;
 
   constructor() {
   }

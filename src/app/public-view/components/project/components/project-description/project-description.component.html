@@ -1,0 +1,6 @@
+<div class="row justify-content-center mt-5">
+  <span class="section-title">Popis projektu</span>
+  <div class="row" *ngFor="let textSection of textSections">
+    <app-project-text-section [textSection]="textSection"></app-project-text-section>
+  </div>
+</div>

@@ -1,19 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ProjectData} from '../../../admin-view/models/project-data';
 
 @Component({
   selector: 'app-project',
-  templateUrl: './project.component.html'
+  templateUrl: './project.component.html',
+  styleUrls: ['./project.component.scss']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent {
 
   // TODO: set as input
   project: ProjectData;
 
   constructor() {
-  }
-
-  ngOnInit(): void {
     // TODO: remove
     this.project = {
       id: 1,
@@ -22,7 +20,7 @@ export class ProjectComponent implements OnInit {
       builtUpArea: 198.72,
       totalLivingArea: 231.30,
       energeticClass: 'A0',
-      orientation: 'S,V,Z',
+      orientation: 'S, V, Z',
       selfHelpBuild: 145500,
       priceOnKey: 220000,
       basicProject: 2550,
@@ -33,6 +31,7 @@ export class ProjectComponent implements OnInit {
       minimumParcelWidth: 20,
       heatingSource: 'tepelné čerpadlo',
       heatingType: 'podlahové vykurovanie',
+      floorPlanPhoto: 'floor_plan.png',
       photoPaths: ['slide1.png', 'slide2.png'],
       textSections: [
         {

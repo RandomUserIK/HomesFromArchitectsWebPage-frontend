@@ -1,0 +1,23 @@
+@import 'src/app/public-view/components/project/project.component';
+
+.comparison-section {
+  background-color: #a0a09f;
+}
+
+.comparison-text {
+  font-size: 150%;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.comparison-link {
+  font-size: 15px;
+  font-family: sans-serif;
+  color: black;
+  text-decoration: underline;
+}
+
+.comparison-additional-text {
+  font-size: 15px;
+  font-family: sans-serif;
+}

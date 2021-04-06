@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-project-image-carousel',
@@ -6,6 +6,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./project-image-carousel.component.scss']
 })
 export class ProjectImageCarouselComponent implements OnInit {
+
+  @Input() projectPhotoPaths: Array<string>;
 
   constructor() {
   }
