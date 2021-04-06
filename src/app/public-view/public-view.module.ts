@@ -11,6 +11,7 @@ import {SearchHeaderComponent} from './components/projects-gallery/components/se
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from './components/loading/loading.component';
+import { EmptySearchResultComponent } from './components/projects-gallery/components/empty-search-result/empty-search-result.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
     ProjectsGalleryComponent,
     SearchHeaderComponent,
     LoadingComponent,
+    EmptySearchResultComponent,
   ],
   imports: [
     CommonModule,

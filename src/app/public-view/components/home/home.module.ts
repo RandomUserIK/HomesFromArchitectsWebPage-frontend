@@ -23,9 +23,10 @@ import { HomeContactComponent } from './components/home-contact/home-contact.com
     HomeInstagramGalleryComponent,
     HomeContactComponent,
   ],
-  exports: [
-    HomeComponent
-  ],
+    exports: [
+        HomeComponent,
+        HomeContactComponent
+    ],
   providers: [
     InstagramSearchService,
     instagramSearchInjectables
