@@ -19,19 +19,9 @@ export class ProjectsService {
     this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'project-endpoint');
   }
 
-  public getAllOnPageAndCategory(page: number, category: string): Observable<PageableProjectsData> {
-    return this.httpClient
-      .get<PageableProjectsData>(`${this.resource.address}/projects/categorical?page=${page}&category=${category}`);
-  }
-
   public getAllOnPageAndCategoryAndQuery(page: number, categoryId: string, query: string): Observable<PageableProjectsData> {
     return this.httpClient
       .get<PageableProjectsData>(`${this.resource.address}/projects/filter?page=${page}&${query}&category=${categoryId}`);
-  }
-
-  public searchAll(category: string, page: number): Observable<PageableProjectsData> {
-    return this.httpClient
-      .get<PageableProjectsData>(`${this.resource.address}/projects?category=${category}&page=${page}`);
   }
 
   public getProject(projectId: number): Observable<ProjectData> {
@@ -41,11 +31,6 @@ export class ProjectsService {
       .post<ProjectData>(this.resource.address + '/concrete', formData, {
         headers: new HttpHeaders({Accept: 'application/json'})
       });
-  }
-
-  searchByKeyword(category: string, currentPage: number, keyword: string): Observable<PageableProjectsData> {
-    return this.httpClient
-      .get<PageableProjectsData>(`${this.resource.address}/${category}/keyword?page=${currentPage}&keyword=${keyword}`);
   }
 
 }

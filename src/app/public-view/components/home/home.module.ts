@@ -9,7 +9,7 @@ import {HomeIndividualProjectDescriptionComponent} from './components/home-indiv
 import {InstagramSearchService} from './services/instagram-search.service';
 import {instagramSearchInjectables} from './services/Instagram-search-injectables';
 import {HomeInstagramGalleryComponent} from './components/home-instagram-gallery/home-instagram-gallery.component';
-import {SharedModule} from '../shared/shared.module';
+import {ContactModule} from '../contact/contact.module';
 
 
 @NgModule({
@@ -22,16 +22,17 @@ import {SharedModule} from '../shared/shared.module';
     HomeIndividualProjectDescriptionComponent,
     HomeInstagramGalleryComponent,
   ],
-    exports: [
-        HomeComponent
-    ],
+  exports: [
+    HomeComponent
+  ],
   providers: [
     InstagramSearchService,
     instagramSearchInjectables
   ],
   imports: [
     CommonModule,
-    SharedModule
+    ContactModule
   ]
 })
-export class HomeModule { }
+export class HomeModule {
+}

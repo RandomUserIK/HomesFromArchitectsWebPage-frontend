@@ -7,13 +7,8 @@ import {HomeModule} from './components/home/home.module';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
-import {SearchHeaderComponent} from './components/projects-gallery/components/search-header/search-header.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-import {LoadingComponent} from './components/loading/loading.component';
-import {EmptySearchResultComponent} from './components/projects-gallery/components/empty-search-result/empty-search-result.component';
-import {SharedModule} from './components/shared/shared.module';
-import { ProjectGalleryComponent } from './components/projects-gallery/components/project-gallery/project-gallery.component';
+import {SearchHeaderModule} from '../components/search-header/search-header.module';
+import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
 
 const routes: Routes = [
   {
@@ -24,15 +19,18 @@ const routes: Routes = [
       {
         path: 'individualne-projekty',
         component: ProjectsGalleryComponent,
-        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'} },
+        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'}
+      },
       {
         path: 'katalogove-projekty',
         component: ProjectsGalleryComponent,
-        data: {projectsTitle: 'Katalógové projekty', projectsCategoryId: 'COMMON'}},
+        data: {projectsTitle: 'Katalógové projekty', projectsCategoryId: 'COMMON'}
+      },
       {
         path: 'interierovy-dizajn',
         component: ProjectsGalleryComponent,
-        data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}},
+        data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
+      },
     ]
   },
 ]
@@ -42,19 +40,13 @@ const routes: Routes = [
     PublicViewComponent,
     HeaderComponent,
     FooterComponent,
-    ProjectsGalleryComponent,
-    SearchHeaderComponent,
-    LoadingComponent,
-    EmptySearchResultComponent,
-    ProjectGalleryComponent,
   ],
   imports: [
     CommonModule,
     HomeModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    NgbPaginationModule,
-    SharedModule
+    ProjectsGalleryModule,
+    SearchHeaderModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class PublicViewModule {

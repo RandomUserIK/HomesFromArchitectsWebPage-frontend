@@ -1,7 +1,5 @@
 <div class="mt-4">
-
-  <app-search (searchValue)="onSearchKeyword($event)"></app-search>
-
+  <app-search-header></app-search-header>
   <div class="row justify-content-center" *ngIf="loading">
     <div class="col-2">
       <div class="spinner-border text-primary" role="status">
@@ -9,12 +7,11 @@
       </div>
     </div>
   </div>
-
   <div class="card mt-1" *ngFor="let projects of projects">
     <div class="card-body">
       <div class="row">
         <div class="col-3">
-          <span>{{projects.projectName}}</span>
+          <span>{{projects.title}}</span>
         </div>
         <div class="col-9 text-right">
           <button type="button" class="btn btn-primary mr-3">
