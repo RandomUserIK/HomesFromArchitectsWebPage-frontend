@@ -10,6 +10,7 @@ import {InstagramSearchService} from './services/instagram-search.service';
 import {instagramSearchInjectables} from './services/Instagram-search-injectables';
 import {HomeInstagramGalleryComponent} from './components/home-instagram-gallery/home-instagram-gallery.component';
 import {ContactModule} from '../contact/contact.module';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {ContactModule} from '../contact/contact.module';
   ],
   imports: [
     CommonModule,
-    ContactModule
+    ContactModule,
+    RouterModule
   ]
 })
 export class HomeModule {
