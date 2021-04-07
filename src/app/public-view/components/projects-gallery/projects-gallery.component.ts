@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {loadingAnimation} from './animations/loading.animation';
-import {AbstractProjectGallery} from '../../../models/abstract-project-gallery';
+import {AbstractProjectGalleryDirective} from '../../../models/abstract-project-gallery';
 
 @Component({
   selector: 'app-projects-gallery',
@@ -8,5 +8,5 @@ import {AbstractProjectGallery} from '../../../models/abstract-project-gallery';
   styleUrls: ['./projects-gallery.component.scss'],
   animations: loadingAnimation
 })
-export class ProjectsGalleryComponent extends AbstractProjectGallery {
+export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective {
 }

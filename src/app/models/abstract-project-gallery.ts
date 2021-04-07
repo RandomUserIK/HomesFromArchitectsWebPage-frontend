@@ -8,7 +8,7 @@ import {Observable, Subscription} from 'rxjs';
 import {PageableProjectsData} from './pageable-projects-data';
 
 @Directive()
-export abstract class AbstractProjectGallery implements OnInit, OnDestroy {
+export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
 
   currentPage = 1;
   pageSize = 9;
@@ -31,7 +31,7 @@ export abstract class AbstractProjectGallery implements OnInit, OnDestroy {
         switchMap(data => {
           this.categoryTitle = data.projectsTitle;
           this.categoryId = data.projectsCategoryId;
-          return this.handleProjectsList(1, this.categoryId, "");
+          return this.handleProjectsList(1, this.categoryId, '');
         })
       ).subscribe(this.processData());
 
