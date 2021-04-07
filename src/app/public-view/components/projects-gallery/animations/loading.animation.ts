@@ -18,6 +18,6 @@ export const loadingAnimation = [trigger('spinner', [
     state('true', style({
       opacity: '0',
     })),
-    transition('true <=> false', animate('0.4s 0.4s')),
+    transition('true => false', animate('0.4s 0.4s')),
   ]),
 ]
