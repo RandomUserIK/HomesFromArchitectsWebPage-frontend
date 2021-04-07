@@ -6,7 +6,6 @@ import {SearchHeaderService} from './services/search-header.service';
 @Component({
   selector: 'app-search-header',
   templateUrl: './search-header.component.html',
-  styleUrls: ['./search-header.component.scss'],
   providers: [{provide: ENUMERATION_FILTERS, useValue: ENUMERATION_FILTERS}]
 })
 export class SearchHeaderComponent implements OnInit {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ProjectData} from '../../../../../models/project-data';
 
 @Component({
@@ -6,15 +6,8 @@ import {ProjectData} from '../../../../../models/project-data';
   templateUrl: './project-gallery.component.html',
   styleUrls: ['./project-gallery.component.scss']
 })
-export class ProjectGalleryComponent implements OnInit {
+export class ProjectGalleryComponent {
 
   @Input()
   project: ProjectData;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }

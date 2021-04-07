@@ -8,9 +8,6 @@ export class SearchHeaderService {
 
   private _searchHeaderState: Subject<string> = new Subject<string>();
 
-  constructor() {
-  }
-
   get searchHeaderState(): Subject<string> {
     return this._searchHeaderState;
   }

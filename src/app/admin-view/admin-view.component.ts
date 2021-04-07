@@ -6,7 +6,4 @@ import {Component} from '@angular/core';
   styleUrls: ['./admin-view.component.scss']
 })
 export class AdminViewComponent {
-
-  constructor() {
-  }
 }

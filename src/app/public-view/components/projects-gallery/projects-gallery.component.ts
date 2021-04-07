@@ -5,7 +5,6 @@ import {AbstractProjectGalleryDirective} from '../../../models/abstract-project-
 @Component({
   selector: 'app-projects-gallery',
   templateUrl: './projects-gallery.component.html',
-  styleUrls: ['./projects-gallery.component.scss'],
   animations: loadingAnimation
 })
 export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective {
