@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {LightboxModule} from 'ngx-lightbox';
 import {ProjectBuildingInfoComponent} from './components/project-building-info/project-building-info.component';
 import {ProjectChangesComponent} from './components/project-changes/project-changes.component';
 import {ProjectContentComponent} from './components/project-content/project-content.component';
@@ -32,7 +33,8 @@ import {ProjectComponent} from './project.component';
     ProjectComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    LightboxModule
   ]
 })
 export class ProjectModule {

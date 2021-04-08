@@ -1,5 +1,10 @@
 @import 'src/app/public-view/components/project/project.component';
 
+.row {
+  align-items: center;
+  min-height: 150px;
+}
+
 .comparison-section {
   background-color: #c1c1c1;
 }

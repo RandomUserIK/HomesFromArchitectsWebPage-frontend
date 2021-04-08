@@ -1,5 +1,6 @@
 @import "theme";
 @import "~bootstrap/scss/bootstrap";
+@import "~ngx-lightbox/lightbox.css";
 
 @font-face {
   font-family: "Alegreya";
@@ -16,5 +17,15 @@
     font-size: 1rem;
     margin: 0;
   }
+}
+
+.fadeIn {
+  -webkit-animation-name: none;
+  animation-name: none;
+}
+
+.fadeOut {
+  -webkit-animation-name: none;
+  animation-name: none;
 }
 

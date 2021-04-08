@@ -25,6 +25,7 @@
     "bootstrap": "^4.6.0",
     "bootstrap4-plus-jquery": "^4.0.0-alpha.2.4",
     "jquery": "^3.6.0",
+    "ngx-lightbox": "^2.2.2",
     "rxjs": "~6.6.6",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

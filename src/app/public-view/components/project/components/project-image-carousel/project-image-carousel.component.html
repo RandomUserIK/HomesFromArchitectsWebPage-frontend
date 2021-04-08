@@ -2,7 +2,7 @@
   <div class="carousel-inner">
     <div *ngFor="let photoPath of projectPhotoPaths; let i = index"
          [ngClass]="(i === 0) ? 'carousel-item active' : 'carousel-item'">
-      <img class="d-block w-100" [src]="'assets/'+ photoPath" alt="First slide">
+      <img class="d-block w-100" [src]="'assets/'+ photoPath" [alt]="photoPath" (click)="onClick(i)">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
