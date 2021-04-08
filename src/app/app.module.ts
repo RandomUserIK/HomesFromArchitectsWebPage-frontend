@@ -11,8 +11,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthModule} from './auth/auth.module';
 
 const routes: Routes = [
-  {path: '', loadChildren: () => import('./public-view/public-view.module').then(m => m.PublicViewModule)},
   {path: 'admin', loadChildren: () => import('./admin-view/admin-view.module').then(m => m.AdminViewModule)},
+  {path: '', loadChildren: () => import('./public-view/public-view.module').then(m => m.PublicViewModule)},
   {path: '**', component: NotFoundComponent}
 ]
 
