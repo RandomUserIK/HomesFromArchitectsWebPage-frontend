@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TextSection} from '../../../../../admin-view/models/project-data';
 
 @Component({
@@ -6,14 +6,8 @@ import {TextSection} from '../../../../../admin-view/models/project-data';
   templateUrl: './project-description.component.html',
   styleUrls: ['./project-description.component.scss']
 })
-export class ProjectDescriptionComponent implements OnInit {
+export class ProjectDescriptionComponent {
 
   @Input() textSections: Array<TextSection>;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }

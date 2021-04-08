@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ProjectData} from '../../../../../admin-view/models/project-data';
 
 @Component({
@@ -6,14 +6,8 @@ import {ProjectData} from '../../../../../admin-view/models/project-data';
   templateUrl: './project-price-comparison.component.html',
   styleUrls: ['./project-price-comparison.component.scss']
 })
-export class ProjectPriceComparisonComponent implements OnInit {
+export class ProjectPriceComparisonComponent {
 
   @Input() project: ProjectData;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }
