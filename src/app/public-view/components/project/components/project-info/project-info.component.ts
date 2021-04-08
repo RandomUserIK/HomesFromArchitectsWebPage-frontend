@@ -9,11 +9,17 @@ import {ProjectData} from '../../../../../admin-view/models/project-data';
 export class ProjectInfoComponent implements OnInit {
 
   @Input() project: ProjectData;
-
-  constructor() {
-  }
+  infoAttributes = new Array<{ name: string; value: string | number }>();
 
   ngOnInit(): void {
+    this.infoAttributes.push({name: 'Počet izieb', value: this.project.rooms});
+    this.infoAttributes.push({name: 'Počet osôb', value: this.project.persons});
+    this.infoAttributes.push({name: 'Zastavaná plocha', value: this.project.builtUpArea});
+    this.infoAttributes.push({name: 'Úžitková plocha', value: this.project.grossArea});
+    this.infoAttributes.push({name: 'Energetická trieda', value: this.project.energeticClass});
+    this.infoAttributes.push({name: 'Orientácia vstupu', value: this.project.angleOfRoof});
+    this.infoAttributes.push({name: 'Svojpomocná výstavba', value: this.project.selfHelpBuild});
+    this.infoAttributes.push({name: 'Cena na kľúč', value: this.project.priceOnKey});
   }
 
 }

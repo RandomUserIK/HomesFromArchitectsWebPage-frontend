@@ -1,0 +1,21 @@
+#rooms-number {
+  font-size: 7rem;
+  position: absolute;
+  line-height: 0.4;
+  left: -3.5vh;
+  color: #c1c1c1;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.text-responsive {
+  font-size: calc(100% + 0.1vw + 0.1vh);
+  font-weight: bold;
+}
+
+.title-text-responsive {
+  color: #c1c1c1;
+  font-weight: bold;
+  font-size: calc(100% + 1vw + 1vh);
+}
+

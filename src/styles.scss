@@ -1,8 +1,14 @@
 @import "theme";
 @import "~bootstrap/scss/bootstrap";
 
-html {
-  font-size: 0.7rem;
+@font-face {
+  font-family: "Alegreya";
+  src: local("Alegreya"), url(assets/fonts/alegreya.ttf) format("truetype");
+}
+
+* {
+  font-family: "Alegreya", Arial, Helvetica, sans-serif;
+  //font-size: 0.7rem;
 }
 
 @media (min-width: 576px) {
@@ -11,3 +17,4 @@ html {
     margin: 0;
   }
 }
+

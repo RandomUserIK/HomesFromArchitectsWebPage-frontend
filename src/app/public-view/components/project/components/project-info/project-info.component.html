@@ -1,0 +1,20 @@
+<div class="mt-4 row">
+  <div class="col-md-auto col-6 my-auto">
+    <div style="position: relative" class="ml-md-0 ml-4">
+      <span id="rooms-number">{{project.rooms}}</span>
+      <span class="mb-0 font-weight-bold d-block">izbový</span>
+      <span class="font-weight-bold d-block">rodinný dom</span>
+    </div>
+  </div>
+  <div class="col-md-auto col-6 my-auto mx-auto">
+    <span class="title-text-responsive">{{project.projectName}}</span>
+  </div>
+  <div class="row col-md col-12 text-center">
+    <div *ngFor="let infoAttribute of infoAttributes" class="col-md-3 col-6">
+      <span class="mb-0 d-block font-weight-bold">{{infoAttribute.value}}</span>
+      <span class="d-block">{{infoAttribute.name}}</span>
+    </div>
+  </div>
+</div>
+
+
