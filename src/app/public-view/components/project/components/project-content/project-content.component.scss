@@ -1,0 +1,20 @@
+@import 'src/app/public-view/components/project/project.component';
+
+.content-title {
+  font-weight: bold;
+  font-size: 200%;
+  margin-bottom: 1%;
+}
+
+.content-text {
+  color: gray;
+}
+
+.content-underline {
+  width: 30%;
+  border: none;
+  height: 2%;
+  background-color: orange;
+  margin-top: 0;
+  margin-bottom: 1%;
+}

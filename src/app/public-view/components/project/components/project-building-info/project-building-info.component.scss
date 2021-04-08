@@ -1,1 +1,33 @@
 @import 'src/app/public-view/components/project/project.component';
+
+.info-name {
+  display: inline-block;
+  font-size: 125%;
+  color: gray;
+}
+
+.info-value {
+  display: inline-block;
+  float: right;
+  vertical-align: middle;
+  color: gray;
+  font-size: 125%;
+}
+
+.info-heating {
+  float: none;
+  margin: auto;
+  text-align: center;
+}
+
+.info-heating-title {
+  font-size: 125%;
+  font-weight: bold;
+  display: block;
+}
+
+.info-heating-value {
+  font-size: 125%;
+  color: gray;
+  display: block;
+}

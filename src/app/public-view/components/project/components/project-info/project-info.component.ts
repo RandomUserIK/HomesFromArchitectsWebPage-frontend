@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProjectData} from '../../../../../admin-view/models/project-data';
+import {ProjectInfo} from '../../models/project-info.interface';
 
 @Component({
   selector: 'app-project-info',
@@ -9,7 +10,7 @@ import {ProjectData} from '../../../../../admin-view/models/project-data';
 export class ProjectInfoComponent implements OnInit {
 
   @Input() project: ProjectData;
-  infoAttributes = new Array<{ name: string; value: string | number }>();
+  infoAttributes = new Array<ProjectInfo>();
 
   ngOnInit(): void {
     this.infoAttributes.push({name: 'Počet izieb', value: this.project.rooms});
