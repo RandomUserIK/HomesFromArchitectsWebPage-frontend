@@ -7,6 +7,7 @@ import {ProjectsGalleryComponent} from './projects-gallery.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {SearchHeaderModule} from '../../../components/search-header/search-header.module';
 import {ContactModule} from '../contact/contact.module';
+import {ContactsModule} from '../contacts/contacts.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {ContactModule} from '../contact/contact.module';
     CommonModule,
     SearchHeaderModule,
     ContactModule,
+    ContactsModule,
     NgbPaginationModule
   ],
   exports: [
