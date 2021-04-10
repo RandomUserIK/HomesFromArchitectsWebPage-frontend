@@ -9,6 +9,8 @@ import {IAlbum, Lightbox, LightboxConfig} from 'ngx-lightbox';
 export class ProjectImageCarouselComponent implements OnInit {
 
   @Input() projectPhotoPaths: Array<string>;
+  @Input() isFloorPlan: boolean;
+
   private album: Array<IAlbum> = [];
 
   constructor(private _lightbox: Lightbox,

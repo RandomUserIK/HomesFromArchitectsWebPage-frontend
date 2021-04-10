@@ -1,13 +1,13 @@
 <div class="container">
-  <app-project-image-carousel [projectPhotoPaths]="project.photoPaths"></app-project-image-carousel>
+  <app-project-image-carousel [projectPhotoPaths]="project.photoPaths" [isFloorPlan]="false"></app-project-image-carousel>
   <app-project-info [project]="project"></app-project-info>
   <app-project-price-comparison [project]="project"></app-project-price-comparison>
   <app-project-description [textSections]="project.textSections"></app-project-description>
-  <app-project-image-floor-plan [floorPlanImagePath]="project.floorPlanPhoto"></app-project-image-floor-plan>
+  <app-project-image-carousel [projectPhotoPaths]="[project.floorPlanPhoto]" [isFloorPlan]="true"></app-project-image-carousel>
   <app-project-building-info [project]="project"></app-project-building-info>
-  <!--<app-project-interior></app-project-interior>-->
+  <app-project-interior></app-project-interior>
   <!--<app-project-changes></app-project-changes>-->
   <app-project-content></app-project-content>
-  <!--<app-project-customized-proposal></app-project-customized-proposal>-->
+  <app-project-customized-proposal></app-project-customized-proposal>
   <app-project-price-info></app-project-price-info>
 </div>

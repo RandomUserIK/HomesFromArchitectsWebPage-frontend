@@ -1,8 +1,8 @@
-<div id="carouselControls" class="carousel slide row" data-ride="carousel" data-interval="false">
+<div id="carouselControls" [ngClass]="'carousel slide row' + (isFloorPlan ? ' mt-5' : '')" data-ride="carousel" data-interval="false">
   <div class="carousel-inner">
     <div *ngFor="let photoPath of projectPhotoPaths; let i = index"
          [ngClass]="(i === 0) ? 'carousel-item active' : 'carousel-item'">
-      <img class="d-block w-100" [src]="'assets/'+ photoPath" [alt]="photoPath" (click)="onClick(i)">
+      <img [ngClass]="'d-block' + (isFloorPlan ? ' carousel-img w-75' : ' w-100')" [src]="'assets/'+ photoPath" [alt]="photoPath" (click)="onClick(i)">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
