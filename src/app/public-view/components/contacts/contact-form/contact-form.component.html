@@ -1,9 +1,9 @@
 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="mt-5">
   <div class="row">
-    <div *ngIf="successSubmit" class="alert alert-success offset-md-2 col-md-8 col-10" role="alert">
+    <div *ngIf="successSubmit" class="alert alert-success offset-md-2 col-md-8 offset-1 col-10" role="alert">
       Formulár bol úspešne odoslaný
     </div>
-    <div *ngIf="invalidsSubmit" class="alert alert-danger offset-md-2 col-md-8 col-10" role="alert">
+    <div *ngIf="invalidsSubmit" class="alert alert-danger offset-md-2 col-md-8 offset-1 col-10" role="alert">
       Pri odosielaní formulára nastala chyba skúste to znova alebo nás kontaktuje priamo cez telefón alebo email
     </div>
   </div>

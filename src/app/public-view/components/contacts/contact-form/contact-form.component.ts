@@ -33,7 +33,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit() {
-    let contactForm = this.contactForm.value;
+    const contactForm = this.contactForm.value;
     delete contactForm.dataPrivacyCheck;
     this.loading = true;
     this.contactsService.sendForm(contactForm)
