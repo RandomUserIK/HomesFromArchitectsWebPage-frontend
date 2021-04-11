@@ -26,7 +26,7 @@ export interface ProjectData {
   totalLivingArea?: number;
 }
 
-interface TextSection {
+export interface TextSection {
   id?: number;
   title?: string;
   text: string;

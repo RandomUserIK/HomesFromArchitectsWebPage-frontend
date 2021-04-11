@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {TextSection} from '../../../../../admin-view/models/project-data';
+import {TextSection} from '../../../../../models/project-data';
 
 @Component({
   selector: 'app-project-description',

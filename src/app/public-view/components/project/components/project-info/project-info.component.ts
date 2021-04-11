@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProjectData} from '../../../../../admin-view/models/project-data';
+import {ProjectData} from '../../../../../models/project-data';
 import {ProjectInfo} from '../../models/project-info.interface';
 
 @Component({

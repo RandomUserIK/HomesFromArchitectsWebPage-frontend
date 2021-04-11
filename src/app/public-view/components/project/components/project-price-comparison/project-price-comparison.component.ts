@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ProjectData} from '../../../../../admin-view/models/project-data';
+import {ProjectData} from '../../../../../models/project-data';
 
 @Component({
   selector: 'app-project-price-comparison',
