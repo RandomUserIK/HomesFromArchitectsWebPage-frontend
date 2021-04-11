@@ -12,7 +12,7 @@
     "resources": [
       {
         "name": "photo-endpoint",
-        "address": "http://localhost:8090/api/photo",
+        "address": "http://localhost:8090/api/images",
         "format": "application/json"
       },
       {

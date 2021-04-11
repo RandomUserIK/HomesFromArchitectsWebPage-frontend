@@ -3,7 +3,9 @@ import {Observable} from 'rxjs';
 import {ProjectData} from '../interfaces/project-data';
 import {EndpointConfigData} from '../../interfaces/enpoint-config-data';
 import {ConfigurationService} from "../../../configuration/services/configuration-service";
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class ProjectService {
 
   private resource: EndpointConfigData;

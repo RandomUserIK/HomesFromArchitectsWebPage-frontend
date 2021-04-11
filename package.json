@@ -21,6 +21,7 @@
     "@angular/router": "~10.2.4",
     "angular-gallery": "^1.0.2",
     "bootstrap": "^4.6.0",
+    "bootstrap-icons": "^1.4.1",
     "bootstrap4-plus-jquery": "^4.0.0-alpha.2.4",
     "jquery": "^3.6.0",
     "rxjs": "~6.6.6",

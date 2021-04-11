@@ -1,25 +1,26 @@
 export interface ProjectData {
-  'advancedProject'?: number;
-  'angleOfRoof'?: number;
-  'basicProject'?: number;
+  'id' ?: number,
+  'extendedProjectPrice'?: number;
+  'roofPitch'?: number;
+  'basicProjectPrice'?: number;
   'builtUpArea'?: number;
   'energeticClass'?: string;
-  'floorPlanPhoto'?: string;
-  'garage'?: boolean;
-  'grossArea'?: number;
+  'floorPlanImage'?: string;
+  'hasGarage'?: boolean;
+  'usableArea'?: number;
   'heatingSource'?: string;
   'heatingType'?: string;
-  'id'?: number;
   'minimumParcelWidth'?: number;
-  'orientation'?: string;
+  'entryOrientation'?: string;
   'persons'?: number;
-  'photoPaths'?: string[];
-  'priceOnKey'?: number;
-  'projectName'?: string;
+  'imagePaths'?: string[];
+  'onKeyPrice'?: number;
+  'title'?: string;
+  'category'?: string;
   'rooms'?: number;
-  'selfHelpBuild'?: number;
+  'selfHelpBuildPrice'?: number;
   'textSections'?: TextSection[];
-  'titlePhoto'?: string;
+  'titleImage'?: string;
   'totalLivingArea'?: number;
 }
 

@@ -16,6 +16,9 @@ import {AdminViewModule} from './admin-view/admin-view.module';
 import {LoginComponent} from './admin-view/login/login.component';
 import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
 import {AdminViewComponent} from './admin-view/admin-view.component';
+import {CreateProjectComponent} from './admin-view/forms/create-project/create-project.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AdminFormModule} from './admin-view/forms/admin-form.module';
 
 const routes: Routes = [
   {
@@ -26,6 +29,7 @@ const routes: Routes = [
     ]
   },
   {path: 'auth', component: LoginComponent},
+  {path: 'vytvor', component: CreateProjectComponent},
   {
     path: 'admin',
     component: AdminViewComponent,
@@ -51,6 +55,8 @@ const routes: Routes = [
     BrowserModule,
     HomeModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    AdminFormModule,
     IvyGalleryModule,
     AdminViewModule,
     RouterModule.forRoot(routes),

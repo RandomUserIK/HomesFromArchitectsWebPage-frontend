@@ -1,0 +1,23 @@
+<div class="row" [formGroup]="form">
+  <div class="col-md-4 p-2" *ngFor="let galeryPhoto of galeryPreviews; let index = index;">
+    <div class="item">
+      <button type="button" class="btn btn-default" (click)="deletePhotoFromGalery(index)"><i
+        class="bi-trash"></i></button>
+    </div>
+    <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="galeryPhoto">
+  </div>
+</div>
+
+
+<div class="row">
+  <div [ngClass]="{
+      'col-md-12 form-group mb-3 mt-lg-4': true,
+      'apply-validation': submitted && form.invalid
+    }">
+    <input  type="file" class="custom-file-input" id="galeryPhotoInput" aria-describedby="fileHelp"
+           (change)="handleFileInput($event)">
+    <label class="custom-file-label" for="galeryPhotoInput">
+      Vyberte fotku do galérie ...
+    </label>
+  </div>
+</div>
