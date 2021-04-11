@@ -1,4 +1,12 @@
 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="mt-5">
+  <div class="row">
+    <div *ngIf="successSubmit" class="alert alert-success offset-md-2 col-md-8 col-10" role="alert">
+      Formulár bol úspešne odoslaný
+    </div>
+    <div *ngIf="invalidsSubmit" class="alert alert-danger offset-md-2 col-md-8 col-10" role="alert">
+      Pri odosielaní formulára nastala chyba skúste to znova alebo nás kontaktuje priamo cez telefón alebo email
+    </div>
+  </div>
   <div class="form-row justify-content-center">
     <div class="col-md-4 col-10">
       <div class="form-group">
@@ -29,8 +37,14 @@
     <div class="col-md-4 col-10">
       <div class="form-group">
         <input formControlName="telephone" type="text" class="form-control" placeholder="Telefón">
-        <div *ngIf="contactForm.get('telephone').invalid && contactForm.get('telephone').touched" class="text-danger">
+        <div *ngIf="contactForm.get('telephone').hasError('required') &&
+                    contactForm.get('telephone').touched" class="text-danger">
           Povinný údaj
+        </div>
+        <div *ngIf="!contactForm.get('telephone').hasError('required') &&
+                     contactForm.get('telephone').invalid &&
+                     contactForm.get('telephone').touched" class="text-danger">
+          Tel. číslo musí mať formát +421 111 111 111
         </div>
       </div>
     </div>
@@ -58,14 +72,24 @@
       </div>
     </div>
   </div>
-  <div class="g-recaptcha col-sm-5"
-       attr="data-sitekey=6LfbMKQaAAAAAM3MrUhK-ANsXydK6VicevL9XZ57}"></div>
-  <span id="captchaError" class="alert alert-danger col-sm-4"
-        style="display:none"></span>
+  <div class="form-row mt-4">
+    <div class="offset-md-2 offset-1">
+      <div style="transform:scale(0.9);transform-origin:0;">
+        <re-captcha formControlName="recaptchaToken"
+                    siteKey="6LeeO6QaAAAAAHcFrYzi2c-sxZjUYWifhdpKpFiR">
+        </re-captcha>
+      </div>
+    </div>
+  </div>
   <div class="row justify-content-st mt-4">
     <div class="col-auto offset-md-2 offset-1">
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Odoslať</button>
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="contactForm.invalid || loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Odoslať
+        </button>
       </div>
     </div>
   </div>

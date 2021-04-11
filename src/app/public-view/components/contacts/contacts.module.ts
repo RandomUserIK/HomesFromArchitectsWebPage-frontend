@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ContactsComponent} from './contacts.component';
-import { ContactEmailFormComponent } from './contact-email-form/contact-email-form.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 
 
 
 @NgModule({
   declarations: [
     ContactsComponent,
-    ContactEmailFormComponent
+    ContactFormComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   exports: [
     ContactsComponent
