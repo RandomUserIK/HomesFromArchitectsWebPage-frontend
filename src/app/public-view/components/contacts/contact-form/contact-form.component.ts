@@ -32,7 +32,7 @@ export class ContactFormComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  public onSubmit(): void {
     const contactForm = this.contactForm.value;
     delete contactForm.dataPrivacyCheck;
     this.loading = true;

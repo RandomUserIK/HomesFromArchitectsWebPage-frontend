@@ -5,9 +5,7 @@ import {EndpointConfigData} from '../../../../configuration/models/enpoint-confi
 import {Observable} from 'rxjs';
 import {ContactForm} from '../models/contact-form';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ContactsService {
 
   private resource: EndpointConfigData;
