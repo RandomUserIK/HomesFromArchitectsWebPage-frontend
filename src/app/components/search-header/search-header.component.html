@@ -1,0 +1,39 @@
+<form [formGroup]="searchForm">
+  <div class="row justify-content-md-center">
+    <div class="col-md-4 col-12">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text border-right-0 bg-white" id="search-text-icon-wrapper">
+              <em class="bi bi-search"></em>
+            </span>
+        </div>
+        <input formControlName="projectName" type="text" class="form-control border-left-0" aria-label="Username"
+               aria-describedby="search-text-icon-wrapper">
+      </div>
+    </div>
+    <div class="col-md-6 col-12" formGroupName="enumerationFilters">
+      <div class="d-inline mr-2" *ngFor="let filter of enumerationFilters">
+        <button class="btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+          {{filter.title}}
+        </button>
+        <div class="dropdown-menu p-3"
+             (click)="$event.stopPropagation()">
+          <div class="custom-control custom-radio" *ngFor="let value of filter.values">
+            <input
+              class="custom-control-input"
+              type="radio"
+              [formControlName]="filter.formControlId"
+              [id]="value"
+              [value]="value">
+            <label class="custom-control-label" [for]="value">{{value}}</label>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="resetFilters()">
+        <em class="bi bi-bootstrap-reboot"></em>
+        Reset
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,28 +1,55 @@
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
+import {AdminViewComponent} from './admin-view.component';
+import {AdminProjectsGalleryComponent} from './components/admin-projects-gallery/admin-projects-gallery.component';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import {AuthGuardService} from '../auth/services/auth-guard.service';
+import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ConfigurationService} from '../configuration/services/configuration-service';
-import {LoginComponent} from './login/login.component';
-import {RouterModule} from '@angular/router';
-import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import {CreateCommonProjectService} from './forms/services/create-common-project.service';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: AdminViewComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: 'individualne-projekty',
+        component: AdminProjectsGalleryComponent,
+        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'}
+      },
+      {
+        path: 'katalogove-projekty',
+        component: AdminProjectsGalleryComponent,
+        data: {projectsTitle: 'Katalógové projekty', projectsCategoryId: 'COMMON'}
+      },
+      {
+        path: 'interierovy-dizajn',
+        component: AdminProjectsGalleryComponent,
+        data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
+      },
+    ]
+  }
+]
 
 @NgModule({
   declarations: [
-    LoginComponent,
     AdminHeaderComponent,
+    AdminViewComponent,
+    AdminProjectsGalleryComponent
   ],
   imports: [
     CommonModule,
+    RouterModule.forChild(routes),
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
-  ],
-  exports: [
-    LoginComponent,
-    AdminHeaderComponent
+    NgbPaginationModule,
+    SearchHeaderModule
   ],
   providers: [
     CreateCommonProjectService,

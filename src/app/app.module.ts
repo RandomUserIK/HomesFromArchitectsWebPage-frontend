@@ -2,64 +2,40 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {HeaderComponent} from './public-view/header/header.component';
-import {HomeModule} from './public-view/home/home.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {FooterComponent} from './public-view/footer/footer.component';
 import {IvyGalleryModule} from 'angular-gallery';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './public-view/home/home.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {AuthGuardService} from './auth/services/auth-guard.service';
-import {PublicViewComponent} from './public-view/public-view.component';
-import {AdminViewModule} from './admin-view/admin-view.module';
-import {LoginComponent} from './admin-view/login/login.component';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
-import {AdminViewComponent} from './admin-view/admin-view.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AuthModule} from './auth/auth.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CreateCommonProjectComponent} from './admin-view/forms/create-common-project/create-common-project.component';
-import {ReactiveFormsModule} from '@angular/forms';
 import {AdminFormModule} from './admin-view/forms/admin-form.module';
 
+
 const routes: Routes = [
-  {
-    path: '', component: PublicViewComponent, children: [
-      {path: '', component: HomeComponent},
-      // {path: 'projekty', component: ProjectsComponent},
-      // {path: 'projekty/:id', component: ProjectComponent},
-    ]
-  },
-  {path: 'auth', component: LoginComponent},
-  {path: 'vytvor', component: CreateCommonProjectComponent},
-  {
-    path: 'admin',
-    component: AdminViewComponent,
-    canActivate: [AuthGuardService],
-    children: [
-      // {path: 'projekty', component: ProjectsComponent}
-    ]
-  },
-  {path: 'auth/home', component: HomeComponent, canActivate: [AuthGuardService]},
+  {path: 'admin', loadChildren: () => import('./admin-view/admin-view.module').then(m => m.AdminViewModule)},
+  {path: '', loadChildren: () => import('./public-view/public-view.module').then(m => m.PublicViewModule)},
   {path: '**', component: NotFoundComponent}
+  {path: 'vytvor', component: CreateCommonProjectComponent},
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NotFoundComponent,
-    PublicViewComponent,
-    AdminViewComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    HomeModule,
+    BrowserAnimationsModule,
+    AuthModule,
     HttpClientModule,
     ReactiveFormsModule,
     AdminFormModule,
     IvyGalleryModule,
-    AdminViewModule,
-    RouterModule.forRoot(routes),
+    NgbModule,
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
   ],
   providers: [
     {
