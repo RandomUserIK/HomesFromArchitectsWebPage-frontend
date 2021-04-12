@@ -12,8 +12,8 @@ import {ProjectImageFloorPlanComponent} from './components/project-image-floor-p
 import {ProjectInfoComponent} from './components/project-info/project-info.component';
 import {ProjectInteriorComponent} from './components/project-interior/project-interior.component';
 import {ProjectPriceComparisonComponent} from './components/project-price-comparison/project-price-comparison.component';
+import {ProjectPriceInfoComponent} from './components/project-price-info/project-price-info.component';
 import {ProjectComponent} from './project.component';
-import { ProjectPriceInfoComponent } from './components/project-price-info/project-price-info.component';
 
 @NgModule({
   declarations: [

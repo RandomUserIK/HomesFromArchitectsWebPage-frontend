@@ -1,4 +1,4 @@
-<div class="mt-4 row">
+<div class="mt-4 row info-row">
   <div class="col-md-auto col-6 my-auto">
     <div class="ml-md-0 ml-4 project-rooms">
       <span id="rooms-number">{{project.rooms}}</span>
@@ -10,9 +10,51 @@
     <span class="title-text-responsive">{{project.projectName}}</span>
   </div>
   <div class="row col-md col-12 text-center">
-    <div *ngFor="let infoAttribute of infoAttributes" class="col-md-3 col-6">
-      <span class="mb-0 d-block font-weight-bold">{{infoAttribute.value}}</span>
-      <span class="d-block">{{infoAttribute.name}}</span>
+    <div class="col-md-3 col-6"></div>
+    <div class="col-md-3 col-6">
+      <span class="mb-0 d-block font-weight-bold text-value">{{project.persons}}</span>
+      <span class="d-block">Počet osôb</span>
+    </div>
+    <div class="col-md-3 col-6">
+      <span class="mb-0 font-weight-bold">
+        <span class="mb-0 font-weight-bold text-value">
+          {{project.builtUpArea | number: '3.2': 'sk'}}
+        </span>
+        &#13217;
+      </span>
+      <span class="d-block">Zastavaná plocha</span>
+    </div>
+    <div class="col-md-3 col-6">
+      <span class="mb-0 font-weight-bold">
+        <span class="mb-0 font-weight-bold text-value">
+          {{project.grossArea | number: '3.2': 'sk'}}
+        </span>
+        &#13217;
+      </span>
+      <span class="d-block">Úžitková plocha</span>
+    </div>
+    <div class="col-md-3 col-6">
+      <span class="mb-0 d-block font-weight-bold text-value">{{project.energeticClass}}</span>
+      <span class="d-block">Energetická trieda</span>
+    </div>
+    <div class="col-md-3 col-6">
+      <span class="mb-0 d-block font-weight-bold text-value">{{project.orientation}}</span>
+      <span class="d-block">Orientácia vstupu</span>
+    </div>
+    <div class="col-md-3 col-6">
+      <span class="mb-0 d-block font-weight-bold text-value">
+        ~ {{project.selfHelpBuild | currency: 'EUR': 'symbol': '4.0-0': 'sk'}}
+      </span>
+      <span class="d-block">Svojpomocná výstavba</span>
+    </div>
+    <div class="col-md-3 col-6">
+      <span class="mb-0 font-weight-bold">
+        od
+       <span class="mb-0 font-weight-bold text-value">
+        {{project.priceOnKey | currency: 'EUR': 'symbol': '4.0-0': 'sk'}}
+       </span>
+      </span>
+      <span class="d-block">Cena na kľúč</span>
     </div>
   </div>
 </div>

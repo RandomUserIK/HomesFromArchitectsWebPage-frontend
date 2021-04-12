@@ -4,9 +4,36 @@
 <div class="row mt-5">
   <div class="col-md-6">
     <ul class="ml-5">
-      <li *ngFor="let info of buildingInfo" style="width: 85%">
-        <span class="info-name">{{info.name}}</span>
-        <span class="info-value">{{info.value}}</span>
+      <li class="info-value-width">
+        <span class="info-name">obytné miestnosti</span>
+        <span class="info-value">{{project.rooms}}</span>
+      </li>
+
+      <li class="info-value-width">
+        <span class="info-name">zastavaná plocha</span>
+        <span class="info-value">{{project.builtUpArea | number: '3.2': 'sk'}} &#13217;</span>
+      </li>
+
+      <li class="info-value-width">
+        <span class="info-name">celková úžitková plocha</span>
+        <span class="info-value">{{project.grossArea | number: '3.2': 'sk'}} &#13217;</span>
+      </li>
+
+      <li class="info-value-width">
+        <span class="info-name">celková obytná plocha</span>
+        <span class="info-value">{{project.totalLivingArea | number: '3.2': 'sk'}} &#13217;</span>
+      </li>
+
+      <li class="info-value-width">
+        <span class="info-name">sklon strechy</span>
+        <span class="info-value">
+          {{project.angleOfRoof | number: '1.1': 'sk'}} %
+        </span>
+      </li>
+
+      <li class="info-value-width">
+        <span class="info-name">minimálna šírka pozemku</span>
+        <span class="info-value">{{project.minimumParcelWidth | number: '2.0': 'sk'}} m</span>
       </li>
     </ul>
   </div>
