@@ -20,7 +20,7 @@ export class FormEnumerationComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({});
     formData.enumerationFields.forEach(multichoice => {
-        let data = [];
+        const data = [];
         multichoice.forEach(control => {
           this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
           data.push(control as FormEnumerationData);

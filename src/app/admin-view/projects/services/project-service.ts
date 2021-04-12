@@ -2,7 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ProjectData} from '../interfaces/project-data';
 import {EndpointConfigData} from '../../interfaces/enpoint-config-data';
-import {ConfigurationService} from "../../../configuration/services/configuration-service";
+import {ConfigurationService} from '../../../configuration/services/configuration-service';
 import {Injectable} from '@angular/core';
 
 @Injectable()
@@ -15,11 +15,10 @@ export class ProjectService {
     this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'project-endpoint');
   }
 
-  public createProject(data: ProjectData): Observable<string> {
+  public createProject(data: ProjectData): Observable<ProjectData> {
     return this.httpClient
-      .post(this.resource.address + '/add', data, {
+      .post<ProjectData>(this.resource.address, data, {
         headers: new HttpHeaders({Accept: '*/*'}),
-        responseType: 'text'
       });
   }
 

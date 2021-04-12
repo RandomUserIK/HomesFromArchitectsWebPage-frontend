@@ -6,7 +6,7 @@ import {ConfigurationService} from '../configuration/services/configuration-serv
 import {LoginComponent} from './login/login.component';
 import {RouterModule} from '@angular/router';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
-import {CreateProjectService} from './forms/services/create-project.service';
+import {CreateCommonProjectService} from './forms/services/create-common-project.service';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import {CreateProjectService} from './forms/services/create-project.service';
     AdminHeaderComponent
   ],
   providers: [
-    CreateProjectService,
+    CreateCommonProjectService,
     ConfigurationService
   ]
 })

@@ -21,7 +21,7 @@ export class FormMultichoiceComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({});
     formData.multichoiceFields.forEach(row => {
-        let data = [];
+        const data = [];
         row.forEach(control => {
           this.form.addControl(control.formControlName, this.fb.array([], [Validators.minLength(1), Validators.required]));
           data.push(control as FormMultichoiceData);
@@ -38,7 +38,7 @@ export class FormMultichoiceComponent implements OnInit {
       formArray.push(new FormControl(event.target.value));
     } else {
       formArray.controls.forEach((ctrl: FormControl, index) => {
-        if (ctrl.value == event.target.value)
+        if (ctrl.value === event.target.value)
           return formArray.removeAt(index);
       });
     }

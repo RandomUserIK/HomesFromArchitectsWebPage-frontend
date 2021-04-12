@@ -23,13 +23,11 @@
               </button>
             </div>
           </form>
-          <div class="alert alert-success" role="alert" *ngIf="validationSucces">
-            Projekt úspešne vytvorený !<br>
-            <a href="#" class="alert-link">Pokračovanie na hlávnú stránku</a><br>
-            <a href="/vytvor" class="alert-link">Vytvorte nový projekt</a>
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf="validationFailed">
-            Projekt sa nepodarilo vytvoriť !<br>
+          <div [ngClass]="{
+                'form-alert alert-success': validationSucces,
+                'form-alert alert-danger': !validationSucces
+              }" class="alert alert-success" role="alert" *ngIf="submitted">
+            {{uploadMessage}}<br>
           </div>
         </div>
       </div>

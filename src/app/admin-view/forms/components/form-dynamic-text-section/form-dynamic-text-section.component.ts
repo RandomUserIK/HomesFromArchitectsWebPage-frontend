@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form-dynamic-text-section',
@@ -10,13 +10,14 @@ export class FormDynamicTextSectionComponent implements OnInit {
 
   @Output() formReady = new EventEmitter<FormGroup>();
   public form: FormGroup;
-  @Input() submitted : boolean;
+  @Input() submitted: boolean;
+
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      textSections: this.fb.array([],[Validators.minLength(1),Validators.required])
+      textSections: this.fb.array([], [Validators.minLength(1), Validators.required])
     });
     this.formReady.emit(this.form);
   }
@@ -28,15 +29,15 @@ export class FormDynamicTextSectionComponent implements OnInit {
     });
   }
 
-  public addNewTextSection() {
+  public addNewTextSection(): void {
     (this.form.get('textSections') as FormArray).push(this.createTextSection());
   }
 
   public getFormGroups(): FormGroup[] {
-    return this.form.get('textSections')  ['controls'];
+    return (this.form.get('textSections') as FormArray).controls as FormGroup[];
   }
 
-  public deleteNewTextSection(index: number) {
+  public deleteNewTextSection(index: number): void {
     (this.form.get('textSections') as FormArray).removeAt(index);
   }
 

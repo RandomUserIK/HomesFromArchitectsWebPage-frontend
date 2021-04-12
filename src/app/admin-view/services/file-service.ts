@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProjectService} from '../projects/services/project-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {EndpointConfigData} from '../interfaces/enpoint-config-data';
-import {ConfigurationService} from "../../configuration/services/configuration-service";
+import {ConfigurationService} from '../../configuration/services/configuration-service';
 
 @Injectable({
   providedIn: 'root'

@@ -21,7 +21,7 @@ export class FormRowComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({});
     formData.form.forEach(row => {
-        let data = [];
+        const data = [];
         row.forEach(control => {
           this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
           data.push(control as FormRowData);

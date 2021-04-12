@@ -20,4 +20,7 @@
       Vyberte fotku do galérie ...
     </label>
   </div>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
 </div>
