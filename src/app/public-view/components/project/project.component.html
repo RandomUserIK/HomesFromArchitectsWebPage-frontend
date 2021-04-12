@@ -1,6 +1,6 @@
 <div class="container">
-  <app-project-image-carousel [projectPhotoPaths]="project.photoPaths" [isFloorPlan]="false">
-  </app-project-image-carousel>
+  <app-lightbox [dataInterval]="0" [imagePaths]="project.photoPaths">
+  </app-lightbox>
   <app-project-info [project]="project"></app-project-info>
   <app-project-price-comparison [project]="project"></app-project-price-comparison>
   <app-project-description [textSections]="project.textSections"></app-project-description>

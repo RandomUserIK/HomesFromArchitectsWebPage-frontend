@@ -1,7 +1,9 @@
-<div id="carouselControls" class="carousel slide row" data-ride="carousel">
+<div id="carouselControls" class="carousel slide row" data-ride="carousel" #carouselRow>
   <div class="carousel-inner">
-    <div *ngFor="let item of carouselItems; let i = index" [ngClass]="(i==0)?'carousel-item active':'carousel-item'">
-      <img class="d-block w-100" [src]="'assets/'+ item" alt="First slide">
+    <div *ngFor="let carouselItem of carouselItems; let i = index"
+         [ngClass]="(i==0) ? 'carousel-item active' : 'carousel-item'">
+      <!-- TODO: remove 'assets/' from path -->
+      <img class="d-block w-100" [src]="'assets/'+ carouselItem" [alt]="carouselItem" (click)="onImageClick(i)">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">

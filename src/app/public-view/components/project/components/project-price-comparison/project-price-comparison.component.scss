@@ -2,11 +2,8 @@
 
 .row {
   align-items: center;
-  min-height: 150px;
-}
-
-.comparison-section {
   background-color: #c1c1c1;
+  height: 11em;
 }
 
 .comparison-text {
@@ -25,4 +22,8 @@
 .comparison-additional-text {
   font-size: 15px;
   font-family: sans-serif;
+}
+
+.comparison-button {
+  width: 85%;
 }

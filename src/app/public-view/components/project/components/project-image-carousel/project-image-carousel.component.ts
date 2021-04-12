@@ -6,35 +6,35 @@ import {IAlbum, Lightbox, LightboxConfig} from 'ngx-lightbox';
   templateUrl: './project-image-carousel.component.html',
   styleUrls: ['./project-image-carousel.component.scss']
 })
-export class ProjectImageCarouselComponent implements OnInit {
+export class ProjectImageCarouselComponent {
 
   @Input() projectPhotoPaths: Array<string>;
   @Input() isFloorPlan: boolean;
 
   private album: Array<IAlbum> = [];
 
-  constructor(private _lightbox: Lightbox,
-              private _lightboxConfig: LightboxConfig) {
-  }
+  // constructor(private _lightbox: Lightbox,
+  //             private _lightboxConfig: LightboxConfig) {
+  // }
 
-  ngOnInit(): void {
-    this._lightboxConfig.enableTransition = false;
-    this._lightboxConfig.positionFromTop = 150;
-    this.projectPhotoPaths.forEach((photoPath) => {
-      this.album.push({
-        src: 'assets/' + photoPath,
-        caption: '',
-        thumb: ''
-      });
-    });
-  }
-
-  onClick(index: number): void {
-    this._lightbox.open(this.album, index);
-  }
-
-  onClose(): void {
-    this._lightbox.close();
-  }
+  // ngOnInit(): void {
+  //   this._lightboxConfig.enableTransition = false;
+  //   this._lightboxConfig.positionFromTop = 150;
+  //   this.projectPhotoPaths.forEach((photoPath) => {
+  //     this.album.push({
+  //       src: 'assets/' + photoPath,
+  //       caption: '',
+  //       thumb: ''
+  //     });
+  //   });
+  // }
+  //
+  // onClick(index: number): void {
+  //   this._lightbox.open(this.album, index);
+  // }
+  //
+  // onClose(): void {
+  //   this._lightbox.close();
+  // }
 
 }
