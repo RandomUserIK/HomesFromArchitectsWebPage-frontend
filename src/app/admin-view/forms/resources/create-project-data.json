@@ -139,6 +139,16 @@
           "V",
           "Z"
         ]
+      },
+      {
+        "formControlName": "bla2",
+        "label": "Orientácia projektu2 *",
+        "values": [
+          "S",
+          "J",
+          "V",
+          "Z"
+        ]
       }
     ]
   ],

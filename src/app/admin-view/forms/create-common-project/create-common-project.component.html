@@ -8,7 +8,7 @@
             <app-form-row [submitted]="submitted" (formReady)="formInitialized('child_form_group', $event)"></app-form-row>
             <app-form-enumeration [submitted]="submitted"
               (formReady)="formInitialized('child_form_enumeration_group', $event)"></app-form-enumeration>
-            <app-form-multichoice [submitted]="submitted"
+            <app-form-multichoice [submitted]="submitted" [formData]="createMultichoiceFields()"
               (formReady)="formInitialized('child_form_multichoice_group', $event)"></app-form-multichoice>
             <app-form-file (formReady)="formInitialized('child_form_file_group', $event)" [submitted]="submitted"></app-form-file>
             <h4>Nové textové sekcie projektu</h4>

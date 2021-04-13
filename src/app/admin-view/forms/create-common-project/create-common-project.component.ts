@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {CreateCommonProjectService} from '../services/create-common-project.service';
+import {FormMultichoiceData} from '../resources/form-data';
+import formData from '../resources/create-project-data.json';
 
 
 @Component({
@@ -49,4 +51,13 @@ export class CreateCommonProjectComponent implements OnInit {
     this.createProjectForm.setControl(name, form);
   }
 
+  public createMultichoiceFields() : FormMultichoiceData[]{
+    const multichoiceData = []
+    formData.multichoiceFields.forEach(row => {
+      row.forEach(multichoice => {
+        multichoiceData.push( multichoice as FormMultichoiceData)
+      })
+    })
+    return multichoiceData;
+  }
 }

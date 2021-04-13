@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormMultichoiceData} from '../../resources/form-data';
-import formData from '../../resources/create-project-data.json';
+import {FormMultichoiceData} from '../../../../admin-view/forms/resources/form-data';
 
 @Component({
   selector: 'app-form-multichoice',
@@ -12,6 +11,7 @@ export class FormMultichoiceComponent implements OnInit {
 
   @Output() formReady = new EventEmitter<FormGroup>();
   @Input() submitted: boolean;
+  @Input() formData: FormMultichoiceData[];
   public form: FormGroup;
   public controlsFromJson: FormMultichoiceData[][] = [];
 
@@ -20,15 +20,13 @@ export class FormMultichoiceComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({});
-    formData.multichoiceFields.forEach(row => {
-        const data = [];
-        row.forEach(control => {
-          this.form.addControl(control.formControlName, this.fb.array([], [Validators.minLength(1), Validators.required]));
-          data.push(control as FormMultichoiceData);
-        });
-        this.controlsFromJson.push(data);
+    const data = [];
+    this.formData.forEach(control => {
+        this.form.addControl(control.formControlName, this.fb.array([], [Validators.minLength(1), Validators.required]));
+        data.push(control as FormMultichoiceData);
       }
     );
+    this.controlsFromJson.push(data);
     this.formReady.emit(this.form);
   }
 
