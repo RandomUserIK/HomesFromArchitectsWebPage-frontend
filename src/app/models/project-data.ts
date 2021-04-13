@@ -1,33 +1,31 @@
 export interface ProjectData {
-  id?: number;
-  projectName?: string;
-  title?:string;
-  advancedProject?: number;
-  angleOfRoof?: number;
-  basicProject?: number;
-  builtUpArea?: number;
-  energeticClass?: string;
-  floorPlanPhoto?: string;
-  garage?: boolean;
-  grossArea?: number;
-  heatingSource?: string;
-  heatingType?: string;
-
-  minimumParcelWidth?: number;
-  orientation?: string;
-  persons?: number;
-  photoPaths?: string[];
-  priceOnKey?: number;
-
-  rooms?: number;
-  selfHelpBuild?: number;
-  textSections?: TextSection[];
-  titlePhoto?: string;
-  totalLivingArea?: number;
+  'id' ?: number,
+  'extendedProjectPrice'?: number;
+  'roofPitch'?: number;
+  'basicProjectPrice'?: number;
+  'builtUpArea'?: number;
+  'energeticClass'?: string;
+  'floorPlanImage'?: string;
+  'hasGarage'?: boolean;
+  'usableArea'?: number;
+  'heatingSource'?: string;
+  'heatingType'?: string;
+  'minimumParcelWidth'?: number;
+  'entryOrientation'?: string;
+  'persons'?: number;
+  'imagePaths'?: string[];
+  'onKeyPrice'?: number;
+  'title'?: string;
+  'category'?: string;
+  'rooms'?: number;
+  'selfHelpBuildPrice'?: number;
+  'textSections'?: TextSection[];
+  'titleImage'?: string;
+  'totalLivingArea'?: number;
 }
 
-interface TextSection {
-  id?: number;
-  title?: string;
-  text: string;
+export interface TextSection {
+  'id'?: number;
+  'title'?: string;
+  'text': string;
 }

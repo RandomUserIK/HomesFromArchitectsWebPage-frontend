@@ -29,7 +29,7 @@ export class ProjectsService {
 
   public getAllOnPageAndCategoryAndQuery(page: number, categoryId: string, query: string): Observable<PageableProjectsData> {
     return this.httpClient
-      .get<PageableProjectsData>(`${this.resource.address}/projects/filter?page=${page}&${query}&category=${categoryId}`);
+      .get<PageableProjectsData>(`${this.resource.address}/filter?page=${page}&${query}&category=${categoryId}`);
   }
 
   public getProject(projectId: number): Observable<ProjectData> {

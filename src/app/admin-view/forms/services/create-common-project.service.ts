@@ -1,18 +1,18 @@
 import {FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ProjectData} from '../../projects/interfaces/project-data';
+import {ProjectData} from '../../../models/project-data';
 import {FileService} from '../../services/file-service';
-import {ProjectService} from '../../projects/services/project-service';
 import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
+import {ProjectsService} from '../../../services/projects-service';
 
 @Injectable()
 export class CreateCommonProjectService {
 
   private requestEntity = {} as ProjectData;
 
-  constructor(private httpClient: HttpClient, private fileService: FileService, private projectService: ProjectService) {
+  constructor(private httpClient: HttpClient, private fileService: FileService, private projectService: ProjectsService) {
   }
 
   public createProject(form: FormGroup, category: string): Observable<any> {
@@ -32,13 +32,13 @@ export class CreateCommonProjectService {
     );
   }
 
-  private createPhotoObservableArray(form: FormGroup, project: any): Observable<string>[] {
+  private createPhotoObservableArray(form: FormGroup, project: ProjectData): Observable<string>[] {
     const photoList = [];
-    const projectId = project.get('project').get('id')
-    photoList.push(this.fileService.postFile(form.value.get('child_form_file_group').titleImage, projectId, 'titleImage'));
-    photoList.push(this.fileService.postFile(form.value.get('child_form_file_group').floorPlanImage, projectId,'floorPlanImage'));
-    form.value.get('child_dynamic_photo_galery_group').photoGallery.forEach(photoFromGalery => {
-      photoList.push(this.fileService.postFile(photoFromGalery.get('path'), projectId, 'imagePaths'));
+    const projectId = project.id
+    photoList.push(this.fileService.postFile(form.value.child_form_file_group.titleImage, projectId, 'titleImage'));
+    photoList.push(this.fileService.postFile(form.value.child_form_file_group.floorPlanImage, projectId,'floorPlanImage'));
+    form.value.child_dynamic_photo_galery_group.photoGallery.forEach(photoFromGalery => {
+      photoList.push(this.fileService.postFile(photoFromGalery.path, projectId, 'imagePaths'));
     });
     return photoList;
   }

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormMultichoiceData, FormRowData} from '../../resources/form-data';
+import {FormMultichoiceData} from '../../resources/form-data';
 import formData from '../../resources/create-project-data.json';
 
 @Component({

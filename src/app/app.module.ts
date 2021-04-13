@@ -10,15 +10,12 @@ import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthModule} from './auth/auth.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CreateCommonProjectComponent} from './admin-view/forms/create-common-project/create-common-project.component';
-import {AdminFormModule} from './admin-view/forms/admin-form.module';
 
 
 const routes: Routes = [
   {path: 'admin', loadChildren: () => import('./admin-view/admin-view.module').then(m => m.AdminViewModule)},
   {path: '', loadChildren: () => import('./public-view/public-view.module').then(m => m.PublicViewModule)},
-  {path: '**', component: NotFoundComponent}
-  {path: 'vytvor', component: CreateCommonProjectComponent},
+  {path: '**', component: NotFoundComponent},
 ]
 
 @NgModule({
@@ -31,8 +28,6 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AuthModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    AdminFormModule,
     IvyGalleryModule,
     NgbModule,
     RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),

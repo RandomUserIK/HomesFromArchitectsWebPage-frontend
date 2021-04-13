@@ -8,8 +8,8 @@ import {FormFileComponent} from './components/form-file/form-file.component';
 import {FormDynamicTextSectionComponent} from './components/form-dynamic-text-section/form-dynamic-text-section.component';
 import {FormDynamicGaleryComponent} from './components/form-dynamic-galery/form-dynamic-galery.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ProjectService} from '../projects/services/project-service';
 import {FormValidationService} from './components/services/form-validation.service';
+import {CreateCommonProjectService} from './services/create-common-project.service';
 
 
 @NgModule({
@@ -30,7 +30,7 @@ import {FormValidationService} from './components/services/form-validation.servi
     CreateCommonProjectComponent
   ],
   providers:[
-    ProjectService,
+    CreateCommonProjectService,
     FormValidationService
   ]
 })
