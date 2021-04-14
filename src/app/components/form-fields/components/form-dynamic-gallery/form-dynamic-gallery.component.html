@@ -2,10 +2,10 @@
   <div class="col-md-4 p-2" *ngFor="let galleryPhoto of galleryPreviews; let index = index;">
     <div class="item">
       <button type="button" class="btn btn-default" (click)="deletePhotoFromGallery(index)">
-        <i class="bi-trash"></i>
+        <em class="bi-trash"></em>
       </button>
     </div>
-    <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="galleryPhoto">
+    <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="galleryPhoto" alt="">
   </div>
 </div>
 
