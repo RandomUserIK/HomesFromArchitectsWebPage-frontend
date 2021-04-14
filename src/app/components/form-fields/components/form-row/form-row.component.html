@@ -1,0 +1,17 @@
+<div class="row" [formGroup]="form">
+  <div *ngFor="let control of formData"
+       [class.col-md-6]="!control.fullWidth"
+       [class.col-md-12]="control.fullWidth"
+       class="form-group mb-3">
+    <label class="col-form-label">{{control.label}}</label>
+    <input
+      [type]="control.type"
+      [ngClass]="{
+        'form-control': true,
+        'apply-validation': submitted
+      }"
+      formControlName="{{control.formControlName}}"
+      placeholder="{{control.placeholder}}">
+  </div>
+</div>
+

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FormEnumerationData, FormRowData} from '../../resources/form-data';
-import formData from '../../resources/create-project-data.json';
+import {FormEnumerationData} from '../../models/form-data';
 
 @Component({
   selector: 'app-form-enumeration',
@@ -10,26 +9,20 @@ import formData from '../../resources/create-project-data.json';
 })
 export class FormEnumerationComponent implements OnInit {
   @Output() formReady = new EventEmitter<FormGroup>();
+  @Input() submitted: boolean;
+  @Input() formData: FormEnumerationData[];
   public form: FormGroup;
-  @Input() submitted : boolean;
-  public controlsFromJson: FormEnumerationData[][] = [];
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+    console.log(this.formData)
     this.form = this.fb.group({});
-    formData.enumerationFields.forEach(multichoice => {
-        const data = [];
-        multichoice.forEach(control => {
-          this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
-          data.push(control as FormEnumerationData);
-        });
-        this.controlsFromJson.push(data);
-      }
-    );
+    this.formData.forEach(control => {
+      this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
+    });
     this.formReady.emit(this.form);
   }
-
 
 }
