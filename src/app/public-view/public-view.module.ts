@@ -9,6 +9,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
+import {ContactsComponent} from './components/contacts/contacts.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
         component: ProjectsGalleryComponent,
         data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
       },
+      {
+        path: 'kontakty',
+        component: ContactsComponent
+      }
     ]
   },
 ]
@@ -39,7 +44,7 @@ const routes: Routes = [
   declarations: [
     PublicViewComponent,
     HeaderComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
