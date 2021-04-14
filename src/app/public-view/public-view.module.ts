@@ -10,6 +10,8 @@ import {ProjectsGalleryComponent} from './components/projects-gallery/projects-g
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
 import {ContactsComponent} from './components/contacts/contacts.component';
+import {OrderComponent} from './components/order/order.component';
+import {OrderModule} from './components/order/order.module';
 
 const routes: Routes = [
   {
@@ -35,6 +37,10 @@ const routes: Routes = [
       {
         path: 'kontakty',
         component: ContactsComponent
+      },
+      {
+        path: 'order',
+        component: OrderComponent
       }
     ]
   },
@@ -44,13 +50,14 @@ const routes: Routes = [
   declarations: [
     PublicViewComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
     HomeModule,
     ProjectsGalleryModule,
     SearchHeaderModule,
+    OrderModule,
     RouterModule.forChild(routes)
   ]
 })
