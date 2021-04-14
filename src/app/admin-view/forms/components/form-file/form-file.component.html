@@ -1,0 +1,21 @@
+<div class="row" *ngFor="let row of controlsFromJson">
+    <div class="col-md-6 form-group mb-3 " *ngFor="let fileData of row" >
+      <div *ngIf="fileData.imgSrc !== undefined">
+        <label class="col-form-label">{{fileData.imageTitle}}</label>
+        <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="fileData.imgSrc">
+      </div>
+  </div>
+</div>
+<div class="row justify-content-between" [formGroup]="form" *ngFor="let row of controlsFromJson">
+  <div [ngClass]="{
+  'col-md-5 form-group mb-3 mt-lg-4': true,
+  'apply-validation': submitted && !form.value[fileData.formControlName]
+}"  *ngFor="let fileData of row">
+    <label class="custom-file-label">{{fileData.label}}</label>
+    <input  type="file" class="custom-file-input" aria-describedby="fileHelp"
+             (change)="handleFileInput($event,fileData)">
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+</div>

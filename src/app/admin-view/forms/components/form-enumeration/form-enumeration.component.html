@@ -1,0 +1,12 @@
+<div class="row" [formGroup]="form" *ngFor="let enumerationsData of controlsFromJson">
+  <div class="col-md-6 form-group mb-3 mt-lg-4" *ngFor="let enumerationControl of enumerationsData">
+    <label class="col-form-label">{{enumerationControl.label}}</label>
+    <select [ngClass]="{
+  'custom-select form-control': true,
+  'apply-validation': submitted
+}"  formControlName="{{enumerationControl.formControlName}}">
+      <option value="" disabled selected>{{enumerationControl.placeholder}}</option>
+      <option *ngFor="let optionValue of enumerationControl.values" [ngValue]="optionValue">{{ optionValue }}</option>
+    </select>
+  </div>
+</div>

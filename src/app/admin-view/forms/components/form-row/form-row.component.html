@@ -1,0 +1,11 @@
+<div class="row" [formGroup]="form" *ngFor="let row of controlsFromJson">
+  <div class="col-md-6 form-group mb-3"  *ngFor="let oneControlData of row">
+    <label class="col-form-label">{{oneControlData.label}}</label>
+    <input [type]="oneControlData.type" [ngClass]="{
+  'form-control': true,
+  'apply-validation': submitted
+}" formControlName="{{oneControlData.formControlName}}"
+           placeholder="{{oneControlData.placeholder}}">
+  </div>
+</div>
+
