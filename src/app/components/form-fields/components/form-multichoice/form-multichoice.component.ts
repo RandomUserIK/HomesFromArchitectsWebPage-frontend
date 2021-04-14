@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormMultichoiceData} from '../../../../admin-view/forms/resources/form-data';
+import {FormMultichoiceData} from '../../models/form-data';
 
 @Component({
   selector: 'app-form-multichoice',
@@ -13,21 +13,19 @@ export class FormMultichoiceComponent implements OnInit {
   @Input() submitted: boolean;
   @Input() formData: FormMultichoiceData[];
   public form: FormGroup;
-  public controlsFromJson: FormMultichoiceData[][] = [];
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
     this.form = this.fb.group({});
-    const data = [];
     this.formData.forEach(control => {
-        this.form.addControl(control.formControlName,
-          this.fb.array([], [Validators.minLength(1), Validators.required]));
-        data.push(control as FormMultichoiceData);
+        this.form.addControl(
+          control.formControlName,
+          this.fb.array([], [Validators.minLength(1), Validators.required])
+        );
       }
     );
-    this.controlsFromJson.push(data);
     this.formReady.emit(this.form);
   }
 

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import formData from '../../resources/create-project-data.json';
-import {FormRowData} from '../../resources/form-data';
+import {FormRowData} from '../../models/form-data';
 
 @Component({
   selector: 'app-form-row',
@@ -11,24 +10,20 @@ import {FormRowData} from '../../resources/form-data';
 export class FormRowComponent implements OnInit {
 
   @Output() formReady = new EventEmitter<FormGroup>();
-  @Input() submitted : boolean;
+  @Input() submitted: boolean;
+  @Input() formData: FormRowData[];
   public form: FormGroup;
-  public controlsFromJson: FormRowData[][] = [];
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
     this.form = this.fb.group({});
-    formData.form.forEach(row => {
-        const data = [];
-        row.forEach(control => {
-          this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
-          data.push(control as FormRowData);
-        });
-        this.controlsFromJson.push(data);
+    this.formData.forEach(control => {
+        this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
       }
     );
     this.formReady.emit(this.form);
   }
+
 }

@@ -1,0 +1,60 @@
+<div class="container content">
+  <div class="row no-gutters contact-wrap">
+    <div class="col-md-12">
+      <div class="form">
+        <h3>Nový projekt</h3>
+        <div [ngClass]="{
+                'form-alert alert-success': validationSuccess,
+                'form-alert alert-danger': !validationSuccess
+              }" class="alert alert-success" role="alert" *ngIf="submitted">
+          {{uploadMessage}}
+        </div>
+        <form [formGroup]="createProjectForm" (ngSubmit)="submit()" class="mb-5" id="contactForm" name="contactForm">
+
+          <app-form-row
+            [submitted]="submitted"
+            [formData]="getFormData('form')"
+            (formReady)="formInitialized('child_form_group', $event)">
+          </app-form-row>
+
+          <app-form-enumeration
+            [submitted]="submitted"
+            [formData]="getFormData('enumerationFields')"
+            (formReady)="formInitialized('child_form_enumeration_group', $event)">
+          </app-form-enumeration>
+
+          <app-form-multichoice
+            [submitted]="submitted"
+            [formData]="getFormData('multichoiceFields')"
+            (formReady)="formInitialized('child_form_multichoice_group', $event)">
+          </app-form-multichoice>
+
+          <app-form-file
+            [submitted]="submitted"
+            [formData]="getFormData('fileUpload')"
+            (formReady)="formInitialized('child_form_file_group', $event)">
+          </app-form-file>
+
+          <h4>Nové textové sekcie projektu</h4>
+
+          <app-form-dynamic-text-section
+            [submitted]="submitted"
+            (formReady)="formInitialized('child_dynamic_text_areas_group', $event)">
+          </app-form-dynamic-text-section>
+
+          <h4 class="mt-lg-4">Nové fotky do galerie projektu</h4>
+
+          <app-form-dynamic-gallery [submitted]="submitted"
+                                    (formReady)="formInitialized('child_dynamic_photo_gallery_group', $event)">
+          </app-form-dynamic-gallery>
+
+          <div class="row mt-lg-4">
+            <button type="submit" class="btn btn-primary col-xs-12" [disabled]="validationSuccess">
+              <em class="bi bi-plus-square"></em> Vytvoriť projekt
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormValidationService} from '../services/form-validation.service';
 
 @Component({
-  selector: 'app-form-dynamic-galery',
+  selector: 'app-form-dynamic-gallery',
   templateUrl: './form-dynamic-gallery.component.html',
   styleUrls: ['./form-dynamic-gallery.component.scss']
 })

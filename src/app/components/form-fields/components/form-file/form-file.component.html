@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+  <div *ngFor="let control of formData"
+       [class.col-md-6]="!control.fullWidth"
+       [class.col-md-12]="control.fullWidth"
+       class="form-group mb-3">
+    <div *ngIf="control.imgSrc !== undefined">
+      <label class="col-form-label">{{control.imageTitle}}</label>
+      <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="control.imgSrc" alt="">
+    </div>
+  </div>
+</div>
+
+<div [formGroup]="form"
+     class="row justify-content-between">
+  <div *ngFor="let control of formData"
+       [ngClass]="{
+          'apply-validation': submitted && !form.value[control.formControlName],
+          'col-md-5': !control.fullWidth,
+          'col-md-12': control.fullWidth
+        }"
+       class="form-group mb-3 mt-lg-4">
+    <label class="custom-file-label">{{control.label}}</label>
+    <input type="file" class="custom-file-input" aria-describedby="fileHelp"
+           (change)="handleFileInput($event, control)">
+  </div>
+</div>

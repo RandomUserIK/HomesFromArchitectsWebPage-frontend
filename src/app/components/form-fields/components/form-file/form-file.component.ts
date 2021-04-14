@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FormFileData} from '../../resources/form-data';
-import formData from '../../resources/create-project-data.json';
+import {FormFileData} from '../../models/form-data';
 import {FormValidationService} from '../services/form-validation.service';
 
 @Component({
@@ -12,9 +11,9 @@ import {FormValidationService} from '../services/form-validation.service';
 export class FormFileComponent implements OnInit {
 
   @Output() formReady = new EventEmitter<FormGroup>();
-  public form: FormGroup;
-  public controlsFromJson: FormFileData[][] = [];
   @Input() submitted: boolean;
+  @Input() formData: FormFileData[];
+  public form: FormGroup;
   public errorMessage = '';
 
 
@@ -23,15 +22,10 @@ export class FormFileComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({});
-    formData.fileUpload.forEach(row => {
-        const data = [];
-        row.forEach(control => {
-          this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
-          data.push(control as FormFileData);
-        });
-        this.controlsFromJson.push(data);
-      }
-    );
+    this.formData.forEach(control => {
+      this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
+    });
+
     this.formReady.emit(this.form);
   }
 
@@ -42,11 +36,7 @@ export class FormFileComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
-          this.controlsFromJson.find(value => {
-            value.find(jsonValue => {
-              return jsonValue === fileData;
-            }).imgSrc = fileReaderEvent.target.result;
-          });
+          this.formData.find(value => value === fileData).imgSrc = fileReaderEvent.target.result;
           this.form.controls[fileData.formControlName].setValue(event.target.files[0]);
         };
       }
