@@ -1,7 +1,7 @@
 <div class="row" [formGroup]="form">
-  <div class="col-md-4 p-2" *ngFor="let galeryPhoto of galeryPreviews; let index = index;">
+  <div class="col-md-4 p-2" *ngFor="let galeryPhoto of galleryPreviews; let index = index;">
     <div class="item">
-      <button type="button" class="btn btn-default" (click)="deletePhotoFromGalery(index)"><i
+      <button type="button" class="btn btn-default" (click)="deletePhotoFromGallery(index)"><i
         class="bi-trash"></i></button>
     </div>
     <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="galeryPhoto">

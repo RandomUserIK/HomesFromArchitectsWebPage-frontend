@@ -9,8 +9,8 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class FormDynamicTextSectionComponent implements OnInit {
 
   @Output() formReady = new EventEmitter<FormGroup>();
-  public form: FormGroup;
   @Input() submitted: boolean;
+  public form: FormGroup;
 
   constructor(private fb: FormBuilder) {
   }
@@ -24,8 +24,8 @@ export class FormDynamicTextSectionComponent implements OnInit {
 
   private createTextSection(): FormGroup {
     return this.fb.group({
-      title: ['', Validators.required],
-      text: ['', Validators.required]
+      title: [null, Validators.required],
+      text: [null, Validators.required]
     });
   }
 

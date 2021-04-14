@@ -27,18 +27,21 @@ export class CreateCommonProjectService {
   }
 
   private sendProject(form: FormGroup): Observable<any> {
-    return this.projectService.createProject(this.requestEntity).pipe(exhaustMap((project) =>
-      forkJoin(this.createPhotoObservableArray(form, project)))
-    );
+    return this.projectService.createProject(this.requestEntity)
+      .pipe(
+        exhaustMap(
+          (project) =>
+            forkJoin(this.createPhotoObservableArray(form, project))
+        ));
   }
 
   private createPhotoObservableArray(form: FormGroup, project: ProjectData): Observable<string>[] {
     const photoList = [];
     const projectId = project.id
     photoList.push(this.fileService.postFile(form.value.child_form_file_group.titleImage, projectId, 'titleImage'));
-    photoList.push(this.fileService.postFile(form.value.child_form_file_group.floorPlanImage, projectId,'floorPlanImage'));
-    form.value.child_dynamic_photo_galery_group.photoGallery.forEach(photoFromGalery => {
-      photoList.push(this.fileService.postFile(photoFromGalery.path, projectId, 'imagePaths'));
+    photoList.push(this.fileService.postFile(form.value.child_form_file_group.floorPlanImage, projectId, 'floorPlanImage'));
+    form.value.child_dynamic_photo_galery_group.photoGallery.forEach(photoFromGallery => {
+      photoList.push(this.fileService.postFile(photoFromGallery.path, projectId, 'imagePaths'));
     });
     return photoList;
   }

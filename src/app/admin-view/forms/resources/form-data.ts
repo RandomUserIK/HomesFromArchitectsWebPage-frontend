@@ -1,5 +1,3 @@
-import {Validators} from '@angular/forms';
-
 export interface FormRowData {
   'formControlName': string;
   'label': string;

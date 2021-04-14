@@ -13,7 +13,7 @@ import formData from '../resources/create-project-data.json';
 })
 export class CreateCommonProjectComponent implements OnInit {
   public createProjectForm: FormGroup;
-  public validationSucces = false;
+  public validationSuccess = false;
   public uploadMessage = '';
   public submitted = false;
 
@@ -34,15 +34,15 @@ export class CreateCommonProjectComponent implements OnInit {
   submit() {
     if (this.createProjectForm.valid) {
       this.createCommonProjectService.createProject(this.createProjectForm, 'COMMON').subscribe(() => {
-        this.validationSucces = true;
-        this.uploadMessage = 'Projekt úspešne vytvorený';
+        this.validationSuccess = true;
+        this.uploadMessage = 'Projekt bol úspešne vytvorený';
       }, () => {
-        this.validationSucces = false;
+        this.validationSuccess = false;
         this.uploadMessage = 'Projekt sa nepodarilo vytvoriť, skúste neskôr';
       });
     } else {
-      this.validationSucces = false;
-      this.uploadMessage = 'Niektoré polia niesu správne vyplnené';
+      this.validationSuccess = false;
+      this.uploadMessage = 'Niektoré polia niesú správne vyplnené';
     }
     this.submitted = true;
   }

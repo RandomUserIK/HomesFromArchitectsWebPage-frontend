@@ -1,12 +1,18 @@
 <div class="row" [formGroup]="form" *ngFor="let multichoiceData of controlsFromJson">
   <div class="col-md-6 form-group mb-3 mt-lg-4" *ngFor="let multichoiceControl of multichoiceData">
-    <label  [ngClass]="{
-  'col-form-label': true,
-  'apply-validation': submitted && form.invalid
-}"  class="col-form-label">{{multichoiceControl.label}}</label>
-    <div class="form-check offset-sm-1" *ngFor="let side of multichoiceControl.values">
-      <input class="form-check-input" type="checkbox" [value]="side" id="{{side}}" (change)="onCheckChange($event,multichoiceControl.formControlName)" >
-      <label class="form-check-label" for="{{side}}">{{side}}</label>
+    <label
+      [ngClass]="{
+        'apply-validation': submitted && form.invalid
+        }"
+      class="col-form-label">
+      {{multichoiceControl.label}}
+    </label>
+    <div class="custom-control custom-checkbox mb-1" *ngFor="let value of multichoiceControl.values">
+      <input (change)="onCheckChange($event, multichoiceControl.formControlName)"
+             [id]="value"
+             type="checkbox"
+             class="custom-control-input">
+      <label class="custom-control-label" [for]="value">{{value}}</label>
     </div>
   </div>
 </div>

@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'vytvor',
     component: CreateCommonProjectComponent,
-    data:{}
+    data: {}
   },
   {
     path: '',

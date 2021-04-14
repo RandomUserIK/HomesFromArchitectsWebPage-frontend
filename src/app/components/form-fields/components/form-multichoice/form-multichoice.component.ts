@@ -22,7 +22,8 @@ export class FormMultichoiceComponent implements OnInit {
     this.form = this.fb.group({});
     const data = [];
     this.formData.forEach(control => {
-        this.form.addControl(control.formControlName, this.fb.array([], [Validators.minLength(1), Validators.required]));
+        this.form.addControl(control.formControlName,
+          this.fb.array([], [Validators.minLength(1), Validators.required]));
         data.push(control as FormMultichoiceData);
       }
     );

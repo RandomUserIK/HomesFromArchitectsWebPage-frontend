@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormDynamicGaleryComponent } from './form-dynamic-galery.component';
+import { FormDynamicGalleryComponent } from './form-dynamic-gallery.component';
 
 describe('FormDynamicGaleryComponent', () => {
-  let component: FormDynamicGaleryComponent;
-  let fixture: ComponentFixture<FormDynamicGaleryComponent>;
+  let component: FormDynamicGalleryComponent;
+  let fixture: ComponentFixture<FormDynamicGalleryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormDynamicGaleryComponent ]
+      declarations: [ FormDynamicGalleryComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormDynamicGaleryComponent);
+    fixture = TestBed.createComponent(FormDynamicGalleryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

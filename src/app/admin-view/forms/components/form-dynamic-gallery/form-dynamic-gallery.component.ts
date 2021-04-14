@@ -4,16 +4,16 @@ import {FormValidationService} from '../services/form-validation.service';
 
 @Component({
   selector: 'app-form-dynamic-galery',
-  templateUrl: './form-dynamic-galery.component.html',
-  styleUrls: ['./form-dynamic-galery.component.scss']
+  templateUrl: './form-dynamic-gallery.component.html',
+  styleUrls: ['./form-dynamic-gallery.component.scss']
 })
-export class FormDynamicGaleryComponent implements OnInit {
+export class FormDynamicGalleryComponent implements OnInit {
 
   @Output() formReady = new EventEmitter<FormGroup>();
+  @Input() submitted: boolean;
   public errorMessage = '';
   public form: FormGroup;
-  public galeryPreviews: Array<string | ArrayBuffer> = [];
-  @Input() submitted: boolean;
+  public galleryPreviews: Array<string | ArrayBuffer> = [];
 
   constructor(private fb: FormBuilder, private formValidationService: FormValidationService) {
   }
@@ -34,15 +34,15 @@ export class FormDynamicGaleryComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
           (this.form.get('photoGallery') as FormArray).push(this.fb.control({path: event.target.files[0]}));
-          this.galeryPreviews.push(fileReaderEvent.target.result);
+          this.galleryPreviews.push(fileReaderEvent.target.result);
         };
       }
     }
   }
 
-  public deletePhotoFromGalery(index: number): void {
+  public deletePhotoFromGallery(index: number): void {
     (this.form.get('photoGallery') as FormArray).removeAt(index);
-    this.galeryPreviews.splice(index, 1);
+    this.galleryPreviews.splice(index, 1);
   }
 }
 
