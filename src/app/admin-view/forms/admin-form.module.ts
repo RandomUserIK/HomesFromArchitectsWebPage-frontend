@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FormValidationService} from './components/services/form-validation.service';
 import {CreateCommonProjectService} from './services/create-common-project.service';
 import {FormFieldsModule} from '../../components/form-fields/form-fields.module';
+import {FormAlertModule} from '../../components/form-alert/form-alert.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {FormFieldsModule} from '../../components/form-fields/form-fields.module'
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormFieldsModule
+    FormFieldsModule,
+    FormAlertModule
   ],
   exports: [
     CreateCommonProjectComponent

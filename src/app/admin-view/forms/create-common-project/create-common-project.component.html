@@ -4,12 +4,7 @@
       <div class="col-md-12">
         <div class="form">
           <h3>Nový projekt</h3>
-          <div [ngClass]="{
-                'form-alert alert-success': validationSuccess,
-                'form-alert alert-danger': !validationSuccess
-              }" class="alert alert-success" role="alert" *ngIf="submitted">
-            {{uploadMessage}}<br>
-          </div>
+          <app-form-alert [submitted]="submitted" [uploadMessage]="uploadMessage" [validationSuccess]="validationSuccess"></app-form-alert>
           <form [formGroup]="createProjectForm" class="mb-5 " method="post" id="contactForm" name="contactForm">
             <app-form-row [submitted]="submitted" (formReady)="formInitialized('child_form_group', $event)"></app-form-row>
             <app-form-enumeration [submitted]="submitted"

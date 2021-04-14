@@ -1,0 +1,6 @@
+<div [ngClass]="{
+                'form-alert alert-success': validationSuccess,
+                'form-alert alert-danger': !validationSuccess
+              }" class="alert alert-success" role="alert" *ngIf="submitted">
+  {{uploadMessage}}<br>
+</div>
