@@ -2,13 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {CreateCommonProjectService} from '../services/create-common-project.service';
-import {
-  FormEnumerationData,
-  FormField,
-  FormFileData,
-  FormMultichoiceData,
-  FormRowData
-} from '../../../components/form-fields/models/form-data';
+import {FormField} from '../../../components/form-fields/models/form-data';
 import formData from '../resources/create-project-data.json';
 
 
