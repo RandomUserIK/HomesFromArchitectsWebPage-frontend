@@ -23,7 +23,7 @@ export class FormFileComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({});
     this.formData.forEach(control => {
-          this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
+      this.form.addControl(control.formControlName, this.fb.control('', Validators.required));
     });
 
     this.formReady.emit(this.form);
@@ -36,11 +36,7 @@ export class FormFileComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
-          this.formData.find(value => {
-            if (value === fileData) {
-              value.imgSrc = fileReaderEvent.target.result;
-            }
-          });
+          this.formData.find(value => value === fileData).imgSrc = fileReaderEvent.target.result;
           this.form.controls[fileData.formControlName].setValue(event.target.files[0]);
         };
       }

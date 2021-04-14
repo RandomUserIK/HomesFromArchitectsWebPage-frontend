@@ -18,7 +18,8 @@
       </div>
       <div class="col-md-12 form-group mb-3">
         <label class="col-form-label">Text sekcie *</label>
-        <textarea [ngClass]="{
+        <textarea
+          [ngClass]="{
             'form-control' :true,
             'apply-validation ': submitted
            }"
@@ -30,11 +31,13 @@
   </div>
 </div>
 <div>
-  <button [ngClass]="{
+  <button
+    [ngClass]="{
       'btn btn-primary col-xs-12' :true,
       'apply-validation-button ': submitted && form.invalid
     }"
-    (click)="addNewTextSection()">
+    (click)="addNewTextSection()"
+    type="button">
     <i class="bi bi-plus-square"></i> Vytvor textovú sekciu
   </button>
 </div>
