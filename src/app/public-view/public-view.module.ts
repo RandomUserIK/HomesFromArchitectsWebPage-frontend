@@ -10,6 +10,8 @@ import {ProjectsGalleryComponent} from './components/projects-gallery/projects-g
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
 import {ContactsComponent} from './components/contacts/contacts.component';
+import {ProjectContentModule} from './project-content/project-content.module';
+import {ProjectContentComponent} from './project-content/project-content.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,10 @@ const routes: Routes = [
       {
         path: 'kontakty',
         component: ContactsComponent
+      },
+      {
+        path: 'obsah-projektu',
+        component: ProjectContentComponent
       }
     ]
   },
@@ -44,9 +50,10 @@ const routes: Routes = [
   declarations: [
     PublicViewComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
+    ProjectContentModule,
     CommonModule,
     HomeModule,
     ProjectsGalleryModule,
