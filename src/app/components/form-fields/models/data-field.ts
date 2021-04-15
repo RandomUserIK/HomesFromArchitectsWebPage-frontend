@@ -4,4 +4,5 @@ export interface DataField {
   type: string;
   fullWidth: boolean;
   placeholder: string;
+  values?: Array<string>;
 }

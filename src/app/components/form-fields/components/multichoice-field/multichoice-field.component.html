@@ -1,0 +1,13 @@
+<ng-container [formGroup]="form">
+  <label
+    class="col-form-label">
+    {{dataField.label}}
+  </label>
+  <div class="custom-control custom-checkbox mb-1" *ngFor="let value of dataField.values">
+    <input (change)="onCheckChange($event, dataField.formControlName)"
+           [id]="value"
+           type="checkbox"
+           class="custom-control-input">
+    <label class="custom-control-label" [for]="value">{{value}}</label>
+  </div>
+</ng-container>

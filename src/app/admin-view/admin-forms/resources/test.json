@@ -13,22 +13,36 @@
       "label": "Názov projektu *",
       "fullWidth": false,
       "placeholder": "Zadajte názov projektu"
-    }
-  ],
-  "1": [
-    {
-      "formControlName": "title3",
-      "type": "text",
-      "label": "Názov projektu *",
-      "fullWidth": false,
-      "placeholder": "Zadajte názov projektu"
     },
     {
-      "formControlName": "title4",
-      "type": "text",
-      "label": "Názov projektu *",
+      "formControlName": "energeticClass",
+      "type": "enumeration",
+      "label": "Energetická trieda projektu *",
       "fullWidth": false,
-      "placeholder": "Zadajte názov projektu"
+      "placeholder": "Vyberte energetickú triedu projektu",
+      "values": [
+        "A1",
+        "A0",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    {
+      "formControlName": "entryOrientation",
+      "type": "multichoice",
+      "label": "Orientácia projektu *",
+      "fullWidth": false,
+      "values": [
+        "S",
+        "J",
+        "V",
+        "Z"
+      ]
     }
   ]
 }

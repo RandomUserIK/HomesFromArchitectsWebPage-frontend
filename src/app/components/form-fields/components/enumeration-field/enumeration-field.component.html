@@ -1,0 +1,10 @@
+<ng-container [formGroup]="form">
+  <div class="form-group">
+    <label class="col-form-label">{{dataField.label}}</label>
+    <select class="custom-select form-control"
+            formControlName="{{dataField.formControlName}}">
+      <option value="" disabled selected>{{dataField.placeholder}}</option>
+      <option *ngFor="let optionValue of dataField.values" [ngValue]="optionValue">{{ optionValue }}</option>
+    </select>
+  </div>
+</ng-container>

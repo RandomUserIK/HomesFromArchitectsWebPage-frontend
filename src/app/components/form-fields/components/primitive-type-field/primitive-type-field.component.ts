@@ -3,11 +3,11 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {DataField} from '../../models/data-field';
 
 @Component({
-  selector: 'app-text-field',
-  templateUrl: './text-field.component.html',
-  styleUrls: ['./text-field.component.scss']
+  selector: 'app-primitive-type-field',
+  templateUrl: './primitive-type-field.component.html',
+  styleUrls: ['./primitive-type-field.component.scss']
 })
-export class TextFieldComponent implements OnInit {
+export class PrimitiveTypeFieldComponent implements OnInit {
 
   @Input() dataField: DataField;
   @Input() form: FormGroup;

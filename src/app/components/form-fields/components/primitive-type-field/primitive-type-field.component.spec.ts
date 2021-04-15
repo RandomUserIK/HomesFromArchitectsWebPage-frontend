@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextFieldComponent } from './text-field.component';
+import { PrimitiveTypeFieldComponent } from './primitive-type-field.component';
 
 describe('TextFieldComponent', () => {
-  let component: TextFieldComponent;
-  let fixture: ComponentFixture<TextFieldComponent>;
+  let component: PrimitiveTypeFieldComponent;
+  let fixture: ComponentFixture<PrimitiveTypeFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextFieldComponent ]
+      declarations: [ PrimitiveTypeFieldComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TextFieldComponent);
+    fixture = TestBed.createComponent(PrimitiveTypeFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

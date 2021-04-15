@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormEnumerationComponent } from './form-enumeration.component';
+import { EnumerationFieldComponent } from './enumeration-field.component';
 
-describe('FormEnumerationComponent', () => {
-  let component: FormEnumerationComponent;
-  let fixture: ComponentFixture<FormEnumerationComponent>;
+describe('EnumerationFieldComponent', () => {
+  let component: EnumerationFieldComponent;
+  let fixture: ComponentFixture<EnumerationFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormEnumerationComponent ]
+      declarations: [ EnumerationFieldComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormEnumerationComponent);
+    fixture = TestBed.createComponent(EnumerationFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

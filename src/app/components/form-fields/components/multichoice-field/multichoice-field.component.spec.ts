@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormRowComponent } from './form-row.component';
+import { MultichoiceFieldComponent } from './multichoice-field.component';
 
-describe('FormRowComponent', () => {
-  let component: FormRowComponent;
-  let fixture: ComponentFixture<FormRowComponent>;
+describe('MultichoiceFieldComponent', () => {
+  let component: MultichoiceFieldComponent;
+  let fixture: ComponentFixture<MultichoiceFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormRowComponent ]
+      declarations: [ MultichoiceFieldComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormRowComponent);
+    fixture = TestBed.createComponent(MultichoiceFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
