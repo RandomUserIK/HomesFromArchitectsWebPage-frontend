@@ -1,0 +1,34 @@
+{
+  "0": [
+    {
+      "formControlName": "title",
+      "type": "text",
+      "label": "Názov projektu *",
+      "fullWidth": false,
+      "placeholder": "Zadajte názov projektu"
+    },
+    {
+      "formControlName": "title2",
+      "type": "text",
+      "label": "Názov projektu *",
+      "fullWidth": false,
+      "placeholder": "Zadajte názov projektu"
+    }
+  ],
+  "1": [
+    {
+      "formControlName": "title3",
+      "type": "text",
+      "label": "Názov projektu *",
+      "fullWidth": false,
+      "placeholder": "Zadajte názov projektu"
+    },
+    {
+      "formControlName": "title4",
+      "type": "text",
+      "label": "Názov projektu *",
+      "fullWidth": false,
+      "placeholder": "Zadajte názov projektu"
+    }
+  ]
+}

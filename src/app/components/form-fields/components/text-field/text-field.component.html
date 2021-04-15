@@ -1,0 +1,10 @@
+<ng-container [formGroup]="form">
+  <div class="mb-3">
+    <label class="col-form-label">{{dataField.label}}</label>
+    <input
+      class="form-control"
+      [type]="dataField.type"
+      formControlName="{{dataField.formControlName}}"
+      [placeholder]="dataField.placeholder">
+  </div>
+</ng-container>

@@ -33,9 +33,7 @@ export class FormDynamicGalleryComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
-          let photoGallery : FormArray = this.form.controls.photoGallery as FormArray
-          photoGallery.push(this.fb.control({path: event.target.files[0]}));
-          // (this.form['photoGallery']).push(this.fb.control({path: event.target.files[0]}));
+          (this.form.get('photoGallery') as FormArray).push(this.fb.control({path: event.target.files[0]})); // NOSONAR
           this.galleryPreviews.push(fileReaderEvent.target.result);
         };
       }
@@ -43,8 +41,9 @@ export class FormDynamicGalleryComponent implements OnInit {
   }
 
   public deletePhotoFromGallery(index: number): void {
-    (this.form.get('photoGallery') as FormArray).removeAt(index);
+    (this.form.get('photoGallery') as FormArray).removeAt(index); // NOSONAR
     this.galleryPreviews.splice(index, 1);
   }
+
 }
 

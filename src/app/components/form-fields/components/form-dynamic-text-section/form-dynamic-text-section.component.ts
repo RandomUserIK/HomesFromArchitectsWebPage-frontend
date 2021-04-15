@@ -30,15 +30,15 @@ export class FormDynamicTextSectionComponent implements OnInit {
   }
 
   public addNewTextSection(): void {
-    (this.form.get('textSections') as FormArray).push(this.createTextSection());
+    (this.form.get('textSections') as FormArray).push(this.createTextSection()); // NOSONAR
   }
 
   public getFormGroups(): FormGroup[] {
-    return (this.form.get('textSections') as FormArray).controls as FormGroup[];
+    return (this.form.get('textSections') as FormArray).controls as FormGroup[]; // NOSONAR
   }
 
   public deleteNewTextSection(index: number): void {
-    (this.form.get('textSections') as FormArray).removeAt(index);
+    (this.form.get('textSections') as FormArray).removeAt(index); // NOSONAR
   }
 
 }

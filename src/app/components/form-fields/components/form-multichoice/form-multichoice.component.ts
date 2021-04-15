@@ -30,7 +30,7 @@ export class FormMultichoiceComponent implements OnInit {
   }
 
   onCheckChange(event, formControlName: string): void {
-    const formArray: FormArray = this.form.get(formControlName) as FormArray;
+    const formArray: FormArray = this.form.get(formControlName) as FormArray; // NOSONAR
     if (event.target.checked) {
       formArray.push(new FormControl(event.target.value));
     } else {

@@ -1,0 +1,3 @@
+<ng-container [ngSwitch]="dataField.type">
+  <app-text-field *ngSwitchCase="'text'" [dataField]="dataField" [form]="form"></app-text-field>
+</ng-container>
