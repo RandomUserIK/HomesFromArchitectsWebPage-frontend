@@ -9,7 +9,7 @@
               }" class="alert alert-success" role="alert" *ngIf="submitted">
           {{uploadMessage}}
         </div>
-        <form [formGroup]="createProjectForm" (ngSubmit)="submit()" class="mb-5" id="contactForm" name="contactForm">
+        <form [formGroup]="createProjectForm" (ngSubmit)="onSubmit()" class="mb-5" id="contactForm" name="contactForm">
 
           <app-form-row
             [submitted]="submitted"

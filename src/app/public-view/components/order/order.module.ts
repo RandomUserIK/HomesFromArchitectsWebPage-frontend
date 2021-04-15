@@ -4,6 +4,7 @@ import {OrderComponent} from './order.component';
 import {OrderFormComponent} from './components/order-form/order-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { OrderHeaderComponent } from './components/order-header/order-header.component';
+import {FormFieldsModule} from '../../../components/form-fields/form-fields.module';
 
 
 
@@ -15,7 +16,8 @@ import { OrderHeaderComponent } from './components/order-header/order-header.com
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormFieldsModule
   ],
   exports: [
     OrderComponent

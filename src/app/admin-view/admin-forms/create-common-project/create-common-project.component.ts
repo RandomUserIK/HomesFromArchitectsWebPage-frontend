@@ -17,13 +17,13 @@ export class CreateCommonProjectComponent implements OnInit {
   public uploadMessage = '';
   public submitted = false;
 
-  constructor(private _formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private httpClient: HttpClient,
               private createCommonProjectService: CreateCommonProjectService) {
   }
 
   ngOnInit() {
-    this.createProjectForm = this._formBuilder.group({});
+    this.createProjectForm = this.formBuilder.group({});
   }
 
   get formControls(): { [p: string]: AbstractControl } {
@@ -31,7 +31,7 @@ export class CreateCommonProjectComponent implements OnInit {
   }
 
   // TODO:Tu bude redirect s info hlaskou
-  submit() {
+  onSubmit(): void {
     if (this.createProjectForm.valid) {
       this.createCommonProjectService.createProject(this.createProjectForm, 'COMMON').subscribe(() => {
         this.validationSuccess = true;
@@ -47,7 +47,7 @@ export class CreateCommonProjectComponent implements OnInit {
     this.submitted = true;
   }
 
-  public formInitialized(name: string, form: FormGroup) {
+  public formInitialized(name: string, form: FormGroup): void {
     this.createProjectForm.setControl(name, form);
   }
 

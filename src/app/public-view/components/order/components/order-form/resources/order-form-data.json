@@ -1,0 +1,16 @@
+{
+  "multichoiceFields": [
+    {
+      "formControlName": "entryOrientation",
+      "label": "Orientácia projektu *",
+      "fullWidth": false,
+      "values": [
+        "S",
+        "J",
+        "V",
+        "Z"
+      ]
+    }
+  ]
+}
+
