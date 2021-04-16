@@ -1,43 +1,8 @@
-h1, h2 {
-  font-family: "Roboto", sans-serif;
-  color: #000;
-}
-
 .content {
-  padding: 7rem 0;
-}
-
-.contact-wrap {
-  -webkit-box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.05);
-  box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid #efefef;
+  padding: 2%;
+  margin-bottom: 10vh;
+  margin-top: 5vh;
 }
-
-.contact-wrap .form, .contact-wrap .contact-info {
-  padding: 40px;
-}
-
-.contact-wrap .form {
-  background: #fff;
-}
-
-.contact-wrap .form h3 {
-  color: #000;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 30px;
-}
-
-.contact-wrap .form h4 {
-  color: #000;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 30px;
-  margin-top: 10px;
-}
-.margin-remove{
-  margin: 0;
-  padding-left: 2%;
-}
-
-

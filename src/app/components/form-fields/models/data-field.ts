@@ -4,5 +4,7 @@ export interface DataField {
   type: string;
   fullWidth: boolean;
   placeholder: string;
+  imgSrc?: string | ArrayBuffer;
+  imageTitle?: string;
   values?: Array<string>;
 }

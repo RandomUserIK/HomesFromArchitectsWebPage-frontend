@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FormValidationService} from '../services/form-validation.service';
+import {FileUploadValidationService} from '../services/file-upload-validation.service';
+// import {FormValidationService} from '../services/form-validation.service';
 
 @Component({
   selector: 'app-form-dynamic-gallery',
@@ -15,7 +16,7 @@ export class FormDynamicGalleryComponent implements OnInit {
   public form: FormGroup;
   public galleryPreviews: Array<string | ArrayBuffer> = [];
 
-  constructor(private fb: FormBuilder, private formValidationService: FormValidationService) {
+  constructor(private fb: FormBuilder, private fileUploadValidationService: FileUploadValidationService) {
   }
 
   ngOnInit(): void {
@@ -27,7 +28,7 @@ export class FormDynamicGalleryComponent implements OnInit {
 
   public handleFileInput(event: any): void {
     if (event.target.files && event.target.files[0]) {
-      this.errorMessage = this.formValidationService.checkSizeAndFileFormat(event.target.files[0]);
+      this.errorMessage = this.fileUploadValidationService.checkSizeAndFileFormat(event.target.files[0]);
       if (this.errorMessage.length === 0) {
         this.errorMessage = '';
         const reader = new FileReader();

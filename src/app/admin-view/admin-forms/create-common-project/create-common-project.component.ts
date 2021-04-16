@@ -26,7 +26,7 @@ export class CreateCommonProjectComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      'textFields': new FormGroup({})
+      textFields: new FormGroup({})
     });
     for (const [formGroupName, formControls] of Object.entries(formData)) {
       const subForm = this.fb.group({});

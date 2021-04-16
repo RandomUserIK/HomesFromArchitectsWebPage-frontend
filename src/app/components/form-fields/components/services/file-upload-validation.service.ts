@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class FormValidationService {
-
+export class FileUploadValidationService {
   public checkSizeAndFileFormat(file: Blob): string {
     const allowedFileTypes = ['image/png', 'image/jpeg'];
     if (allowedFileTypes.indexOf(file.type) === -1) {

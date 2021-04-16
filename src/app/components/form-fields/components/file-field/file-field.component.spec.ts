@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormFileComponent } from './form-file.component';
+import { FileFieldComponent } from './file-field.component';
 
-describe('FormFileComponent', () => {
-  let component: FormFileComponent;
-  let fixture: ComponentFixture<FormFileComponent>;
+describe('FileFieldComponent', () => {
+  let component: FileFieldComponent;
+  let fixture: ComponentFixture<FileFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormFileComponent ]
+      declarations: [ FileFieldComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormFileComponent);
+    fixture = TestBed.createComponent(FileFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

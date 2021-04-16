@@ -8,11 +8,95 @@
       "placeholder": "Zadajte názov projektu"
     },
     {
-      "formControlName": "title2",
+      "formControlName": "builtUpArea",
       "type": "text",
-      "label": "Názov projektu *",
+      "label": "Zastavaná plocha *",
       "fullWidth": false,
-      "placeholder": "Zadajte názov projektu"
+      "placeholder": "Zadajte veľkosť m2"
+    },
+    {
+      "formControlName": "persons",
+      "type": "text",
+      "label": "Počet osôb *",
+      "fullWidth": false,
+      "placeholder": "Zadajte pre koľko osôb je projekt stavaný"
+    },
+    {
+      "formControlName": "rooms",
+      "type": "text",
+      "label": "Počet izieb *",
+      "fullWidth": false,
+      "placeholder": "Zadajte počet izieb v projekte"
+    },
+    {
+      "formControlName": "usableArea",
+      "type": "text",
+      "label": "Celková plocha *",
+      "fullWidth": false,
+      "placeholder": "Zadajte veľkosť m2"
+    },
+    {
+      "formControlName": "totalLivingArea",
+      "type": "text",
+      "label": "Úžitková plocha *",
+      "fullWidth": false,
+      "placeholder": "Zadajte veľkosť m2"
+    },
+    {
+      "formControlName": "selfHelpBuildPrice",
+      "type": "text",
+      "label": "Svojpomocná výstavba *",
+      "fullWidth": false,
+      "placeholder": "Zadajte cenu  €"
+    },
+    {
+      "formControlName": "onKeyPrice",
+      "type": "text",
+      "label": "Cena na kľúč *",
+      "fullWidth": false,
+      "placeholder": "Zadajte cenu v €"
+    },
+    {
+      "formControlName": "basicProjectPrice",
+      "type": "text",
+      "label": "Cena základného projektu *",
+      "fullWidth": false,
+      "placeholder": "Zadajte cenu  €"
+    },
+    {
+      "formControlName": "extendedProjectPrice",
+      "type": "text",
+      "label": "Cena rozšíreného projektu *",
+      "fullWidth": false,
+      "placeholder": "Zadajte cenu v €"
+    },
+    {
+      "formControlName": "roofPitch",
+      "type": "text",
+      "label": "Sklon strechy *",
+      "fullWidth": false,
+      "placeholder": "Zadajte sklon v %"
+    },
+    {
+      "formControlName": "minimumParcelWidth",
+      "type": "text",
+      "label": "Minimálnu šírku pozemku *",
+      "fullWidth": false,
+      "placeholder": "Zadajte šírku v m"
+    },
+    {
+      "formControlName": "heatingSource",
+      "type": "text",
+      "label": "Zdroj vykurovania *",
+      "fullWidth": false,
+      "placeholder": "Zadajte zdroj"
+    },
+    {
+      "formControlName": "heatingType",
+      "type": "text",
+      "label": "Typ vykurovania *",
+      "fullWidth": false,
+      "placeholder": "Zadajte typ"
     },
     {
       "formControlName": "energeticClass",
@@ -33,16 +117,41 @@
       ]
     },
     {
+      "formControlName": "hasGarage",
+      "type": "enumeration",
+      "label": "Obsahuje projekt garáž ? *",
+      "fullWidth": false,
+      "placeholder": "Vyberte jednu z možností",
+      "values": [
+        "Áno",
+        "Nie"
+      ]
+    },
+    {
       "formControlName": "entryOrientation",
       "type": "multichoice",
       "label": "Orientácia projektu *",
-      "fullWidth": false,
+      "fullWidth": true,
       "values": [
         "S",
         "J",
         "V",
         "Z"
       ]
+    },
+    {
+      "formControlName": "titleImage",
+      "type": "file",
+      "label": "Vyberte titulnú fotku...",
+      "fullWidth": false,
+      "imageTitle": "Titulná fotka"
+    },
+    {
+      "formControlName": "floorPlanImage",
+      "type": "file",
+      "label": " Vyberte fotku pôdorysu...",
+      "fullWidth": false,
+      "imageTitle": "Fotka pôdorysu "
     }
   ]
 }
