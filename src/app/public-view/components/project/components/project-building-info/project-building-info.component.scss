@@ -1,5 +1,13 @@
 @import 'src/app/public-view/components/project/project.component';
 
+.ul {
+  display: table-row;
+}
+
+.ul li {
+  display: table-cell;
+}
+
 .info-name {
   display: inline-block;
   font-size: 125%;
@@ -7,11 +15,17 @@
 }
 
 .info-value {
-  display: inline-block;
-  float: right;
-  vertical-align: middle;
   color: gray;
   font-size: 125%;
+  display: inline-block;
+  float: right;
+}
+
+.info-unit {
+  color: gray;
+  display: inline-block;
+  float: right;
+  margin-left: 2%;
 }
 
 .info-heating {

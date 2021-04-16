@@ -1,3 +1,5 @@
+@import 'src/app/components/image-carousel/image-carousel.component';
+
 .interior-first-text {
   font-weight: bold;
   font-size: 140%;
@@ -18,4 +20,9 @@
 
 .interior-image {
   height: 21em;
+}
+
+.row .col-md-7 .carousel-inner .carousel-item > img {
+  -webkit-animation: none !important;
+  animation: none !important;
 }

@@ -1,9 +1,9 @@
 @import 'src/app/public-view/components/project/project.component';
 
 .row {
-  align-items: center;
   background-color: #c1c1c1;
-  height: 11em;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
 .comparison-text {
@@ -13,17 +13,26 @@
 }
 
 .comparison-link {
-  font-size: 15px;
   font-family: sans-serif;
   color: black;
   text-decoration: underline;
 }
 
 .comparison-additional-text {
-  font-size: 15px;
+  font-size: 90%;
   font-family: sans-serif;
 }
 
-.comparison-button {
-  width: 85%;
+@media (min-width: 767px) {
+  .comparison-button {
+    width: 75%;
+    height: 80%;
+  }
+}
+
+@media (min-width: 767px), (max-width: 1200px) {
+  .comparison-button {
+    width: 75%;
+    height: 80%;
+  }
 }
