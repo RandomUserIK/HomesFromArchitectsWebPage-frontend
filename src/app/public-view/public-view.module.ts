@@ -11,6 +11,7 @@ import {ProjectModule} from './components/project/project.module';
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
+import {ContactsComponent} from './components/contacts/contacts.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'projekty/:id',
         component: ProjectComponent
+      },
+      {
+        path: 'kontakty',
+        component: ContactsComponent
       }
     ]
   },
