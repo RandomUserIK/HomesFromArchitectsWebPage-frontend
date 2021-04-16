@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {CreateCommonProjectService} from '../services/create-common-project.service';
-import {FormField} from '../../../components/form-fields/models/form-data';
 import formData from '../resources/test.json';
 import {DataField} from '../../../components/form-fields/models/data-field';
-import {Data} from '@angular/router';
-
 
 
 @Component({
@@ -31,21 +28,21 @@ export class CreateCommonProjectComponent implements OnInit {
 
 
   // TODO:Tu bude redirect s info hlaskou
-  submit() {
-    // if (this.form.valid) {
-    //   this.createCommonProjectService.createProject(this.form, 'COMMON').subscribe(() => {
-    //     this.validationSuccess = true;
-    //     this.uploadMessage = 'Projekt bol úspešne vytvorený';
-    //   }, () => {
-    //     this.validationSuccess = false;
-    //     this.uploadMessage = 'Projekt sa nepodarilo vytvoriť, skúste neskôr';
-    //   });
-    // } else {
-    //   this.validationSuccess = false;
-    //   this.uploadMessage = 'Niektoré polia niesú správne vyplnené';
-    // }
+  public submit(): void {
+    if (this.form.valid) {
+      this.createCommonProjectService.createProject(this.form, formData['0'] as DataField[], "COMMON").subscribe(() => {
+        this.validationSuccess = true;
+        this.uploadMessage = 'Projekt bol úspešne vytvorený';
+      }, () => {
+        this.validationSuccess = false;
+        this.uploadMessage = 'Projekt sa nepodarilo vytvoriť, skúste neskôr';
+      });
+    } else {
+      this.validationSuccess = false;
+      this.uploadMessage = 'Niektoré polia niesú správne vyplnené';
+    }
     this.submitted = true;
-    this.createCommonProjectService.createProject(this.form, formData['0'] as DataField[]);
+
   }
 
   public getFormGroup(id: string): DataField[] {

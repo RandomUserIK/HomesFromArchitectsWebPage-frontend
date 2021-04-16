@@ -34,7 +34,7 @@ export class FormDynamicGalleryComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
           (this.form.get(this.dataField.formControlName) as FormArray)
-            .push(this.fb.control({path: event.target.files[0]})); // NOSONAR
+            .push(this.fb.control(event.target.files[0])); // NOSONAR
           this.galleryPreviews.push(fileReaderEvent.target.result);
         };
       }

@@ -22,7 +22,7 @@ export class CreateCommonProjectService {
   constructor(private httpClient: HttpClient, private fileService: FileService, private projectService: ProjectsService) {
   }
 
-  public createProject(form: FormGroup, formConfig: DataField[]): void {
+  public createProject(form: FormGroup, formConfig: DataField[], category: string): Observable<any> {
     const photoFiles: PhotoFile[] = [];
 
     formConfig.forEach(dataField => {
@@ -33,6 +33,7 @@ export class CreateCommonProjectService {
           break;
         case 'dynamicPhotoGallery':
           form.get(dataField.formControlName).value.forEach(photoFromGallery => {
+            console.log(photoFromGallery)
             photoFiles.push({type: dataField.imgType, value: photoFromGallery});
           });
           break;
@@ -42,10 +43,10 @@ export class CreateCommonProjectService {
         default:
           this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value?.toString();
           break;
-
       }
     });
-    this.sendProject(photoFiles);
+    this.requestEntity.category = category;
+    return this.sendProject(photoFiles);
   }
 
   private sendProject(photoFiles: PhotoFile[]): Observable<any> {
@@ -59,6 +60,8 @@ export class CreateCommonProjectService {
 
   private createPhotoFileObservables(photoFiles: PhotoFile[], projectId: number): Observable<string>[] {
     const photoFileObservables = [];
+
+    console.log(photoFiles);
 
     photoFiles.forEach(photoFile => {
       photoFileObservables.push(this.fileService.postFile(photoFile.value, projectId, photoFile.type));
