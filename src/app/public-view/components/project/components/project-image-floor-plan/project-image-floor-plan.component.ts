@@ -7,6 +7,6 @@ import {Component, Input} from '@angular/core';
 })
 export class ProjectImageFloorPlanComponent {
 
-  @Input() floorPlanImagePath: string;
+  @Input() floorPlanImages: Array<string>;
 
 }
