@@ -14,6 +14,7 @@ import {AdminFormsModule} from './admin-forms/admin-forms.module';
 import {CreateCommonProjectComponent} from './admin-forms/create-common-project/create-common-project.component';
 
 const routes: Routes = [
+  // TODO add auth guard and place route to right place
   {
     path: 'vytvor',
     component: CreateCommonProjectComponent,

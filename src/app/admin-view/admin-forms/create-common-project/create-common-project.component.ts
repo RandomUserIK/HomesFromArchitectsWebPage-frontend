@@ -5,6 +5,7 @@ import {CreateCommonProjectService} from '../services/create-common-project.serv
 import {FormField} from '../../../components/form-fields/models/form-data';
 import formData from '../resources/test.json';
 import {DataField} from '../../../components/form-fields/models/data-field';
+import {Data} from '@angular/router';
 
 
 
@@ -25,20 +26,9 @@ export class CreateCommonProjectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      textFields: new FormGroup({})
-    });
-    for (const [formGroupName, formControls] of Object.entries(formData)) {
-      const subForm = this.fb.group({});
-      for (const formControl of formControls) {
-        subForm.setControl(formControl.formControlName, new FormControl())
-      }
-    }
+    this.form = this.fb.group({});
   }
 
-  get formControls(): { [p: string]: AbstractControl } {
-    return this.form.controls;
-  }
 
   // TODO:Tu bude redirect s info hlaskou
   submit() {
@@ -55,34 +45,11 @@ export class CreateCommonProjectComponent implements OnInit {
     //   this.uploadMessage = 'Niektoré polia niesú správne vyplnené';
     // }
     this.submitted = true;
-    console.log(this.form.value);
-  }
-
-  public formInitialized(name: string, form: FormGroup) {
-    this.form.setControl(name, form);
+    this.createCommonProjectService.createProject(this.form, formData['0'] as DataField[]);
   }
 
   public getFormGroup(id: string): DataField[] {
     return formData[id];
-  }
-
-  private initFormControls() {
-
-
-    // this.form = this.fb.group({});
-    // this.formData.forEach(control => {
-    //     this.form.addControl(
-    //       control.formControlName,
-    //       this.fb.array([], [Validators.minLength(1), Validators.required])
-    //     );
-    //   }
-    // );
-    //
-    // const formControls: { [key: string]: AbstractControl } = {};
-    // for (const filter of formData['0']) {
-    //   formControls[filter.formControlName] = new FormControl();
-    // }
-    // this.createProjectForm.setControl(formControls);
   }
 
 }

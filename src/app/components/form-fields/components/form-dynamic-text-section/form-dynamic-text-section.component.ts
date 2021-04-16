@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DataField} from '../../models/data-field';
 
 @Component({
   selector: 'app-form-dynamic-text-section',
@@ -8,18 +9,19 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class FormDynamicTextSectionComponent implements OnInit {
 
-  @Output() formReady = new EventEmitter<FormGroup>();
-  @Input() submitted: boolean;
-  public form: FormGroup;
+  @Input() form: FormGroup;
+  @Input() dataField: DataField;
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      textSections: this.fb.array([], [Validators.minLength(1), Validators.required])
-    });
-    this.formReady.emit(this.form);
+    this.form.setControl(
+          this.dataField.formControlName,
+          this.fb.array(
+            [],
+            [Validators.minLength(1)]),
+      );
   }
 
   private createTextSection(): FormGroup {
@@ -30,15 +32,15 @@ export class FormDynamicTextSectionComponent implements OnInit {
   }
 
   public addNewTextSection(): void {
-    (this.form.get('textSections') as FormArray).push(this.createTextSection()); // NOSONAR
+    (this.form.get(this.dataField.formControlName) as FormArray).push(this.createTextSection()); // NOSONAR
   }
 
   public getFormGroups(): FormGroup[] {
-    return (this.form.get('textSections') as FormArray).controls as FormGroup[]; // NOSONAR
+    return (this.form.get(this.dataField.formControlName) as FormArray).controls as FormGroup[]; // NOSONAR
   }
 
   public deleteNewTextSection(index: number): void {
-    (this.form.get('textSections') as FormArray).removeAt(index); // NOSONAR
+    (this.form.get(this.dataField.formControlName) as FormArray).removeAt(index); // NOSONAR
   }
 
 }

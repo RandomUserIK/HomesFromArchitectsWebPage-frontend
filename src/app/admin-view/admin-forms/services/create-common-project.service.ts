@@ -6,24 +6,31 @@ import {FileService} from '../../services/file-service';
 import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
 import {ProjectsService} from '../../../services/projects-service';
+import {DataField} from '../../../components/form-fields/models/data-field';
 
 @Injectable()
 export class CreateCommonProjectService {
 
-  private requestEntity = {} as ProjectData;
+  private requestEntity: ProjectData = {};
 
   constructor(private httpClient: HttpClient, private fileService: FileService, private projectService: ProjectsService) {
   }
 
-  public createProject(form: FormGroup, category: string): Observable<any> {
-    ['child_form_group', 'child_form_enumeration_group', 'child_dynamic_text_areas_group'].forEach(value => {
-      this.createRequestFormFromBasicControls(form.value[value], false);
+  public createProject(form: FormGroup, formConfig: DataField[]): void {
+
+
+
+    formConfig.forEach(dataField => {
+      if (dataField.type == 'file') {
+        return;
+      }
+      if (dataField.type == 'dynamicTextSection') {
+        this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value
+      } else {
+        this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value?.toString();
+      }
     });
-    ['child_form_multichoice_group'].forEach(value => {
-      this.createRequestFormFromBasicControls(form.value[value], true);
-    });
-    this.requestEntity.category = category;
-    return this.sendProject(form);
+    console.log(this.requestEntity);
   }
 
   private sendProject(form: FormGroup): Observable<any> {
@@ -44,12 +51,6 @@ export class CreateCommonProjectService {
       photoList.push(this.fileService.postFile(photoFromGallery.path, projectId, 'imagePaths'));
     });
     return photoList;
-  }
-
-  public createRequestFormFromBasicControls(formGroup: any, isValueArray: boolean) {
-    for (const [k, v] of Object.entries(formGroup)) {
-      this.requestEntity[k] = (isValueArray) ? v.toString() : v;
-    }
   }
 
 }

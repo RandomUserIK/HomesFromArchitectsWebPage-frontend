@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataField} from '../../models/data-field';
-import {FormArray, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-multichoice-field',
@@ -13,7 +13,9 @@ export class MultichoiceFieldComponent implements OnInit {
   @Input() form: FormGroup;
 
   ngOnInit(): void {
-    this.form.setControl(this.dataField.formControlName, new FormControl());
+    this.form.setControl(
+      this.dataField.formControlName,
+      new FormArray([], [Validators.minLength(1)]));
   }
 
   onCheckChange(event, formControlName: string): void {

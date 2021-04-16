@@ -152,6 +152,12 @@
       "label": " Vyberte fotku pôdorysu...",
       "fullWidth": false,
       "imageTitle": "Fotka pôdorysu "
+    },
+    {
+      "formControlName": "textSection",
+      "type": "dynamicTextSection",
+      "label": " Textové sekcie",
+      "fullWidth": true
     }
   ]
 }
