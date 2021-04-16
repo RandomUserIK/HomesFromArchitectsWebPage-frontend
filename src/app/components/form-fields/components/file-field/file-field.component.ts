@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataField} from '../../models/data-field';
 import {FormControl, FormGroup} from '@angular/forms';
-import {FormFileData} from '../../models/form-data';
 import {FileUploadValidationService} from '../services/file-upload-validation.service';
 
 @Component({

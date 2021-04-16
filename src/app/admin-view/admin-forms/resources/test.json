@@ -142,6 +142,7 @@
     {
       "formControlName": "titleImage",
       "type": "file",
+      "imgType": "titleImage",
       "label": "Vyberte titulnú fotku...",
       "fullWidth": false,
       "imageTitle": "Titulná fotka"
@@ -149,6 +150,7 @@
     {
       "formControlName": "floorPlanImage",
       "type": "file",
+      "imgType": "floorPlanImage",
       "label": " Vyberte fotku pôdorysu...",
       "fullWidth": false,
       "imageTitle": "Fotka pôdorysu "
@@ -157,6 +159,13 @@
       "formControlName": "textSection",
       "type": "dynamicTextSection",
       "label": " Textové sekcie",
+      "fullWidth": true
+    },
+    {
+      "formControlName": "dynamicPhotoGallery",
+      "type": "dynamicPhotoGallery",
+      "imgType": "imagePaths",
+      "label": "Galéria",
       "fullWidth": true
     }
   ]

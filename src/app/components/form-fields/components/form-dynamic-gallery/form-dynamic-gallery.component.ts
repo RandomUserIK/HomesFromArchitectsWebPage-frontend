@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FileUploadValidationService} from '../services/file-upload-validation.service';
-// import {FormValidationService} from '../services/form-validation.service';
+import {DataField} from '../../models/data-field';
 
 @Component({
   selector: 'app-form-dynamic-gallery',
@@ -10,20 +10,19 @@ import {FileUploadValidationService} from '../services/file-upload-validation.se
 })
 export class FormDynamicGalleryComponent implements OnInit {
 
-  @Output() formReady = new EventEmitter<FormGroup>();
-  @Input() submitted: boolean;
-  public errorMessage = '';
-  public form: FormGroup;
+
+  @Input() dataField: DataField;
+  @Input() form: FormGroup;
   public galleryPreviews: Array<string | ArrayBuffer> = [];
+  public errorMessage = '';
 
   constructor(private fb: FormBuilder, private fileUploadValidationService: FileUploadValidationService) {
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      photoGallery: this.fb.array([], [Validators.minLength(1), Validators.required])
-    });
-    this.formReady.emit(this.form);
+    this.form.setControl(
+      this.dataField.formControlName,
+      this.fb.array([], [Validators.minLength(1)]));
   }
 
   public handleFileInput(event: any): void {
@@ -34,7 +33,8 @@ export class FormDynamicGalleryComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
-          (this.form.get('photoGallery') as FormArray).push(this.fb.control({path: event.target.files[0]})); // NOSONAR
+          (this.form.get(this.dataField.formControlName) as FormArray)
+            .push(this.fb.control({path: event.target.files[0]})); // NOSONAR
           this.galleryPreviews.push(fileReaderEvent.target.result);
         };
       }
@@ -42,7 +42,7 @@ export class FormDynamicGalleryComponent implements OnInit {
   }
 
   public deletePhotoFromGallery(index: number): void {
-    (this.form.get('photoGallery') as FormArray).removeAt(index); // NOSONAR
+    (this.form.get(this.dataField.formControlName) as FormArray).removeAt(index); // NOSONAR
     this.galleryPreviews.splice(index, 1);
   }
 

@@ -12,7 +12,10 @@
   <app-file-field *ngSwitchCase="'file'" [form]="form" [dataField]="dataField">
   </app-file-field>
 
-  <app-form-dynamic-text-section *ngSwitchCase="'dynamicTextSection'" [form]="form" [dataField]="dataField">
-  </app-form-dynamic-text-section>
+  <app-dynamic-text-section-field *ngSwitchCase="'dynamicTextSection'" [form]="form" [dataField]="dataField">
+  </app-dynamic-text-section-field>
+
+  <app-form-dynamic-gallery *ngSwitchCase="'dynamicPhotoGallery'" [form]="form" [dataField]="dataField">
+  </app-form-dynamic-gallery>
 
 </ng-container>

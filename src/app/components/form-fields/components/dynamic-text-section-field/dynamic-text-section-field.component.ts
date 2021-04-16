@@ -3,11 +3,11 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DataField} from '../../models/data-field';
 
 @Component({
-  selector: 'app-form-dynamic-text-section',
-  templateUrl: './form-dynamic-text-section.component.html',
-  styleUrls: ['./form-dynamic-text-section.component.scss']
+  selector: 'app-dynamic-text-section-field',
+  templateUrl: './dynamic-text-section-field.component.html',
+  styleUrls: ['./dynamic-text-section-field.component.scss']
 })
-export class FormDynamicTextSectionComponent implements OnInit {
+export class DynamicTextSectionFieldComponent implements OnInit {
 
   @Input() form: FormGroup;
   @Input() dataField: DataField;

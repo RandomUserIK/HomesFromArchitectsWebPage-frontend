@@ -6,7 +6,13 @@ import {FileService} from '../../services/file-service';
 import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
 import {ProjectsService} from '../../../services/projects-service';
-import {DataField} from '../../../components/form-fields/models/data-field';
+import {DataField, PhotoType} from '../../../components/form-fields/models/data-field';
+
+interface PhotoFile {
+  type: PhotoType;
+  value: File;
+}
+
 
 @Injectable()
 export class CreateCommonProjectService {
@@ -17,40 +23,48 @@ export class CreateCommonProjectService {
   }
 
   public createProject(form: FormGroup, formConfig: DataField[]): void {
-
-
+    const photoFiles: PhotoFile[] = [];
 
     formConfig.forEach(dataField => {
-      if (dataField.type == 'file') {
-        return;
-      }
-      if (dataField.type == 'dynamicTextSection') {
-        this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value
-      } else {
-        this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value?.toString();
+
+      switch (dataField.type) {
+        case 'file':
+          photoFiles.push({type: dataField.imgType, value: form.get(dataField.formControlName).value});
+          break;
+        case 'dynamicPhotoGallery':
+          form.get(dataField.formControlName).value.forEach(photoFromGallery => {
+            photoFiles.push({type: dataField.imgType, value: photoFromGallery});
+          });
+          break;
+        case 'dynamicTextSection':
+          this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value;
+          break;
+        default:
+          this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value?.toString();
+          break;
+
       }
     });
-    console.log(this.requestEntity);
+    this.sendProject(photoFiles);
   }
 
-  private sendProject(form: FormGroup): Observable<any> {
+  private sendProject(photoFiles: PhotoFile[]): Observable<any> {
     return this.projectService.createProject(this.requestEntity)
       .pipe(
         exhaustMap(
-          (project) =>
-            forkJoin(this.createPhotoObservableArray(form, project))
+          (projectId) =>
+            forkJoin(this.createPhotoFileObservables(photoFiles, projectId.id))
         ));
   }
 
-  private createPhotoObservableArray(form: FormGroup, project: ProjectData): Observable<string>[] {
-    const photoList = [];
-    const projectId = project.id
-    photoList.push(this.fileService.postFile(form.value.child_form_file_group.titleImage, projectId, 'titleImage'));
-    photoList.push(this.fileService.postFile(form.value.child_form_file_group.floorPlanImage, projectId, 'floorPlanImage'));
-    form.value.child_dynamic_photo_galery_group.photoGallery.forEach(photoFromGallery => {
-      photoList.push(this.fileService.postFile(photoFromGallery.path, projectId, 'imagePaths'));
+  private createPhotoFileObservables(photoFiles: PhotoFile[], projectId: number): Observable<string>[] {
+    const photoFileObservables = [];
+
+    photoFiles.forEach(photoFile => {
+      photoFileObservables.push(this.fileService.postFile(photoFile.value, projectId, photoFile.type));
     });
-    return photoList;
+
+    return photoFileObservables;
   }
 
 }

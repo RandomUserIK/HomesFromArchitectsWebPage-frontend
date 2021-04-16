@@ -5,6 +5,9 @@ export interface DataField {
   fullWidth: boolean;
   placeholder: string;
   imgSrc?: string | ArrayBuffer;
+  imgType?: PhotoType;
   imageTitle?: string;
   values?: Array<string>;
 }
+
+export type PhotoType = 'titleImage' | 'floorPlanImage' | 'imagePaths';

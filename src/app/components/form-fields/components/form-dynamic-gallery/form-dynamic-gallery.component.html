@@ -1,3 +1,9 @@
+<span class="title-text">{{dataField.label}}</span>
+
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+
 <div class="row" [formGroup]="form">
   <div class="col-md-4 p-2" *ngFor="let galleryPhoto of galleryPreviews; let index = index;">
     <div class="item">
@@ -9,18 +15,10 @@
   </div>
 </div>
 
-<div class="row">
-  <div [ngClass]="{
-      'col-md-12 form-group mb-3 mt-lg-4': true,
-      'apply-validation': submitted && form.invalid
-    }">
-    <input  type="file" class="custom-file-input" id="galeryPhotoInput" aria-describedby="fileHelp"
-           (change)="handleFileInput($event)">
-    <label class="custom-file-label" for="galeryPhotoInput">
-      Vyberte fotku do galérie ...
-    </label>
-  </div>
-  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-    {{errorMessage}}
-  </div>
+<div class="col-md-12 form-group mb-3 mt-lg-4">
+  <input type="file" class="custom-file-input" [id]="dataField.formControlName" aria-describedby="fileHelp"
+         (change)="handleFileInput($event)">
+  <label class="custom-file-label" [for]="dataField.formControlName">
+    Vyberte fotku do galérie ...
+  </label>
 </div>
