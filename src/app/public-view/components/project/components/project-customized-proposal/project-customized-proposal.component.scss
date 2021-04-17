@@ -1,23 +1,20 @@
 .row-content {
-  //height: 23rem;
   background-color: #b6e8e3;
   justify-content: center;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
 .proposal-first-text {
   color: white;
   background-color: black;
   font-size: 150%;
-  position: relative;
-  top: 20%;
 }
 
 .proposal-second-text {
   font-weight: bold;
   background-color: #ffbe00;
   font-size: 220%;
-  position: relative;
-  top: 23%;
 }
 
 .proposal-third-text a {
@@ -25,10 +22,24 @@
   color: black;
   text-decoration: underline;
   font-size: 150%;
-  position: relative;
-  top: 30%;
 }
 
-.custom-idea-icon {
-  margin-top: 15%;
+.custom-idea-text-container {
+  text-align: left;
 }
+
+.custom-idea-icon-container {
+  text-align: left;
+}
+
+@media (max-width: 991px) {
+  .custom-idea-icon-container {
+    margin-top: 7%;
+    text-align: center;
+  }
+
+  .custom-idea-text-container {
+    text-align: center;
+  }
+}
+

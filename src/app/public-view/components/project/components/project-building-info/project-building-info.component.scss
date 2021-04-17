@@ -1,7 +1,7 @@
 @import 'src/app/public-view/components/project/project.component';
 
 .info-text {
-  font-size: 125%;
+  font-size: 150%;
   color: gray;
 }
 
@@ -17,15 +17,23 @@
 }
 
 .info-heating-title {
-  font-size: 125%;
+  font-size: 135%;
   font-weight: bold;
   display: block;
 }
 
 .info-heating-value {
-  font-size: 125%;
+  font-size: 135%;
   color: gray;
   display: block;
+}
+
+.info-text-container {
+  padding: 0.1rem;
+}
+
+.info-value-container {
+  padding: 0.1rem;
 }
 
 @media (max-width: 991px) {
