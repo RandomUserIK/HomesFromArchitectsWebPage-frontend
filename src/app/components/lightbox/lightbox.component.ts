@@ -10,6 +10,8 @@ export class LightboxComponent implements OnInit {
 
   @Input() imagePaths: Array<string>;
   @Input() dataInterval: number;
+  @Input() pauseOnFocus: boolean;
+  @Input() pauseOnHover: boolean
 
   lightBoxImages: Array<IAlbum> = [];
 

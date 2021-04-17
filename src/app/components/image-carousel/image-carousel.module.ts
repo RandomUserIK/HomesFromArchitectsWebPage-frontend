@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {ImageCarouselComponent} from './image-carousel.component';
 
 @NgModule({
@@ -7,7 +8,8 @@ import {ImageCarouselComponent} from './image-carousel.component';
     ImageCarouselComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgbCarouselModule
   ],
   exports: [
     ImageCarouselComponent

@@ -11,6 +11,7 @@ import {HomeInteriorDescriptionComponent} from './components/home-interior-descr
 import {HomeComponent} from './home.component';
 import {instagramSearchInjectables} from './services/Instagram-search-injectables';
 import {InstagramSearchService} from './services/instagram-search.service';
+import { HomeImageCarouselComponent } from './components/home-image-carousel/home-image-carousel.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {InstagramSearchService} from './services/instagram-search.service';
     HomeInteriorDescriptionComponent,
     HomeIndividualProjectDescriptionComponent,
     HomeInstagramGalleryComponent,
+    HomeImageCarouselComponent,
   ],
   exports: [
     HomeComponent

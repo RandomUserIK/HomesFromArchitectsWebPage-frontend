@@ -18,11 +18,10 @@
   font-size: 115%;
 }
 
-.interior-image {
-  height: 21em;
-}
-
-.row .col-md-7 .carousel-inner .carousel-item > img {
-  -webkit-animation: none !important;
-  animation: none !important;
+.image-animation {
+  width: 100%;
+  height: 40vh;
+  // TODO:
+  -webkit-animation: none;
+  animation: none;
 }

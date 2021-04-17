@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {NgbCarouselModule} from "@ng-bootstrap/ng-bootstrap";
 import {ImageCarouselModule} from '../../../components/image-carousel/image-carousel.module';
 import {LightboxModule} from '../../../components/lightbox/lightbox.module';
 import {ProjectBuildingInfoComponent} from './components/project-building-info/project-building-info.component';
@@ -38,7 +39,8 @@ import {ProjectComponent} from './project.component';
   imports: [
     CommonModule,
     LightboxModule,
-    ImageCarouselModule
+    ImageCarouselModule,
+    NgbCarouselModule
   ]
 })
 export class ProjectModule {

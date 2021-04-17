@@ -5,5 +5,4 @@ import {Component} from '@angular/core';
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  carouselItems = ['slide1.png', 'slide2.png'];
 }
