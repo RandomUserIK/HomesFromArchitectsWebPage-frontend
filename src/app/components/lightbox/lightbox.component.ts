@@ -3,8 +3,7 @@ import {IAlbum, Lightbox, LightboxConfig} from 'ngx-lightbox';
 
 @Component({
   selector: 'app-lightbox',
-  templateUrl: './lightbox.component.html',
-  styleUrls: ['./lightbox.component.scss']
+  templateUrl: './lightbox.component.html'
 })
 export class LightboxComponent implements OnInit {
 
