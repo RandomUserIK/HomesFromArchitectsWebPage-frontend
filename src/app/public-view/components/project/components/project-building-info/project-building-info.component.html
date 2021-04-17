@@ -6,12 +6,20 @@
     <table class="table table-borderless">
       <tbody>
         <tr>
-          <td class="info-text-container info-text">obytné miestnosti</td>
+          <td class="info-text-container">
+            <ul>
+              <li><span class="info-text">obytné miestnosti</span></li>
+            </ul>
+          </td>
           <td class="info-value-container info-text">{{project.rooms}}</td>
         </tr>
 
         <tr>
-          <td class="info-text-container info-text">zastavaná plocha</td>
+          <td class="info-text-container">
+            <ul>
+              <li><span class="info-text">zastavaná plocha</span></li>
+            </ul>
+          </td>
           <td class="info-value-container">
             <span class="info-text">{{project.builtUpArea | number: '3.2': 'sk'}}</span>
             <span class="info-unit">&#13217;</span>
@@ -19,7 +27,11 @@
         </tr>
 
         <tr>
-          <td class="info-text-container info-text">celková úžitková plocha</td>
+          <td class="info-text-container">
+            <ul>
+              <li><span class="info-text">celková úžitková plocha</span></li>
+            </ul>
+          </td>
           <td class="info-value-container">
             <span class="info-text">{{project.grossArea | number: '3.2': 'sk'}}</span>
             <span class="info-unit">&#13217;</span>
@@ -27,7 +39,11 @@
         </tr>
 
         <tr>
-          <td class="info-text-container info-text">celková obytná plocha</td>
+          <td class="info-text-container">
+            <ul>
+              <li><span class="info-text">celková obytná plocha</span></li>
+            </ul>
+          </td>
           <td class="info-value-container">
             <span class="info-text">{{project.totalLivingArea | number: '3.2': 'sk'}}</span>
             <span class="info-unit">&#13217;</span>
@@ -35,7 +51,11 @@
         </tr>
 
         <tr>
-          <td class="info-text-container info-text">sklon strechy</td>
+          <td class="info-text-container">
+            <ul>
+              <li><span class="info-text">sklon strechy</span></li>
+            </ul>
+          </td>
           <td class="info-value-container">
             <span class="info-text">{{project.angleOfRoof | number: '1.1': 'sk'}} </span>
             <span class="info-unit">%</span>
@@ -43,7 +63,11 @@
         </tr>
 
         <tr>
-          <td class="info-text-container info-text">minimálna šírka pozemku</td>
+          <td class="info-text-container">
+            <ul>
+              <li><span class="info-text">minimálna šírka pozemku</span></li>
+            </ul>
+          </td>
           <td class="info-value-container">
             <span class="info-text">{{project.minimumParcelWidth | number: '2.0': 'sk'}}</span>
             <span class="info-unit">m</span>
