@@ -1,13 +1,14 @@
+import {DataFieldType} from './data-field-type.enum';
+import {ImageType} from './image-type.enum';
+
 export interface DataField {
   formControlName: string;
   label: string;
-  type: string;
+  type: DataFieldType;
   fullWidth: boolean;
-  placeholder: string;
+  placeholder?: string;
   imgSrc?: string | ArrayBuffer;
-  imgType?: PhotoType;
+  imgType?: ImageType;
   imageTitle?: string;
   values?: Array<string>;
 }
-
-export type PhotoType = 'titleImage' | 'floorPlanImage' | 'imagePaths';

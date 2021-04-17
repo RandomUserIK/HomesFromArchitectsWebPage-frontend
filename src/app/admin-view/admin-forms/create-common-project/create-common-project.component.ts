@@ -2,14 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {CreateCommonProjectService} from '../services/create-common-project.service';
-import formData from '../resources/test.json';
 import {DataField} from '../../../components/form-fields/models/data-field';
+import {COMMON_PROJECT_DATA_FIELDS} from '../resources/common-project-data-fields';
 
 
 @Component({
   selector: 'app-create-project',
   templateUrl: './create-common-project.component.html',
-  styleUrls: ['./create-common-project.component.scss']
+  styleUrls: ['./create-common-project.component.scss'],
+  // providers: [{provide: COMMON_PROJECT_DATA_FIELDS, useValue: COMMON_PROJECT_DATA_FIELDS}]
 })
 export class CreateCommonProjectComponent implements OnInit {
   public form: FormGroup;
@@ -17,7 +18,8 @@ export class CreateCommonProjectComponent implements OnInit {
   public uploadMessage = '';
   public submitted = false;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+              private fb: FormBuilder,
               private httpClient: HttpClient,
               private createCommonProjectService: CreateCommonProjectService) {
   }
@@ -30,7 +32,7 @@ export class CreateCommonProjectComponent implements OnInit {
   // TODO:Tu bude redirect s info hlaskou
   public submit(): void {
     if (this.form.valid) {
-      this.createCommonProjectService.createProject(this.form, formData['0'] as DataField[], "COMMON").subscribe(() => {
+      this.createCommonProjectService.createProject(this.form, COMMON_PROJECT_DATA_FIELDS['0'], "COMMON").subscribe(() => {
         this.validationSuccess = true;
         this.uploadMessage = 'Projekt bol úspešne vytvorený';
       }, () => {
@@ -46,7 +48,7 @@ export class CreateCommonProjectComponent implements OnInit {
   }
 
   public getFormGroup(id: string): DataField[] {
-    return formData[id];
+    return COMMON_PROJECT_DATA_FIELDS[id];
   }
 
 }

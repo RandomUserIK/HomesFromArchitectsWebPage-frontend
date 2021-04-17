@@ -1,21 +1,21 @@
 <ng-container [ngSwitch]="dataField.type">
 
-  <app-primitive-type-field *ngSwitchCase="'text'" [form]="form" [dataField]="dataField">
+  <app-primitive-type-field *ngSwitchCase="dataFieldType.TEXT" [form]="form" [dataField]="dataField">
   </app-primitive-type-field>
 
-  <app-enumeration-field *ngSwitchCase="'enumeration'" [form]="form" [dataField]="dataField">
+  <app-enumeration-field *ngSwitchCase="dataFieldType.ENUMERATION" [form]="form" [dataField]="dataField">
   </app-enumeration-field>
 
-  <app-multichoice-field *ngSwitchCase="'multichoice'" [form]="form" [dataField]="dataField">
+  <app-multichoice-field *ngSwitchCase="dataFieldType.MULTICHOICE" [form]="form" [dataField]="dataField">
   </app-multichoice-field>
 
-  <app-file-field *ngSwitchCase="'file'" [form]="form" [dataField]="dataField">
+  <app-file-field *ngSwitchCase="dataFieldType.FILE" [form]="form" [dataField]="dataField">
   </app-file-field>
 
-  <app-dynamic-text-section-field *ngSwitchCase="'dynamicTextSection'" [form]="form" [dataField]="dataField">
+  <app-dynamic-text-section-field *ngSwitchCase="dataFieldType.DYNAMIC_TEXT_SECTION" [form]="form" [dataField]="dataField">
   </app-dynamic-text-section-field>
 
-  <app-form-dynamic-gallery *ngSwitchCase="'dynamicPhotoGallery'" [form]="form" [dataField]="dataField">
+  <app-form-dynamic-gallery *ngSwitchCase="dataFieldType.DYNAMIC_PHOTO_GALLERY" [form]="form" [dataField]="dataField">
   </app-form-dynamic-gallery>
 
 </ng-container>

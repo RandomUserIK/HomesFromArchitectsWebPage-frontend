@@ -6,10 +6,12 @@ import {FileService} from '../../services/file-service';
 import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
 import {ProjectsService} from '../../../services/projects-service';
-import {DataField, PhotoType} from '../../../components/form-fields/models/data-field';
+import {DataField} from '../../../components/form-fields/models/data-field';
+import {DataFieldType} from '../../../components/form-fields/models/data-field-type.enum';
+import {ImageType} from '../../../components/form-fields/models/image-type.enum';
 
 interface PhotoFile {
-  type: PhotoType;
+  type: ImageType;
   value: File;
 }
 
@@ -28,16 +30,16 @@ export class CreateCommonProjectService {
     formConfig.forEach(dataField => {
 
       switch (dataField.type) {
-        case 'file':
+        case DataFieldType.FILE:
           photoFiles.push({type: dataField.imgType, value: form.get(dataField.formControlName).value});
           break;
-        case 'dynamicPhotoGallery':
+        case DataFieldType.DYNAMIC_PHOTO_GALLERY:
           form.get(dataField.formControlName).value.forEach(photoFromGallery => {
             console.log(photoFromGallery)
             photoFiles.push({type: dataField.imgType, value: photoFromGallery});
           });
           break;
-        case 'dynamicTextSection':
+        case DataFieldType.DYNAMIC_TEXT_SECTION:
           this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value;
           break;
         default:
@@ -60,11 +62,8 @@ export class CreateCommonProjectService {
 
   private createPhotoFileObservables(photoFiles: PhotoFile[], projectId: number): Observable<string>[] {
     const photoFileObservables = [];
-
-    console.log(photoFiles);
-
     photoFiles.forEach(photoFile => {
-      photoFileObservables.push(this.fileService.postFile(photoFile.value, projectId, photoFile.type));
+      photoFileObservables.push(this.fileService.postFile(photoFile.value, projectId, photoFile.type.toString()));
     });
 
     return photoFileObservables;
