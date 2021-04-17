@@ -1,5 +1,26 @@
 @import 'src/app/public-view/components/project/project.component';
 
-.comparison-section {
+.comparison-container {
   background-color: #ffbe00;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.changes-questions-section {
+  font-size: 200%;
+
+}
+
+.changes-text-section {
+  font-size: 125%;
+}
+
+@media (max-width: 991px) {
+  .changes-first-text {
+    margin-top: 5%;
+  }
+
+  .changes-second-text {
+    margin-top: 0.3%;
+  }
 }
