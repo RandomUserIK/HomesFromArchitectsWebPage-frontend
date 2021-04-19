@@ -34,8 +34,7 @@ export class DynamicGalleryFieldComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
-          (this.form.get(this.dataField.formControlName) as FormArray)
-            .push(this.fb.control(event.target.files[0])); // NOSONAR
+          (this.form.get(this.dataField.formControlName) as FormArray).push(this.fb.control(event.target.files[0])); // NOSONAR
           this.galleryPreviews.push(fileReaderEvent.target.result);
         };
       }

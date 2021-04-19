@@ -5,8 +5,7 @@ import {DataFieldType} from '../../models/data-field-type.enum';
 
 @Component({
   selector: 'app-data-field-resolver',
-  templateUrl: './data-field-resolver.component.html',
-  styleUrls: ['./data-field-resolver.component.scss']
+  templateUrl: './data-field-resolver.component.html'
 })
 export class DataFieldResolverComponent {
 

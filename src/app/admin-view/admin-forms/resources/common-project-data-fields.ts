@@ -14,6 +14,7 @@ export const COMMON_PROJECT_DATA_FIELDS_CONFIG = new InjectionToken<DataGroupMap
   }
 );
 
+// @SONAR_STOP@
 const COMMON_PROJECT_DATA_FIELDS: DataGroupMap = {
   commonProjectDataGroup: [
     {
@@ -198,3 +199,4 @@ const COMMON_PROJECT_DATA_FIELDS: DataGroupMap = {
     }
   ]
 }
+// @SONAR_START@

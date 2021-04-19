@@ -5,8 +5,7 @@ import {FileUploadValidationService} from '../../services/file-upload-validation
 
 @Component({
   selector: 'app-file-field',
-  templateUrl: './file-field.component.html',
-  styleUrls: ['./file-field.component.scss']
+  templateUrl: './file-field.component.html'
 })
 export class FileFieldComponent implements OnInit {
 

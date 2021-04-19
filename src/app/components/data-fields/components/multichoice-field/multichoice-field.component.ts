@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataField} from '../../models/data-field';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-multichoice-field',
-  templateUrl: './multichoice-field.component.html',
-  styleUrls: ['./multichoice-field.component.scss']
+  templateUrl: './multichoice-field.component.html'
 })
 export class MultichoiceFieldComponent implements OnInit {
 
