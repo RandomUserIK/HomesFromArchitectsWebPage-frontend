@@ -4,7 +4,6 @@ import {DataGroupMap} from '../../../components/data-fields/models/data-group-ma
 import {ImageType} from '../../../components/data-fields/models/image-type.enum';
 import {Validators} from '@angular/forms';
 
-
 export const COMMON_PROJECT_DATA_FIELDS_CONFIG = new InjectionToken<DataGroupMap>(
   'Common project data fields',
   {
