@@ -20,7 +20,7 @@ export class DynamicTextSectionFieldComponent implements OnInit {
           this.dataField.formControlName,
           this.fb.array(
             [],
-            [Validators.minLength(1)]),
+            [Validators.required]),
       );
   }
 

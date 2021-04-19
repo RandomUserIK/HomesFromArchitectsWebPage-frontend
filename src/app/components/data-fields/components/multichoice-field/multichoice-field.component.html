@@ -11,4 +11,7 @@
            class="custom-control-input">
     <label class="custom-control-label" [for]="value">{{value}}</label>
   </div>
+  <div *ngIf="form.get(dataField.formControlName).invalid && touched" class="text-danger">
+    Povinný údaj
+  </div>
 </ng-container>

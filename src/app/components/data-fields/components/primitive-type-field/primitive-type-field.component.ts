@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DataField} from '../../models/data-field';
 
@@ -14,7 +14,7 @@ export class PrimitiveTypeFieldComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.form.setControl(this.dataField.formControlName, new FormControl());
+    this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
   }
 
 }

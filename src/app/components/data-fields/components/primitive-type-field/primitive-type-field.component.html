@@ -6,5 +6,8 @@
       [type]="dataField.type"
       formControlName="{{dataField.formControlName}}"
       [placeholder]="dataField.placeholder">
+    <div *ngIf="form.get(dataField.formControlName).invalid && form.get(dataField.formControlName).touched" class="text-danger">
+      Povinný údaj
+    </div>
   </div>
 </ng-container>

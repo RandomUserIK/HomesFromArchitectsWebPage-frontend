@@ -1,20 +1,22 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FileUploadValidationService} from '../services/file-upload-validation.service';
+import {FileUploadValidationService} from '../../services/file-upload-validation.service';
 import {DataField} from '../../models/data-field';
+import set = Reflect.set;
 
 @Component({
   selector: 'app-form-dynamic-gallery',
-  templateUrl: './form-dynamic-gallery.component.html',
-  styleUrls: ['./form-dynamic-gallery.component.scss']
+  templateUrl: './dynamic-gallery-field.component.html',
+  styleUrls: ['./dynamic-gallery-field.component.scss']
 })
-export class FormDynamicGalleryComponent implements OnInit {
+export class DynamicGalleryFieldComponent implements OnInit {
 
 
   @Input() dataField: DataField;
   @Input() form: FormGroup;
   public galleryPreviews: Array<string | ArrayBuffer> = [];
   public errorMessage = '';
+  public touched = false;
 
   constructor(private fb: FormBuilder, private fileUploadValidationService: FileUploadValidationService) {
   }
@@ -22,7 +24,7 @@ export class FormDynamicGalleryComponent implements OnInit {
   ngOnInit(): void {
     this.form.setControl(
       this.dataField.formControlName,
-      this.fb.array([], [Validators.minLength(1)]));
+      this.fb.array([], this.dataField.validator));
   }
 
   public handleFileInput(event: any): void {

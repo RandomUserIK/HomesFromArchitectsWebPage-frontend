@@ -1,18 +1,24 @@
 <div class="container content">
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="title-text mb-5 text-center">Katalógový projekt</div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="row">
-      <div *ngFor="let dataField of getFormGroup('0')" [class.col-md-6]="!dataField.fullWidth" [class.col-md-12]="dataField.fullWidth">
+      <div *ngFor="let dataField of getFormGroup('commonProjectDataGroup')"
+           [class.col-md-6]="!dataField.fullWidth"
+           [class.col-md-12]="dataField.fullWidth"
+           class="mb-2">
         <app-data-field-resolver
           [dataField]="dataField"
           [form]="form">
         </app-data-field-resolver>
       </div>
-    </div>
-
-    <div class="row mt-lg-4">
-      <button type="submit" class="btn btn-primary col-xs-12" [disabled]="validationSuccess">
-        <em class="bi bi-plus-square"></em> Vytvoriť projekt
-      </button>
+      <div class="col-12">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="!isFormValid() || loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Vytvoriť projekt
+        </button>
+      </div>
     </div>
   </form>
 </div>

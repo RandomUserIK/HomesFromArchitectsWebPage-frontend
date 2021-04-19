@@ -11,11 +11,15 @@ export class MultichoiceFieldComponent implements OnInit {
 
   @Input() dataField: DataField;
   @Input() form: FormGroup;
+  public touched = false;
 
   ngOnInit(): void {
     this.form.setControl(
       this.dataField.formControlName,
-      new FormArray([], [Validators.minLength(1)]));
+      new FormArray([], this.dataField.validator));
+    this.form.get(this.dataField.formControlName).valueChanges.subscribe(() => {
+      this.touched = true;
+    });
   }
 
   onCheckChange(event, formControlName: string): void {

@@ -6,9 +6,9 @@ import {FileService} from '../../services/file-service';
 import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
 import {ProjectsService} from '../../../services/projects-service';
-import {DataField} from '../../../components/form-fields/models/data-field';
-import {DataFieldType} from '../../../components/form-fields/models/data-field-type.enum';
-import {ImageType} from '../../../components/form-fields/models/image-type.enum';
+import {DataField} from '../../../components/data-fields/models/data-field';
+import {DataFieldType} from '../../../components/data-fields/models/data-field-type.enum';
+import {ImageType} from '../../../components/data-fields/models/image-type.enum';
 
 interface PhotoFile {
   type: ImageType;
@@ -21,12 +21,13 @@ export class CreateCommonProjectService {
 
   private requestEntity: ProjectData = {};
 
-  constructor(private httpClient: HttpClient, private fileService: FileService, private projectService: ProjectsService) {
+  constructor(private httpClient: HttpClient,
+              private fileService: FileService,
+              private projectService: ProjectsService) {
   }
 
   public createProject(form: FormGroup, formConfig: DataField[], category: string): Observable<any> {
     const photoFiles: PhotoFile[] = [];
-
     formConfig.forEach(dataField => {
 
       switch (dataField.type) {

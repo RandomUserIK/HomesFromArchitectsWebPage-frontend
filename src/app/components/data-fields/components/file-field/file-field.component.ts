@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataField} from '../../models/data-field';
 import {FormControl, FormGroup} from '@angular/forms';
-import {FileUploadValidationService} from '../services/file-upload-validation.service';
+import {FileUploadValidationService} from '../../services/file-upload-validation.service';
 
 @Component({
   selector: 'app-file-field',
@@ -13,13 +13,14 @@ export class FileFieldComponent implements OnInit {
   @Input() dataField: DataField;
   @Input() form: FormGroup;
   public errorMessage = '';
+  public touched = false;
 
 
   constructor(private fileUploadValidationService: FileUploadValidationService) {
   }
 
   ngOnInit(): void {
-    this.form.setControl(this.dataField.formControlName, new FormControl());
+    this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
   }
 
   public handleFileInput(event: any, fileData: DataField): void {

@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {CreateCommonProjectComponent} from './create-common-project/create-common-project.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CreateCommonProjectService} from './services/create-common-project.service';
-import {FormFieldsModule} from '../../components/form-fields/form-fields.module';
+import {DataFieldsModule} from '../../components/data-fields/data-fields.module';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import {FormFieldsModule} from '../../components/form-fields/form-fields.module'
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormFieldsModule
+    DataFieldsModule
   ],
   exports: [
     CreateCommonProjectComponent

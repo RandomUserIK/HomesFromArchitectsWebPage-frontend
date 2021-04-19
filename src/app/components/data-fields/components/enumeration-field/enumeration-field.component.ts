@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataField} from '../../models/data-field';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-enumeration-field',
@@ -13,7 +13,7 @@ export class EnumerationFieldComponent implements OnInit {
   @Input() form: FormGroup;
 
   ngOnInit(): void {
-    this.form.setControl(this.dataField.formControlName, new FormControl());
+    this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
   }
 
 }

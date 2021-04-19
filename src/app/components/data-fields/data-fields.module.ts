@@ -7,15 +7,15 @@ import { PrimitiveTypeFieldComponent } from './components/primitive-type-field/p
 import { EnumerationFieldComponent } from './components/enumeration-field/enumeration-field.component';
 import {MultichoiceFieldComponent} from './components/multichoice-field/multichoice-field.component';
 import { FileFieldComponent } from './components/file-field/file-field.component';
-import {FileUploadValidationService} from './components/services/file-upload-validation.service';
-import {FormDynamicGalleryComponent} from './components/form-dynamic-gallery/form-dynamic-gallery.component';
+import {FileUploadValidationService} from './services/file-upload-validation.service';
+import {DynamicGalleryFieldComponent} from './components/dynamic-gallery-field/dynamic-gallery-field.component';
 
 
 
 @NgModule({
   declarations: [
     DynamicTextSectionFieldComponent,
-    FormDynamicGalleryComponent,
+    DynamicGalleryFieldComponent,
     DataFieldResolverComponent,
     PrimitiveTypeFieldComponent,
     EnumerationFieldComponent,
@@ -29,11 +29,11 @@ import {FormDynamicGalleryComponent} from './components/form-dynamic-gallery/for
   ],
   exports: [
     DynamicTextSectionFieldComponent,
-    FormDynamicGalleryComponent,
+    DynamicGalleryFieldComponent,
     DataFieldResolverComponent,
   ],
   providers: [
     FileUploadValidationService
   ]
 })
-export class FormFieldsModule { }
+export class DataFieldsModule { }

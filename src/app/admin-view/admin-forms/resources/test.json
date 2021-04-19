@@ -11,7 +11,7 @@
       "formControlName": "titleImage",
       "type": "file",
       "imgType": "titleImage",
-      "label": "Vyberte titulnú fotku...",
+      "label": "Vyberte titulnú fotku... *",
       "fullWidth": false,
       "imageTitle": "Titulná fotka"
     },

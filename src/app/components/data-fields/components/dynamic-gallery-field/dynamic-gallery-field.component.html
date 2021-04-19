@@ -17,8 +17,11 @@
 
 <div class="col-md-12 form-group mb-3 mt-lg-4">
   <input type="file" class="custom-file-input" [id]="dataField.formControlName" aria-describedby="fileHelp"
-         (change)="handleFileInput($event)">
+         (change)="handleFileInput($event)" (click)="touched = true">
   <label class="custom-file-label" [for]="dataField.formControlName">
     Vyberte fotku do galérie ...
   </label>
+  <div *ngIf="form.get(dataField.formControlName).invalid && touched" class="text-danger">
+    Povinný údaj
+  </div>
 </div>
