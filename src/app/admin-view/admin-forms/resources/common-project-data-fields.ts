@@ -189,11 +189,11 @@ const COMMON_PROJECT_DATA_FIELDS: DataGroupMap = {
       imageTitle: 'Fotka pôdorysu '
     },
     {
-      formControlName: "dynamicPhotoGallery",
+      formControlName: 'dynamicPhotoGallery',
       type: DataFieldType.DYNAMIC_PHOTO_GALLERY,
       validator: Validators.required,
       imgType: ImageType.GALLERY_IMAGES,
-      label: "Galéria",
+      label: 'Galéria',
       fullWidth: true
     }
   ]

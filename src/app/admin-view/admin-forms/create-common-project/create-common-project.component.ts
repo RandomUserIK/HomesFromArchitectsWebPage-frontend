@@ -36,7 +36,7 @@ export class CreateCommonProjectComponent implements OnInit, AfterViewInit {
 
     if (this.form.valid) {
       this.createCommonProjectService.createProject(
-        this.form, this.commonProjectDataFields.commonProjectDataGroup, "COMMON"
+        this.form, this.commonProjectDataFields.commonProjectDataGroup, 'COMMON'
       ).subscribe(() => {
         this.loading = true;
         this.uploadMessage = 'Projekt bol úspešne vytvorený';

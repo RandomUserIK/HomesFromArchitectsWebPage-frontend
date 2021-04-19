@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {FileUploadValidationService} from '../../services/file-upload-validation.service';
 import {DataField} from '../../models/data-field';
-import set = Reflect.set;
 
 @Component({
   selector: 'app-form-dynamic-gallery',
