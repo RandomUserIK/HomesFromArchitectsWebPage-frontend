@@ -13,7 +13,7 @@ import {Validators} from '@angular/forms';
 //   }
 // );
 
-// @SONAR_STOP@
+
 export const COMMON_PROJECT_DATA_FIELDS_CONFIG: DataGroupMap = {
   commonProjectDataGroup: [
     {
