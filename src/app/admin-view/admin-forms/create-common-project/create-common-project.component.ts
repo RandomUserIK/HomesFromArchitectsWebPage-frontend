@@ -5,6 +5,7 @@ import {CreateCommonProjectService} from '../services/create-common-project.serv
 import {DataField} from '../../../components/data-fields/models/data-field';
 import {DataGroupMap} from '../../../components/data-fields/models/data-group-map';
 import {COMMON_PROJECT_DATA_FIELDS_CONFIG} from '../resources/common-project-data-fields';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -18,14 +19,17 @@ export class CreateCommonProjectComponent implements OnInit, AfterViewInit {
   public uploadMessage = '';
   public submitted = false;
   private pageLoaded: boolean;
+  private commonProjectDataFields: DataGroupMap;
 
   constructor(private fb: FormBuilder,
+              private activatedRoute: ActivatedRoute,
               private httpClient: HttpClient,
-              private createCommonProjectService: CreateCommonProjectService,
-              @Inject(COMMON_PROJECT_DATA_FIELDS_CONFIG) private commonProjectDataFields: DataGroupMap) {
+              private createCommonProjectService: CreateCommonProjectService) {
+    console.log(this.activatedRoute.snapshot);
   }
 
   ngOnInit() {
+
     this.form = this.fb.group({});
   }
 
@@ -49,10 +53,11 @@ export class CreateCommonProjectComponent implements OnInit, AfterViewInit {
       this.uploadMessage = 'Niektoré polia niesú správne vyplnené';
     }
     this.submitted = true;
-
   }
 
   public getFormGroup(id: string): DataField[] {
+    if (this.commonProjectDataFields == undefined)
+      return null
     return this.commonProjectDataFields[id];
   }
 

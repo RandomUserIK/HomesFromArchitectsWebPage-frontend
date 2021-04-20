@@ -14,12 +14,6 @@ import {AdminFormsModule} from './admin-forms/admin-forms.module';
 import {CreateCommonProjectComponent} from './admin-forms/create-common-project/create-common-project.component';
 
 const routes: Routes = [
-  // TODO add auth guard and place route to right place
-  {
-    path: 'vytvor',
-    component: CreateCommonProjectComponent,
-    data: {}
-  },
   {
     path: '',
     component: AdminViewComponent,
@@ -28,7 +22,13 @@ const routes: Routes = [
       {
         path: 'individualne-projekty',
         component: AdminProjectsGalleryComponent,
-        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'}
+        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'},
+        children: [
+          {
+            path: 'vytvor',
+            component: CreateCommonProjectComponent
+          }
+        ]
       },
       {
         path: 'katalogove-projekty',
@@ -39,6 +39,10 @@ const routes: Routes = [
         path: 'interierovy-dizajn',
         component: AdminProjectsGalleryComponent,
         data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
+      },
+      {
+        path: 'vytvor',
+        component: CreateCommonProjectComponent
       },
     ]
   },
