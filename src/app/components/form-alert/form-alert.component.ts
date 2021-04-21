@@ -2,8 +2,7 @@ import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-form-alert',
-  templateUrl: './form-alert.component.html',
-  styleUrls: ['./form-alert.component.scss']
+  templateUrl: './form-alert.component.html'
 })
 export class FormAlertComponent {
 
