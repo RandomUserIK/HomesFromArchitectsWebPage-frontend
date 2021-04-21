@@ -1,6 +1,6 @@
-import {DataFieldType} from '../../../components/data-fields/models/data-field-type.enum';
+import {DataFieldType} from '../../../../components/data-fields/models/data-field-type.enum';
 import {Validators} from '@angular/forms';
-import {ImageType} from '../../../components/data-fields/models/image-type.enum';
+import {ImageType} from '../../../../components/data-fields/models/image-type.enum';
 
 export const COMMON_PROJECT_DATA_FIELDS = [
   {

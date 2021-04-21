@@ -1,14 +1,14 @@
 import {FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ProjectData} from '../../../models/project-data';
-import {FileService} from '../../services/file-service';
+import {ProjectData} from '../../../../models/project-data';
+import {FileService} from '../../../services/file-service';
 import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
-import {ProjectsService} from '../../../services/projects-service';
-import {DataField} from '../../../components/data-fields/models/data-field';
-import {DataFieldType} from '../../../components/data-fields/models/data-field-type.enum';
-import {ImageType} from '../../../components/data-fields/models/image-type.enum';
+import {ProjectsService} from '../../../../services/projects-service';
+import {DataField} from '../../../../components/data-fields/models/data-field';
+import {DataFieldType} from '../../../../components/data-fields/models/data-field-type.enum';
+import {ImageType} from '../../../../components/data-fields/models/image-type.enum';
 
 interface PhotoFile {
   type: ImageType;

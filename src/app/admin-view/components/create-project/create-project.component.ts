@@ -1,11 +1,11 @@
 import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import {CreateCommonProjectService} from '../services/create-common-project.service';
+import {CreateCommonProjectService} from './services/create-common-project.service';
 import {DataField} from '../../../components/data-fields/models/data-field';
 import {DataGroupMap} from '../../../components/data-fields/models/data-group-map';
 import {ActivatedRoute} from '@angular/router';
-import {PROJECT_DATA_FIELDS_CONFIG} from '../resources/project-data-fields-injectable';
+import {PROJECT_DATA_FIELDS_CONFIG} from './resources/project-data-fields-injectable';
 
 
 @Component({

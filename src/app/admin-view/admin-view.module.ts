@@ -10,8 +10,8 @@ import {AuthGuardService} from '../auth/services/auth-guard.service';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ConfigurationService} from '../configuration/services/configuration-service';
-import {AdminFormsModule} from './admin-forms/admin-forms.module';
-import {CreateProjectComponent} from './admin-forms/create-project/create-project.component';
+import {CreateProjectComponent} from './components/create-project/create-project.component';
+import {CreateProjectModule} from './components/create-project/create-project.module';
 
 const routes: Routes = [
   {
@@ -59,7 +59,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     HttpClientModule,
-    AdminFormsModule,
+    CreateProjectModule,
     NgbPaginationModule,
     SearchHeaderModule
   ],
