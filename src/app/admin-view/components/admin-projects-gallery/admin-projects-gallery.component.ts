@@ -20,6 +20,6 @@ export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirecti
   }
 
   onAddProject(): void {
-    this.router.navigate(['admin/vytvor'], {queryParams: {categoryId: this.categoryId}});
+    this.router.navigate(['admin/vytvor'], {queryParams: {projectType: this.categoryId}});
   }
 }

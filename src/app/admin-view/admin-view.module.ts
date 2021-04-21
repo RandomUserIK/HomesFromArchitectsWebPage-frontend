@@ -11,7 +11,7 @@ import {SearchHeaderModule} from '../components/search-header/search-header.modu
 import {ReactiveFormsModule} from '@angular/forms';
 import {ConfigurationService} from '../configuration/services/configuration-service';
 import {AdminFormsModule} from './admin-forms/admin-forms.module';
-import {CreateCommonProjectComponent} from './admin-forms/create-common-project/create-common-project.component';
+import {CreateProjectComponent} from './admin-forms/create-project/create-project.component';
 
 const routes: Routes = [
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
         children: [
           {
             path: 'vytvor',
-            component: CreateCommonProjectComponent
+            component: CreateProjectComponent
           }
         ]
       },
@@ -42,7 +42,7 @@ const routes: Routes = [
       },
       {
         path: 'vytvor',
-        component: CreateCommonProjectComponent
+        component: CreateProjectComponent
       },
     ]
   },

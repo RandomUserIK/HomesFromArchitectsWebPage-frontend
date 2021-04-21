@@ -66,7 +66,6 @@ export class CreateCommonProjectService {
     photoFiles.forEach(photoFile => {
       photoFileObservables.push(this.fileService.postFile(photoFile.value, projectId, photoFile.type.toString()));
     });
-
     return photoFileObservables;
   }
 
