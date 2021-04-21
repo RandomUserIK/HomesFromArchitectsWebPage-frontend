@@ -11,6 +11,7 @@ export class ImageCarouselComponent implements OnInit {
   @Input() dataInterval: number;
   @Input() pauseOnFocus: boolean;
   @Input() pauseOnHover: boolean
+  @Input() shouldDisplayAnimation: boolean;
 
   @Output() imageClicked: EventEmitter<number> = new EventEmitter<number>();
 

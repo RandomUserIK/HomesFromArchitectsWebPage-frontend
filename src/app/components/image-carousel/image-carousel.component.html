@@ -1,8 +1,11 @@
-<ngb-carousel #carousel [interval]="dataInterval" [pauseOnFocus]="pauseOnFocus" [pauseOnHover]="pauseOnHover">
+<ngb-carousel [interval]="dataInterval" [pauseOnFocus]="pauseOnFocus" [pauseOnHover]="pauseOnHover">
   <ng-template ngbSlide *ngFor="let img of carouselItems; let index = index">
     <div class="picsum-img-wrapper">
       <!-- TODO: remove 'assets/' from path -->
-      <img [src]="'assets/' + img" [alt]="index" (click)="onImageClick(index)" class="w-100 image-animation">
+      <img [src]="'assets/' + img"
+           [alt]="index"
+           [ngClass]="shouldDisplayAnimation ? 'w-100 image-animation' : 'w-100'"
+           (click)="onImageClick(index)">
     </div>
   </ng-template>
 </ngb-carousel>

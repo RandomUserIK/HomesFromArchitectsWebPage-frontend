@@ -11,6 +11,7 @@ export class LightboxComponent implements OnInit {
   @Input() dataInterval: number;
   @Input() pauseOnFocus: boolean;
   @Input() pauseOnHover: boolean
+  @Input() shouldDisplayAnimation: boolean;
 
   lightBoxImages: Array<IAlbum> = [];
 

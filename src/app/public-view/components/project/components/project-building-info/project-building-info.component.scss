@@ -1,7 +1,7 @@
 @import 'src/app/public-view/components/project/project.component';
 
 .info-text {
-  font-size: 150%;
+  font-size: 1.3rem;
   color: gray;
 }
 
@@ -39,16 +39,4 @@
 
 .info-value-container {
   padding: 0.1rem;
-}
-
-@media (max-width: 991px) {
-  .info-text-container {
-    width: 50%;
-    padding-left: 15%;
-    text-align: left;
-  }
-
-  .info-value-container {
-    text-align: center;
-  }
 }

@@ -12,12 +12,16 @@
     </span>
     <br>
     <span class="d-block interior-third-text">
+    <!-- TODO: upravit referenciu na stranku -->
       <a href="#">
         Viac o interérovom dizajne
       </a>
     </span>
   </div>
   <div class="col-md-7">
-    <app-image-carousel [carouselItems]="projectPhotoPaths" [dataInterval]="0"></app-image-carousel>
+    <app-image-carousel [carouselItems]="projectPhotoPaths"
+                        [dataInterval]="0"
+                        [shouldDisplayAnimation]="false">
+    </app-image-carousel>
   </div>
 </div>
