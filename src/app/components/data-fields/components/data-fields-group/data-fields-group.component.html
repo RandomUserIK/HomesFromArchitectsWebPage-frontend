@@ -1,0 +1,8 @@
+<ng-container *ngFor="let dataField of dataGroup">
+  <app-data-field-resolver
+    [class.col-md-6]="!dataField.fullWidth"
+    [class.col-md-12]="dataField.fullWidth"
+    [dataField]="dataField"
+    [form]="form">
+  </app-data-field-resolver>
+</ng-container>

@@ -1,0 +1,21 @@
+<div class="container content">
+  <div class="title-text mb-5 text-center">Katalógový projekt</div>
+  <app-form-alert *ngIf="uploadMessage.length > 0" [uploadMessage]="uploadMessage"  [validationSuccess]="validationSuccess"></app-form-alert>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-data-fields-group
+      class="row"
+      [dataGroup]="commonProjectDataFields[projectType]"
+      [form]="form">
+    </app-data-fields-group>
+    <div class="row">
+      <div class="col-12">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="form.invalid">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Vytvoriť projekt
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

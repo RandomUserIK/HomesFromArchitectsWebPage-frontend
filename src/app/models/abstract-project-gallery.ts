@@ -10,14 +10,14 @@ import {PageableProjectsData} from './pageable-projects-data';
 @Directive()
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
 
-  currentPage = 1;
-  pageSize = 9;
-  projects: Array<ProjectData> = [];
-  totalElements: number;
-  categoryTitle: string;
-  loading: boolean;
+  public currentPage = 1;
+  public pageSize = 9;
+  public projects: Array<ProjectData> = [];
+  public totalElements: number;
+  public categoryTitle: string;
+  public loading: boolean;
+  public categoryId: string;
   private query: string;
-  private categoryId: string;
   private searchHeaderState$: Subscription;
 
   constructor(protected activatedRoute: ActivatedRoute,

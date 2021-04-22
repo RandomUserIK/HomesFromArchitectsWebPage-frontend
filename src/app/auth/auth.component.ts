@@ -20,8 +20,8 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this._formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      username: [null, Validators.required],
+      password: [null, Validators.required]
     });
     this._authService.autoLogin();
   }
@@ -38,7 +38,7 @@ export class AuthComponent implements OnInit {
     }
     this.loading = true;
     this._authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
-      .subscribe((_) => {
+      .subscribe(() => {
         this.loading = false;
         this._router.navigate(['/admin']);
       }, (error) => {

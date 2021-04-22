@@ -1,37 +1,43 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormField} from '../../../../../components/form-fields/models/form-data';
-import formData from './resources/order-form-data.json';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {DataField} from '../../../../../components/data-fields/models/data-field';
+import {ORDER_DATA_FIELDS_CONFIG} from './resources/order-data-fields-injectable';
+import {DataGroupMap} from '../../../../../components/data-fields/models/data-group-map';
 
 @Component({
   selector: 'app-order-form',
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.scss']
 })
-export class OrderFormComponent implements OnInit {
+export class OrderFormComponent implements AfterViewInit, OnInit {
 
-  public orderForm: FormGroup;
-  public validationSuccess = false;
-  public uploadMessage = '';
-  public submitted = false;
+  public form: FormGroup;
+  public loading = false;
+  private pageLoaded: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              @Inject(ORDER_DATA_FIELDS_CONFIG) public orderDataFieldsConfig: DataGroupMap) {
   }
 
   ngOnInit(): void {
-    this.orderForm = this.formBuilder.group({});
+    this.form = this.formBuilder.group({});
   }
 
   onSubmit(): void {
-    console.log(this.orderForm);
+    console.log(this.form);
   }
 
-  public formInitialized(name: string, form: FormGroup): void {
-    this.orderForm.setControl(name, form);
+
+  ngAfterViewInit(): void {
+    this.pageLoaded = true;
   }
 
-  public getFormData(id: string): FormField[] {
-    return formData[id];
+  isFormValid(): boolean {
+    if (this.pageLoaded) {
+      return this.form.valid;
+    } else {
+      return false;
+    }
   }
 
 }

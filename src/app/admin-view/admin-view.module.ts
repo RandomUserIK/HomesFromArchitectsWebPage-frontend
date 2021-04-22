@@ -10,15 +10,10 @@ import {AuthGuardService} from '../auth/services/auth-guard.service';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ConfigurationService} from '../configuration/services/configuration-service';
-import {AdminFormsModule} from './admin-forms/admin-forms.module';
-import {CreateCommonProjectComponent} from './admin-forms/create-common-project/create-common-project.component';
+import {CreateProjectComponent} from './components/create-project/create-project.component';
+import {CreateProjectModule} from './components/create-project/create-project.module';
 
 const routes: Routes = [
-  {
-    path: 'vytvor',
-    component: CreateCommonProjectComponent,
-    data: {}
-  },
   {
     path: '',
     component: AdminViewComponent,
@@ -27,7 +22,13 @@ const routes: Routes = [
       {
         path: 'individualne-projekty',
         component: AdminProjectsGalleryComponent,
-        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'}
+        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'},
+        children: [
+          {
+            path: 'vytvor',
+            component: CreateProjectComponent
+          }
+        ]
       },
       {
         path: 'katalogove-projekty',
@@ -38,6 +39,10 @@ const routes: Routes = [
         path: 'interierovy-dizajn',
         component: AdminProjectsGalleryComponent,
         data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
+      },
+      {
+        path: 'vytvor',
+        component: CreateProjectComponent
       },
     ]
   },
@@ -54,7 +59,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     HttpClientModule,
-    AdminFormsModule,
+    CreateProjectModule,
     NgbPaginationModule,
     SearchHeaderModule
   ],
