@@ -7,12 +7,11 @@
 }
 
 .changes-questions-section {
-  font-size: 200%;
-
+  font-size: calc(1rem + 1.5vmin);
 }
 
 .changes-text-section {
-  font-size: 125%;
+  font-size: calc(1rem + 0.3vmin);
 }
 
 @media (max-width: 991px) {

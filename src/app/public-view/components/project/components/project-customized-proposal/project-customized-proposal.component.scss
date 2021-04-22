@@ -1,20 +1,20 @@
 .proposal-first-text {
   color: white;
   background-color: black;
-  font-size: 1.5rem;
+  font-size: calc(1rem + 1vmin);
 }
 
 .proposal-second-text {
   font-weight: bold;
   background-color: #ffbe00;
-  font-size: 2rem;
+  font-size: calc(1rem + 1.5vmin);
 }
 
 .proposal-third-text a {
   background-color: #ffbe00;
   color: black;
   text-decoration: underline;
-  font-size: 1.5rem;
+  font-size: calc(1rem + 1vmin);
 }
 
 .custom-idea-text-container {
@@ -25,10 +25,10 @@
   text-align: left;
 }
 
-//img {
-//  width: auto;
-//  height: 85%;
-//}
+.proposal-icon {
+  width: auto;
+  height: auto;
+}
 
 @media (max-width: 991px) {
   .custom-idea-icon-container {
