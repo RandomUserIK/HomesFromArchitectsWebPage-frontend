@@ -7,6 +7,7 @@
     <input (change)="onCheckChange($event, dataField.formControlName)"
            [id]="value"
            [value]="value"
+           [checked]=""
            type="checkbox"
            class="custom-control-input">
     <label class="custom-control-label" [for]="value">{{value}}</label>

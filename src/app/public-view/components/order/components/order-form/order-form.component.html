@@ -1,4 +1,11 @@
 <div class="container">
+  <app-form-alert
+    *ngIf="uploadMessage != undefined"
+    [validationSuccess]="validationSuccess"
+    [uploadMessage]="uploadMessage">
+
+  </app-form-alert>
+
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
     <app-data-fields-group
@@ -6,7 +13,6 @@
       [dataGroup]="orderDataFieldsConfig.firstSection"
       [form]="form">
     </app-data-fields-group>
-
 
 
     <div class="row justify-content-center">
@@ -31,7 +37,7 @@
       <div class="col-12">
         <button type="submit"
                 class="btn btn-primary"
-                [disabled]="form.invalid">
+                [disabled]="form.invalid || loading">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
           Odoslať nezáväzne
         </button>

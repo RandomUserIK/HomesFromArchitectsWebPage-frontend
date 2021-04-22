@@ -5,6 +5,7 @@ import {OrderFormComponent} from './components/order-form/order-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { OrderHeaderComponent } from './components/order-header/order-header.component';
 import {DataFieldsModule} from '../../../components/data-fields/data-fields.module';
+import {FormAlertModule} from '../../../components/form-alert/form-alert.module';
 
 
 
@@ -17,7 +18,8 @@ import {DataFieldsModule} from '../../../components/data-fields/data-fields.modu
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DataFieldsModule
+    DataFieldsModule,
+    FormAlertModule
   ],
   exports: [
     OrderComponent

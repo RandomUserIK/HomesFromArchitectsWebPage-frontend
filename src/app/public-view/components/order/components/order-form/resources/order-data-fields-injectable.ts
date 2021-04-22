@@ -17,7 +17,7 @@ export const ORDER_DATA_FIELDS_CONFIG = new InjectionToken<DataGroupMap>(
 const ORDER_DATA_FIELDS: DataGroupMap = {
   firstSection: [
     {
-      formControlName: 'title',
+      formControlName: 'projectTitle',
       type: DataFieldType.TEXT,
       validator: Validators.required,
       label: 'Názov projektu *',
@@ -42,7 +42,7 @@ const ORDER_DATA_FIELDS: DataGroupMap = {
     },
     {
       formControlName: 'projectType',
-      label: 'Orientácia projektu *',
+      label: 'Vyberte si typ projektu *',
       type: DataFieldType.MULTICHOICE,
       validator: Validators.required,
       fullWidth: true,
@@ -58,7 +58,6 @@ const ORDER_DATA_FIELDS: DataGroupMap = {
       formControlName: 'additionalServices',
       label: 'Vyberte si doplnkové služby',
       type: DataFieldType.MULTICHOICE,
-      validator: Validators.required,
       fullWidth: false,
       values: [
         'Extra sada proj. dokumentácie / +100€',
@@ -75,7 +74,6 @@ const ORDER_DATA_FIELDS: DataGroupMap = {
       type: DataFieldType.MULTICHOICE,
       fullWidth: false,
       values: [
-        'Nepotrebujem projekt prípojok',
         'Vodovodná prípojka',
         'Kanalizačná prípojka',
         'Prípojka elektrickej energie',

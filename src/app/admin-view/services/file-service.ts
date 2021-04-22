@@ -17,7 +17,7 @@ export class FileService {
               private applicationConfigService: ConfigurationService,
               private projectService: ProjectsService,
               private sanitizer: DomSanitizer) {
-    this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'photo-endpoint');
+    this.resource = this.applicationConfigService.endpoints.find(resource => resource.name === 'photo-endpoint');
   }
 
   public postFile(fileToUpload: File, projectId: number, type : string): Observable<string> {
