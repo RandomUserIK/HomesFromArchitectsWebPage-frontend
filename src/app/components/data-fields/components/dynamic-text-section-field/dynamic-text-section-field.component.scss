@@ -14,17 +14,11 @@
   border-color: #000;
 }
 
-.col-form-label {
-  margin-top: 15px;
-  color: #000;
-  font-size: 16px;
-}
-
-.icon-medium-size{
+.icon-medium-size {
   font-size: 2rem;
   vertical-align: middle;
 }
 
-.apply-validation.ng-invalid:not(form),.apply-validation-button {
+.apply-validation.ng-invalid:not(form), .apply-validation-button {
   border-bottom: 5px solid #ff5663;
 }

@@ -2,7 +2,7 @@
 <div [formGroup]="textSectionGroup" *ngFor="let textSectionGroup of getFormGroups(); let index = index;">
   <div class="row">
     <div class="col-11 form-group mb-3">
-      <label class="col-form-label">Názov sekcie *</label>
+      <label class="mt-2">Názov sekcie *</label>
       <input type="text"
              class="form-control"
              formControlName="title"
@@ -12,13 +12,13 @@
       </div>
     </div>
     <div class="col-1 form-group mb-3">
-      <div class="row justify-content-center mt-lg-5">
+      <div class="row justify-content-end">
         <button type="button" class="btn btn-default" (click)="deleteNewTextSection(index)"><em
           class="bi bi-x icon-medium-size"></em></button>
       </div>
     </div>
     <div class="col-12 form-group mb-3">
-      <label class="col-form-label">Text sekcie *</label>
+      <label class="mt-2">Text sekcie *</label>
       <textarea
         class="form-control"
         cols="30" rows="2"
