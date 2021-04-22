@@ -7,7 +7,7 @@
 }
 
 .comparison-text {
-  font-size: 150%;
+  font-size: calc(1rem + 1.1vmin);
   font-family: sans-serif;
   font-weight: bold;
 }
@@ -19,7 +19,7 @@
 }
 
 .comparison-additional-text {
-  font-size: 90%;
+  font-size: calc(0.4rem + 1vmin);
   font-family: sans-serif;
 }
 
