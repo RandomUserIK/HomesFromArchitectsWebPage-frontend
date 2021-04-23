@@ -1,0 +1,29 @@
+@import 'src/app/components/image-carousel/image-carousel.component';
+
+.interior-first-text {
+  font-weight: bold;
+  font-size: calc(1rem + 1.1vmin);
+  margin-top: 10%;
+}
+
+.interior-img {
+  width: auto;
+  height: 40%;
+}
+
+.interior-second-text {
+  font-style: italic;
+  color: gray;
+  font-size: calc(1rem + 0.3vmin);
+}
+
+.interior-third-text a {
+  color: gray;
+  text-decoration: underline;
+  font-size: calc(1rem + 0.3vmin);
+}
+
+.image-animation {
+  width: 100%;
+  height: 40vh;
+}
