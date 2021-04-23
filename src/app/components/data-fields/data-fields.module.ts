@@ -9,6 +9,8 @@ import {MultichoiceFieldComponent} from './components/multichoice-field/multicho
 import { FileFieldComponent } from './components/file-field/file-field.component';
 import {FileUploadValidationService} from './services/file-upload-validation.service';
 import {DynamicGalleryFieldComponent} from './components/dynamic-gallery-field/dynamic-gallery-field.component';
+import {NgxImageCompressService} from 'ngx-image-compress';
+import {ImageCompressionService} from './services/image-compression.service';
 
 
 
@@ -33,7 +35,9 @@ import {DynamicGalleryFieldComponent} from './components/dynamic-gallery-field/d
     DataFieldResolverComponent,
   ],
   providers: [
-    FileUploadValidationService
+    FileUploadValidationService,
+    NgxImageCompressService,
+    ImageCompressionService
   ]
 })
 export class DataFieldsModule { }
