@@ -30,10 +30,11 @@ export class FileFieldComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
-          this.imageCompressService.compressFile(fileReaderEvent.target.result.toString(), event.target.files[0]).then(compressedData => {
-            this.dataField.imgSrc = compressedData.compressionResult;
-            this.form.controls[fileData.formControlName].setValue(compressedData.file);
-          });
+          this.imageCompressService.compressFile(fileReaderEvent.target.result.toString(), event.target.files[0])
+            .then(compressedData => {
+              this.dataField.imgSrc = compressedData.compressionResult;
+              this.form.controls[fileData.formControlName].setValue(compressedData.file);
+            });
         };
       }
     }

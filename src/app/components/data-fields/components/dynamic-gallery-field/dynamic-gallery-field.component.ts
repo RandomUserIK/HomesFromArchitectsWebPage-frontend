@@ -18,7 +18,9 @@ export class DynamicGalleryFieldComponent implements OnInit {
   public errorMessage = '';
   public touched = false;
 
-  constructor(private fb: FormBuilder, private fileUploadValidationService: FileUploadValidationService, private imageCompressionService: ImageCompressionService) {
+  constructor(private fb: FormBuilder,
+              private fileUploadValidationService: FileUploadValidationService,
+              private imageCompressionService: ImageCompressionService) {
   }
 
   ngOnInit(): void {
@@ -35,10 +37,11 @@ export class DynamicGalleryFieldComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
-          this.imageCompressionService.compressFile(fileReaderEvent.target.result.toString(), event.target.files[0]).then(compressedData => {
-            (this.form.get(this.dataField.formControlName) as FormArray).push(this.fb.control(compressedData.file)); // NOSONAR
-            this.galleryPreviews.push(compressedData.compressionResult);
-          });
+          this.imageCompressionService.compressFile(fileReaderEvent.target.result.toString(), event.target.files[0])
+            .then(compressedData => {
+              (this.form.get(this.dataField.formControlName) as FormArray).push(this.fb.control(compressedData.file)); // NOSONAR
+              this.galleryPreviews.push(compressedData.compressionResult);
+            });
         };
       }
     }
