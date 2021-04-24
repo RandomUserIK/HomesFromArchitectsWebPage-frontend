@@ -11,10 +11,11 @@ import {AuthModule} from './auth/auth.module';
 import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 
+
 const routes: Routes = [
   {path: 'admin', loadChildren: () => import('./admin-view/admin-view.module').then(m => m.AdminViewModule)},
   {path: '', loadChildren: () => import('./public-view/public-view.module').then(m => m.PublicViewModule)},
-  {path: '**', component: NotFoundComponent}
+  {path: '**', component: NotFoundComponent},
 ]
 
 @NgModule({

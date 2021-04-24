@@ -1,0 +1,27 @@
+<span class="title-text">{{dataField.label}}</span>
+
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+
+<div class="row" [formGroup]="form">
+  <div class="col-md-4 p-2" *ngFor="let galleryPhoto of galleryPreviews; let index = index;">
+    <div class="item">
+      <button type="button" class="btn btn-default" (click)="deletePhotoFromGallery(index)">
+        <em class="bi-trash"></em>
+      </button>
+    </div>
+    <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="galleryPhoto" alt="">
+  </div>
+</div>
+
+<div class="col-md-12 form-group mb-3 mt-lg-4">
+  <input type="file" class="custom-file-input" [id]="dataField.formControlName" aria-describedby="fileHelp"
+         (change)="handleFileInput($event)" (click)="touched = true">
+  <label class="custom-file-label" [for]="dataField.formControlName">
+    Vyberte fotku do galérie ...
+  </label>
+  <div *ngIf="form.get(dataField.formControlName).invalid && touched" class="text-danger">
+    Povinný údaj
+  </div>
+</div>

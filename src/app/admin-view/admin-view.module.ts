@@ -1,4 +1,5 @@
 import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
@@ -7,6 +8,10 @@ import {AdminProjectsGalleryComponent} from './components/admin-projects-gallery
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthGuardService} from '../auth/services/auth-guard.service';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ConfigurationService} from '../configuration/services/configuration-service';
+import {CreateProjectComponent} from './components/create-project/create-project.component';
+import {CreateProjectModule} from './components/create-project/create-project.module';
 
 const routes: Routes = [
   {
@@ -17,7 +22,13 @@ const routes: Routes = [
       {
         path: 'individualne-projekty',
         component: AdminProjectsGalleryComponent,
-        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'}
+        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'},
+        children: [
+          {
+            path: 'vytvor',
+            component: CreateProjectComponent
+          }
+        ]
       },
       {
         path: 'katalogove-projekty',
@@ -29,8 +40,12 @@ const routes: Routes = [
         component: AdminProjectsGalleryComponent,
         data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
       },
+      {
+        path: 'vytvor',
+        component: CreateProjectComponent
+      },
     ]
-  }
+  },
 ]
 
 @NgModule({
@@ -42,8 +57,14 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    HttpClientModule,
+    CreateProjectModule,
     NgbPaginationModule,
     SearchHeaderModule
+  ],
+  providers: [
+    ConfigurationService
   ]
 })
 export class AdminViewModule {
