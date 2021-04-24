@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" >
+  <div #componentTop></div>
   <app-form-alert
     *ngIf="uploadMessage != undefined"
     [validationSuccess]="validationSuccess"
     [uploadMessage]="uploadMessage">
-
   </app-form-alert>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -35,7 +35,7 @@
     <div class="form-row mt-4">
       <div class="col-auto">
         <re-captcha formControlName="recaptchaToken"
-                    siteKey="6LeeO6QaAAAAAHcFrYzi2c-sxZjUYWifhdpKpFiR">
+                    [siteKey]="recaptchaKey">
         </re-captcha>
       </div>
     </div>

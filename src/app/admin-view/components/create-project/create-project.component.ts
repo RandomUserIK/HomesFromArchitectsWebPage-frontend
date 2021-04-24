@@ -40,14 +40,16 @@ export class CreateProjectComponent implements OnInit {
       this.createCommonProjectService.createProject(
         this.form, this.commonProjectDataFields[this.projectType], this.projectType
       ).subscribe((val) => {
-        console.log(val);
         this.loading = false;
         this.form.reset();
         this.uploadMessage = 'Projekt bol úspešne vytvorený';
       }, (err) => {
-        console.log(err);
         this.loading = false;
         this.uploadMessage = 'Projekt sa nepodarilo vytvoriť, skúste neskôr';
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
       });
     } else {
       this.loading = false;
