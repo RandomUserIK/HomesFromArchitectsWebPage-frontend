@@ -1,6 +1,7 @@
 export interface ProjectData {
   id?: number;
   projectName?: string;
+  category?: string,
   title?:string;
   advancedProject?: number;
   angleOfRoof?: number;
@@ -12,6 +13,7 @@ export interface ProjectData {
   grossArea?: number;
   heatingSource?: string;
   heatingType?: string;
+  imagePaths?: Array<string>,
 
   minimumParcelWidth?: number;
   orientation?: string;

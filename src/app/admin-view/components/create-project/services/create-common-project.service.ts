@@ -36,7 +36,6 @@ export class CreateCommonProjectService {
           break;
         case DataFieldType.DYNAMIC_PHOTO_GALLERY:
           form.get(dataField.formControlName).value.forEach(photoFromGallery => {
-            console.log(photoFromGallery)
             photoFiles.push({type: dataField.imgType, value: photoFromGallery});
           });
           break;
