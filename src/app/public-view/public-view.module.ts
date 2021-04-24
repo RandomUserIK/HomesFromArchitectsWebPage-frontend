@@ -2,13 +2,16 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PublicViewComponent} from './public-view.component';
 import {RouterModule, Routes} from '@angular/router';
+import {FooterComponent} from './components/footer/footer.component';
+import {HeaderComponent} from './components/header/header.component';
 import {HomeComponent} from './components/home/home.component';
 import {HomeModule} from './components/home/home.module';
-import {HeaderComponent} from './components/header/header.component';
-import {FooterComponent} from './components/footer/footer.component';
+import {ProjectComponent} from './components/project/project.component';
+import {ProjectModule} from './components/project/project.module';
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
+import {ContactsComponent} from './components/contacts/contacts.component';
 
 const routes: Routes = [
   {
@@ -31,6 +34,18 @@ const routes: Routes = [
         component: ProjectsGalleryComponent,
         data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
       },
+      // {
+      // path: 'projekty',
+      // component: ProjectsComponent
+      // },
+      {
+        path: 'projekty/:id',
+        component: ProjectComponent
+      },
+      {
+        path: 'kontakty',
+        component: ContactsComponent
+      }
     ]
   },
 ]
@@ -39,11 +54,12 @@ const routes: Routes = [
   declarations: [
     PublicViewComponent,
     HeaderComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     HomeModule,
+    ProjectModule,
     ProjectsGalleryModule,
     SearchHeaderModule,
     RouterModule.forChild(routes)
