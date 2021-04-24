@@ -31,6 +31,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
         switchMap(data => {
           this.categoryTitle = data.projectsTitle;
           this.categoryId = data.projectsCategoryId;
+          AbstractProjectGalleryDirective.scrollOnTop();
           return this.handleProjectsList(1, this.categoryId, '');
         })
       ).subscribe(this.processData());
@@ -50,6 +51,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
 
   private handleProjectsList(currentPage: number, categoryId: string, query: string): Observable<PageableProjectsData> {
     this.loading = true;
+    AbstractProjectGalleryDirective.scrollOnTop();
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, categoryId, query);
   }
 
@@ -64,5 +66,12 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
 
   onPageChange(): void {
     this.handleProjectsList(this.currentPage, this.categoryId, this.query).subscribe(this.processData());
+  }
+
+  private static scrollOnTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 }
