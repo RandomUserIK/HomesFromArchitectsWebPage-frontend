@@ -6,7 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { OrderHeaderComponent } from './components/order-header/order-header.component';
 import {DataFieldsModule} from '../../../components/data-fields/data-fields.module';
 import {FormAlertModule} from '../../../components/form-alert/form-alert.module';
-
+import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 
 
 @NgModule({
@@ -19,7 +19,9 @@ import {FormAlertModule} from '../../../components/form-alert/form-alert.module'
     CommonModule,
     ReactiveFormsModule,
     DataFieldsModule,
-    FormAlertModule
+    FormAlertModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   exports: [
     OrderComponent

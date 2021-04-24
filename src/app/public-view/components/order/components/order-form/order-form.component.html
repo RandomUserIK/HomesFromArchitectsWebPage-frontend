@@ -32,7 +32,13 @@
       [dataGroup]="orderDataFieldsConfig.secondSection"
       [form]="form">
     </app-data-fields-group>
-
+    <div class="form-row mt-4">
+      <div class="col-auto">
+        <re-captcha formControlName="recaptchaToken"
+                    siteKey="6LeeO6QaAAAAAHcFrYzi2c-sxZjUYWifhdpKpFiR">
+        </re-captcha>
+      </div>
+    </div>
     <div class="row mt-5">
       <div class="col-12">
         <button type="submit"

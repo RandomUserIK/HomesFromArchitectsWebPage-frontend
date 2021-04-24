@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ORDER_DATA_FIELDS_CONFIG} from './resources/order-data-fields-injectable';
 import {DataGroupMap} from '../../../../../components/data-fields/models/data-group-map';
 import {OrderFormService} from './services/order-form.service';
@@ -23,7 +23,9 @@ export class OrderFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({});
+    this.form = this.formBuilder.group({
+      recaptchaToken: new FormControl(null, Validators.required)
+    });
   }
 
   onSubmit(): void {
@@ -42,6 +44,5 @@ export class OrderFormComponent implements OnInit {
         this.uploadMessage = 'Objednávku sa nepodarilo odoslať';
       });
   }
-
 
 }
