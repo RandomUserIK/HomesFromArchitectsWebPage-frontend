@@ -1,0 +1,14 @@
+<ng-container [formGroup]="form">
+  <div *ngIf="dataField.imgSrc !== undefined">
+    <label class="col-form-label">{{dataField.imageTitle}}</label>
+    <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="dataField.imgSrc" alt="">
+  </div>
+  <div class="custom-file">
+    <input type="file" (change)="handleFileInput($event, dataField)" (click)="touched=true" class="custom-file-input"
+           id="validatedCustomFile">
+    <label class="custom-file-label" for="validatedCustomFile">{{dataField.label}}</label>
+    <div *ngIf="form.get(dataField.formControlName).invalid && touched" class="text-danger">
+      Povinný údaj
+    </div>
+  </div>
+</ng-container>

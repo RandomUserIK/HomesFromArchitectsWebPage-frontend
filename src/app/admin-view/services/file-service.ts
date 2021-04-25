@@ -3,6 +3,7 @@ import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProjectsService} from '../../services/projects-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {ConfigurationService} from '../../configuration/services/configuration-service';
 import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
 import {ConfigurationService} from '../../configuration/services/configuration-service';
 
@@ -20,10 +21,11 @@ export class FileService {
     this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'photo-endpoint');
   }
 
-  private postFile(fileToUpload: File, projectId: number): Observable<string> {
+  public postFile(fileToUpload: File, projectId: number, type : string): Observable<string> {
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload);
     formData.append('projectId', projectId.toString());
+    formData.append('type', type);
     return this.httpClient
       .post(this.resource.address + '/upload', formData, {
         headers: new HttpHeaders({Accept: 'application/json'}),
@@ -41,9 +43,9 @@ export class FileService {
       });
   }
 
-  public handleFileInput(event: any, projectId: string): void {
+  public handleFileInput(event: any, projectId: string, type : string ): void {
     const files = event.target.files;
-    this.postFile(files.item(0), +projectId).subscribe();
+    this.postFile(files.item(0), +projectId,type).subscribe();
   }
 
   public getAllPhotosOfProject(projectId: number): Observable<SafeUrl[]> {

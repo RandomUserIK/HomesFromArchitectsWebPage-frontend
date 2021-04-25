@@ -10,14 +10,14 @@ import {Project} from './project/project.model';
 @Directive()
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
 
-  currentPage = 1;
-  pageSize = 9;
-  projects: Array<Project> = [];
-  totalElements: number;
-  categoryTitle: string;
-  loading: boolean;
+  public currentPage = 1;
+  public pageSize = 9;
+  public projects: Array<Project> = [];
+  public totalElements: number;
+  public categoryTitle: string;
+  public loading: boolean;
+  public categoryId: string;
   private query: string;
-  private categoryId: string;
   private searchHeaderState$: Subscription;
 
   constructor(protected activatedRoute: ActivatedRoute,

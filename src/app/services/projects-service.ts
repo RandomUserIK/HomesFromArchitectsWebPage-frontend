@@ -19,6 +19,14 @@ export class ProjectsService {
     this.resource = this._applicationConfigService.endpoints.find(x => x.name === 'project-endpoint');
   }
 
+  public createProject(data: Project): Observable<Project> {
+    return this._httpClient
+      .post<ProjectData>(this.resource.address, data, {
+        headers: new HttpHeaders({Accept: '*/*'}),
+      });
+  }
+
+
   public getAllOnPageAndCategoryAndQuery(page: number, categoryId: string, query: string): Observable<PageableProjectsData> {
     return this._httpClient
       .get<PageableProjectsData>(`${this.resource.address}/projects/filter?page=${page}&${query}&category=${categoryId}`);
