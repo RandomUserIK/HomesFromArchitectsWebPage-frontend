@@ -1,8 +1,15 @@
 @import "theme";
 @import "~bootstrap/scss/bootstrap";
+@import "~ngx-lightbox/lightbox.css";
 
-html {
-  font-size: 0.7rem;
+@font-face {
+  font-family: "Alegreya";
+  src: local("Alegreya"), url(assets/fonts/alegreya.ttf) format("truetype");
+}
+
+* {
+  font-family: "Alegreya", Arial, Helvetica, sans-serif;
+  //font-size: 0.7rem;
 }
 
 @media (min-width: 576px) {
@@ -12,8 +19,13 @@ html {
   }
 }
 
-img.gallery-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.fadeIn {
+  -webkit-animation-name: none;
+  animation-name: none;
 }
+
+.fadeOut {
+  -webkit-animation-name: none;
+  animation-name: none;
+}
+

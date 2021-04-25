@@ -1,0 +1,43 @@
+.proposal-first-text {
+  color: white;
+  background-color: black;
+  font-size: calc(1rem + 1vmin);
+}
+
+.proposal-second-text {
+  font-weight: bold;
+  background-color: #ffbe00;
+  font-size: calc(1rem + 1.5vmin);
+}
+
+.proposal-third-text a {
+  background-color: #ffbe00;
+  color: black;
+  text-decoration: underline;
+  font-size: calc(1rem + 1vmin);
+}
+
+.custom-idea-text-container {
+  text-align: left;
+}
+
+.custom-idea-icon-container {
+  text-align: left;
+}
+
+img {
+  width: auto;
+  height: 23vh;
+}
+
+@media (max-width: 991px) {
+  .custom-idea-icon-container {
+    margin-top: 7%;
+    text-align: center;
+  }
+
+  .custom-idea-text-container {
+    text-align: center;
+  }
+}
+
