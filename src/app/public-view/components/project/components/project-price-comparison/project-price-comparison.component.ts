@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {CatalogueProject} from '../../../../../models/project/catalogue-project.model';
+import {CommonProject} from '../../../../../models/project/common-project.model';
 
 @Component({
   selector: 'app-project-price-comparison',
@@ -8,6 +8,6 @@ import {CatalogueProject} from '../../../../../models/project/catalogue-project.
 })
 export class ProjectPriceComparisonComponent {
 
-  @Input() project: CatalogueProject;
+  @Input() project: CommonProject;
 
 }

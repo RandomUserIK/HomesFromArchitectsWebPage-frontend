@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CatalogueProject} from '../../../models/project/catalogue-project.model';
+import {CommonProject} from '../../../models/project/common-project.model';
 
 @Component({
   selector: 'app-project',
@@ -9,7 +9,7 @@ import {CatalogueProject} from '../../../models/project/catalogue-project.model'
 export class ProjectComponent {
 
   // TODO: set as input
-  project: CatalogueProject;
+  project: CommonProject;
 
   constructor() {
     // TODO: remove

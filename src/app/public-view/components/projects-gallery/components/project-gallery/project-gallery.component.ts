@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {CatalogueProject} from '../../../../../models/project/catalogue-project.model';
+import {CommonProject} from '../../../../../models/project/common-project.model';
 
 @Component({
   selector: 'app-project-gallery',
@@ -9,6 +9,6 @@ import {CatalogueProject} from '../../../../../models/project/catalogue-project.
 export class ProjectGalleryComponent {
 
   // TODO: this will be generalized once the views for other components are finished
-  @Input() project: CatalogueProject;
+  @Input() project: CommonProject;
 
 }

@@ -1,10 +1,16 @@
 import {Project} from './project.model';
-import {TextSection} from './text-section.model';
 
 export interface CommonProject extends Project {
-  builtUpArea?: number;
-  usableArea?: number;
-  energeticClass?: string;
-  persons?: number;
-  textSections?: Array<TextSection>;
+  rooms?: number;
+  totalLivingArea?: number;
+  roofPitch?: number;
+  minimumParcelWidth?: number;
+  selfHelpBuildPrice?: number;
+  onKeyPrice?: number;
+  basicProjectPrice?: number;
+  extendedProjectPrice?: number;
+  heatingSource?: string;
+  heatingType?: string;
+  entryOrientation?: string;
+  floorPlanImagePaths?: Array<string>;
 }

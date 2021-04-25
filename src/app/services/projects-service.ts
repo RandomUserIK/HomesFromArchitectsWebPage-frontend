@@ -21,7 +21,7 @@ export class ProjectsService {
 
   public createProject(data: Project): Observable<Project> {
     return this._httpClient
-      .post<ProjectData>(this.resource.address, data, {
+      .post<Project>(this.resource.address, data, {
         headers: new HttpHeaders({Accept: '*/*'}),
       });
   }
