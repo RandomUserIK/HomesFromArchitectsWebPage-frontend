@@ -19,6 +19,6 @@ export class ImageCompressionService {
 
   private async executeCompression(image: string, selectedFile: File): Promise<string> {
     const orientation = await this.imageCompressService.getOrientation(selectedFile);
-    return await this.imageCompressService.compressFile(image, orientation, 50, 50);
+    return this.imageCompressService.compressFile(image, orientation, 50, 50);
   }
 }
