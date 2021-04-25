@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ProjectData} from '../../../../../models/project-data';
+import {CatalogueProject} from '../../../../../models/project/catalogue-project.model';
 
 @Component({
   selector: 'app-project-gallery',
@@ -8,6 +8,7 @@ import {ProjectData} from '../../../../../models/project-data';
 })
 export class ProjectGalleryComponent {
 
-  @Input()
-  project: ProjectData;
+  // TODO: this will be generalized once the views for other components are finished
+  @Input() project: CatalogueProject;
+
 }

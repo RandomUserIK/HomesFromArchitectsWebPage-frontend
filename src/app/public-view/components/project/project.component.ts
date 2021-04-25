@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ProjectData} from '../../../models/project-data';
+import {CatalogueProject} from '../../../models/project/catalogue-project.model';
 
 @Component({
   selector: 'app-project',
@@ -9,30 +9,30 @@ import {ProjectData} from '../../../models/project-data';
 export class ProjectComponent {
 
   // TODO: set as input
-  project: ProjectData;
+  project: CatalogueProject;
 
   constructor() {
     // TODO: remove
     this.project = {
       id: 1,
-      projectName: 'Palisander',
+      title: 'Palisander',
       persons: 6,
       builtUpArea: 198.72,
       totalLivingArea: 231.30,
       energeticClass: 'A0',
-      orientation: 'S, V, Z',
-      selfHelpBuild: 145500,
-      priceOnKey: 220000,
-      basicProject: 2550,
-      advancedProject: 2950,
+      entryOrientation: 'S, V, Z',
+      selfHelpBuildPrice: 145500,
+      onKeyPrice: 220000,
+      basicProjectPrice: 2550,
+      extendedProjectPrice: 2950,
       rooms: 6,
-      grossArea: 131.72,
-      angleOfRoof: 1.5,
+      usableArea: 131.72,
+      roofPitch: 1.5,
       minimumParcelWidth: 20,
       heatingSource: 'tepelné čerpadlo',
       heatingType: 'podlahové vykurovanie',
-      floorPlanPhoto: 'floor_plan.png',
-      photoPaths: ['slide1.png', 'slide2.png'],
+      floorPlanImagePaths: ['floor_plan.png'],
+      imagePaths: ['slide1.png', 'slide2.png'],
       textSections: [
         {
           id: 1,

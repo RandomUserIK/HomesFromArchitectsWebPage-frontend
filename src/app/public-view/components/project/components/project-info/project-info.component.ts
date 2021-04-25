@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ProjectData} from '../../../../../models/project-data';
 import {registerLocaleData} from '@angular/common';
 import localeSk from '@angular/common/locales/sk';
+import {Component, Input, OnInit} from '@angular/core';
+import {CatalogueProject} from '../../../../../models/project/catalogue-project.model';
 
 @Component({
   selector: 'app-project-info',
@@ -10,7 +10,7 @@ import localeSk from '@angular/common/locales/sk';
 })
 export class ProjectInfoComponent implements OnInit {
 
-  @Input() project: ProjectData;
+  @Input() project: CatalogueProject;
 
   ngOnInit(): void {
     registerLocaleData(localeSk, 'sk');

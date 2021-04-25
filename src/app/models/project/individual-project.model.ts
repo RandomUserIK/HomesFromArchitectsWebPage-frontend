@@ -1,5 +1,5 @@
-import {Project} from './project.model';
+import {CommonProject} from './common-project.model';
 
-export interface IndividualProject extends Project {
-  test: string;
+export interface IndividualProject extends CommonProject {
+  galleryImagePaths: Array<string>;
 }

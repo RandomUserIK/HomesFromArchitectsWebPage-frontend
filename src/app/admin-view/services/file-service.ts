@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProjectsService} from '../../services/projects-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
-import {ConfigurationService} from "../../configuration/services/configuration-service";
+import {ConfigurationService} from '../../configuration/services/configuration-service';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +49,7 @@ export class FileService {
   public getAllPhotosOfProject(projectId: number): Observable<SafeUrl[]> {
     const projects = new Array<SafeUrl>();
     this.projectService.getProject(projectId).subscribe(data => {
-      data.photoPaths.forEach(path => {
+      data.imagePaths.forEach(path => {
         this.getFileFromPath(path).subscribe(photo => {
           projects.push(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))));
         });

@@ -14,7 +14,7 @@ export class ContactFormComponent implements OnInit {
   invalidsSubmit = false;
   loading = false;
 
-  constructor(private contactsService: ContactsService) {
+  constructor(private _contactsService: ContactsService) {
   }
 
   ngOnInit(): void {
@@ -36,7 +36,7 @@ export class ContactFormComponent implements OnInit {
     const contactForm = this.contactForm.value;
     delete contactForm.dataPrivacyCheck;
     this.loading = true;
-    this.contactsService.sendForm(contactForm)
+    this._contactsService.sendForm(contactForm)
       .subscribe(
         _ => {
           this.successSubmit = true;
