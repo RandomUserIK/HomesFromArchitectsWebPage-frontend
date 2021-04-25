@@ -1,7 +1,7 @@
 import {InjectionToken} from '@angular/core';
 import {Validators} from '@angular/forms';
-import {DataGroupMap} from '../../../../components/data-fields/models/data-group-map';
-import {DataFieldType} from '../../../../components/data-fields/models/data-field-type.enum';
+import {DataGroupMap} from '../../../../../components/data-fields/models/data-group-map';
+import {DataFieldType} from '../../../../../components/data-fields/models/data-field-type.enum';
 
 
 export const CONTACT_DATA_FIELDS_CONFIG = new InjectionToken<DataGroupMap>(
@@ -75,6 +75,13 @@ const CONTACT_DATA_FIELDS: DataGroupMap = {
       type: DataFieldType.RECAPTCHA,
       validator: Validators.required,
       label: null,
+      fullWidth: true,
+      placeholder: null,
+    },
+    {
+      formControlName: 'submitButton',
+      type: DataFieldType.SUBMIT_BUTTON,
+      label: 'Odoslať nezáväzne',
       fullWidth: true,
       placeholder: null,
     },

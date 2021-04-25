@@ -1,40 +1,17 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-5">
 
-  <app-form-alert
-    *ngIf="uploadMessage != undefined"
-    [validationSuccess]="validationSuccess"
-    [uploadMessage]="uploadMessage">
-  </app-form-alert>
-
   <div class="row justify-content-center">
     <div class="col-md-8 col-10">
+      <app-form-alert
+        *ngIf="uploadMessage != undefined"
+        [validationSuccess]="validationSuccess"
+        [uploadMessage]="uploadMessage">
+      </app-form-alert>
       <app-data-fields-group
         class="row"
         [dataGroup]="contactDataFieldsConfig.formGroup"
         [form]="form">
       </app-data-fields-group>
-    </div>
-  </div>
-
-<!--  <div class="form-row mt-4">-->
-<!--    <div class="offset-md-2 offset-1">-->
-<!--      <div style="transform:scale(0.9);transform-origin:0;">-->
-<!--        <re-captcha formControlName="recaptchaToken"-->
-<!--                    [siteKey]="recaptchaKey">-->
-<!--        </re-captcha>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-  <div class="row justify-content-st mt-4">
-    <div class="col-auto offset-md-2 offset-1">
-      <div class="form-group">
-        <button type="submit"
-                class="btn btn-primary"
-                [disabled]="form.invalid || loading">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-          Odoslať
-        </button>
-      </div>
     </div>
   </div>
 </form>

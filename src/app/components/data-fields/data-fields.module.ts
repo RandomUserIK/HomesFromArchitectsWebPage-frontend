@@ -13,6 +13,7 @@ import { DataFieldsGroupComponent } from './components/data-fields-group/data-fi
 import { TextAreaFieldComponent } from './components/text-area-field/text-area-field.component';
 import { RecaptchaFieldComponent } from './components/recaptcha-field/recaptcha-field.component';
 import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
+import {SubmitButtonFieldComponent} from './components/submit-button-field/submit-button-field.component';
 
 
 
@@ -28,6 +29,7 @@ import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
     DataFieldsGroupComponent,
     TextAreaFieldComponent,
     RecaptchaFieldComponent,
+    SubmitButtonFieldComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
     DynamicTextSectionFieldComponent,
     DynamicGalleryFieldComponent,
     DataFieldResolverComponent,
-    DataFieldsGroupComponent
+    DataFieldsGroupComponent,
+    SubmitButtonFieldComponent
   ],
   providers: [
     FileUploadValidationService
