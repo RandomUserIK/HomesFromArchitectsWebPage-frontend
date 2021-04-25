@@ -3,6 +3,9 @@
   <app-primitive-type-field *ngSwitchCase="dataFieldType.TEXT" [form]="form" [dataField]="dataField">
   </app-primitive-type-field>
 
+  <app-text-area-field *ngSwitchCase="dataFieldType.TEXT_AREA" [form]="form" [dataField]="dataField">
+  </app-text-area-field>
+
   <app-enumeration-field *ngSwitchCase="dataFieldType.ENUMERATION" [form]="form" [dataField]="dataField">
   </app-enumeration-field>
 
@@ -17,5 +20,8 @@
 
   <app-form-dynamic-gallery *ngSwitchCase="dataFieldType.DYNAMIC_PHOTO_GALLERY" [form]="form" [dataField]="dataField">
   </app-form-dynamic-gallery>
+
+  <app-recaptcha-field *ngSwitchCase="dataFieldType.RECAPTCHA" [form]="form" [dataField]="dataField">
+  </app-recaptcha-field>
 
 </ng-container>

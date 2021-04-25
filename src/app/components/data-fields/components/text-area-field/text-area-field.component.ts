@@ -1,13 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
 import {DataField} from '../../models/data-field';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-primitive-type-field',
-  templateUrl: './primitive-type-field.component.html',
-  styleUrls: ['./primitive-type-field.component.scss']
+  selector: 'app-text-area-field',
+  templateUrl: './text-area-field.component.html',
+  styleUrls: ['./text-area-field.component.scss']
 })
-export class PrimitiveTypeFieldComponent implements OnInit {
+export class TextAreaFieldComponent implements OnInit {
+
 
   @Input() dataField: DataField;
   @Input() form: FormGroup;

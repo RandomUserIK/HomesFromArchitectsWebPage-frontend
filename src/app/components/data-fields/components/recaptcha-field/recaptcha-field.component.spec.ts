@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContactsComponent } from './contacts.component';
+import { RecaptchaFieldComponent } from './recaptcha-field.component';
 
-describe('ContactsComponent', () => {
-  let component: ContactsComponent;
-  let fixture: ComponentFixture<ContactsComponent>;
+describe('RecaptchaFieldComponent', () => {
+  let component: RecaptchaFieldComponent;
+  let fixture: ComponentFixture<RecaptchaFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactsComponent ]
+      declarations: [ RecaptchaFieldComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContactsComponent);
+    fixture = TestBed.createComponent(RecaptchaFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

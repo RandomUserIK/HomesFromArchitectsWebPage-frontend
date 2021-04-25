@@ -10,5 +10,10 @@
            class="text-danger">
         Povinný údaj
       </div>
+      <div *ngIf="!form.get(dataField.formControlName).hasError('required') &&
+                   form.get(dataField.formControlName).invalid &&
+                   form.get(dataField.formControlName).touched" class="text-danger">
+        Tel. číslo musí mať formát +421 xxx xxx xxx
+      </div>
     </div>
 </ng-container>

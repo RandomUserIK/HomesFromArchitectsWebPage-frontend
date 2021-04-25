@@ -11,7 +11,7 @@ import {ProjectModule} from './components/project/project.module';
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
-import {ContactsComponent} from './components/contacts/contacts.component';
+import {ContactFormWrapperComponent} from './components/contact-form-wrapper/contact-form-wrapper.component';
 import {OrderComponent} from './components/order/order.component';
 import {OrderModule} from './components/order/order.module';
 
@@ -46,7 +46,7 @@ const routes: Routes = [
       },
       {
         path: 'kontakty',
-        component: ContactsComponent
+        component: ContactFormWrapperComponent
       },
       {
         path: 'order',
