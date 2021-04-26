@@ -25,6 +25,13 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
               protected searchHeaderService: SearchHeaderService) {
   }
 
+  private static scrollOnTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
   ngOnInit(): void {
     this.activatedRoute.data
       .pipe(
@@ -66,12 +73,5 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
 
   onPageChange(): void {
     this.handleProjectsList(this.currentPage, this.categoryId, this.query).subscribe(this.processData());
-  }
-
-  private static scrollOnTop(): void {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
   }
 }
