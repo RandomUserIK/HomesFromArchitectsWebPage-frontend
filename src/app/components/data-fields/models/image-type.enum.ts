@@ -1,5 +1,5 @@
 export enum ImageType {
   TITLE_IMAGE = 'titleImage',
-  FLOOR_PLAN_IMAGE= 'floorPlanImage',
+  GALLERY_FLOOR_PLANS_IMAGES= 'galleryFloorPlanImages',
   GALLERY_IMAGES = 'galleryImages'
 }
