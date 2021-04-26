@@ -48,7 +48,7 @@ export class CreateProjectComponent implements OnInit {
         this.uploadMessage = 'Projekt sa nepodarilo vytvoriť, skúste neskôr';
         window.scrollTo({
           top: 0,
-          behavior: "smooth"
+          behavior: 'smooth'
         });
       });
     } else {

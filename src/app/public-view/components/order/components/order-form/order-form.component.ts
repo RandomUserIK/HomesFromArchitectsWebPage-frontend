@@ -12,7 +12,7 @@ import {RECAPTCHA_KEY_INJECTABLE} from '../../../../../configuration/resources/r
 })
 export class OrderFormComponent implements OnInit {
 
-  @ViewChild("componentTop")
+  @ViewChild('componentTop')
   private componentTop: ElementRef;
 
   public form: FormGroup;
@@ -49,7 +49,7 @@ export class OrderFormComponent implements OnInit {
         this.uploadMessage = 'Objednávku sa nepodarilo odoslať';
         window.scrollTo({
           top: 0,
-          behavior: "smooth"
+          behavior: 'smooth'
         });
       });
   }

@@ -24,7 +24,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.submitButtonField = this.contactDataFieldsConfig.formGroup.find(field => field.formControlName == 'submitButton');
+    this.submitButtonField = this.contactDataFieldsConfig.formGroup.find(field => field.formControlName === 'submitButton');
     this.form = new FormGroup({})
   }
 

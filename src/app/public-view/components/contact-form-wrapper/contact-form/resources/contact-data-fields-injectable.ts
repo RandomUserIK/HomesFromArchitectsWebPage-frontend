@@ -49,7 +49,7 @@ const CONTACT_DATA_FIELDS: DataGroupMap = {
         Validators.pattern('^[+]([0-9]){3}( )?([0-9]){3}( )?([0-9]){3}( )?([0-9]){3}$')
       ],
       fullWidth: false,
-      placeholder: "+421 xxx xxx xxx"
+      placeholder: '+421 xxx xxx xxx'
     },
     {
       formControlName: 'text',

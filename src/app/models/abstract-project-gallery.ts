@@ -71,7 +71,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
   private static scrollOnTop(): void {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: 'smooth'
     });
   }
 }
