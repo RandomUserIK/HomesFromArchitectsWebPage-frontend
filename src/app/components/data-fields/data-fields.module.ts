@@ -9,6 +9,8 @@ import {MultichoiceFieldComponent} from './components/multichoice-field/multicho
 import { FileFieldComponent } from './components/file-field/file-field.component';
 import {FileUploadValidationService} from './services/file-upload-validation.service';
 import {DynamicGalleryFieldComponent} from './components/dynamic-gallery-field/dynamic-gallery-field.component';
+import {NgxImageCompressService} from 'ngx-image-compress';
+import {ImageCompressionService} from './services/image-compression.service';
 import { DataFieldsGroupComponent } from './components/data-fields-group/data-fields-group.component';
 import { TextAreaFieldComponent } from './components/text-area-field/text-area-field.component';
 import { RecaptchaFieldComponent } from './components/recaptcha-field/recaptcha-field.component';
@@ -46,7 +48,9 @@ import {SubmitButtonFieldComponent} from './components/submit-button-field/submi
     SubmitButtonFieldComponent
   ],
   providers: [
-    FileUploadValidationService
+    FileUploadValidationService,
+    NgxImageCompressService,
+    ImageCompressionService
   ]
 })
 export class DataFieldsModule { }

@@ -25,7 +25,6 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
               protected searchHeaderService: SearchHeaderService) {
   }
 
-
   private static scrollOnTop(): void {
     window.scrollTo({
       top: 0,
@@ -62,6 +61,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
     AbstractProjectGalleryDirective.scrollOnTop();
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, categoryId, query);
   }
+
   private processData() {
     return (data) => {
       this.projects = data.projects;

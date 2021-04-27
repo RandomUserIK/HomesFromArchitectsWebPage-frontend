@@ -7,13 +7,9 @@ import {RECAPTCHA_KEY_INJECTABLE} from '../../../../../configuration/resources/r
 
 @Component({
   selector: 'app-order-form',
-  templateUrl: './order-form.component.html',
-  styleUrls: ['./order-form.component.scss']
+  templateUrl: './order-form.component.html'
 })
 export class OrderFormComponent implements OnInit {
-
-  @ViewChild('componentTop')
-  private componentTop: ElementRef;
 
   public form: FormGroup;
   public loading = false;
