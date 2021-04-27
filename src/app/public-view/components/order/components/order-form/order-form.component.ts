@@ -11,9 +11,6 @@ import {RECAPTCHA_KEY_INJECTABLE} from '../../../../../configuration/resources/r
 })
 export class OrderFormComponent implements OnInit {
 
-  @ViewChild('componentTop')
-  private componentTop: ElementRef;
-
   public form: FormGroup;
   public loading = false;
   public validationSuccess: boolean;
