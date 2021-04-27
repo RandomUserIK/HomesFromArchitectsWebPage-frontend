@@ -4,8 +4,7 @@ import {DataField} from '../../models/data-field';
 
 @Component({
   selector: 'app-submit-button-field',
-  templateUrl: './submit-button-field.component.html',
-  styleUrls: ['./submit-button-field.component.scss']
+  templateUrl: './submit-button-field.component.html'
 })
 export class SubmitButtonFieldComponent {
 

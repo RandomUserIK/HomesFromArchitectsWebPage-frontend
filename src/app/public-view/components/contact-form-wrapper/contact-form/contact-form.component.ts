@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {ContactsService} from '../services/contacts.service';
 import {RECAPTCHA_KEY_INJECTABLE} from '../../../../configuration/resources/recaptcha-key-injectable';
 import {CONTACT_DATA_FIELDS_CONFIG} from './resources/contact-data-fields-injectable';
@@ -28,11 +28,7 @@ export class ContactFormComponent implements OnInit {
     this.form = new FormGroup({})
   }
 
-
-
   public onSubmit(): void {
-    // const form = this.form.value;
-    // delete form.dataPrivacyCheck;
     this.submitButtonField.loading = true;
     this.contactsService.sendForm(this.form.value)
       .subscribe(
