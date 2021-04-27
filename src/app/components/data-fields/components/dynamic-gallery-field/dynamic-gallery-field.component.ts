@@ -24,9 +24,11 @@ export class DynamicGalleryFieldComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.setControl(
-      this.dataField.formControlName,
-      this.fb.array([], this.dataField.validator));
+    setTimeout(() => {
+      this.form.setControl(
+        this.dataField.formControlName,
+        this.fb.array([], this.dataField.validator));
+    })
   }
 
   public handleFileInput(event: any): void {

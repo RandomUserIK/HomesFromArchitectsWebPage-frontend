@@ -20,7 +20,9 @@ export class FileFieldComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
+    setTimeout(() => {
+      this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
+    })
   }
 
   public handleFileInput(event: any, fileData: DataField): void {

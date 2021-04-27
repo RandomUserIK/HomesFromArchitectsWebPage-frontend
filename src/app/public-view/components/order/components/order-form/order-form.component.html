@@ -1,0 +1,52 @@
+<div class="container" >
+  <app-form-alert
+    *ngIf="uploadMessage != undefined"
+    [validationSuccess]="validationSuccess"
+    [uploadMessage]="uploadMessage">
+  </app-form-alert>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <app-data-fields-group
+      class="row"
+      [dataGroup]="orderDataFieldsConfig.firstSection"
+      [form]="form">
+    </app-data-fields-group>
+
+
+    <div class="row justify-content-center">
+      <div class="col-auto text-center">
+        <span class="title-text wide-border-bottom border-primary d-block">Doplnkové služby</span>
+      </div>
+      <div class="col-12 text-center mt-4">
+        <span class=" d-block">!!!</span>
+        <span class=" d-block">Niektoré doplnkové služby máte zadarmo pri rozšírenom type projektu.</span>
+        <span class=" d-block">Pozrite si obsah jednotlivých typov projektov a sami sa rozhodnite pre najlepšiu alternatívu.</span>
+        <span class=" d-block"><a class="link-text ml-3">Obsah a typy projektov tu.</a></span>
+      </div>
+    </div>
+
+    <app-data-fields-group
+      class="row"
+      [dataGroup]="orderDataFieldsConfig.secondSection"
+      [form]="form">
+    </app-data-fields-group>
+    <div class="form-row mt-4">
+      <div class="col-auto">
+        <re-captcha formControlName="recaptchaToken"
+                    [siteKey]="recaptchaKey">
+        </re-captcha>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="form.invalid || loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Odoslať nezáväzne
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

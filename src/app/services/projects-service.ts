@@ -16,7 +16,7 @@ export class ProjectsService {
 
   constructor(private httpClient: HttpClient,
               private applicationConfigService: ConfigurationService) {
-    this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'project-endpoint');
+    this.resource = this.applicationConfigService.endpoints.find(resource => resource.name === 'project-endpoint');
   }
 
   public createProject(data: ProjectData): Observable<ProjectData> {

@@ -11,6 +11,7 @@ import {FileUploadValidationService} from './services/file-upload-validation.ser
 import {DynamicGalleryFieldComponent} from './components/dynamic-gallery-field/dynamic-gallery-field.component';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import {ImageCompressionService} from './services/image-compression.service';
+import { DataFieldsGroupComponent } from './components/data-fields-group/data-fields-group.component';
 
 
 
@@ -22,7 +23,8 @@ import {ImageCompressionService} from './services/image-compression.service';
     PrimitiveTypeFieldComponent,
     EnumerationFieldComponent,
     MultichoiceFieldComponent,
-    FileFieldComponent
+    FileFieldComponent,
+    DataFieldsGroupComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import {ImageCompressionService} from './services/image-compression.service';
     DynamicTextSectionFieldComponent,
     DynamicGalleryFieldComponent,
     DataFieldResolverComponent,
+    DataFieldsGroupComponent
   ],
   providers: [
     FileUploadValidationService,

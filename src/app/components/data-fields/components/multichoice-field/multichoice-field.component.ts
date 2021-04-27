@@ -13,15 +13,18 @@ export class MultichoiceFieldComponent implements OnInit {
   public touched = false;
 
   ngOnInit(): void {
-    this.form.setControl(
-      this.dataField.formControlName,
-      new FormArray([], this.dataField.validator));
-    this.form.get(this.dataField.formControlName).valueChanges.subscribe(() => {
-      this.touched = true;
+    setTimeout(() => {
+      this.form.setControl(
+        this.dataField.formControlName,
+        new FormArray([], this.dataField.validator));
+      this.form.get(this.dataField.formControlName).valueChanges.subscribe(() => {
+        console.log(this.form.get(this.dataField.formControlName));
+        this.touched = true;
+      });
     });
   }
 
-  onCheckChange(event, formControlName: string): void {
+  public onCheckChange(event, formControlName: string): void {
     const formArray: FormArray = this.form.get(formControlName) as FormArray; // NOSONAR
     if (event.target.checked) {
       formArray.push(new FormControl(event.target.value));
