@@ -1,26 +1,31 @@
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PublicViewComponent} from './public-view.component';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {SearchHeaderModule} from '../components/search-header/search-header.module';
+import {ContactsComponent} from './components/contacts/contacts.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HeaderComponent} from './components/header/header.component';
 import {HomeComponent} from './components/home/home.component';
 import {HomeModule} from './components/home/home.module';
-import {ProjectComponent} from './components/project/project.component';
-import {ProjectModule} from './components/project/project.module';
-import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
-import {SearchHeaderModule} from '../components/search-header/search-header.module';
-import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
-import {ContactsComponent} from './components/contacts/contacts.component';
 import {OrderComponent} from './components/order/order.component';
 import {OrderModule} from './components/order/order.module';
+import {CommonProjectComponent} from './components/project/components/common-project/common-project.component';
+import {CommonProjectModule} from './components/project/components/common-project/common-project.module';
+import {IndividualProjectComponent} from './components/project/components/individual-project/individual-project.component';
+import {IndividualProjectModule} from './components/project/components/individual-project/individual-project.module';
+import {InteriorProjectComponent} from './components/project/components/interior-project/interior-project.component';
+import {InteriorProjectModule} from './components/project/components/interior-project/interior-project.module';
+import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
+import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
+import {PublicViewComponent} from './public-view.component';
 
 const routes: Routes = [
   {
     path: '', component: PublicViewComponent, children: [
       {
         path: '',
-        component: HomeComponent},
+        component: HomeComponent
+      },
       {
         path: 'individualne-projekty',
         component: ProjectsGalleryComponent,
@@ -36,13 +41,17 @@ const routes: Routes = [
         component: ProjectsGalleryComponent,
         data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
       },
-      // {
-      // path: 'projekty',
-      // component: ProjectsComponent
-      // },
       {
-        path: 'projekty/:id',
-        component: ProjectComponent
+        path: 'individualne-projekty/:id',
+        component: IndividualProjectComponent,
+      },
+      {
+        path: 'katalogove-projekty/:id',
+        component: CommonProjectComponent,
+      },
+      {
+        path: 'interierovy-dizajn/:id',
+        component: InteriorProjectComponent,
       },
       {
         path: 'kontakty',
@@ -65,7 +74,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     HomeModule,
-    ProjectModule,
+    CommonProjectModule,
+    IndividualProjectModule,
+    InteriorProjectModule,
     ProjectsGalleryModule,
     SearchHeaderModule,
     OrderModule,

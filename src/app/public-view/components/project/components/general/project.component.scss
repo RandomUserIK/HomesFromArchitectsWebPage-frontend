@@ -1,0 +1,23 @@
+.section-title {
+  font-size: 125%;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+  border-radius: 20px;
+  transition: 0.3s;
+  font-family: sans-serif;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
