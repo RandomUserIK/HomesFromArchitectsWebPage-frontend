@@ -1,4 +1,4 @@
-<ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName) != undefined">
+<ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName)">
   <div class="scale mt-2">
     <re-captcha [formControlName]="dataField.formControlName"
                 [siteKey]="recaptchaKey">

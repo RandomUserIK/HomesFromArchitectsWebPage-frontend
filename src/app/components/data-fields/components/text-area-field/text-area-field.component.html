@@ -1,4 +1,4 @@
-<ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName) != undefined">
+<ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName)">
   <div class="form-group">
   <textarea [formControlName]="dataField.formControlName"
             [placeholder]="dataField.placeholder"
