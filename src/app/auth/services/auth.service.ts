@@ -31,7 +31,7 @@ export class AuthService {
       this._resource.address + this._resource.endpoints[this.ENDPOINT_LOGIN], request)
       .pipe(
         catchError(this.handleError),
-        tap(response => this.handleAuth(response)))
+        tap(response => this.handleAuth(response)));
   }
 
   private handleAuth(response: AuthResponse): void {
@@ -48,7 +48,7 @@ export class AuthService {
       return throwError(errorMessage);
     switch (err.status.toString()) {
       case '401':
-        errorMessage = 'Invalid login or password'
+        errorMessage = 'Invalid login or password';
         break;
     }
     return throwError(errorMessage);
@@ -88,11 +88,11 @@ export class AuthService {
     }
   }
 
-  //TODO add duration from response
+  // TODO add duration from response
   public autoLogout(expirationDuration: number): void {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
-    }, 100000000000)
+    }, 100000000000);
   }
 
 }
