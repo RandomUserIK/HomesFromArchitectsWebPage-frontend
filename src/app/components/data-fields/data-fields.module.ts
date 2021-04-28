@@ -12,6 +12,10 @@ import {DynamicGalleryFieldComponent} from './components/dynamic-gallery-field/d
 import {NgxImageCompressService} from 'ngx-image-compress';
 import {ImageCompressionService} from './services/image-compression.service';
 import { DataFieldsGroupComponent } from './components/data-fields-group/data-fields-group.component';
+import { TextAreaFieldComponent } from './components/text-area-field/text-area-field.component';
+import { RecaptchaFieldComponent } from './components/recaptcha-field/recaptcha-field.component';
+import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
+import {SubmitButtonFieldComponent} from './components/submit-button-field/submit-button-field.component';
 
 
 
@@ -25,17 +29,23 @@ import { DataFieldsGroupComponent } from './components/data-fields-group/data-fi
     MultichoiceFieldComponent,
     FileFieldComponent,
     DataFieldsGroupComponent,
+    TextAreaFieldComponent,
+    RecaptchaFieldComponent,
+    SubmitButtonFieldComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
   exports: [
     DynamicTextSectionFieldComponent,
     DynamicGalleryFieldComponent,
     DataFieldResolverComponent,
-    DataFieldsGroupComponent
+    DataFieldsGroupComponent,
+    SubmitButtonFieldComponent
   ],
   providers: [
     FileUploadValidationService,

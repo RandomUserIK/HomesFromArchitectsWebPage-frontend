@@ -13,6 +13,7 @@ export interface DataField {
   imgType?: ImageType;
   imageTitle?: string;
   values?: Array<string>;
+  loading?: boolean;
 }
 
 
