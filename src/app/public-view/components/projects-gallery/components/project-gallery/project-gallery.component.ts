@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProjectData} from '../../../../../models/project-data';
 import {ConfigurationService} from '../../../../../configuration/services/configuration-service';
 import {EndpointConfigData} from '../../../../../configuration/models/enpoint-config-data';
-import {Observable} from 'rxjs';
 import {FileService} from '../../../../../admin-view/services/file-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
