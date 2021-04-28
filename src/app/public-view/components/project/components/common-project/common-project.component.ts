@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 import {CommonProject} from '../../../../../models/project/common-project.model';
-import {ProjectsService} from "../../../../../services/projects-service";
+import {ProjectsService} from '../../../../../services/projects-service';
 
 @Component({
   selector: 'app-common-project',
@@ -10,8 +10,8 @@ import {ProjectsService} from "../../../../../services/projects-service";
 })
 export class CommonProjectComponent implements OnInit {
 
-  // TODO: set as readonly
   public project: CommonProject;
+  public error: Error;
 
   constructor(private _route: ActivatedRoute,
               private _projectService: ProjectsService) {
@@ -66,6 +66,7 @@ export class CommonProjectComponent implements OnInit {
       ]
     }
 
+    // TODO:
     // this.fetchProject();
   }
 
