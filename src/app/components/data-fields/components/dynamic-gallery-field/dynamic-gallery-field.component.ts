@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {FileUploadValidationService} from '../../services/file-upload-validation.service';
 import {DataField} from '../../models/data-field';
+import {ImageCompressionService} from '../../services/image-compression.service';
 
 @Component({
   selector: 'app-form-dynamic-gallery',
@@ -17,13 +18,17 @@ export class DynamicGalleryFieldComponent implements OnInit {
   public errorMessage = '';
   public touched = false;
 
-  constructor(private fb: FormBuilder, private fileUploadValidationService: FileUploadValidationService) {
+  constructor(private fb: FormBuilder,
+              private fileUploadValidationService: FileUploadValidationService,
+              private imageCompressionService: ImageCompressionService) {
   }
 
   ngOnInit(): void {
-    this.form.setControl(
-      this.dataField.formControlName,
-      this.fb.array([], this.dataField.validator));
+    setTimeout(() => {
+      this.form.setControl(
+        this.dataField.formControlName,
+        this.fb.array([], this.dataField.validator));
+    })
   }
 
   public handleFileInput(event: any): void {
@@ -34,8 +39,11 @@ export class DynamicGalleryFieldComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (fileReaderEvent) => {
-          (this.form.get(this.dataField.formControlName) as FormArray).push(this.fb.control(event.target.files[0])); // NOSONAR
-          this.galleryPreviews.push(fileReaderEvent.target.result);
+          this.imageCompressionService.compressFile(fileReaderEvent.target.result.toString(), event.target.files[0])
+            .then(compressedData => {
+              (this.form.get(this.dataField.formControlName) as FormArray).push(this.fb.control(compressedData.file)); // NOSONAR
+              this.galleryPreviews.push(compressedData.compressionResult);
+            });
         };
       }
     }

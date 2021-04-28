@@ -18,9 +18,7 @@ export class DynamicTextSectionFieldComponent implements OnInit {
   ngOnInit(): void {
     this.form.setControl(
           this.dataField.formControlName,
-          this.fb.array(
-            [],
-            [Validators.required]),
+          this.fb.array([]),
       );
   }
 

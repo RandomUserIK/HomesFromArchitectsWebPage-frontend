@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ContactsService} from '../services/contacts.service';
+import {RECAPTCHA_KEY_INJECTABLE} from '../../../../configuration/resources/recaptcha-key-injectable';
 
 @Component({
   selector: 'app-contact-form',
@@ -14,7 +15,8 @@ export class ContactFormComponent implements OnInit {
   invalidsSubmit = false;
   loading = false;
 
-  constructor(private _contactsService: ContactsService) {
+  constructor(private _contactsService: ContactsService,
+              @Inject(RECAPTCHA_KEY_INJECTABLE) public recaptchaKey) {
   }
 
   ngOnInit(): void {

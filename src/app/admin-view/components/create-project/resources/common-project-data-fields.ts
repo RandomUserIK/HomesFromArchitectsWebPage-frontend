@@ -162,7 +162,6 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'textSections',
     type: DataFieldType.DYNAMIC_TEXT_SECTION,
-    validator: Validators.required,
     fullWidth: true,
     label: 'Textové sekcie'
   },

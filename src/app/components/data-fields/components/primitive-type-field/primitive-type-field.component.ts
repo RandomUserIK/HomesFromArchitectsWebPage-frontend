@@ -14,7 +14,9 @@ export class PrimitiveTypeFieldComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
+    setTimeout(() => {
+      this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
+    })
   }
 
 }
