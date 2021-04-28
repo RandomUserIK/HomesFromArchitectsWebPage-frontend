@@ -88,6 +88,7 @@ export class AuthService {
     }
   }
 
+  //TODO add duration from response
   public autoLogout(expirationDuration: number): void {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();

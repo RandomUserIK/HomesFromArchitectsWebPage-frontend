@@ -24,7 +24,7 @@ export interface ProjectData {
   rooms?: number;
   selfHelpBuild?: number;
   textSections?: TextSection[];
-  titlePhoto?: string;
+  titleImage?: string;
   totalLivingArea?: number;
 }
 
