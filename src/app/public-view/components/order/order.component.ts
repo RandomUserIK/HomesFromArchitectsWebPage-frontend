@@ -5,5 +5,4 @@ import {Component} from '@angular/core';
   templateUrl: './order.component.html'
 })
 export class OrderComponent {
-
 }

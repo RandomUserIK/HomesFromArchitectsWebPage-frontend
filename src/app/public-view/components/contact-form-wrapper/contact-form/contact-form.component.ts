@@ -34,6 +34,7 @@ export class ContactFormComponent implements OnInit {
       .subscribe(
         () => {
           this.validationSuccess = true;
+          this.uploadMessage = 'Kontaktný formulár bol úspešne odoslaný';
           this.submitButtonField.loading = false;
           this.form.reset();
         },

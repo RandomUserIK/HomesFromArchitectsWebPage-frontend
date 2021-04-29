@@ -22,12 +22,12 @@
       },
       {
         "name": "order-endpoint",
-        "address": "http://localhost:8090/api/order",
+        "address": "http://localhost:8090/api/form/order",
         "format": "application/json"
       },
       {
         "name": "contact-endpoint",
-        "address": "http://localhost:8090/api/contact",
+        "address": "http://localhost:8090/api/form/contact",
         "format": "application/json"
       }
     ]

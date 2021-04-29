@@ -2,6 +2,7 @@ import {InjectionToken} from '@angular/core';
 import {DataGroupMap} from '../../../../../../components/data-fields/models/data-group-map';
 import {DataFieldType} from '../../../../../../components/data-fields/models/data-field-type.enum';
 import {Validators} from '@angular/forms';
+import {CONTACT_DATA_FIELDS} from '../../../../contact-form-wrapper/contact-form/resources/contact-data-fields-injectable';
 
 
 export const ORDER_DATA_FIELDS_CONFIG = new InjectionToken<DataGroupMap>(
@@ -83,5 +84,6 @@ const ORDER_DATA_FIELDS: DataGroupMap = {
         'Projekt studne'
       ]
     },
-  ]
+  ],
+  thirdSection: CONTACT_DATA_FIELDS.formGroup
 }
