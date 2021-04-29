@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {LoadingModule} from "../../../../../components/loading/loading.module";
+import {LoadingModule} from '../../../../../components/loading/loading.module';
 import {ProjectModule} from '../general/project.module';
 import {IndividualProjectImageGalleryComponent} from './individual-project-image-gallery/individual-project-image-gallery.component';
 import {IndividualProjectInfoComponent} from './individual-project-info/individual-project-info.component';
