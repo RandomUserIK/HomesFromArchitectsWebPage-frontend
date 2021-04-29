@@ -21,9 +21,16 @@ $theme-colors: (
 }
 
 .link-text:hover {
+  cursor: pointer;
   color: map_get($theme-colors, "primary");
 }
 
 .basic-light-grey-text {
   color: map_get($theme-colors, "light-grey");
 }
+
+.wide-border-bottom {
+  border-bottom-width: 0.15rem;
+  border-bottom-style: solid;
+}
+

@@ -2,13 +2,18 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PublicViewComponent} from './public-view.component';
 import {RouterModule, Routes} from '@angular/router';
+import {FooterComponent} from './components/footer/footer.component';
+import {HeaderComponent} from './components/header/header.component';
 import {HomeComponent} from './components/home/home.component';
 import {HomeModule} from './components/home/home.module';
-import {HeaderComponent} from './components/header/header.component';
-import {FooterComponent} from './components/footer/footer.component';
+import {ProjectComponent} from './components/project/project.component';
+import {ProjectModule} from './components/project/project.module';
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
+import {ContactFormWrapperComponent} from './components/contact-form-wrapper/contact-form-wrapper.component';
+import {OrderComponent} from './components/order/order.component';
+import {OrderModule} from './components/order/order.module';
 import {ContactsComponent} from './components/contacts/contacts.component';
 import {ProjectContentModule} from './project-content/project-content.module';
 import {ProjectContentComponent} from './project-content/project-content.component';
@@ -34,13 +39,25 @@ const routes: Routes = [
         component: ProjectsGalleryComponent,
         data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
       },
+      // {
+      // path: 'projekty',
+      // component: ProjectsComponent
+      // },
       {
-        path: 'kontakty',
-        component: ContactsComponent
+        path: 'projekty/:id',
+        component: ProjectComponent
       },
       {
         path: 'obsah-projektu',
         component: ProjectContentComponent
+      },
+      {
+        path: 'kontakty',
+        component: ContactFormWrapperComponent
+      },
+      {
+        path: 'order',
+        component: OrderComponent
       }
     ]
   },
@@ -56,8 +73,10 @@ const routes: Routes = [
     ProjectContentModule,
     CommonModule,
     HomeModule,
+    ProjectModule,
     ProjectsGalleryModule,
     SearchHeaderModule,
+    OrderModule,
     RouterModule.forChild(routes)
   ]
 })

@@ -16,12 +16,20 @@ export class ProjectsService {
 
   constructor(private httpClient: HttpClient,
               private applicationConfigService: ConfigurationService) {
-    this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'project-endpoint');
+    this.resource = this.applicationConfigService.endpoints.find(resource => resource.name === 'project-endpoint');
   }
+
+  public createProject(data: ProjectData): Observable<ProjectData> {
+    return this.httpClient
+      .post<ProjectData>(this.resource.address, data, {
+        headers: new HttpHeaders({Accept: '*/*'}),
+      });
+  }
+
 
   public getAllOnPageAndCategoryAndQuery(page: number, categoryId: string, query: string): Observable<PageableProjectsData> {
     return this.httpClient
-      .get<PageableProjectsData>(`${this.resource.address}/projects/filter?page=${page}&${query}&category=${categoryId}`);
+      .get<PageableProjectsData>(`${this.resource.address}/filter?page=${page}&${query}&category=${categoryId}`);
   }
 
   public getProject(projectId: number): Observable<ProjectData> {

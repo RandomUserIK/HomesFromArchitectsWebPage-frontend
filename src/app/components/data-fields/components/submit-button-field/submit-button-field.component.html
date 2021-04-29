@@ -1,0 +1,8 @@
+<div class="form-group mt-2">
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid || dataField.loading">
+    <span *ngIf="dataField.loading" class="spinner-border spinner-border-sm mr-1"></span>
+    {{dataField.label}}
+  </button>
+</div>

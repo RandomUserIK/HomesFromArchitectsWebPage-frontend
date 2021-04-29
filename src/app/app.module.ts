@@ -1,26 +1,27 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {IvyGalleryModule} from 'angular-gallery';
 
 import {AppComponent} from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {IvyGalleryModule} from 'angular-gallery';
-import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
-import {NotFoundComponent} from './components/not-found/not-found.component';
-import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthModule} from './auth/auth.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
+import {NotFoundComponent} from './components/not-found/not-found.component';
+
 
 const routes: Routes = [
   {path: 'admin', loadChildren: () => import('./admin-view/admin-view.module').then(m => m.AdminViewModule)},
   {path: '', loadChildren: () => import('./public-view/public-view.module').then(m => m.PublicViewModule)},
-  {path: '**', component: NotFoundComponent}
+  {path: '**', component: NotFoundComponent},
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

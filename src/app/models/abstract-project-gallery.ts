@@ -10,19 +10,26 @@ import {PageableProjectsData} from './pageable-projects-data';
 @Directive()
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
 
-  currentPage = 1;
-  pageSize = 9;
-  projects: Array<ProjectData> = [];
-  totalElements: number;
-  categoryTitle: string;
-  loading: boolean;
+  public currentPage = 1;
+  public pageSize = 9;
+  public projects: Array<ProjectData> = [];
+  public totalElements: number;
+  public categoryTitle: string;
+  public loading: boolean;
+  public categoryId: string;
   private query: string;
-  private categoryId: string;
   private searchHeaderState$: Subscription;
 
   constructor(protected activatedRoute: ActivatedRoute,
               protected projectsService: ProjectsService,
               protected searchHeaderService: SearchHeaderService) {
+  }
+
+  private static scrollOnTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   ngOnInit(): void {
@@ -31,6 +38,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
         switchMap(data => {
           this.categoryTitle = data.projectsTitle;
           this.categoryId = data.projectsCategoryId;
+          AbstractProjectGalleryDirective.scrollOnTop();
           return this.handleProjectsList(1, this.categoryId, '');
         })
       ).subscribe(this.processData());
@@ -50,6 +58,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
 
   private handleProjectsList(currentPage: number, categoryId: string, query: string): Observable<PageableProjectsData> {
     this.loading = true;
+    AbstractProjectGalleryDirective.scrollOnTop();
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, categoryId, query);
   }
 
