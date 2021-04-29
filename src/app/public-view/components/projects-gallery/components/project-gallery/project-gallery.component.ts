@@ -1,14 +1,34 @@
 import {Component, Input} from '@angular/core';
 import {CommonProject} from '../../../../../models/project/common-project.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {ConfigurationService} from '../../../../../configuration/services/configuration-service';
+import {EndpointConfigData} from '../../../../../configuration/models/enpoint-config-data';
+import {FileService} from '../../../../../admin-view/services/file-service';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-gallery',
   templateUrl: './project-gallery.component.html',
   styleUrls: ['./project-gallery.component.scss']
 })
-export class ProjectGalleryComponent {
+export class ProjectGalleryComponent implements OnInit {
 
-  // TODO: this will be generalized once the views for other components are finished
-  @Input() project: CommonProject;
+  @Input() project: Project;
+
+  private resource: EndpointConfigData;
+  public image: SafeUrl;
+  public projects = new Array<SafeUrl>();
+
+  constructor(private config: ConfigurationService,
+              private fileService: FileService,
+              private sanitizer: DomSanitizer) {
+    this.resource = this.config.endpoints.find(resource => resource.name === 'photo-endpoint');
+  }
+
+  ngOnInit() {
+    this.fileService.getFileFromPath(this.project.titleImage).subscribe(photo => {
+      this.image = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'})))
+    });
+  }
 
 }

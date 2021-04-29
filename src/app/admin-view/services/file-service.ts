@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {ProjectsService} from '../../services/projects-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {ConfigurationService} from '../../configuration/services/configuration-service';
@@ -17,7 +17,7 @@ export class FileService {
               private applicationConfigService: ConfigurationService,
               private projectService: ProjectsService,
               private sanitizer: DomSanitizer) {
-    this.resource = this.applicationConfigService.endpoints.find(x => x.name === 'photo-endpoint');
+    this.resource = this.applicationConfigService.endpoints.find(resource => resource.name === 'photo-endpoint');
   }
 
   public postFile(fileToUpload: File, projectId: number, type : string): Observable<string> {
@@ -33,12 +33,13 @@ export class FileService {
   }
 
   public getFileFromPath(path: string): Observable<Blob> {
-    const formData: FormData = new FormData();
-    formData.append('path', path);
+    const httpParams = new HttpParams();
+
+    httpParams.set('path', path);
     return this.httpClient
-      .post(this.resource.address + '/preview', formData, {
+      .get(`${this.resource.address}?path=${path}`, {
         headers: new HttpHeaders({Accept: 'application/octet-stream'}),
-        responseType: 'blob'
+        responseType: 'blob',
       });
   }
 
@@ -48,15 +49,16 @@ export class FileService {
   }
 
   public getAllPhotosOfProject(projectId: number): Observable<SafeUrl[]> {
-    const projects = new Array<SafeUrl>();
+    const images = new Array<SafeUrl>();
     this.projectService.getProject(projectId).subscribe(data => {
+      console.log(data)
       data.imagePaths.forEach(path => {
         this.getFileFromPath(path).subscribe(photo => {
-          projects.push(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))));
+          images.push(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))));
         });
       });
     });
-    return of(projects);
+    return of(images);
   }
 
 }

@@ -1,4 +1,4 @@
-<ng-container [formGroup]="form">
+<ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName)">
   <div class="form-group">
     <label class="col-form-label">{{dataField.label}}</label>
     <select class="custom-select form-control"

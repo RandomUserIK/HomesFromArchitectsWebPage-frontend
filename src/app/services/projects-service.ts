@@ -16,7 +16,7 @@ export class ProjectsService {
 
   constructor(private _httpClient: HttpClient,
               private _applicationConfigService: ConfigurationService) {
-    this.resource = this._applicationConfigService.endpoints.find(x => x.name === 'project-endpoint');
+    this.resource = this._applicationConfigService.endpoints.find(resource => resource.name === 'project-endpoint');
   }
 
   public createProject(data: Project): Observable<Project> {
@@ -37,7 +37,7 @@ export class ProjectsService {
     formData.append('projectId', projectId.toString());
     return this._httpClient
       // TODO:
-      .post<Project>(this.resource.address + '/concrete', formData, {
+      .get<Project>(this.resource.address + '/concrete', formData, {
         headers: new HttpHeaders({Accept: 'application/json'})
       });
   }

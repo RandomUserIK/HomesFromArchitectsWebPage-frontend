@@ -19,6 +19,16 @@
         "name": "project-endpoint",
         "address": "http://localhost:8090/api/projects",
         "format": "application/json"
+      },
+      {
+        "name": "order-endpoint",
+        "address": "http://localhost:8090/api/order",
+        "format": "application/json"
+      },
+      {
+        "name": "contact-endpoint",
+        "address": "http://localhost:8090/api/contact",
+        "format": "application/json"
       }
     ]
   }

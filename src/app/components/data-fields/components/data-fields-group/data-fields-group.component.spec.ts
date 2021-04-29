@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContactsComponent } from './contacts.component';
+import { DataFieldsGroupComponent } from './data-fields-group.component';
 
-describe('ContactsComponent', () => {
-  let component: ContactsComponent;
-  let fixture: ComponentFixture<ContactsComponent>;
+describe('DataFieldsGroupComponent', () => {
+  let component: DataFieldsGroupComponent;
+  let fixture: ComponentFixture<DataFieldsGroupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactsComponent ]
+      declarations: [ DataFieldsGroupComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContactsComponent);
+    fixture = TestBed.createComponent(DataFieldsGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
