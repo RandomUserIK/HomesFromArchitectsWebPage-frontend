@@ -68,7 +68,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
       this.currentPage = data.currentPage + 1;
       this.totalElements = data.totalElements;
       this.loading = false;
-    }
+    };
   }
 
   onPageChange(): void {

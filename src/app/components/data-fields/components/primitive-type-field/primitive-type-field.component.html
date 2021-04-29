@@ -1,4 +1,4 @@
-<ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName) != undefined">
+<ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName)">
     <div class="mb-3">
       <label class="col-form-label">{{dataField.label}}</label>
       <input
@@ -6,9 +6,15 @@
         [type]="dataField.type"
         formControlName="{{dataField.formControlName}}"
         [placeholder]="dataField.placeholder">
-      <div *ngIf="form.get(dataField.formControlName).invalid && form.get(dataField.formControlName).touched"
+      <div *ngIf="form.get(dataField.formControlName).hasError('required') &&
+                  form.get(dataField.formControlName).touched"
            class="text-danger">
         Povinný údaj
+      </div>
+      <div *ngIf="!form.get(dataField.formControlName).hasError('required') &&
+                   form.get(dataField.formControlName).invalid &&
+                   form.get(dataField.formControlName).touched" class="text-danger">
+        Zadaná hodnota nemá správny formát
       </div>
     </div>
 </ng-container>

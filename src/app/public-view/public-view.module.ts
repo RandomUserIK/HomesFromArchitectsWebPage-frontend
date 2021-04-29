@@ -1,12 +1,15 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ContactsComponent} from './components/contacts/contacts.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HeaderComponent} from './components/header/header.component';
 import {HomeComponent} from './components/home/home.component';
 import {HomeModule} from './components/home/home.module';
+import {ProjectComponent} from './components/project/project.component';
+import {ProjectModule} from './components/project/project.module';
+import {SearchHeaderModule} from '../components/search-header/search-header.module';
+import {ContactFormWrapperComponent} from './components/contact-form-wrapper/contact-form-wrapper.component';
 import {OrderComponent} from './components/order/order.component';
 import {OrderModule} from './components/order/order.module';
 import {CommonProjectComponent} from './components/project/components/common-project/common-project.component';
@@ -55,7 +58,7 @@ const routes: Routes = [
       },
       {
         path: 'kontakty',
-        component: ContactsComponent
+        component: ContactFormWrapperComponent
       },
       {
         path: 'order',
