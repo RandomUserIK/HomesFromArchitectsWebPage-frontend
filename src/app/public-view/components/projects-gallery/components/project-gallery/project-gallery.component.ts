@@ -1,10 +1,9 @@
-import {Component, Input} from '@angular/core';
-import {CommonProject} from '../../../../../models/project/common-project.model';
 import {Component, Input, OnInit} from '@angular/core';
 import {ConfigurationService} from '../../../../../configuration/services/configuration-service';
 import {EndpointConfigData} from '../../../../../configuration/models/enpoint-config-data';
 import {FileService} from '../../../../../admin-view/services/file-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {Project} from '../../../../../models/project/project.model';
 
 @Component({
   selector: 'app-project-gallery',
