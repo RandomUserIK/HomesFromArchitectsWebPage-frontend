@@ -1,0 +1,18 @@
+<div class="container">
+  <p class="text-center">Všetky ceny nájdete v našom rozšírenom prehľade. Uvádzané ceny sú konečné, dodávateľ nieje
+    platcom DPH. </p>
+
+  <div class="card">
+    <div class="card-header text-center">
+      <button type="button" class="btn btn-primary mr-3" (click)="buttonClicked = !buttonClicked" >
+        <em class="bi bi-plus-square"></em>
+        {{ (buttonClicked) ? 'Skry': 'Zobraz'}} rozšírený prehľad
+      </button>
+    </div>
+    <div class="card-body" *ngIf="buttonClicked">
+       <
+    </div>
+  </div>
+</div>
+
+

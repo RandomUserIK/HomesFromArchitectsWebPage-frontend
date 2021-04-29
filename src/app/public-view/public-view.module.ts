@@ -14,9 +14,8 @@ import {ProjectsGalleryModule} from './components/projects-gallery/projects-gall
 import {ContactFormWrapperComponent} from './components/contact-form-wrapper/contact-form-wrapper.component';
 import {OrderComponent} from './components/order/order.component';
 import {OrderModule} from './components/order/order.module';
-import {ContactsComponent} from './components/contacts/contacts.component';
-import {ProjectContentModule} from './project-content/project-content.module';
-import {ProjectContentComponent} from './project-content/project-content.component';
+import {ProjectContentModule} from './components/content/project-content.module';
+import {ProjectContentComponent} from './components/content/project-content.component';
 
 const routes: Routes = [
   {

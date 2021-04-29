@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import tableData from '../resources/table-content-data.json'
-import {TableContentData} from '../resources/table-content-data';
+import {Component, OnInit} from '@angular/core';
+import tableData from '../../resources/table-content-data.json';
+import {TableContentData} from '../../resources/content-data';
+
 @Component({
   selector: 'project-content-table',
   templateUrl: './project-content-table.component.html',
