@@ -1,16 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-individual-project-image-gallery',
   templateUrl: './individual-project-image-gallery.component.html',
   styleUrls: ['./individual-project-image-gallery.component.scss']
 })
-export class IndividualProjectImageGalleryComponent implements OnInit {
+export class IndividualProjectImageGalleryComponent {
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+  @Input() imagePaths: Array<string>;
 
 }

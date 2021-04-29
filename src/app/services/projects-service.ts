@@ -33,11 +33,9 @@ export class ProjectsService {
   }
 
   public getProject(projectId: number): Observable<Project> {
-    const formData: FormData = new FormData();
-    formData.append('projectId', projectId.toString());
     return this._httpClient
       // TODO:
-      .post<Project>(this.resource.address + '/concrete', formData, {
+      .get<Project>(`${this.resource.address}/${projectId}`, {
         headers: new HttpHeaders({Accept: 'application/json'})
       });
   }

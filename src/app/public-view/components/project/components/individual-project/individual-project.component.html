@@ -1,0 +1,21 @@
+<div class="container">
+  <ng-template [ngIf]="isLoading && !project" [ngIfElse]="loaded">
+    <div [@spinner]="isLoading" *ngIf="isLoading">
+      <app-loading></app-loading>
+    </div>
+  </ng-template>
+  <ng-template #loaded>
+    <app-project-title-image [titleImage]="project.titleImage"></app-project-title-image>
+    <app-individual-project-info [project]="project"></app-individual-project-info>
+    <app-individual-project-customer-request></app-individual-project-customer-request>
+    <app-individual-project-image-gallery [imagePaths]="project.imagePaths"></app-individual-project-image-gallery>
+    <app-project-description [textSections]="project.textSections"></app-project-description>
+    <app-individual-project-customer-request></app-individual-project-customer-request>
+  </ng-template>
+</div>
+<div class="container-fluid mt-5 row-content" *ngIf="!isLoading">
+  <app-project-customized-proposal></app-project-customized-proposal>
+</div>
+<div class="container mt-5" *ngIf="!isLoading">
+  <app-project-price-info></app-project-price-info>
+</div>

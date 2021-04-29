@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Project} from '../../../../../models/project/project.model';
+import {ProjectsService} from '../../../../../services/projects-service';
 
 @Component({
   selector: 'app-individual-project',
@@ -7,10 +10,28 @@ import {Component, OnInit} from '@angular/core';
 })
 export class IndividualProjectComponent implements OnInit {
 
-  constructor() {
+  public project: Project;
+  public error: Error;
+  public isLoading = false;
+
+  constructor(private _route: ActivatedRoute,
+              private _projectService: ProjectsService) {
   }
 
   ngOnInit(): void {
+    // TODO:
+    this.fetchProject();
+  }
+
+  private fetchProject(): void {
+    this.isLoading = true
+    const projectId = +this._route.snapshot.params.id;
+    this._projectService.getProject(projectId).subscribe((project) => {
+      this.project = project;
+      this.isLoading = false;
+    }, error => {
+      // TODO: display project not found
+    });
   }
 
 }
