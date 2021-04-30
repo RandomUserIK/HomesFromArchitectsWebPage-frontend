@@ -25,6 +25,13 @@ export class OrderFormComponent implements OnInit {
               @Inject(RECAPTCHA_KEY_INJECTABLE) public recaptchaKey: string) {
   }
 
+  private static scrollOnTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
   ngOnInit(): void {
     this.submitButtonField = this.orderDataFieldsConfig.thirdSection.find(field => field.formControlName === 'submitButton');
     this.form = this.formBuilder.group({});
@@ -49,13 +56,6 @@ export class OrderFormComponent implements OnInit {
         this.submitButtonField.loading = false;
         OrderFormComponent.scrollOnTop();
       });
-  }
-
-  private static scrollOnTop(): void {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   }
 
 }
