@@ -1,0 +1,15 @@
+.text-value {
+  font-size: calc(1rem + 0.9vmin);
+}
+
+.title-text-responsive {
+  color: black;
+  font-weight: bold;
+  font-size: calc(100% + 1vw + 1vh);
+}
+
+@media(max-width: 768px) {
+  .property-title {
+    margin-bottom: 10%;
+  }
+}
