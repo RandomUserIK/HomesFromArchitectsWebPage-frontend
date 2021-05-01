@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="col-md-auto col-6 my-auto mx-auto">
-    <span class="title-text-responsive">{{project.projectName}}</span>
+    <span class="title-text-responsive">{{project.title}}</span>
   </div>
   <div class="row col-md col-12 text-center">
     <div class="col-md-3 col-6"></div>
@@ -27,7 +27,7 @@
     <div class="col-md-3 col-6">
       <span class="mb-0 font-weight-bold">
         <span class="mb-0 font-weight-bold text-value">
-          {{project.grossArea | number: '3.2': 'sk'}}
+          {{project.usableArea | number: '3.2': 'sk'}}
         </span>
         &#13217;
       </span>
@@ -38,12 +38,12 @@
       <span class="d-block">Energetická trieda</span>
     </div>
     <div class="col-md-3 col-6 mt-3">
-      <span class="mb-0 d-block font-weight-bold text-value">{{project.orientation}}</span>
+      <span class="mb-0 d-block font-weight-bold text-value">{{project.entryOrientation}}</span>
       <span class="d-block">Orientácia vstupu</span>
     </div>
     <div class="col-md-3 col-6 mt-3">
       <span class="mb-0 d-block font-weight-bold text-value">
-        ~ {{project.selfHelpBuild | currency: 'EUR': 'symbol': '4.0-0': 'sk'}}
+        ~ {{project.selfHelpBuildPrice | currency: 'EUR': 'symbol': '4.0-0': 'sk'}}
       </span>
       <span class="d-block">Svojpomocná výstavba</span>
     </div>
@@ -51,7 +51,7 @@
       <span class="mb-0 font-weight-bold">
         od
        <span class="mb-0 font-weight-bold text-value">
-        {{project.priceOnKey | currency: 'EUR': 'symbol': '4.0-0': 'sk'}}
+        {{project.onKeyPrice | currency: 'EUR': 'symbol': '4.0-0': 'sk'}}
        </span>
       </span>
       <span class="d-block">Cena na kľúč</span>
