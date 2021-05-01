@@ -36,7 +36,7 @@ export class ProjectsService {
     const formData: FormData = new FormData();
     formData.append('projectId', projectId.toString());
     return this.httpClient
-      .post<ProjectData>(this.resource.address + '/concrete', formData, {
+      .get<ProjectData>(`${this.resource.address}/${projectId}`, {
         headers: new HttpHeaders({Accept: 'application/json'})
       });
   }
