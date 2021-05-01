@@ -1,29 +1,28 @@
-import {FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ProjectData} from '../../../../models/project-data';
-import {FileService} from '../../../services/file-service';
+import {FormGroup} from '@angular/forms';
 import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
-import {ProjectsService} from '../../../../services/projects-service';
 import {DataField} from '../../../../components/data-fields/models/data-field';
 import {DataFieldType} from '../../../../components/data-fields/models/data-field-type.enum';
 import {ImageType} from '../../../../components/data-fields/models/image-type.enum';
+import {Project} from '../../../../models/project/project.model';
+import {ProjectsService} from '../../../../services/projects-service';
+import {FileService} from '../../../services/file-service';
 
 interface PhotoFile {
   type: ImageType;
   value: File;
 }
 
-
 @Injectable()
 export class CreateCommonProjectService {
 
-  private requestEntity: ProjectData = {};
+  private requestEntity: Project = {};
 
-  constructor(private httpClient: HttpClient,
-              private fileService: FileService,
-              private projectService: ProjectsService) {
+  constructor(private _httpClient: HttpClient,
+              private _fileService: FileService,
+              private _projectService: ProjectsService) {
   }
 
   public createProject(form: FormGroup, formConfig: DataField[], category: string): Observable<any> {
@@ -52,7 +51,7 @@ export class CreateCommonProjectService {
   }
 
   private sendProject(photoFiles: PhotoFile[]): Observable<any> {
-    return this.projectService.createProject(this.requestEntity)
+    return this._projectService.createProject(this.requestEntity)
       .pipe(
         exhaustMap(
           (projectId) =>
@@ -63,7 +62,7 @@ export class CreateCommonProjectService {
   private createPhotoFileObservables(photoFiles: PhotoFile[], projectId: number): Observable<string>[] {
     const photoFileObservables = [];
     photoFiles.forEach(photoFile => {
-      photoFileObservables.push(this.fileService.postFile(photoFile.value, projectId, photoFile.type.toString()));
+      photoFileObservables.push(this._fileService.postFile(photoFile.value, projectId, photoFile.type.toString()));
     });
     return photoFileObservables;
   }

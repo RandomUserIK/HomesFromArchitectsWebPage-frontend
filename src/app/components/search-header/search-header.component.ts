@@ -13,7 +13,7 @@ export class SearchHeaderComponent implements OnInit {
   searchForm: FormGroup;
 
   constructor(@Inject(ENUMERATION_FILTERS) public enumerationFilters: Array<EnumerationFilterModel>,
-              private searchHeaderService: SearchHeaderService) {
+              private _searchHeaderService: SearchHeaderService) {
   }
 
   ngOnInit(): void {
@@ -22,8 +22,8 @@ export class SearchHeaderComponent implements OnInit {
       enumerationFilters: new FormGroup(this.getEnumerationFilterIds()),
     });
     this.searchForm.valueChanges.subscribe(searchFormValue => {
-      const query = this.searchHeaderService.buildQuery(searchFormValue);
-      this.searchHeaderService.searchHeaderState.next(query);
+      const query = this._searchHeaderService.buildQuery(searchFormValue);
+      this._searchHeaderService.searchHeaderState.next(query);
     })
   }
 
