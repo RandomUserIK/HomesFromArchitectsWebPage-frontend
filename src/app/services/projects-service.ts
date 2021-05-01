@@ -34,8 +34,8 @@ export class ProjectsService {
 
   public getProject(projectId: number): Observable<Project> {
     return this._httpClient
-      // TODO:
-      .get<Project>(`${this.resource.address}/${projectId}`, {
+      // TODO: configure the given method to fetch an object of type MessageResource
+      .get<Project>( `${this.resource.address}/${projectId}`, {
         headers: new HttpHeaders({Accept: 'application/json'})
       });
   }
