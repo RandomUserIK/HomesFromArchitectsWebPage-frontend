@@ -62,8 +62,8 @@ export class IndividualProjectComponent implements OnInit {
   private fetchProject(): void {
     this.isLoading = true
     const projectId = +this._route.snapshot.params.id;
-    this._projectService.getProject(projectId).subscribe((project) => {
-      this.project = project;
+    this._projectService.getProject(projectId).subscribe((projectMessageResource) => {
+      this.project = projectMessageResource.project;
       this.isLoading = false;
     }, error => {
       // TODO: display project not found

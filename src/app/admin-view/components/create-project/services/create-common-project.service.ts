@@ -54,8 +54,8 @@ export class CreateCommonProjectService {
     return this._projectService.createProject(this.requestEntity)
       .pipe(
         exhaustMap(
-          (projectId) =>
-            forkJoin(this.createPhotoFileObservables(photoFiles, projectId.id))
+          (projectMessageResource) =>
+            forkJoin(this.createPhotoFileObservables(photoFiles, projectMessageResource.project.id))
         ));
   }
 

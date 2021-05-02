@@ -4,8 +4,8 @@ import {Observable, Subscription} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {SearchHeaderService} from '../components/search-header/services/search-header.service';
 import {ProjectsService} from '../services/projects-service';
-import {PageableProjectsData} from './pageable-projects-data';
 import {Project} from './project/project.model';
+import {PageableProjectMessageResource} from './web/response-bodies/project/pageable-project-message-resource';
 
 @Directive()
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
@@ -56,7 +56,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
     this.searchHeaderState$.unsubscribe();
   }
 
-  private handleProjectsList(currentPage: number, categoryId: string, query: string): Observable<PageableProjectsData> {
+  private handleProjectsList(currentPage: number, categoryId: string, query: string): Observable<PageableProjectMessageResource> {
     this.loading = true;
     AbstractProjectGalleryDirective.scrollOnTop();
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, categoryId, query);
