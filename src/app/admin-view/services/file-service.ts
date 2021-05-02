@@ -33,9 +33,6 @@ export class FileService {
   }
 
   public getFileFromPath(path: string): Observable<Blob> {
-    const httpParams = new HttpParams();
-
-    httpParams.set('path', path);
     return this.httpClient
       .get(`${this.resource.address}?path=${path}`, {
         headers: new HttpHeaders({Accept: 'application/octet-stream'}),
