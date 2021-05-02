@@ -37,7 +37,7 @@ export class FileService {
 
     httpParams.set('path', path);
     return this.httpClient
-      .get(`${this.resource.address}?path=${path}`, {
+      .get(`${this.resource.address}/${path}`, {
         headers: new HttpHeaders({Accept: 'application/octet-stream'}),
         responseType: 'blob',
       });

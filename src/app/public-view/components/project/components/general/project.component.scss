@@ -29,39 +29,8 @@
   padding-bottom: 5vh;
 }
 
-.comparison-text {
-  font-size: calc(1rem + 1.1vmin);
-  font-family: sans-serif;
+.title-text-responsive {
+  color: #c1c1c1;
   font-weight: bold;
-}
-
-.comparison-button {
-  width: 75%;
-  height: 80%;
-}
-
-.comparison-button-container {
-  margin-top: 0;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .comparison-button-container {
-    margin-top: 1rem;
-  }
-
-  .comparison-button {
-    width: 100%;
-    height: 3rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .comparison-button-container {
-    margin-top: 1rem;
-  }
-
-  .comparison-button {
-    width: 35%;
-    height: 100%;
-  }
+  font-size: calc(100% + 1vw + 1vh);
 }
