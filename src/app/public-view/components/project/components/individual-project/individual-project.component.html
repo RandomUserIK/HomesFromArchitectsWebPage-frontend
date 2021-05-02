@@ -1,14 +1,17 @@
 <div class="container">
-  <ng-template [ngIf]="isLoading" [ngIfElse]="loaded">
+  <ng-template [ngIf]="isLoading">
     <app-loading></app-loading>
   </ng-template>
-  <ng-template #loaded>
+  <ng-template [ngIf]="!isLoading && !error">
     <app-project-title-image [titleImage]="project.titleImage"></app-project-title-image>
     <app-individual-project-info [project]="project"></app-individual-project-info>
     <app-project-customer-request></app-project-customer-request>
     <!-- TODO: add gallery component -->
     <app-project-description [textSections]="project.textSections"></app-project-description>
     <app-project-customer-request></app-project-customer-request>
+  </ng-template>
+  <ng-template [ngIf]="!isLoading && error">
+    <app-not-found [displayText]="projectNotFoundMessage"></app-not-found>
   </ng-template>
 </div>
 <div class="container-fluid mt-5 row-content">

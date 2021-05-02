@@ -1,5 +1,5 @@
-import {registerLocaleData} from "@angular/common";
-import localeSk from "@angular/common/locales/sk";
+import {registerLocaleData} from '@angular/common';
+import localeSk from '@angular/common/locales/sk';
 import {Component, Input, OnInit} from '@angular/core';
 import {Project} from '../../../../../../models/project/project.model';
 
