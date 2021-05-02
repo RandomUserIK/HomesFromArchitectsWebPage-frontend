@@ -10,7 +10,8 @@ import {ProjectDescriptionComponent} from './project-description/project-descrip
 import {ProjectNotFoundComponent} from './project-not-found/project-not-found.component';
 import {ProjectPriceInfoComponent} from './project-price-info/project-price-info.component';
 import {ProjectComponent} from './project.component';
-import { ProjectTitleImageComponent } from './project-title-image/project-title-image.component';
+import {ProjectTitleImageComponent} from './project-title-image/project-title-image.component';
+import {ProjectCustomerRequestComponent} from './project-customer-request/project-customer-request.component';
 
 @NgModule({
   declarations: [
@@ -21,16 +22,18 @@ import { ProjectTitleImageComponent } from './project-title-image/project-title-
     ProjectTextSectionComponent,
     ProjectPriceInfoComponent,
     ProjectNotFoundComponent,
-    ProjectTitleImageComponent
+    ProjectTitleImageComponent,
+    ProjectCustomerRequestComponent
   ],
-    exports: [
-        ProjectDescriptionComponent,
-        ProjectContentComponent,
-        ProjectCustomizedProposalComponent,
-        ProjectPriceInfoComponent,
-        ProjectNotFoundComponent,
-        ProjectTitleImageComponent
-    ],
+  exports: [
+    ProjectDescriptionComponent,
+    ProjectContentComponent,
+    ProjectCustomizedProposalComponent,
+    ProjectPriceInfoComponent,
+    ProjectNotFoundComponent,
+    ProjectTitleImageComponent,
+    ProjectCustomerRequestComponent
+  ],
   imports: [
     CommonModule,
     LightboxModule,
