@@ -1,9 +1,10 @@
-import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {ORDER_DATA_FIELDS_CONFIG} from './resources/order-data-fields-injectable';
 import {DataGroupMap} from '../../../../../components/data-fields/models/data-group-map';
 import {OrderFormService} from './services/order-form.service';
 import {RECAPTCHA_KEY_INJECTABLE} from '../../../../../configuration/resources/recaptcha-key-injectable';
+import {DataField} from '../../../../../components/data-fields/models/data-field';
 
 @Component({
   selector: 'app-order-form',
@@ -12,6 +13,7 @@ import {RECAPTCHA_KEY_INJECTABLE} from '../../../../../configuration/resources/r
 export class OrderFormComponent implements OnInit {
 
   public form: FormGroup;
+  private submitButtonField: DataField;
   public loading = false;
   public validationSuccess: boolean;
   public uploadMessage: string;
@@ -23,30 +25,36 @@ export class OrderFormComponent implements OnInit {
               @Inject(RECAPTCHA_KEY_INJECTABLE) public recaptchaKey: string) {
   }
 
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      recaptchaToken: new FormControl(null, Validators.required)
+  private static scrollOnTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
+  }
+
+  ngOnInit(): void {
+    this.submitButtonField = this.orderDataFieldsConfig.thirdSection.find(field => field.formControlName === 'submitButton');
+    this.form = this.formBuilder.group({});
   }
 
   onSubmit(): void {
     this.loading = true;
-
+    this.submitButtonField.loading = true;
     this.orderFormService.createOrder(this.form.value).subscribe(
       () => {
         this.form.reset();
         this.validationSuccess = true;
         this.loading = false;
         this.uploadMessage = 'Objednávku sa podarilo úspešne odoslať';
+        this.submitButtonField.loading = false;
+        OrderFormComponent.scrollOnTop();
       },
       () => {
         this.validationSuccess = false;
         this.loading = false;
         this.uploadMessage = 'Objednávku sa nepodarilo odoslať';
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        this.submitButtonField.loading = false;
+        OrderFormComponent.scrollOnTop();
       });
   }
 
