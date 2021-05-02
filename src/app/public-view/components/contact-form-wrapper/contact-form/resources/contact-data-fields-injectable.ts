@@ -14,7 +14,7 @@ export const CONTACT_DATA_FIELDS_CONFIG = new InjectionToken<DataGroupMap>(
 );
 
 
-const CONTACT_DATA_FIELDS: DataGroupMap = {
+export const CONTACT_DATA_FIELDS: DataGroupMap = {
   formGroup: [
     {
       formControlName: 'name',
