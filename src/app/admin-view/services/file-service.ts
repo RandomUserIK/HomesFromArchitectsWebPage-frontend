@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProjectsService} from '../../services/projects-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {ConfigurationService} from '../../configuration/services/configuration-service';

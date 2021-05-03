@@ -27,13 +27,14 @@ export class ProjectGalleryComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.fileService.getFileFromPath(this.project.titleImage).subscribe(photo => {
-      this.image = this.sanitizer.bypassSecurityTrustUrl(
-        URL.createObjectURL(new Blob([photo],
-          {type: 'application/octet-stream'}))
-      );
-      this.loading = false;
-    });
+    this.fileService.getFileFromPath(this.project.titleImage).subscribe(
+      (photo) => {
+        this.image = this.sanitizer.bypassSecurityTrustUrl(
+          URL.createObjectURL(new Blob([photo],
+            {type: 'application/octet-stream'}))
+        );
+        this.loading = false;
+      });
   }
 
 }
