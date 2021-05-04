@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SafeUrl} from '@angular/platform-browser';
 import {FileService} from '../../../../../admin-view/services/file-service';
-import {ConfigurationService} from '../../../../../configuration/services/configuration-service';
 import {Project} from '../../../../../models/project/project.model';
 
 @Component({
@@ -17,13 +16,12 @@ export class ProjectGalleryComponent implements OnInit {
   public projects = new Array<SafeUrl>();
   public loading = false;
 
-  constructor(private config: ConfigurationService,
-              private fileService: FileService) {
+  constructor(private _fileService: FileService) {
   }
 
   ngOnInit() {
     this.loading = true;
-    this.fileService.getFileFromPathAsSafeUrl(this.project.titleImage).subscribe(
+    this._fileService.getFileFromPathAsSafeUrl(this.project.titleImage).subscribe(
       (imageSafeUrl) => {
         this.image = imageSafeUrl;
         this.loading = false;
