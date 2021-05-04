@@ -33,7 +33,7 @@ export class ContentIndividualProjectPhotosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.projectsService.getSpecifiedNumberOfProjects(0, 3)
+    this.projectsService.getSpecifiedNumberOfProjects(0, 3,'INDIVIDUAL')
       .pipe(
         exhaustMap(
           (project: PageableProjectsData) =>

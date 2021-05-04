@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="row" *ngIf="!loading">
-    <img *ngFor="let photo of photos" [src]="photo" alt="test-project-image" class="col-4">
+    <img *ngFor="let photo of photos" [src]="photo" alt="project-images" class="col-4">
   </div>
   <div class="alert alert-warning text-center" role="alert" *ngIf="photos.length === 0 && !loading">
     Žiadne fotky nie sú k dispozícií.
