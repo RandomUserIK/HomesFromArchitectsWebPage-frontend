@@ -7,12 +7,9 @@ import {Router} from '@angular/router';
   templateUrl: './project-content.component.html',
   styleUrls: ['./project-content.component.scss']
 })
-export class ProjectContentComponent implements OnInit {
+export class ProjectContentComponent {
 
   constructor(@Inject(CONTENT_TEXT_SECTION_CONFIG) public textSectionData: TextSectionGroupMap,
               public router: Router) { }
-
-  ngOnInit(): void {
-  }
 
 }

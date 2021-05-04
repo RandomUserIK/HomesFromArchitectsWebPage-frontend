@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TextSection} from '../../resources/content-data';
 
 @Component({
@@ -6,11 +6,6 @@ import {TextSection} from '../../resources/content-data';
   templateUrl: './content-text-section.component.html',
   styleUrls: ['./content-text-section.component.scss']
 })
-export class ContentTextSectionComponent implements OnInit {
+export class ContentTextSectionComponent{
   @Input() dataGroup: TextSection;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 }

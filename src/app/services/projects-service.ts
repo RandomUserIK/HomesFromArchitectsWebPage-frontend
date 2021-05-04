@@ -32,7 +32,7 @@ export class ProjectsService {
       .get<PageableProjectsData>(`${this.resource.address}/filter?page=${page}&${query}&category=${categoryId}`);
   }
 
-  public getSpecifiedNumberOfProjects(page: number, size: number = 9, categoryId: string): Observable<PageableProjectsData> {
+  public getSpecifiedNumberOfProjects(page: number, categoryId: string, size: number = 9): Observable<PageableProjectsData> {
     return this._httpClient
       .get<PageableProjectsData>(`${this.resource.address}/?page=${page}&size=${size}&category=${categoryId}`);
   }

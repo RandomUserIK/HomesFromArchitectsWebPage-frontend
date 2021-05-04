@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ExtendContentColumnData, TextSection} from '../../resources/content-data';
+import {Component} from '@angular/core';
+import {ExtendContentColumnData} from '../../resources/content-data';
 import ExtendedContentData from '../../resources/extended-content-data.json';
 
 @Component({
@@ -7,14 +7,9 @@ import ExtendedContentData from '../../resources/extended-content-data.json';
   templateUrl: './extended-content.component.html',
   styleUrls: ['./extended-content.component.scss']
 })
-export class ExtendedContentComponent implements OnInit {
+export class ExtendedContentComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  public getExtendedContentData() : ExtendContentColumnData[]{
+  public getExtendedContentData(): ExtendContentColumnData[] {
     return ExtendedContentData.data as ExtendContentColumnData[];
   }
 

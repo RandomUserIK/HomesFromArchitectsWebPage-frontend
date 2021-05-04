@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import tableData from '../../resources/table-content-data.json';
 import {TableContentData} from '../../resources/content-data';
 
@@ -7,12 +7,7 @@ import {TableContentData} from '../../resources/content-data';
   templateUrl: './project-content-table.component.html',
   styleUrls: ['./project-content-table.component.scss']
 })
-export class ProjectContentTableComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class ProjectContentTableComponent {
 
   public getTableData(): TableContentData[]{
     return tableData.table as TableContentData[];
