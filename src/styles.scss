@@ -3,12 +3,12 @@
 @import "~ngx-lightbox/lightbox.css";
 
 @font-face {
-  font-family: "Alegreya";
-  src: local("Alegreya"), url(assets/fonts/alegreya.ttf) format("truetype");
+  font-family: "OpenSans";
+  src: local("OpenSans"), url(assets/fonts/OpenSans.ttf) format("truetype");
 }
 
 * {
-  font-family: "Alegreya", Arial, Helvetica, sans-serif;
+  font-family: "OpenSans", Arial, Helvetica, sans-serif;
   //font-size: 0.7rem;
 }
 

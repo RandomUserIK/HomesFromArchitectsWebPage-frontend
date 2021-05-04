@@ -33,12 +33,10 @@ export class FileService {
   }
 
   public getFileFromPath(path: string): Observable<Blob> {
-    const formData: FormData = new FormData();
-    formData.append('path', path);
     return this.httpClient
-      .post(this.resource.address + '/preview', formData, {
+      .get(`${this.resource.address}?path=${path}`, {
         headers: new HttpHeaders({Accept: 'application/octet-stream'}),
-        responseType: 'blob'
+        responseType: 'blob',
       });
   }
 
@@ -48,15 +46,16 @@ export class FileService {
   }
 
   public getAllPhotosOfProject(projectId: number): Observable<SafeUrl[]> {
-    const projects = new Array<SafeUrl>();
+    const images = new Array<SafeUrl>();
     this.projectService.getProject(projectId).subscribe(data => {
+      console.log(data)
       data.imagePaths.forEach(path => {
         this.getFileFromPath(path).subscribe(photo => {
-          projects.push(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))));
+          images.push(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))));
         });
       });
     });
-    return of(projects);
+    return of(images);
   }
 
 }

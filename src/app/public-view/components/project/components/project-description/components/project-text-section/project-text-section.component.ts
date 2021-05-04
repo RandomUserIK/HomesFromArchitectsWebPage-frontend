@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {TextSection} from '../../../../../../../models/project-data';
+import {TextSection} from '../../../../../../../models/project/text-section.model';
 
 @Component({
   selector: 'app-project-text-section',

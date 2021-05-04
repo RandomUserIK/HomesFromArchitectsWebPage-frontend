@@ -1,18 +1,18 @@
 import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ProjectsService} from '../services/projects-service';
-import {SearchHeaderService} from '../components/search-header/services/search-header.service';
-import {switchMap} from 'rxjs/operators';
-import {ProjectData} from './project-data';
 import {Observable, Subscription} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {SearchHeaderService} from '../components/search-header/services/search-header.service';
+import {ProjectsService} from '../services/projects-service';
 import {PageableProjectsData} from './pageable-projects-data';
+import {Project} from './project/project.model';
 
 @Directive()
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
 
   public currentPage = 1;
   public pageSize = 9;
-  public projects: Array<ProjectData> = [];
+  public projects: Array<Project> = [];
   public totalElements: number;
   public categoryTitle: string;
   public loading: boolean;
@@ -68,7 +68,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
       this.currentPage = data.currentPage + 1;
       this.totalElements = data.totalElements;
       this.loading = false;
-    }
+    };
   }
 
   onPageChange(): void {
