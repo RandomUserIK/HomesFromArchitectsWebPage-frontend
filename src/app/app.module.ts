@@ -16,8 +16,7 @@ import {NotFoundModule} from './components/not-found/not-found.module';
 const routes: Routes = [
   {path: 'admin', loadChildren: () => import('./admin-view/admin-view.module').then(m => m.AdminViewModule)},
   {path: '', loadChildren: () => import('./public-view/public-view.module').then(m => m.PublicViewModule)},
-  {path: '**', component: NotFoundComponent},
-  // TODO: pass Stránka nebola nájdená
+  {path: '**', component: NotFoundComponent}
 ]
 
 @NgModule({
