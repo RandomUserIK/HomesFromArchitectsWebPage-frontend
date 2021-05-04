@@ -17,6 +17,7 @@ export class ProjectGalleryComponent implements OnInit {
   private resource: EndpointConfigData;
   public image: SafeUrl;
   public projects = new Array<SafeUrl>();
+  public loading = false;
 
   constructor(private config: ConfigurationService,
               private fileService: FileService,
@@ -25,9 +26,15 @@ export class ProjectGalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fileService.getFileFromPath(this.project.titleImage).subscribe(photo => {
-      this.image = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'})))
-    });
+    this.loading = true;
+    this.fileService.getFileFromPath(this.project.titleImage).subscribe(
+      (photo) => {
+        this.image = this.sanitizer.bypassSecurityTrustUrl(
+          URL.createObjectURL(new Blob([photo],
+            {type: 'application/octet-stream'}))
+        );
+        this.loading = false;
+      });
   }
 
 }

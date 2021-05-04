@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProjectsService} from '../../services/projects-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {ConfigurationService} from '../../configuration/services/configuration-service';
@@ -33,9 +33,6 @@ export class FileService {
   }
 
   public getFileFromPath(path: string): Observable<Blob> {
-    const httpParams = new HttpParams();
-
-    httpParams.set('path', path);
     return this.httpClient
       .get(`${this.resource.address}/${path}`, {
         headers: new HttpHeaders({Accept: 'application/octet-stream'}),
