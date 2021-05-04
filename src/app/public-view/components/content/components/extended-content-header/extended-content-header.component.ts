@@ -8,6 +8,6 @@ import {TextSection} from '../../resources/content-data';
 })
 export class ExtendedContentHeaderComponent {
   public buttonClicked = false;
-  @Input() completeContentDataGroup: TextSection;
-  @Input() orderStepsDataGroup: TextSection;
+  @Input() completeTextSection: TextSection;
+  @Input() orderStepsTextSection: TextSection;
 }

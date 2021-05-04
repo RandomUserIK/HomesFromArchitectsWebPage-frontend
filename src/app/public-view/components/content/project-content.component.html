@@ -1,16 +1,16 @@
 <div class="container">
-  <app-content-text-section [dataGroup]="textSectionData['EXACTLY_MEASURE_CONTENT_DATA']"></app-content-text-section>
-  <app-content-text-section [dataGroup]="textSectionData['CATALOGUE_PROJECT_CONTENT_DATA']"></app-content-text-section>
+  <app-content-text-section [textSection]="textSectionData['EXACTLY_MEASURE_CONTENT_DATA']"></app-content-text-section>
+  <app-content-text-section [textSection]="textSectionData['CATALOGUE_PROJECT_CONTENT_DATA']"></app-content-text-section>
   <h4 class="text-center font-weight-bold text-font padding-bottom">Dokumentácia je spracovaná vo vysokej realizačnej
     podrobnosti.</h4>
   <project-content-table></project-content-table>
   <p class="text-center">Všetky ceny nájdete v našom rozšírenom prehľade. Uvádzané ceny sú konečné, dodávateľ nieje
     platcom DPH. </p>
   <app-extended-content-header
-    [completeContentDataGroup]="textSectionData['COMPLETE_CONTENT_DATA']"
-    [orderStepsDataGroup]="textSectionData['ORDER_STEPS_CONTENT_DATA']">
+    [completeTextSection]="textSectionData['COMPLETE_CONTENT_DATA']"
+    [orderStepsTextSection]="textSectionData['ORDER_STEPS_CONTENT_DATA']">
   </app-extended-content-header>
-  <app-content-text-section class="padding-top" [dataGroup]="textSectionData['INDIVIDUAL_PROJECT_CONTENT_DATA']"></app-content-text-section>
+  <app-content-text-section class="padding-top" [textSection]="textSectionData['INDIVIDUAL_PROJECT_CONTENT_DATA']"></app-content-text-section>
   <app-content-individual-project-photos ></app-content-individual-project-photos>
   <div class="text-center padding-top" >
     <button type="button" class="btn btn-primary mr-3" (click)="router.navigate(['/interierovy-dizajn'])">Pozerať individuálne projekty</button>

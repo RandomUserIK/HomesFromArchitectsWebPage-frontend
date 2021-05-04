@@ -7,5 +7,5 @@ import {TextSection} from '../../resources/content-data';
   styleUrls: ['./content-text-section.component.scss']
 })
 export class ContentTextSectionComponent{
-  @Input() dataGroup: TextSection;
+  @Input() textSection: TextSection;
 }
