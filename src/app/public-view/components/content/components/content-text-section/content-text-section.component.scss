@@ -1,3 +1,5 @@
+@import 'src/app/public-view/components/content/project-content.component.scss';
+
 .line-under-text {
   height:3px;
   border-width:0;
@@ -5,7 +7,6 @@
 }
 
 .title-text{
-  font-size: 1.3rem;
   opacity: 0.5;
 }
 

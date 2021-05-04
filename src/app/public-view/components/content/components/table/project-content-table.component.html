@@ -8,16 +8,16 @@
   </thead>
   <tbody>
   <tr *ngFor="let data of getTableData()">
-    <td class="align-baseline align-middle first-col ">{{data.name}}</td>
+    <td class="align-baseline align-middle first-col content-text">{{data.name}}</td>
     <td class="second-col col-text-center align-middle">
       <em class="bi bi-check table-icon-size"
           *ngIf="!isString(data.basic)"></em>
-      <p *ngIf="isString(data.basic)">{{data.basic}}</p>
+      <p class="content-text" *ngIf="isString(data.basic)">{{data.basic}}</p>
     </td>
     <td class="second-col col-text-center align-middle">
       <em class="bi bi-check table-icon-size"
           *ngIf="!isString(data.advanced)"></em>
-      <p *ngIf="isString(data.advanced)">{{data.advanced}}</p>
+      <p class="content-text" *ngIf="isString(data.advanced)">{{data.advanced}}</p>
     </td>
   </tr>
   </tbody>

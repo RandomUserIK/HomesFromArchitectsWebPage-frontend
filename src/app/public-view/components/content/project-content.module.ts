@@ -5,6 +5,8 @@ import {ProjectContentTableComponent} from './components/table/project-content-t
 import {ContentTextSectionComponent} from './components/content-text-section/content-text-section.component';
 import { ExtendedContentHeaderComponent } from './components/extended-content-header/extended-content-header.component';
 import { ExtendedContentComponent } from './components/extended-content/extended-content.component';
+import {ContactModule} from '../contact/contact.module';
+import { ContentIndividualProjectPhotosComponent } from './components/content-individual-project-photos/content-individual-project-photos.component';
 
 
 @NgModule({
@@ -13,11 +15,13 @@ import { ExtendedContentComponent } from './components/extended-content/extended
     ProjectContentTableComponent,
     ContentTextSectionComponent,
     ExtendedContentHeaderComponent,
-    ExtendedContentComponent
+    ExtendedContentComponent,
+    ContentIndividualProjectPhotosComponent
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        ContactModule
+    ],
   exports: [
     ProjectContentComponent,
   ]

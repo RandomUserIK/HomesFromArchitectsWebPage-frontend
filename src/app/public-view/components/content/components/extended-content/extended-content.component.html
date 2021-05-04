@@ -1,3 +1,18 @@
 <div class="container">
-  <app-content-text-section [dataGroup]="dataGroup"></app-content-text-section>
+  <div class="row">
+    <div *ngFor="let data of getExtendedContentData()"
+         [class.col-md-6]="!data.fullWidth"
+         [class.col-md-12]="data.fullWidth"
+         class="padding-bottom">
+      <h4 class="text-center">{{data.title}}</h4>
+      <p class="text-center title-text font-weight-light text-font">{{data.subtitle}}</p>
+      <hr class="line-under-text">
+      <ul *ngIf="!data.fullWidth">
+        <li class="left-padding content-text" *ngFor="let value of data.values">{{value}}</li>
+      </ul>
+      <p *ngIf="data.fullWidth" class="text-center content-text">{{data.values}}</p>
+    </div>
+  </div>
+  <p class="text-center contact-text ">Pre ponuku individuálneho projektu nás stačí kontaktovať.</p>
+
 </div>

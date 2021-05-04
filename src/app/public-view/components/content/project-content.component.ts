@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {CONTENT_TEXT_SECTION_CONFIG, TextSectionGroupMap} from './resources/content-text-fields-injectable';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-content',
@@ -8,7 +9,8 @@ import {CONTENT_TEXT_SECTION_CONFIG, TextSectionGroupMap} from './resources/cont
 })
 export class ProjectContentComponent implements OnInit {
 
-  constructor(@Inject(CONTENT_TEXT_SECTION_CONFIG) public textSectionData: TextSectionGroupMap) { }
+  constructor(@Inject(CONTENT_TEXT_SECTION_CONFIG) public textSectionData: TextSectionGroupMap,
+              public router: Router) { }
 
   ngOnInit(): void {
   }

@@ -9,3 +9,10 @@ export interface TextSection {
   text: string;
   separatingLineWidth: string;
 }
+
+export interface ExtendContentColumnData {
+  title: string;
+  subtitle: string;
+  fullWidth: boolean,
+  values: string[];
+}

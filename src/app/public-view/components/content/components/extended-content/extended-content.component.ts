@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TextSection} from '../../resources/content-data';
+import {ExtendContentColumnData, TextSection} from '../../resources/content-data';
+import ExtendedContentData from '../../resources/extended-content-data.json';
 
 @Component({
   selector: 'app-extended-content',
@@ -8,10 +9,13 @@ import {TextSection} from '../../resources/content-data';
 })
 export class ExtendedContentComponent implements OnInit {
 
-  @Input() dataGroup: TextSection;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public getExtendedContentData() : ExtendContentColumnData[]{
+    return ExtendedContentData.data as ExtendContentColumnData[];
   }
 
 }
