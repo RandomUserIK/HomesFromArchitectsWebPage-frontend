@@ -15,6 +15,7 @@ import { ContentIndividualProjectPhotosComponent } from './components/content-in
     ProjectContentTableComponent,
     ContentTextSectionComponent,
     ExtendedContentHeaderComponent,
+    ContentIndividualProjectPhotosComponent,
     ExtendedContentComponent,
     ContentIndividualProjectPhotosComponent
   ],
