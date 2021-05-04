@@ -1,7 +1,7 @@
 import {registerLocaleData} from '@angular/common';
 import localeSk from '@angular/common/locales/sk';
 import {Component, Input, OnInit} from '@angular/core';
-import {Project} from '../../../../../../models/project/project.model';
+import {Project} from '../../../../../../../models/project/project.model';
 
 @Component({
   selector: 'app-individual-project-info',

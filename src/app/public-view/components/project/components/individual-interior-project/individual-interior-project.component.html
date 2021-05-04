@@ -4,7 +4,13 @@
   </ng-template>
   <ng-template [ngIf]="!isLoading && !error">
     <app-project-title-image [titleImagePath]="project.titleImage"></app-project-title-image>
-    <app-interior-project-info [project]="project"></app-interior-project-info>
+
+    <app-individual-project-info *ngIf="project.category === INDIVIDUAL_CATEGORY_ID"
+                                 [project]="project"></app-individual-project-info>
+
+    <app-interior-project-info *ngIf="project.category === INTERIOR_CATEGORY_ID"
+                                 [project]="project"></app-interior-project-info>
+
     <app-project-customer-request></app-project-customer-request>
     <!-- TODO: add gallery component -->
     <app-project-description [textSections]="project.textSections"></app-project-description>

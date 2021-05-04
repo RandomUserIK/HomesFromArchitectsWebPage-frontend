@@ -4,11 +4,14 @@ import {ProjectsService} from '../../../../../services/projects-service';
 import {AbstractProjectView} from '../general/project-view/abstract-project-view';
 
 @Component({
-  selector: 'app-individual-project',
-  templateUrl: './individual-project.component.html',
-  styleUrls: ['./individual-project.component.scss']
+  selector: 'app-individual-interior-project',
+  templateUrl: './individual-interior-project.component.html',
+  styleUrls: ['./individual-interior-project.component.scss']
 })
-export class IndividualProjectComponent extends AbstractProjectView implements OnInit {
+export class IndividualInteriorProjectComponent extends AbstractProjectView implements OnInit {
+
+  public readonly INDIVIDUAL_CATEGORY_ID = 'INDIVIDUAL';
+  public readonly INTERIOR_CATEGORY_ID = 'INTERIOR_DESIGN';
 
   constructor(projectService: ProjectsService,
               private _route: ActivatedRoute) {
