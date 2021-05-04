@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {CONTENT_TEXT_SECTION_CONFIG, TextSectionGroupMap} from './resources/content-text-fields-injectable';
 import {Router} from '@angular/router';
 

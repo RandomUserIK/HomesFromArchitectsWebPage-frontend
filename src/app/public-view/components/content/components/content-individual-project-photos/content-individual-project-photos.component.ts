@@ -9,8 +9,7 @@ import {forkJoin, Observable} from 'rxjs';
 
 @Component({
   selector: 'app-content-individual-project-photos',
-  templateUrl: './content-individual-project-photos.component.html',
-  styleUrls: ['./content-individual-project-photos.component.scss']
+  templateUrl: './content-individual-project-photos.component.html'
 })
 export class ContentIndividualProjectPhotosComponent implements OnInit {
 
