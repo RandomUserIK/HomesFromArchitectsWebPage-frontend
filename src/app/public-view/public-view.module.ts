@@ -11,10 +11,8 @@ import {OrderComponent} from './components/order/order.component';
 import {OrderModule} from './components/order/order.module';
 import {CommonProjectComponent} from './components/project/components/common-project/common-project.component';
 import {CommonProjectModule} from './components/project/components/common-project/common-project.module';
-import {IndividualProjectComponent} from './components/project/components/individual-project/individual-project.component';
-import {IndividualProjectModule} from './components/project/components/individual-project/individual-project.module';
-import {InteriorProjectComponent} from './components/project/components/interior-project/interior-project.component';
-import {InteriorProjectModule} from './components/project/components/interior-project/interior-project.module';
+import {IndividualInteriorProjectComponent} from './components/project/components/individual-interior-project/individual-interior-project.component';
+import {IndividualInteriorProjectModule} from './components/project/components/individual-interior-project/individual-interior-project.module';
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
 import {PublicViewComponent} from './public-view.component';
@@ -43,7 +41,7 @@ const routes: Routes = [
       },
       {
         path: 'individualne-projekty/:id',
-        component: IndividualProjectComponent,
+        component: IndividualInteriorProjectComponent,
       },
       {
         path: 'katalogove-projekty/:id',
@@ -51,7 +49,7 @@ const routes: Routes = [
       },
       {
         path: 'interierovy-dizajn/:id',
-        component: InteriorProjectComponent,
+        component: IndividualInteriorProjectComponent,
       },
       {
         path: 'kontakty',
@@ -69,14 +67,13 @@ const routes: Routes = [
   declarations: [
     PublicViewComponent,
     HeaderComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     HomeModule,
     CommonProjectModule,
-    IndividualProjectModule,
-    InteriorProjectModule,
+    IndividualInteriorProjectModule,
     ProjectsGalleryModule,
     SearchHeaderModule,
     OrderModule,

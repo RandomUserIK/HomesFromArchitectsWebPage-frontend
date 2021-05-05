@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {ImageCarouselModule} from '../../../../../components/image-carousel/image-carousel.module';
 import {LightboxModule} from '../../../../../components/lightbox/lightbox.module';
 import {LoadingModule} from '../../../../../components/loading/loading.module';
+import {NotFoundModule} from '../../../../../components/not-found/not-found.module';
 import {ProjectModule} from '../general/project.module';
 import {CommonProjectBuildingInfoComponent} from './common-project-building-info/common-project-building-info.component';
 import {CommonProjectChangesComponent} from './common-project-changes/common-project-changes.component';
@@ -32,7 +33,8 @@ import {CommonProjectComponent} from './common-project.component';
     ProjectModule,
     LightboxModule,
     ImageCarouselModule,
-    LoadingModule
+    LoadingModule,
+    NotFoundModule
   ]
 })
 export class CommonProjectModule {

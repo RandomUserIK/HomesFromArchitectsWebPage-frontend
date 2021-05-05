@@ -1,4 +1,9 @@
-<div class="img-wrapper">
+<div *ngIf="loading"  class="d-flex img-loading-wrapper justify-content-center">
+  <div class="row align-content-center">
+  <span class="spinner-border spinner-border-lg"></span>
+  </div>
+</div>
+<div *ngIf="!loading" class="img-wrapper">
   <img [src]="image" alt="test-project-image">
   <div class="text-center align-middle font-weight-bold line-height text-light">100 000€ | 4 izby</div>
 </div>

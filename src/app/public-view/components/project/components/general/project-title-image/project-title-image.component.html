@@ -1,6 +1,9 @@
 <div class="container">
-  <!-- TODO: remove assets/ -->
-  <img [src]="'assets/' + titleImage"
-       [alt]="titleImage"
+  <div class="col-12 text-center" *ngIf="isLoading" >
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+  </div>
+  <img *ngIf="!isLoading"
+       [src]="titleImagePreview"
+       [alt]="'Project title image'"
        class="w-100">
 </div>

@@ -9,13 +9,11 @@ import {ProjectTextSectionComponent} from './project-description/components/proj
 import {ProjectDescriptionComponent} from './project-description/project-description.component';
 import {ProjectNotFoundComponent} from './project-not-found/project-not-found.component';
 import {ProjectPriceInfoComponent} from './project-price-info/project-price-info.component';
-import {ProjectComponent} from './project.component';
 import {ProjectTitleImageComponent} from './project-title-image/project-title-image.component';
 import {ProjectCustomerRequestComponent} from './project-customer-request/project-customer-request.component';
 
 @NgModule({
   declarations: [
-    ProjectComponent,
     ProjectDescriptionComponent,
     ProjectContentComponent,
     ProjectCustomizedProposalComponent,
