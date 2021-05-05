@@ -18,7 +18,7 @@ export abstract class AbstractProjectView {
   private fetchProject(projectId: number): void {
     this.isLoading = true
     this._projectService.getProject(projectId).subscribe((project) => {
-      this.project = project;
+      this.project = project.project;
       this.isLoading = false;
     }, error => {
       this.error = error;

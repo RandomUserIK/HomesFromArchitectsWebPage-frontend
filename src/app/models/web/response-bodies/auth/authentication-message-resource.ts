@@ -3,4 +3,5 @@ export interface AuthenticationMessageResource {
   username: string;
   roles: Array<string>;
   jwtExpiration: number;
+  jwtToken: string;
 }
