@@ -17,13 +17,14 @@ export abstract class AbstractProjectView {
 
   private fetchProject(projectId: number): void {
     this.isLoading = true
-    this._projectService.getProject(projectId).subscribe((project) => {
-      this.project = project;
-      this.isLoading = false;
-    }, error => {
-      this.error = error;
-      this.isLoading = false;
-    });
+    this._projectService.getProject(projectId).subscribe(
+      (project) => {
+        this.project = project;
+        this.isLoading = false;
+      }, (error) => {
+        this.error = error;
+        this.isLoading = false;
+      });
   }
 
 }
