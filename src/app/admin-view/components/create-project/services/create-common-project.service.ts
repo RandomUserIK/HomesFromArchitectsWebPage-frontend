@@ -39,7 +39,16 @@ export class CreateCommonProjectService {
           });
           break;
         case DataFieldType.DYNAMIC_TEXT_SECTION:
-          this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value;
+          // TODO: implement as NgxEditor
+          break;
+        case DataFieldType.MULTICHOICE:
+          let checkedChoices = []
+          for (const [choice, isChecked] of Object.entries(form.get(dataField.formControlName).value)) {
+            if (isChecked){
+              checkedChoices.push(choice);
+            }
+          }
+          this.requestEntity[dataField.formControlName] = checkedChoices;
           break;
         default:
           this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value?.toString();

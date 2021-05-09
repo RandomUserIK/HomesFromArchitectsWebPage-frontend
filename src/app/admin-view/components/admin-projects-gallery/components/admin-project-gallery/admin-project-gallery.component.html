@@ -1,0 +1,21 @@
+<div class="card-body">
+  <div class="row">
+    <div class="col-3">
+      <span>{{project.title}}</span>
+    </div>
+    <div class="col-9 text-right">
+      <button (click)="editProject()"
+              type="button"
+              class="btn btn-primary mr-3">
+        <em class="bi bi-pen"></em>
+        Upraviť
+      </button>
+      <button (click)="removeProject()"
+              type="button"
+              class="btn btn-outline-danger">
+        <em class="bi bi-trash"></em>
+        Vymazať
+      </button>
+    </div>
+  </div>
+</div>

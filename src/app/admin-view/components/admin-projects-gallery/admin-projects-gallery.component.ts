@@ -11,12 +11,25 @@ import {SearchHeaderService} from '../../../components/search-header/services/se
 })
 export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirective {
 
+  public message: string;
+  public projectRemoved: boolean;
 
   constructor(activatedRoute: ActivatedRoute,
               projectsService: ProjectsService,
               searchHeaderService: SearchHeaderService,
               private router: Router) {
     super(activatedRoute, projectsService, searchHeaderService);
+  }
+
+  removeProject($event: number) {
+    if ($event === undefined) {
+      this.message = "Projet sa nepodarilo odstrániť";
+      this.projectRemoved = false;
+    } else {
+      this.projects = this.projects.filter(project => project.id != $event);
+      this.message = "Projekt sa podarilo odstrániť";
+      this.projectRemoved = true;
+    }
   }
 
   onAddProject(): void {

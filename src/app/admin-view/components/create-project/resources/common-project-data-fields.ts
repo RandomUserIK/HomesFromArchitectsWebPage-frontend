@@ -171,11 +171,11 @@ export const COMMON_PROJECT_DATA_FIELDS = [
     validator: Validators.required,
     imgType: ImageType.TITLE_IMAGE,
     label: 'Vyberte titulnú fotku...',
-    fullWidth: false,
+    fullWidth: true,
     imageTitle: 'Titulná fotka'
   },
   {
-    formControlName: 'dynamicGalleryFloorPlanImages',
+    formControlName: 'floorPlanImagePaths',
     type: DataFieldType.DYNAMIC_PHOTO_GALLERY,
     validator: Validators.required,
     imgType: ImageType.GALLERY_FLOOR_PLANS_IMAGES,
@@ -183,7 +183,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
     fullWidth: true
   },
   {
-    formControlName: 'dynamicPhotoGallery',
+    formControlName: 'imagePaths',
     type: DataFieldType.DYNAMIC_PHOTO_GALLERY,
     validator: Validators.required,
     imgType: ImageType.GALLERY_IMAGES,

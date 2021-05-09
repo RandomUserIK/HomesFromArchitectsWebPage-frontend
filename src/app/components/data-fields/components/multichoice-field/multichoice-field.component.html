@@ -3,15 +3,18 @@
     class="col-form-label">
     {{dataField.label}}
   </label>
-  <div class="custom-control custom-checkbox mb-1" *ngFor="let value of dataField.values">
-    <input (change)="onCheckChange($event, dataField.formControlName)"
-           [id]="value"
-           [value]="value"
-           [checked]=""
-           type="checkbox"
-           class="custom-control-input">
-    <label class="custom-control-label" [for]="value">{{value}}</label>
+  <div [formGroupName]="dataField.formControlName">
+    <div class="custom-control custom-checkbox mb-1"
+         *ngFor="let value of dataField.values">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        [id]="value"
+        [formControlName]="value">
+      <label class="custom-control-label" [for]="value">{{value}}</label>
+    </div>
   </div>
+
   <div *ngIf="form.get(dataField.formControlName).invalid && touched" class="text-danger">
     Povinný údaj
   </div>
