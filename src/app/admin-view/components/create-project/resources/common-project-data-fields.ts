@@ -5,7 +5,7 @@ import {ImageType} from '../../../../components/data-fields/models/image-type.en
 export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'title',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Názov projektu *',
     fullWidth: false,
@@ -13,7 +13,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'builtUpArea',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Zastavaná plocha *',
     fullWidth: false,
@@ -21,7 +21,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'persons',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Počet osôb *',
     fullWidth: false,
@@ -29,7 +29,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'rooms',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Počet izieb *',
     fullWidth: false,
@@ -37,7 +37,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'usableArea',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Celková plocha *',
     fullWidth: false,
@@ -45,7 +45,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'totalLivingArea',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Úžitková plocha *',
     fullWidth: false,
@@ -53,7 +53,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'selfHelpBuildPrice',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Svojpomocná výstavba *',
     fullWidth: false,
@@ -61,7 +61,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'onKeyPrice',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Cena na kľúč *',
     fullWidth: false,
@@ -69,7 +69,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'basicProjectPrice',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Cena základného projektu *',
     fullWidth: false,
@@ -77,7 +77,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'extendedProjectPrice',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Cena rozšíreného projektu *',
     fullWidth: false,
@@ -85,7 +85,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'roofPitch',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Sklon strechy *',
     fullWidth: false,
@@ -93,7 +93,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'minimumParcelWidth',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Minimálnu šírku pozemku *',
     fullWidth: false,
@@ -101,7 +101,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'heatingSource',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Zdroj vykurovania *',
     fullWidth: false,
@@ -109,7 +109,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'heatingType',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Typ vykurovania *',
     fullWidth: false,
@@ -167,7 +167,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'titleImage',
-    type: DataFieldType.FILE,
+    type: DataFieldType.IMAGE,
     validator: Validators.required,
     imgType: ImageType.TITLE_IMAGE,
     label: 'Vyberte titulnú fotku...',

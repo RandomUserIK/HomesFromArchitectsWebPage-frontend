@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CreateProjectService } from './create-project.service';
+import { AutoScrollService } from './auto-scroll.service';
 
-describe('CreateProjectService', () => {
-  let service: CreateProjectService;
+describe('AutoScrollService', () => {
+  let service: AutoScrollService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CreateProjectService);
+    service = TestBed.inject(AutoScrollService);
   });
 
   it('should be created', () => {

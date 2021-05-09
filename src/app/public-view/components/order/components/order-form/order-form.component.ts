@@ -5,6 +5,7 @@ import {DataGroupMap} from '../../../../../components/data-fields/models/data-gr
 import {OrderFormService} from './services/order-form.service';
 import {RECAPTCHA_KEY_INJECTABLE} from '../../../../../configuration/resources/recaptcha-key-injectable';
 import {DataField} from '../../../../../components/data-fields/models/data-field';
+import {AutoScrollService} from '../../../../../services/auto-scroll.service';
 
 @Component({
   selector: 'app-order-form',
@@ -19,22 +20,15 @@ export class OrderFormComponent implements OnInit {
   public uploadMessage: string;
 
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private autoScrollService: AutoScrollService,
               private orderFormService: OrderFormService,
               @Inject(ORDER_DATA_FIELDS_CONFIG) public orderDataFieldsConfig: DataGroupMap,
               @Inject(RECAPTCHA_KEY_INJECTABLE) public recaptchaKey: string) {
   }
 
-  private static scrollOnTop(): void {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
-
   ngOnInit(): void {
     this.submitButtonField = this.orderDataFieldsConfig.thirdSection.find(field => field.formControlName === 'submitButton');
-    this.form = this.formBuilder.group({});
+    this.form = new FormGroup({});
   }
 
   onSubmit(): void {
@@ -47,14 +41,14 @@ export class OrderFormComponent implements OnInit {
         this.loading = false;
         this.uploadMessage = 'Objednávku sa podarilo úspešne odoslať';
         this.submitButtonField.loading = false;
-        OrderFormComponent.scrollOnTop();
+        this.autoScrollService.scrollToTop();
       },
       () => {
         this.validationSuccess = false;
         this.loading = false;
         this.uploadMessage = 'Objednávku sa nepodarilo odoslať';
         this.submitButtonField.loading = false;
-        OrderFormComponent.scrollOnTop();
+        this.autoScrollService.scrollToTop();
       });
   }
 

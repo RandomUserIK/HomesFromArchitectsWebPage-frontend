@@ -16,7 +16,7 @@ interface PhotoFile {
 }
 
 @Injectable()
-export class CreateCommonProjectService {
+export class CreateProjectService {
 
   private requestEntity: Project = {};
 
@@ -27,10 +27,10 @@ export class CreateCommonProjectService {
 
   public createProject(form: FormGroup, formConfig: DataField[], category: string): Observable<any> {
     const photoFiles: PhotoFile[] = [];
-    formConfig.forEach(dataField => {
 
+    formConfig.forEach(dataField => {
       switch (dataField.type) {
-        case DataFieldType.FILE:
+        case DataFieldType.IMAGE:
           photoFiles.push({type: dataField.imgType, value: form.get(dataField.formControlName).value});
           break;
         case DataFieldType.DYNAMIC_PHOTO_GALLERY:
@@ -42,7 +42,7 @@ export class CreateCommonProjectService {
           // TODO: implement as NgxEditor
           break;
         case DataFieldType.MULTICHOICE:
-          let checkedChoices = []
+          const checkedChoices = []
           for (const [choice, isChecked] of Object.entries(form.get(dataField.formControlName).value)) {
             if (isChecked){
               checkedChoices.push(choice);

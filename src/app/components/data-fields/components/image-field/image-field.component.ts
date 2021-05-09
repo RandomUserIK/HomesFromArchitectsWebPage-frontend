@@ -7,9 +7,9 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-file-field',
-  templateUrl: './file-field.component.html'
+  templateUrl: './image-field.component.html'
 })
-export class FileFieldComponent implements OnInit {
+export class ImageFieldComponent implements OnInit {
 
   @Input() dataField: DataField;
   @Input() form: FormGroup;
@@ -30,7 +30,7 @@ export class FileFieldComponent implements OnInit {
           this.dataField.imgSrc = undefined;
           return
         }
-        let reader = new FileReader();
+        const reader = new FileReader();
         reader.readAsDataURL(photoFile);
         reader.onload = () => {
           this.dataField.imgSrc = this.sanitizer.bypassSecurityTrustUrl(reader.result as string)
