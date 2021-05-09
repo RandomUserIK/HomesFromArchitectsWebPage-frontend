@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {CreateProjectService} from './services/create-project.service';
 import {DataGroupMap} from '../../../components/data-fields/models/data-group-map';
@@ -46,7 +46,6 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.form = new FormGroup({});
-    // this.form.valueChanges.subscribe(value => console.log(value));
   }
 
   ngAfterViewInit() {

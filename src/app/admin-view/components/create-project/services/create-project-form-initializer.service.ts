@@ -20,7 +20,7 @@ export class CreateProjectFormInitializerService {
 
       switch (dataField.type) {
         case DataFieldType.IMAGE:
-          this.initializePhoto(formControl, projectData[dataField.formControlName]);
+          this.initializeImage(formControl, projectData[dataField.formControlName]);
           break;
         case DataFieldType.DYNAMIC_PHOTO_GALLERY:
           this.initializePhotoGallery(formControl, projectData[dataField.formControlName]);
@@ -37,13 +37,15 @@ export class CreateProjectFormInitializerService {
         case DataFieldType.PRIMITIVE_TYPE:
           this.initializeFormControlWithStringValue(formControl, projectData[dataField.formControlName]);
           break;
+        default:
+          throw Error("Invalid type of data field provided");
       }
     });
   }
 
-  private initializePhoto(formControl: AbstractControl, photoPath: string): void {
-    this.fileService.getFileFromPath(photoPath).subscribe((photoBlob) => {
-      const file = new File([photoBlob], photoPath.split('/').pop());
+  private initializeImage(formControl: AbstractControl, imagePath: string): void {
+    this.fileService.getFileFromPath(imagePath).subscribe((photoBlob) => {
+      const file = new File([photoBlob], imagePath.split('/').pop());
       formControl.setValue(file);
     });
   }
@@ -61,7 +63,7 @@ export class CreateProjectFormInitializerService {
     formControl.setValue(value);
   }
 
-  private initializeMultichoice(formControl: AbstractControl, values: Array<string>): void {
+  private initializeMultichoice(formControl: AbstractControl, values: string[]): void {
     const activeValues = {};
     values.forEach(value => {
       activeValues[value] = true;

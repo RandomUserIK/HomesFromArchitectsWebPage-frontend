@@ -7,7 +7,6 @@ import {ProjectsService} from '../services/projects-service';
 import {PageableProjectsData} from './pageable-projects-data';
 import {Project} from './project/project.model';
 import {AutoScrollService} from '../services/auto-scroll.service';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
 
 @Directive()
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {

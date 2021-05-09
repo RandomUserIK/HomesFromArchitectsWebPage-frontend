@@ -19,47 +19,72 @@ interface PhotoFile {
 export class CreateProjectService {
 
   private requestEntity: Project = {};
+  private photoFiles: PhotoFile[] = [];
 
   constructor(private _httpClient: HttpClient,
               private _fileService: FileService,
               private _projectService: ProjectsService) {
   }
 
-  public createProject(form: FormGroup, formConfig: DataField[], category: string): Observable<any> {
-    const photoFiles: PhotoFile[] = [];
+  public createProject(form: FormGroup, formConfig: DataField[], category: string): Observable<string[]> {
 
     formConfig.forEach(dataField => {
-      switch (dataField.type) {
-        case DataFieldType.IMAGE:
-          photoFiles.push({type: dataField.imgType, value: form.get(dataField.formControlName).value});
-          break;
-        case DataFieldType.DYNAMIC_PHOTO_GALLERY:
-          form.get(dataField.formControlName).value.forEach(photoFromGallery => {
-            photoFiles.push({type: dataField.imgType, value: photoFromGallery});
-          });
-          break;
-        case DataFieldType.DYNAMIC_TEXT_SECTION:
-          // TODO: implement as NgxEditor
-          break;
-        case DataFieldType.MULTICHOICE:
-          const checkedChoices = []
-          for (const [choice, isChecked] of Object.entries(form.get(dataField.formControlName).value)) {
-            if (isChecked){
-              checkedChoices.push(choice);
-            }
-          }
-          this.requestEntity[dataField.formControlName] = checkedChoices;
-          break;
-        default:
-          this.requestEntity[dataField.formControlName] = form.get(dataField.formControlName).value?.toString();
-          break;
-      }
+      this.resolveDataField(dataField, form.get(dataField.formControlName).value);
     });
     this.requestEntity.category = category;
-    return this.sendProject(photoFiles);
+    return this.sendProject(this.photoFiles);
   }
 
-  private sendProject(photoFiles: PhotoFile[]): Observable<any> {
+  private resolveDataField(dataField: DataField, formValue: any): void {
+    switch (dataField.type) {
+      case DataFieldType.IMAGE:
+        this.prepareImage(dataField, formValue);
+        break;
+      case DataFieldType.DYNAMIC_PHOTO_GALLERY:
+        this.prepareImages(dataField, formValue);
+        break;
+      case DataFieldType.DYNAMIC_TEXT_SECTION:
+        // TODO: implement as NgxEditor
+        break;
+      case DataFieldType.ENUMERATION:
+        this.prepareDataFieldWithStringValue(dataField, formValue);
+        break;
+      case DataFieldType.MULTICHOICE:
+        this.prepareMultichoice(dataField, formValue);
+        break;
+      case DataFieldType.PRIMITIVE_TYPE:
+        this.prepareDataFieldWithStringValue(dataField, formValue);
+        break;
+      default:
+        throw Error("Invalid type of data field provided");
+    }
+  }
+
+  private prepareImage(dataField: DataField, formValue: File): void {
+    this.photoFiles.push({type: dataField.imgType, value: formValue})
+  }
+
+  private prepareImages(dataField: DataField, formValue: File[]) {
+    formValue.forEach(image => {
+      this.prepareImage(dataField, image);
+    });
+  }
+
+  private prepareDataFieldWithStringValue(dataField: DataField, formValue: string): void {
+    this.requestEntity[dataField.formControlName] = formValue;
+  }
+
+  private prepareMultichoice(dataField: DataField, formValue: string[]): void {
+    const checkedValues = []
+    for (const [value, isChecked] of Object.entries(formValue)) {
+      if (isChecked) {
+        checkedValues.push(value);
+      }
+    }
+    this.requestEntity[dataField.formControlName] = checkedValues;
+  }
+
+  private sendProject(photoFiles: PhotoFile[]): Observable<string[]> {
     return this._projectService.createProject(this.requestEntity)
       .pipe(
         exhaustMap(
