@@ -5,7 +5,7 @@ import {ImageType} from '../../../../components/data-fields/models/image-type.en
 export const INTERIOR_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'title',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Názov projektu *',
     fullWidth: false,
@@ -13,7 +13,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'builtUpArea',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Zastavaná plocha *',
     fullWidth: false,
@@ -21,7 +21,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'persons',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Počet osôb *',
     fullWidth: false,
@@ -29,7 +29,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'usableArea',
-    type: DataFieldType.TEXT,
+    type: DataFieldType.PRIMITIVE_TYPE,
     validator: Validators.required,
     label: 'Celková plocha *',
     fullWidth: false,
@@ -74,7 +74,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   },
   {
     formControlName: 'titleImage',
-    type: DataFieldType.FILE,
+    type: DataFieldType.IMAGE,
     validator: Validators.required,
     imgType: ImageType.TITLE_IMAGE,
     label: 'Vyberte titulnú fotku...',
