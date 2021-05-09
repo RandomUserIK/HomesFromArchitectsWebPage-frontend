@@ -36,7 +36,7 @@ export class DynamicGalleryFieldComponent implements OnInit {
           this.isFiledDelete = false;
         } else {
           if (files.includes(null)) {
-            (this.form.get(this.dataField.formControlName) as FormArray).clear();
+            (this.form.get(this.dataField.formControlName) as FormArray).clear(); // NOSONAR
             this.galleryPreviews = [];
             return;
           }

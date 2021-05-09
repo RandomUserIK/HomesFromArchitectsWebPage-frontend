@@ -38,7 +38,7 @@ export class CreateProjectFormInitializerService {
           this.initializeFormControlWithStringValue(formControl, projectData[dataField.formControlName]);
           break;
         default:
-          throw Error("Invalid type of data field provided");
+          throw Error('Invalid type of data field provided');
       }
     });
   }
@@ -54,7 +54,7 @@ export class CreateProjectFormInitializerService {
     photoPaths.forEach((photoPath) => {
       this.fileService.getFileFromPath(photoPath).subscribe((photoBlob) => {
         const file = new File([photoBlob], photoPath.split('/').pop());
-        (formControl as FormArray).push(new FormControl(file));
+        (formControl as FormArray).push(new FormControl(file)); // NOSONAR
       });
     })
   }

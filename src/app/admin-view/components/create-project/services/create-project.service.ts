@@ -56,7 +56,7 @@ export class CreateProjectService {
         this.prepareDataFieldWithStringValue(dataField, formValue);
         break;
       default:
-        throw Error("Invalid type of data field provided");
+        throw Error('Invalid type of data field provided');
     }
   }
 

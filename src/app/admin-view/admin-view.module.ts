@@ -11,7 +11,6 @@ import {ConfigurationService} from '../configuration/services/configuration-serv
 import {CreateProjectComponent} from './components/create-project/create-project.component';
 import {CreateProjectModule} from './components/create-project/create-project.module';
 import {AdminProjectsGalleryModule} from './components/admin-projects-gallery/admin-projects-gallery.module';
-import {EditProjectComponent} from './components/edit-project/edit-project.component';
 
 const routes: Routes = [
   {
@@ -37,11 +36,7 @@ const routes: Routes = [
       {
         path: 'vytvor',
         component: CreateProjectComponent
-      },
-      {
-        path: 'uprav',
-        component: EditProjectComponent
-      },
+      }
     ]
   },
 ]
@@ -49,8 +44,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AdminHeaderComponent,
-    AdminViewComponent,
-    EditProjectComponent
+    AdminViewComponent
   ],
   imports: [
     CommonModule,

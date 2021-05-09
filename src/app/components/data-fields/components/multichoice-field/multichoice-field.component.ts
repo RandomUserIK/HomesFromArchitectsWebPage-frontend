@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataField} from '../../models/data-field';
-import {AbstractControl, FormArray, FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-multichoice-field',
@@ -17,9 +17,6 @@ export class MultichoiceFieldComponent implements OnInit {
       this.form.setControl(
         this.dataField.formControlName, new FormGroup(this.initializeValues())
       );
-      this.form.get(this.dataField.formControlName).valueChanges.subscribe((value) => {
-
-      });
     });
   }
 

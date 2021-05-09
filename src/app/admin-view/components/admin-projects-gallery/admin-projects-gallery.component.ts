@@ -7,8 +7,7 @@ import {AutoScrollService} from '../../../services/auto-scroll.service';
 
 @Component({
   selector: 'app-admin-projects-gallery',
-  templateUrl: './admin-projects-gallery.component.html',
-  styleUrls: ['./admin-projects-gallery.scss']
+  templateUrl: './admin-projects-gallery.component.html'
 })
 export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirective {
 
