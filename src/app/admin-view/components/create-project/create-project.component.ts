@@ -22,6 +22,7 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
   public uploadMessage = '';
   public projectType: string;
   public validationSuccess: boolean;
+  public title = '';
 
   constructor(private autoScrollService: AutoScrollService,
               private activatedRoute: ActivatedRoute,
@@ -30,6 +31,17 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
               private createProjectFormInitializerService: CreateProjectFormInitializerService,
               @Inject(PROJECT_DATA_FIELDS_CONFIG) public dataFields: DataGroupMap) {
     this.projectType = this.activatedRoute.snapshot.queryParams.projectType;
+    this.resolveTitle();
+  }
+
+  private resolveTitle() {
+    if (this.projectType === 'COMMON') {
+      this.title = 'Katalógový projekt';
+    } else if (this.projectType === 'INDIVIDUAL') {
+      this.title = 'Individuálny projekt';
+    } else {
+      this.title = 'Interierový projekt';
+    }
   }
 
   ngOnInit() {
