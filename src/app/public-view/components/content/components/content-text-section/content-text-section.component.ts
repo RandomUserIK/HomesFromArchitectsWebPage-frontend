@@ -6,6 +6,6 @@ import {TextSection} from '../../resources/content-data';
   templateUrl: './content-text-section.component.html',
   styleUrls: ['./content-text-section.component.scss']
 })
-export class ContentTextSectionComponent{
+export class ContentTextSectionComponent {
   @Input() textSection: TextSection;
 }

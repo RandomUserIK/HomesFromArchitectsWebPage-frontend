@@ -1,19 +1,21 @@
 @import 'src/app/public-view/components/content/project-content.component.scss';
 
-.first-col{
+.first-col {
   width: 50%;
   font-family: titleFontSection, serif;
 }
-.col-text-center{
+
+.col-text-center {
   text-align: center;
 }
 
-.second-col{
+.second-col {
   width: 25%;
   text-align: center;
   font-family: titleFontSection, serif;
 }
-.table-icon-size{
+
+.table-icon-size {
   font-size: 2.5rem;
   color: #f36c36;
 }

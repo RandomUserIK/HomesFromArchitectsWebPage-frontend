@@ -21,10 +21,10 @@ export class ContentIndividualProjectPhotosComponent implements OnInit {
   }
 
 
-  private createPhotoFileObservables(individualProjects: Project[]): Observable<Blob>[] {
+  private createPhotoFileObservables(individualProjects: Project[]): Observable<SafeUrl>[] {
     const photoFileObservables = [];
     individualProjects.forEach((value: Project) => {
-      photoFileObservables.push(this.fileService.getFileFromPath(value.titleImage));
+      photoFileObservables.push(this.fileService.getFileFromPathAsSafeUrl(value.titleImage));
     });
     if (photoFileObservables.length === 0)
       this.loading = false;
@@ -38,10 +38,8 @@ export class ContentIndividualProjectPhotosComponent implements OnInit {
           (project: PageableProjectsData) =>
             forkJoin(this.createPhotoFileObservables(project.projects))
         )).subscribe(value => {
-      value.map(blobFile =>
-        this.photos.push(this.sanitizer.bypassSecurityTrustUrl(
-          URL.createObjectURL(new Blob([blobFile], {type: 'application/octet-stream'})))
-        ));
+      value.map(safeUrl =>
+        this.photos.push(safeUrl));
       this.loading = false;
     });
   }
