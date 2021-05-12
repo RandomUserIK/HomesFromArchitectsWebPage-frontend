@@ -45,10 +45,8 @@ export class AuthService {
     let errorMessage = 'Unknown error occurred';
     if (!err.status)
       return throwError(errorMessage);
-    switch (err.status.toString()) {
-      case '401':
-        errorMessage = 'Invalid login or password';
-        break;
+    if (err.status.toString() === '401') {
+      errorMessage = 'Invalid login or password';
     }
     return throwError(errorMessage);
   }

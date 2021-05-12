@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 import {ProjectsService} from '../../services/projects-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
@@ -29,6 +30,15 @@ export class FileService {
         headers: new HttpHeaders({Accept: 'application/json'}),
         responseType: 'text'
       });
+  }
+
+  public getFileFromPathAsSafeUrl(path: string): Observable<SafeUrl> {
+    return this.getFileFromPath(path).pipe(map((image) => {
+      return this.sanitizer.bypassSecurityTrustUrl(
+        URL.createObjectURL(new Blob([image],
+          {type: 'application/octet-stream'}))
+      );
+    }));
   }
 
   public getFileFromPath(path: string): Observable<Blob> {
