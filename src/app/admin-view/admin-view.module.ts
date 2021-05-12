@@ -9,7 +9,6 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthGuardService} from '../auth/services/auth-guard.service';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ConfigurationService} from '../configuration/services/configuration-service';
 import {CreateProjectComponent} from './components/create-project/create-project.component';
 import {CreateProjectModule} from './components/create-project/create-project.module';
 
@@ -46,7 +45,7 @@ const routes: Routes = [
       },
     ]
   },
-]
+];
 
 @NgModule({
   declarations: [
@@ -62,9 +61,6 @@ const routes: Routes = [
     CreateProjectModule,
     NgbPaginationModule,
     SearchHeaderModule
-  ],
-  providers: [
-    ConfigurationService
   ]
 })
 export class AdminViewModule {

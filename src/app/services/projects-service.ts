@@ -2,10 +2,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {EndpointConfigData} from '../configuration/models/enpoint-config-data';
-import {ConfigurationService} from '../configuration/services/configuration-service';
 import {PageableProjectsData} from '../models/pageable-projects-data';
 import {Project} from '../models/project/project.model';
-import { environment } from '../../environments/environment';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +13,7 @@ export class ProjectsService {
 
   private resource: EndpointConfigData;
 
-  constructor(private _httpClient: HttpClient,
-              private _applicationConfigService: ConfigurationService) {
+  constructor(private _httpClient: HttpClient) {
     this.resource = environment.providers.resources.find(resource => resource.name === 'project-endpoint');
   }
 
@@ -35,7 +33,7 @@ export class ProjectsService {
   public getProject(projectId: number): Observable<Project> {
     return this._httpClient
       // TODO: configure the given method to fetch an object of type MessageResource
-      .get<Project>( `${this.resource.address}/${projectId}`, {
+      .get<Project>(`${this.resource.address}/${projectId}`, {
         headers: new HttpHeaders({Accept: 'application/json'})
       });
   }

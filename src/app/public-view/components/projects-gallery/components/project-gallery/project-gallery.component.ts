@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ConfigurationService} from '../../../../../configuration/services/configuration-service';
 import {EndpointConfigData} from '../../../../../configuration/models/enpoint-config-data';
 import {FileService} from '../../../../../admin-view/services/file-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Project} from '../../../../../models/project/project.model';
+import {environment} from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-project-gallery',
@@ -19,10 +19,9 @@ export class ProjectGalleryComponent implements OnInit {
   public projects = new Array<SafeUrl>();
   public loading = false;
 
-  constructor(private config: ConfigurationService,
-              private fileService: FileService,
+  constructor(private fileService: FileService,
               private sanitizer: DomSanitizer) {
-    this.resource = this.config.endpoints.find(resource => resource.name === 'photo-endpoint');
+    this.resource = environment.providers.resources.find(resource => resource.name === 'photo-endpoint');
   }
 
   ngOnInit() {
