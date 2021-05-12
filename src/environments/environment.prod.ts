@@ -7,8 +7,7 @@ export const environment = {
       endpoints: {
         login: "api/auth/login",
         logout: "api/auth/logout"
-      },
-      sessionBearer: "X-Auth-Token"
+      }
     },
     resources: [
       {
