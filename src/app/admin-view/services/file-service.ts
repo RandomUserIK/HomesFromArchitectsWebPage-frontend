@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 import {ProjectsService} from '../../services/projects-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {ConfigurationService} from '../../configuration/services/configuration-service';
@@ -21,7 +22,7 @@ export class FileService {
     this.resource = this.applicationConfigService.endpoints.find(resource => resource.name === 'photo-endpoint');
   }
 
-  public postFile(fileToUpload: File, projectId: number, type : string): Observable<string> {
+  public postFile(fileToUpload: File, projectId: number, type: string): Observable<string> {
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload);
     formData.append('projectId', projectId.toString());
@@ -50,9 +51,9 @@ export class FileService {
       });
   }
 
-  public handleFileInput(event: any, projectId: string, type : string ): void {
+  public handleFileInput(event: any, projectId: string, type: string): void {
     const files = event.target.files;
-    this.postFile(files.item(0), +projectId,type).subscribe();
+    this.postFile(files.item(0), +projectId, type).subscribe();
   }
 
   public getAllPhotosOfProject(projectId: number): Observable<SafeUrl[]> {
