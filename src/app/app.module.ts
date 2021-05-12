@@ -10,18 +10,18 @@ import {AppComponent} from './app.component';
 import {AuthModule} from './auth/auth.module';
 import {AuthInterceptorService} from './auth/services/auth-interceptor.service';
 import {NotFoundComponent} from './components/not-found/not-found.component';
+import {NotFoundModule} from './components/not-found/not-found.module';
 
 
 const routes: Routes = [
   {path: 'admin', loadChildren: () => import('./admin-view/admin-view.module').then(m => m.AdminViewModule)},
   {path: '', loadChildren: () => import('./public-view/public-view.module').then(m => m.PublicViewModule)},
-  {path: '**', component: NotFoundComponent},
+  {path: '**', component: NotFoundComponent}
 ]
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotFoundComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +30,7 @@ const routes: Routes = [
     HttpClientModule,
     IvyGalleryModule,
     NgbModule,
+    NotFoundModule,
     RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
   ],
   providers: [
