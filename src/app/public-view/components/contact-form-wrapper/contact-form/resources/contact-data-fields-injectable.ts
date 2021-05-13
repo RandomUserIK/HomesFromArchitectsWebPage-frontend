@@ -18,7 +18,7 @@ export const CONTACT_DATA_FIELDS: DataGroupMap = {
   formGroup: [
     {
       formControlName: 'name',
-      type: DataFieldType.TEXT,
+      type: DataFieldType.PRIMITIVE_TYPE,
       validator: Validators.required,
       label: 'Meno *',
       fullWidth: false,
@@ -26,7 +26,7 @@ export const CONTACT_DATA_FIELDS: DataGroupMap = {
     },
     {
       formControlName: 'surname',
-      type: DataFieldType.TEXT,
+      type: DataFieldType.PRIMITIVE_TYPE,
       validator: Validators.required,
       label: 'Priezvisko *',
       fullWidth: false,
@@ -34,7 +34,7 @@ export const CONTACT_DATA_FIELDS: DataGroupMap = {
     },
     {
       formControlName: 'email',
-      type: DataFieldType.TEXT,
+      type: DataFieldType.PRIMITIVE_TYPE,
       validator: [Validators.required, Validators.email],
       label: 'Email *',
       fullWidth: false,
@@ -43,7 +43,7 @@ export const CONTACT_DATA_FIELDS: DataGroupMap = {
     {
       formControlName: 'telephone',
       label: 'Telefón *',
-      type: DataFieldType.TEXT,
+      type: DataFieldType.PRIMITIVE_TYPE,
       validator: [
         Validators.required,
         Validators.pattern('^[+]([0-9]){3}( )?([0-9]){3}( )?([0-9]){3}( )?([0-9]){3}$')

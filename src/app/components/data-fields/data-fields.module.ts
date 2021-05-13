@@ -6,7 +6,7 @@ import { DataFieldResolverComponent } from './components/data-field-resolver/dat
 import { PrimitiveTypeFieldComponent } from './components/primitive-type-field/primitive-type-field.component';
 import { EnumerationFieldComponent } from './components/enumeration-field/enumeration-field.component';
 import {MultichoiceFieldComponent} from './components/multichoice-field/multichoice-field.component';
-import { FileFieldComponent } from './components/file-field/file-field.component';
+import { ImageFieldComponent } from './components/image-field/image-field.component';
 import {FileUploadValidationService} from './services/file-upload-validation.service';
 import {DynamicGalleryFieldComponent} from './components/dynamic-gallery-field/dynamic-gallery-field.component';
 import {NgxImageCompressService} from 'ngx-image-compress';
@@ -27,7 +27,7 @@ import {SubmitButtonFieldComponent} from './components/submit-button-field/submi
     PrimitiveTypeFieldComponent,
     EnumerationFieldComponent,
     MultichoiceFieldComponent,
-    FileFieldComponent,
+    ImageFieldComponent,
     DataFieldsGroupComponent,
     TextAreaFieldComponent,
     RecaptchaFieldComponent,

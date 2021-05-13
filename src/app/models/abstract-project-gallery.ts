@@ -6,6 +6,7 @@ import {SearchHeaderService} from '../components/search-header/services/search-h
 import {ProjectsService} from '../services/projects-service';
 import {PageableProjectsData} from './pageable-projects-data';
 import {Project} from './project/project.model';
+import {AutoScrollService} from '../services/auto-scroll.service';
 
 @Directive()
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
@@ -20,16 +21,10 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
   private query: string;
   private searchHeaderState$: Subscription;
 
-  constructor(protected activatedRoute: ActivatedRoute,
+  constructor(protected autoScrollService: AutoScrollService,
+              protected activatedRoute: ActivatedRoute,
               protected projectsService: ProjectsService,
               protected searchHeaderService: SearchHeaderService) {
-  }
-
-  private static scrollOnTop(): void {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   }
 
   ngOnInit(): void {
@@ -38,7 +33,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
         switchMap(data => {
           this.categoryTitle = data.projectsTitle;
           this.categoryId = data.projectsCategoryId;
-          AbstractProjectGalleryDirective.scrollOnTop();
+          this.autoScrollService.scrollToTop();
           return this.handleProjectsList(1, this.categoryId, '');
         })
       ).subscribe(this.processData());
@@ -58,7 +53,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
 
   private handleProjectsList(currentPage: number, categoryId: string, query: string): Observable<PageableProjectsData> {
     this.loading = true;
-    AbstractProjectGalleryDirective.scrollOnTop();
+    this.autoScrollService.scrollToTop();
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, categoryId, query);
   }
 
