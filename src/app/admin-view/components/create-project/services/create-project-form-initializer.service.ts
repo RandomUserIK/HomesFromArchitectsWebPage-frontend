@@ -5,9 +5,7 @@ import {AbstractControl, FormArray, FormControl, FormGroup} from '@angular/forms
 import {Project} from '../../../../models/project/project.model';
 import {FileService} from '../../../services/file-service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CreateProjectFormInitializerService {
 
   constructor(private fileService: FileService) {

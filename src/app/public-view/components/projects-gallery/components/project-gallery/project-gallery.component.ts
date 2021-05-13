@@ -13,7 +13,6 @@ export class ProjectGalleryComponent implements OnInit {
   @Input() project: Project;
 
   public image: SafeUrl;
-  public projects = new Array<SafeUrl>();
   public loading = false;
 
   constructor(private fileService: FileService,

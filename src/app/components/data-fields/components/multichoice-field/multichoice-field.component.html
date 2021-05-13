@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div *ngIf="form.get(dataField.formControlName).invalid && touched" class="text-danger">
+  <div *ngIf="form.get(dataField.formControlName).hasError('incorrect')" class="text-danger">
     Povinný údaj
   </div>
 </ng-container>

@@ -31,26 +31,42 @@ export class DynamicGalleryFieldComponent implements OnInit {
       this.form.setControl(this.dataField.formControlName, new FormArray([], this.dataField.validator));
 
       this.form.get(this.dataField.formControlName).valueChanges.subscribe((files: File[]) => {
-        if (this.isFiledDelete) {
-          this.galleryPreviews.splice(this.index, 1);
-          this.isFiledDelete = false;
-        } else {
-          if (files.includes(null)) {
-            (this.form.get(this.dataField.formControlName) as FormArray).clear(); // NOSONAR
-            this.galleryPreviews = [];
-            return;
-          }
-          if (files.length > 0) {
-            const reader = new FileReader();
-            reader.readAsDataURL(files.pop());
-            reader.onload = () => {
-              this.galleryPreviews.push(this.sanitizer.bypassSecurityTrustUrl(reader.result as string));
-            }
-          }
-        }
+        this.touched = true;
+        this.handleGalleryChange(files);
       });
     });
   }
+
+  private handleGalleryChange(files: File[]): void {
+    if (this.isFiledDelete) {
+      this.deletePhotoFromGallery();
+    } else {
+      if (files.includes(null)) {
+        this.clearGallery();
+      } else if (files.length > 0) {
+        this.addPhotoToGallery(files.pop());
+      }
+    }
+  }
+
+  private deletePhotoFromGallery(): void {
+    this.galleryPreviews.splice(this.index, 1);
+    this.isFiledDelete = false;
+  }
+
+  private clearGallery(): void {
+    (this.form.get(this.dataField.formControlName) as FormArray).clear(); // NOSONAR
+    this.galleryPreviews = [];
+  }
+
+  private addPhotoToGallery(file: File): void {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.galleryPreviews.push(this.sanitizer.bypassSecurityTrustUrl(reader.result as string));
+    }
+  }
+
 
   public handleFileInput(event: any): void {
     if (event.target.files && event.target.files[0]) {
@@ -69,11 +85,10 @@ export class DynamicGalleryFieldComponent implements OnInit {
     }
   }
 
-  public deletePhotoFromGallery(index: number): void {
+  public onPhotoDelete(index: number): void {
     this.isFiledDelete = true;
     this.index = index;
     (this.form.get(this.dataField.formControlName) as FormArray).removeAt(index); // NOSONAR
-
   }
 
 }

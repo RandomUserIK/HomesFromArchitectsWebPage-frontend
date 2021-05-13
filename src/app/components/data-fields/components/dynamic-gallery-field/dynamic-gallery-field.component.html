@@ -7,7 +7,7 @@
 <div class="row" [formGroup]="form" *ngIf="form.get(dataField.formControlName)">
   <div class="col-md-4 p-2" *ngFor="let galleryPhoto of galleryPreviews; let index = index;">
     <div class="item">
-      <button type="button" class="btn btn-default" (click)="deletePhotoFromGallery(index)">
+      <button type="button" class="btn btn-default" (click)="onPhotoDelete(index)">
         <em class="bi-trash"></em>
       </button>
     </div>
