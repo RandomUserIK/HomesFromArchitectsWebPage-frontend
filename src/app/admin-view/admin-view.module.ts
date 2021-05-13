@@ -5,12 +5,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
 import {AdminViewComponent} from './admin-view.component';
 import {AdminProjectsGalleryComponent} from './components/admin-projects-gallery/admin-projects-gallery.component';
-import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthGuardService} from '../auth/services/auth-guard.service';
-import {SearchHeaderModule} from '../components/search-header/search-header.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CreateProjectComponent} from './components/create-project/create-project.component';
 import {CreateProjectModule} from './components/create-project/create-project.module';
+import {AdminProjectsGalleryModule} from './components/admin-projects-gallery/admin-projects-gallery.module';
 
 const routes: Routes = [
   {
@@ -22,12 +21,6 @@ const routes: Routes = [
         path: 'individualne-projekty',
         component: AdminProjectsGalleryComponent,
         data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'},
-        children: [
-          {
-            path: 'vytvor',
-            component: CreateProjectComponent
-          }
-        ]
       },
       {
         path: 'katalogove-projekty',
@@ -42,7 +35,7 @@ const routes: Routes = [
       {
         path: 'vytvor',
         component: CreateProjectComponent
-      },
+      }
     ]
   },
 ];
@@ -50,8 +43,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AdminHeaderComponent,
-    AdminViewComponent,
-    AdminProjectsGalleryComponent
+    AdminViewComponent
   ],
   imports: [
     CommonModule,
@@ -59,8 +51,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     CreateProjectModule,
-    NgbPaginationModule,
-    SearchHeaderModule
+    AdminProjectsGalleryModule
   ]
 })
 export class AdminViewModule {
