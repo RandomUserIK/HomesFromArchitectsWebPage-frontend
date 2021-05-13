@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataField} from '../../models/data-field';
-import {FormArray, FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-multichoice-field',
@@ -10,27 +10,30 @@ export class MultichoiceFieldComponent implements OnInit {
 
   @Input() dataField: DataField;
   @Input() form: FormGroup;
-  public touched = false;
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.form.setControl(
-        this.dataField.formControlName,
-        new FormArray([], this.dataField.validator));
-      this.form.get(this.dataField.formControlName).valueChanges.subscribe(() => {
-        this.touched = true;
-      });
+      this.form.setControl(this.dataField.formControlName, new FormGroup(this.initializeValues()));
+      this.initializeValidator();
     });
   }
 
-  public onCheckChange(event, formControlName: string): void {
-    const formArray: FormArray = this.form.get(formControlName) as FormArray; // NOSONAR
-    if (event.target.checked) {
-      formArray.push(new FormControl(event.target.value));
-    } else {
-      formArray.controls.forEach((ctrl: FormControl, index) => {
-        if (ctrl.value === event.target.value)
-          return formArray.removeAt(index);
+  private initializeValues(): { [key: string]: AbstractControl } {
+    const formControls: { [key: string]: AbstractControl } = {};
+    for (const value of this.dataField.values) {
+      formControls[value] = new FormControl(false);
+    }
+    return formControls;
+  }
+
+  private initializeValidator(): void {
+    if (this.dataField.validator === Validators.required || (this.dataField.validator as ValidatorFn[]).includes(Validators.required)) {
+      this.form.get(this.dataField.formControlName).valueChanges.subscribe((choices: { [key: string]: boolean }) => {
+        if (!Object.values(choices).includes(true)) {
+          this.form.controls[this.dataField.formControlName].setErrors({incorrect: true});
+        } else {
+          this.form.controls[this.dataField.formControlName].setErrors(null);
+        }
       });
     }
   }

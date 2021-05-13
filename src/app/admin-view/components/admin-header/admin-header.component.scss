@@ -1,13 +1,13 @@
 @import "../../../../theme";
 
+.nav-item > a {
+  color: black;
+}
+
 .navbar-nav > .active > a {
   color: map_get($theme-colors, "primary");
 }
 
 .nav-item > a:hover {
   color: map_get($theme-colors, "primary");
-}
-
-a {
-  font-size: 1.2rem;
 }

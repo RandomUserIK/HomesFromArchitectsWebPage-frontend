@@ -58,7 +58,6 @@ export class FileService {
   public getAllPhotosOfProject(projectId: number): Observable<SafeUrl[]> {
     const images = new Array<SafeUrl>();
     this.projectService.getProject(projectId).subscribe(data => {
-      console.log(data)
       data.imagePaths.forEach(path => {
         this.getFileFromPath(path).subscribe(photo => {
           images.push(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))));
