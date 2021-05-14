@@ -35,10 +35,17 @@ export class ProjectsService {
 
   public getProject(projectId: number): Observable<ProjectMessageResource> {
     return this._httpClient
-      // TODO: configure the given method to fetch an object of type MessageResource
       .get<ProjectMessageResource>(`${this.resource.address}/${projectId}`, {
         headers: new HttpHeaders({Accept: 'application/json'})
       });
+  }
+
+  public removeProject(projectId: number): Observable<any> {
+    return this._httpClient
+      .delete(`${this.resource.address}/${projectId}`,
+        {
+          headers: new HttpHeaders({Accept: 'application/json'})
+        })
   }
 
 }

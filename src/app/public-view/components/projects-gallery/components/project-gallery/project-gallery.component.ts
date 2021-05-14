@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SafeUrl} from '@angular/platform-browser';
 import {FileService} from '../../../../../admin-view/services/file-service';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Project} from '../../../../../models/project/project.model';
 
 @Component({
@@ -13,17 +13,19 @@ export class ProjectGalleryComponent implements OnInit {
   @Input() project: Project;
 
   public image: SafeUrl;
-  public projects = new Array<SafeUrl>();
   public loading = false;
 
-  constructor(private _fileService: FileService) {
+  constructor(private fileService: FileService,
+              private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
     this.loading = true;
-    this._fileService.getFileFromPathAsSafeUrl(this.project.titleImage).subscribe(
-      (imageSafeUrl) => {
-        this.image = imageSafeUrl;
+    this.fileService.getFileFromPath(this.project.titleImage).subscribe(
+      (photo) => {
+        this.image = this.sanitizer.bypassSecurityTrustUrl(
+          URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))
+        );
         this.loading = false;
       });
   }

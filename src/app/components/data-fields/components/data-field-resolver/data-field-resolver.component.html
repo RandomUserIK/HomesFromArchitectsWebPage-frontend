@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="dataField.type">
 
-  <app-primitive-type-field *ngSwitchCase="dataFieldType.TEXT" [form]="form" [dataField]="dataField">
+  <app-primitive-type-field *ngSwitchCase="dataFieldType.PRIMITIVE_TYPE" [form]="form" [dataField]="dataField">
   </app-primitive-type-field>
 
   <app-text-area-field *ngSwitchCase="dataFieldType.TEXT_AREA" [form]="form" [dataField]="dataField">
@@ -12,7 +12,7 @@
   <app-multichoice-field *ngSwitchCase="dataFieldType.MULTICHOICE" [form]="form" [dataField]="dataField">
   </app-multichoice-field>
 
-  <app-file-field *ngSwitchCase="dataFieldType.FILE" [form]="form" [dataField]="dataField">
+  <app-file-field *ngSwitchCase="dataFieldType.IMAGE" [form]="form" [dataField]="dataField">
   </app-file-field>
 
   <app-dynamic-text-section-field *ngSwitchCase="dataFieldType.DYNAMIC_TEXT_SECTION" [form]="form" [dataField]="dataField">

@@ -22,7 +22,7 @@ export class FileService {
     this.resource = this.applicationConfigService.endpoints.find(resource => resource.name === 'photo-endpoint');
   }
 
-  public postFile(fileToUpload: File, projectId: number, type : string): Observable<ImageUploadMessageResource> {
+  public postFile(fileToUpload: File, projectId: number, type: string): Observable<ImageUploadMessageResource> {
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload);
     formData.append('projectId', projectId.toString());
