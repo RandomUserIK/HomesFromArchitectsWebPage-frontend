@@ -8,7 +8,7 @@
     </div>
   </ng-container>
   <div class="custom-file">
-    <input type="file" (change)="handleFileInput($event, dataField)" (click)="touched=true" class="custom-file-input"
+    <input type="file" (change)="onImageUpload($event, dataField)" (click)="touched=true" class="custom-file-input"
            id="validatedCustomFile">
     <label class="custom-file-label" for="validatedCustomFile">{{dataField.label}}</label>
     <div *ngIf="form.get(dataField.formControlName).invalid && touched" class="text-danger">
