@@ -5,6 +5,10 @@
   <ng-template [ngIf]="!isLoading && !error">
     <app-project-title-image [titleImagePath]="project.titleImage"></app-project-title-image>
 
+    <app-individual-interior-project-title-text [titleTextData]="project.category === INDIVIDUAL_CATEGORY_ID ?
+                                                individualProjectTitleTextData : interiorProjectTitleTextData">
+    </app-individual-interior-project-title-text>
+
     <app-individual-project-info *ngIf="project.category === INDIVIDUAL_CATEGORY_ID"
                                  [project]="project"></app-individual-project-info>
 
