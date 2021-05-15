@@ -10,4 +10,6 @@ export class IndividualInteriorProjectTitleTextComponent {
 
   @Input() titleTextData: IndividualInteriorProjectTitleTextData;
 
+  @Input() isIndividualProject: boolean;
+
 }

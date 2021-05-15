@@ -1,14 +1,48 @@
-<div class="row justify-content-center">
-  <div class="col-12">
-    {{titleTextData.title}}
+<div class="row justify-content-center mt-5 row-margin-bottom">
+  <div class="col-12 text-center mb-5">
+    <span class="title">{{titleTextData.title}}</span>
+    <hr class="underline">
+    <ng-template [ngIf]="isIndividualProject" [ngIfElse]="interiorProjectSubTitle">
+      <span class="d-block text">
+        Súčasťou našej tvorby sú aj individuálne projekty na mieru.
+        <br>
+        K našim projektom naviac poskytujeme doplnkové služby, presne podľa vašich potrieb.
+      </span>
+    </ng-template>
+
+    <ng-template #interiorProjectSubTitle>
+      <span class="d-block text">
+        Poskytujeme aj služby interérového dizajnu.
+        <br>
+        Vy máte predstavu a my vám ju pomôžeme zrealizovať.
+      </span>
+    </ng-template>
   </div>
-  <div class="col-md-4 col-12">
-    {{titleTextData.firstSection}}
+  <div class="col-md-4 col-12 text-center">
+    <div class="mb-3">
+      <span class="number">
+        01
+        <br>
+      </span>
+    </div>
+    <span class="text">{{titleTextData.firstSection}}</span>
   </div>
-  <div class="col-md-4 col-12">
-    {{titleTextData.secondSection}}
+  <div class="col-md-4 col-12 text-center">
+    <div class="mb-3 text-margin-top">
+      <span class="number">
+        02
+        <br>
+      </span>
+    </div>
+    <span class="text">{{titleTextData.secondSection}}</span>
   </div>
-  <div class="col-md-4 col-12">
-    {{titleTextData.thirdSection}}
+  <div class="col-md-4 col-12 text-center">
+    <div class="mb-3 text-margin-top">
+      <span class="number">
+        03
+        <br>
+      </span>
+    </div>
+    <span class="text">{{titleTextData.thirdSection}}</span>
   </div>
 </div>

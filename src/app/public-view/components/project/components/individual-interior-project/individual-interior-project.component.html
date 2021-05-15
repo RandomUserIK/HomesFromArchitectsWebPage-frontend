@@ -5,7 +5,8 @@
   <ng-template [ngIf]="!isLoading && !error">
     <app-project-title-image [titleImagePath]="project.titleImage"></app-project-title-image>
 
-    <app-individual-interior-project-title-text [titleTextData]="project.category === INDIVIDUAL_CATEGORY_ID ?
+    <app-individual-interior-project-title-text [isIndividualProject]="project.category === INDIVIDUAL_CATEGORY_ID"
+                                                [titleTextData]="project.category === INDIVIDUAL_CATEGORY_ID ?
                                                 individualProjectTitleTextData : interiorProjectTitleTextData">
     </app-individual-interior-project-title-text>
 
@@ -13,7 +14,7 @@
                                  [project]="project"></app-individual-project-info>
 
     <app-interior-project-info *ngIf="project.category === INTERIOR_CATEGORY_ID"
-                                 [project]="project"></app-interior-project-info>
+                               [project]="project"></app-interior-project-info>
 
     <app-project-customer-request></app-project-customer-request>
     <!-- TODO: add gallery component -->
