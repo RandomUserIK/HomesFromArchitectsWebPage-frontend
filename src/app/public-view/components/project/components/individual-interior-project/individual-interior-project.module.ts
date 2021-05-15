@@ -22,6 +22,9 @@ import {InteriorProjectInfoComponent} from './interior-project/interior-project-
     ProjectModule,
     LoadingModule,
     NotFoundModule
+  ],
+  exports: [
+    IndividualInteriorProjectTitleTextComponent
   ]
 })
 export class IndividualInteriorProjectModule {
