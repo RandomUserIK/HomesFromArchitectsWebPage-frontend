@@ -32,7 +32,7 @@ export class ProjectGalleryComponent implements OnInit {
       });
   }
 
-  onProjectClick(): void {
+  public onProjectClick(): void {
     let navigateTo = '';
     switch (this.project.category) {
       case 'INDIVIDUAL':
