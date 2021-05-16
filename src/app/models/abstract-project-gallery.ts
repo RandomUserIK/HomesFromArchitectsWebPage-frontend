@@ -12,7 +12,7 @@ import {AutoScrollService} from '../services/auto-scroll.service';
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
 
   public currentPage = 1;
-  public pageSize = 9;
+  public pageSize = 10;
   public projects: Array<Project> = [];
   public totalElements: number;
   public categoryTitle: string;
