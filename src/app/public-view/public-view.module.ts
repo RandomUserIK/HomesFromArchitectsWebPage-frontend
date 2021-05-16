@@ -16,6 +16,8 @@ import {IndividualInteriorProjectModule} from './components/project/components/i
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
 import {PublicViewComponent} from './public-view.component';
+import {GdprComponent} from './components/gdpr/gdpr/gdpr.component';
+import {GdprModule} from './components/gdpr/gdpr/gdpr.module';
 
 const routes: Routes = [
   {
@@ -58,6 +60,10 @@ const routes: Routes = [
       {
         path: 'order',
         component: OrderComponent
+      },
+      {
+        path: 'app-gdpr',
+        component: GdprComponent
       }
     ]
   },
@@ -75,6 +81,7 @@ const routes: Routes = [
     CommonProjectModule,
     IndividualInteriorProjectModule,
     ProjectsGalleryModule,
+    GdprModule,
     SearchHeaderModule,
     OrderModule,
     RouterModule.forChild(routes)
