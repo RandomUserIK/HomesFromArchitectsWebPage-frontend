@@ -24,22 +24,31 @@ export class ImageFieldComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
+      this.dataField.imgSrc = undefined;
       this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
-      this.form.get(this.dataField.formControlName).valueChanges.subscribe((photoFile) => {
-        if (!photoFile) {
-          this.dataField.imgSrc = undefined;
-          return;
-        }
-        const reader = new FileReader();
-        reader.readAsDataURL(photoFile);
-        reader.onload = () => {
-          this.dataField.imgSrc = this.sanitizer.bypassSecurityTrustUrl(reader.result as string)
-        }
+      this.form.get(this.dataField.formControlName).valueChanges.subscribe((photoFile: File) => {
+        this.handleImageChange(photoFile);
       });
     })
   }
 
-  public handleFileInput(event: any, dataField: DataField): void {
+  private handleImageChange(photoFile: File): void {
+    if (!photoFile) {
+      this.dataField.imgSrc = undefined;
+    } else {
+      this.displayImage(photoFile);
+    }
+  }
+
+  private displayImage(photoFile: File) {
+    const reader = new FileReader();
+    reader.readAsDataURL(photoFile);
+    reader.onload = () => {
+      this.dataField.imgSrc = this.sanitizer.bypassSecurityTrustUrl(reader.result as string)
+    }
+  }
+
+  public onImageUpload(event: any, dataField: DataField): void {
     if (event.target.files && event.target.files[0]) {
       this.errorMessage = this.fileUploadValidationService.checkSizeAndFileFormat(event.target.files[0]);
       if (this.errorMessage.length === 0) {
