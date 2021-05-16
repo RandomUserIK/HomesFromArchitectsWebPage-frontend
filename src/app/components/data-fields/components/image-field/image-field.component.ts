@@ -28,7 +28,7 @@ export class ImageFieldComponent implements OnInit {
       this.form.get(this.dataField.formControlName).valueChanges.subscribe((photoFile) => {
         if (!photoFile) {
           this.dataField.imgSrc = undefined;
-          return
+          return;
         }
         const reader = new FileReader();
         reader.readAsDataURL(photoFile);

@@ -18,21 +18,28 @@ interface PhotoFile {
 @Injectable()
 export class CreateProjectService {
 
-  private requestEntity: Project = {};
-  private photoFiles: PhotoFile[] = [];
+  private requestEntity: Project;
+  private photoFiles: PhotoFile[];
 
   constructor(private _httpClient: HttpClient,
               private _fileService: FileService,
               private _projectService: ProjectsService) {
   }
 
-  public createProject(form: FormGroup, formConfig: DataField[], category: string): Observable<string[]> {
+  public submitProject(form: FormGroup,
+                       formConfig: DataField[],
+                       category: string,
+                       projectId: number): Observable<string[]> {
+    this.requestEntity = {};
+    this.photoFiles = [];
 
     formConfig.forEach(dataField => {
       this.resolveDataField(dataField, form.get(dataField.formControlName).value);
     });
     this.requestEntity.category = category;
-    return this.sendProject(this.photoFiles);
+    this.requestEntity.id = projectId;
+
+    return this.sendProject();
   }
 
   private resolveDataField(dataField: DataField, formValue: any): void {
@@ -74,7 +81,7 @@ export class CreateProjectService {
     this.requestEntity[dataField.formControlName] = formValue;
   }
 
-  private prepareMultichoice(dataField: DataField, formValue: string[]): void {
+  private prepareMultichoice(dataField: DataField, formValue: { [key: string]: boolean }): void {
     const checkedValues = []
     for (const [value, isChecked] of Object.entries(formValue)) {
       if (isChecked) {
@@ -84,18 +91,18 @@ export class CreateProjectService {
     this.requestEntity[dataField.formControlName] = checkedValues;
   }
 
-  private sendProject(photoFiles: PhotoFile[]): Observable<string[]> {
+  private sendProject(): Observable<string[]> {
     return this._projectService.createProject(this.requestEntity)
       .pipe(
         exhaustMap(
           (projectId) =>
-            forkJoin(this.createPhotoFileObservables(photoFiles, projectId.id))
+            forkJoin(this.createPhotoFileObservables(projectId.id))
         ));
   }
 
-  private createPhotoFileObservables(photoFiles: PhotoFile[], projectId: number): Observable<string>[] {
+  private createPhotoFileObservables(projectId: number): Observable<string>[] {
     const photoFileObservables = [];
-    photoFiles.forEach(photoFile => {
+    this.photoFiles.forEach(photoFile => {
       photoFileObservables.push(this._fileService.postFile(photoFile.value, projectId, photoFile.type.toString()));
     });
     return photoFileObservables;

@@ -82,7 +82,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
     imageTitle: 'Titulná fotka'
   },
   {
-    formControlName: 'dynamicPhotoGallery',
+    formControlName: 'imagePaths',
     type: DataFieldType.DYNAMIC_PHOTO_GALLERY,
     validator: Validators.required,
     imgType: ImageType.GALLERY_IMAGES,
