@@ -5,8 +5,14 @@
 </div>
 <div *ngIf="!loading" class="img-wrapper">
   <img [src]="image" alt="test-project-image">
-  <div class="text-center align-middle font-weight-bold line-height text-light">100 000€ | 4 izby</div>
+  <div class="text-center align-middle font-weight-bold line-height text-light"></div>
 </div>
-<div class="row justify-content-center">
-  <span class="font-weight-bold">{{project.title}}</span>
+<div class="d-flex justify-content-between">
+  <div>
+    <span class="font-weight-bold font-size">{{project.title}}</span>
+  </div>
+  <div>
+    <span class="font-size">{{project.usableArea | number: '3.2': 'sk'}}</span>
+    <span class="font-size">&#13217;</span>
+  </div>
 </div>
