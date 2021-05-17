@@ -1,0 +1,35 @@
+.row-margin-bottom {
+  margin-bottom: 7%;
+}
+
+.title {
+  font-weight: bold;
+  font-size: calc(1rem + 1.3vmin);
+  margin-bottom: 1%;
+}
+
+.number {
+  font-weight: bold;
+  font-size: calc(1rem + 1.5vmin);
+}
+
+.text {
+  color: gray;
+  font-size: calc(1rem + 0.1vmin);
+  font-style: italic;
+}
+
+.underline {
+  width: 19rem;
+  border: none;
+  height: 2px;
+  background-color: orange;
+  margin-top: 0;
+  margin-bottom: 1%;
+}
+
+@media (max-width: 767px) {
+  .text-margin-top {
+    margin-top: 6%;
+  }
+}
