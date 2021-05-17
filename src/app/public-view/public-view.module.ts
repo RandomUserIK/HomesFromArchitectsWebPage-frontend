@@ -18,6 +18,8 @@ import {ProjectsGalleryModule} from './components/projects-gallery/projects-gall
 import {PublicViewComponent} from './public-view.component';
 import {ProjectContentModule} from './components/content/project-content.module';
 import {ProjectContentComponent} from './components/content/project-content.component';
+import {GdprComponent} from './components/gdpr/gdpr/gdpr.component';
+import {GdprModule} from './components/gdpr/gdpr/gdpr.module';
 
 const routes: Routes = [
   {
@@ -64,6 +66,10 @@ const routes: Routes = [
       {
         path: 'order',
         component: OrderComponent
+      },
+      {
+        path: 'gdpr',
+        component: GdprComponent
       }
     ]
   },
@@ -82,6 +88,7 @@ const routes: Routes = [
     CommonProjectModule,
     IndividualInteriorProjectModule,
     ProjectsGalleryModule,
+    GdprModule,
     SearchHeaderModule,
     OrderModule,
     RouterModule.forChild(routes)
