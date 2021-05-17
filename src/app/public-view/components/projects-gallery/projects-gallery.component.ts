@@ -36,6 +36,7 @@ export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective im
   public isCommon = false;
 
   ngOnInit() {
+    super.ngOnInit();
     this.isIndividual = this.activatedRoute.snapshot.data.projectsCategoryId === this.INDIVIDUAL_CATEGORY_ID;
     this.isCommon = this.activatedRoute.snapshot.data.projectsCategoryId === this.COMMON_CATEGORY_ID;
   }

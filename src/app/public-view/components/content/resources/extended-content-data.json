@@ -1,0 +1,127 @@
+{
+  "data" :[
+    {
+      "title" : "Architektonické s stavebné riešenie",
+      "subtitle": "Obsahuje základný aj rozšírený projekt",
+      "fullWidth": false,
+      "values" : [
+        "sprievodná a technická správa",
+        "pôdorysy podlaží v mierke 1:50",
+        "rezy 1:50",
+        "pohľady 1:50",
+        "výkres základov 1:50",
+        "výkres krovu / strechy 1:50",
+        "typické detaily stavby",
+        "všetky výkazy okien, dverí, ...."
+      ]
+    },
+    {
+      "title" : "Projekt statiky",
+      "subtitle": "Obsahuje základný aj rozšírený projekt",
+      "fullWidth": false,
+      "values" : [
+        "technická správa",
+        "statický výpočet",
+        "výkresy tvarov 1:50",
+        "výkresy vystužovania a výkazy",
+        "všetky typické detaily stavby"
+      ]
+    },
+    {
+      "title" : "Projekt zdravotechniky, vykurovania,domového plynovodu a rekuperácie",
+      "subtitle": "Obsahuje základný aj rozšírený projekt",
+      "fullWidth": false,
+      "values" : [
+        "technická správa",
+        "výkresy vnútorných rozvodov",
+        "zvislé schémy a výkazy prvkov",
+        "každá z profesií je riešená samostatným projektom"
+      ]
+    },
+    {
+      "title" : "Projekt elektroinštalácie",
+      "subtitle": "Obsahuje základný aj rozšírený projekt",
+      "fullWidth": false,
+      "values" : [
+        "technická správa",
+        "výkresy uzemnenia, bleskozvod",
+        "zásuvkové rozvody, svetelné elektroinštalácie",
+        "schéma domového rozvádzača"
+      ]
+    },
+    {
+      "title" : "Projekt protipožiarnej bezpečnosti",
+      "subtitle": "Obsahuje základný aj rozšírený projekt",
+      "fullWidth": false,
+      "values" : []
+    },
+    {
+      "title" : "Energetické hodnotenie stavby",
+      "subtitle": "Obsahuje základný aj rozšírený projek",
+      "fullWidth": false,
+      "values" : []
+    },
+    {
+      "title" : "Projekt osadenia rodinného domu na pozemok",
+      "subtitle": "K základnému projektu +250€ /rozšírený projekt 0€",
+      "fullWidth": false,
+      "values" : [
+        "sprievodná a technická správa",
+        "výkres zastavovacej situácie stavby",
+        "presné polohopisné a výškopisné osadenie objektu",
+        "výkres spevnených plôch na pozemku"
+      ]
+    },
+    {
+      "title" : "Projekt pripojení rodinného domu",
+      "subtitle": "K základnému projektu od +100€ /rozšírený projekt 0€",
+      "fullWidth": false,
+      "values" : [
+        "sprievodná a technická správa",
+        "výkres koordinačnej situácie stavby",
+        "presné polohopisné a výškopisné osadenie objektu",
+        "vodovodná prípojka, kanalizačná prípojka",
+        "prípojka elektrickej energie, plynová prípojka",
+        "projekt žumpy, studne alebo čističky odp. vôd"
+      ]
+    },
+    {
+      "title" : "Výkaz výmer a podrobný položkový rozpočet",
+      "subtitle": "K základnému projektu +200€ /rozšírený projekt 0€",
+      "fullWidth": false,
+      "values" : [
+        "presný výkaz použitých prvkov projektu",
+        "obsahuje kompletný výkaz materiálov, prác, dodávok",
+        "obsahuje podrobné nacenenie všetkých fáz projektu"
+      ]
+    },
+    {
+      "title" : "Extra sada výkresovej dokumentácie",
+      "subtitle": "+100€ k základnému aj rozšírenemu projektu",
+      "fullWidth": false,
+      "values" : []
+    },
+    {
+      "title" : "Dokumentácia v elektronickej .pdf podobe",
+      "subtitle": "ZDARMA",
+      "fullWidth": true,
+      "values" : []
+    },
+    {
+      "title" : "Štúdia interiérového dizajnu",
+      "subtitle": "k základnému aj rozšírenemu projektu",
+      "fullWidth": true,
+      "values" : [
+        "Podľa potrieb a požiadaviek klienta spracujeme návrh interiérového riešenia dennej časti domu tak, aby sme naplno využili potenciál priestoru. Výsledkom sú výkresy a fotorealistické vyzualizácie s použitím reálnych prvkov. K interiérovej štúdií navyšše spracujeme aj výkresovou formou realizačný projekt interiéru pre vstavané nábytky ako sú kuchynská linka a šatníky, ktoré slúžia ako podklad pre následnu realizáciu a objednávku týchto nábytkových zostáv."
+      ]
+    },
+    {
+      "title" : "Individuálny projekt rodinného domu",
+      "subtitle": "",
+      "fullWidth": true,
+      "values" : [
+        "V oblasti rodinných domov máme dlhoročné skúsenosti. S celoslovenkou pôsobnosťou prinášame projekty rodinných domov priamo na mieru požiadavkám investorov. Radi navrhujeme skvelé riešenia, ktoré klientom prinášajú pohodu a pomáhajú šetriť náklady. Pri návrhoch sa vždy s klientom častokrát stretávame a projekt je tak vypracovaný do najmenších detailov. Možno bude ponuka individuálneho projektu pre vás ako stvorená."
+      ]
+    }
+  ]
+}

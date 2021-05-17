@@ -1,0 +1,22 @@
+<div id="accordion">
+  <div class="card no-border">
+    <div class="card no-border" id="headingOne">
+      <h5 class="mb-0 text-center">
+        <button class="btn btn-link text-center" data-toggle="collapse" data-target="#collapse" aria-expanded="true"
+                (click)="buttonClicked = !buttonClicked" aria-controls="collapseOne">
+          {{((buttonClicked) ? 'Skryť' : 'Zobraziť') + ' kompletný obsah projektu'}}
+        </button>
+      </h5>
+    </div>
+    <div id="collapse" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <app-content-text-section [textSection]="completeTextSection"></app-content-text-section>
+        <app-extended-content></app-extended-content>
+        <app-content-text-section [textSection]="orderStepsTextSection"></app-content-text-section>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
