@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {FileService} from '../../../../../admin-view/services/file-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {Project} from '../../../../../models/project/project.model';
+import {registerLocaleData} from '@angular/common';
+import localeSk from '@angular/common/locales/sk';
 
 @Component({
   selector: 'app-project-gallery',
@@ -19,6 +21,7 @@ export class ProjectGalleryComponent implements OnInit {
   constructor(private _fileService: FileService,
               private _sanitizer: DomSanitizer,
               private _router: Router) {
+    registerLocaleData(localeSk, 'sk');
   }
 
   ngOnInit(): void {
