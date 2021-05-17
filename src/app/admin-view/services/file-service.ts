@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
+import {ImageUploadMessageResource} from '../../models/web/response-bodies/image/image-upload-message-resource';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {ProjectsService} from '../../services/projects-service';
@@ -20,15 +21,15 @@ export class FileService {
     this.resource = environment.providers.resources.find(resource => resource.name === 'photo-endpoint');
   }
 
-  public postFile(fileToUpload: File, projectId: number, type: string): Observable<string> {
+  public postFile(fileToUpload: File, projectId: number, type: string): Observable<ImageUploadMessageResource> {
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload);
     formData.append('projectId', projectId.toString());
     formData.append('type', type);
     return this.httpClient
-      .post(this.resource.address + '/upload', formData, {
+      .post<ImageUploadMessageResource>(this.resource.address + '/upload', formData, {
         headers: new HttpHeaders({Accept: 'application/json'}),
-        responseType: 'text'
+        responseType: 'json'
       });
   }
 
@@ -56,8 +57,8 @@ export class FileService {
 
   public getAllPhotosOfProject(projectId: number): Observable<SafeUrl[]> {
     const images = new Array<SafeUrl>();
-    this.projectService.getProject(projectId).subscribe(data => {
-      data.imagePaths.forEach(path => {
+    this.projectService.getProject(projectId).subscribe((projectMessageResource) => {
+      projectMessageResource.project.imagePaths.forEach(path => {
         this.getFileFromPath(path).subscribe(photo => {
           images.push(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))));
         });
