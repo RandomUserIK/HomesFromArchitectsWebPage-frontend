@@ -9,7 +9,10 @@
     </div>
   </div>
   <div class="card mt-1" *ngFor="let project of projects">
-    <app-admin-project-gallery [project]="project" (projectRemoval)="removeProject($event)"></app-admin-project-gallery>
+    <app-admin-project-gallery [project]="project"
+                               [projectCategory]="projectCategory"
+                               (projectRemoval)="removeProject($event)">
+    </app-admin-project-gallery>
   </div>
   <div class="mt-2 row">
     <div class="col-auto form-group">

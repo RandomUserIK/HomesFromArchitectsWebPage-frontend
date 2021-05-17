@@ -22,7 +22,7 @@ export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirecti
     super(autoScrollService, activatedRoute, projectsService, searchHeaderService);
   }
 
-  removeProject($event: number) {
+  public removeProject($event: number): void {
     if ($event === undefined) {
       this.message = 'Projekt sa nepodarilo odstrániť';
       this.projectRemoved = false;
@@ -33,7 +33,7 @@ export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirecti
     }
   }
 
-  onAddProject(): void {
-    this.router.navigate(['admin/vytvor'], {queryParams: {projectType: this.categoryId}});
+  public onAddProject(): void {
+    this.router.navigate(['admin/vytvor'], {queryParams: {projectCategory: this.projectCategory}});
   }
 }
