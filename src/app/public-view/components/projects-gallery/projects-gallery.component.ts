@@ -8,7 +8,7 @@ import {loadingAnimation} from './animations/loading.animation';
   templateUrl: './projects-gallery.component.html',
   animations: loadingAnimation
 })
-export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective implements OnInit {
+export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective {
 
   private readonly INDIVIDUAL_CATEGORY_ID = 'INDIVIDUAL';
   private readonly COMMON_CATEGORY_ID = 'COMMON';
@@ -36,6 +36,7 @@ export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective im
   public isCommon = false;
 
   ngOnInit() {
+    super.ngOnInit();
     this.isIndividual = this.activatedRoute.snapshot.data.projectsCategoryId === this.INDIVIDUAL_CATEGORY_ID;
     this.isCommon = this.activatedRoute.snapshot.data.projectsCategoryId === this.COMMON_CATEGORY_ID;
   }

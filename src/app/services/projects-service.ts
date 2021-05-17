@@ -28,6 +28,7 @@ export class ProjectsService {
 
 
   public getAllOnPageAndCategoryAndQuery(page: number, categoryId: string, query: string): Observable<PageableProjectMessageResource> {
+    console.log(this.resource.address)
     return this._httpClient
       .get<PageableProjectMessageResource>(`${this.resource.address}/filter?page=${page}&${query}&category=${categoryId}`);
   }
@@ -39,9 +40,9 @@ export class ProjectsService {
       });
   }
 
-  public getSpecifiedNumberOfProjects(page: number, categoryId: string, size: number = 9): Observable<PageableProjectsData> {
+  public getSpecifiedNumberOfProjects(page: number, categoryId: string, size: number = 10): Observable<PageableProjectMessageResource> {
     return this._httpClient
-      .get<PageableProjectsData>(`${this.resource.address}/?page=${page}&size=${size}&category=${categoryId}`);
+      .get<PageableProjectMessageResource>(`${this.resource.address}/?page=${page}&size=${size}&category=${categoryId}`);
   }
 
   public removeProject(projectId: number): Observable<any> {

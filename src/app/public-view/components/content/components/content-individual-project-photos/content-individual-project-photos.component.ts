@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectsService} from '../../../../../services/projects-service';
-import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {SafeUrl} from '@angular/platform-browser';
 import {FileService} from '../../../../../admin-view/services/file-service';
-import {PageableProjectsData} from '../../../../../models/pageable-projects-data';
 import {Project} from '../../../../../models/project/project.model';
 import {exhaustMap} from 'rxjs/operators';
 import {forkJoin, Observable} from 'rxjs';
+import {PageableProjectMessageResource} from '../../../../../models/web/response-bodies/project/pageable-project-message-resource';
 
 @Component({
   selector: 'app-content-individual-project-photos',
@@ -16,10 +16,8 @@ export class ContentIndividualProjectPhotosComponent implements OnInit {
   public photos = new Array<SafeUrl>();
   public loading = true;
 
-
-  constructor(protected projectsService: ProjectsService, private fileService: FileService, private sanitizer: DomSanitizer) {
+  constructor(protected projectsService: ProjectsService, private fileService: FileService) {
   }
-
 
   private createPhotoFileObservables(individualProjects: Project[]): Observable<SafeUrl>[] {
     const photoFileObservables = [];
@@ -35,7 +33,7 @@ export class ContentIndividualProjectPhotosComponent implements OnInit {
     this.projectsService.getSpecifiedNumberOfProjects(0, 'INDIVIDUAL', 3)
       .pipe(
         exhaustMap(
-          (project: PageableProjectsData) =>
+          (project: PageableProjectMessageResource) =>
             forkJoin(this.createPhotoFileObservables(project.projects))
         )).subscribe(value => {
       value.map(safeUrl =>
