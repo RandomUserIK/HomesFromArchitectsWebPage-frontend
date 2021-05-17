@@ -95,8 +95,8 @@ export class CreateProjectService {
     return this._projectService.createProject(this.requestEntity)
       .pipe(
         exhaustMap(
-          (projectId) =>
-            forkJoin(this.createPhotoFileObservables(projectId.id))
+          (projectMessageResource) =>
+            forkJoin(this.createPhotoFileObservables(this.photoFiles, projectMessageResource.project.id))
         ));
   }
 
