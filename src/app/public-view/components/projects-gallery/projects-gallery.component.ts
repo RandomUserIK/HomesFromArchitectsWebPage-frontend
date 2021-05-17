@@ -8,7 +8,7 @@ import {loadingAnimation} from './animations/loading.animation';
   templateUrl: './projects-gallery.component.html',
   animations: loadingAnimation
 })
-export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective {
+export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective implements OnInit {
 
   private readonly INDIVIDUAL_CATEGORY_ID = 'INDIVIDUAL';
   private readonly COMMON_CATEGORY_ID = 'COMMON';
