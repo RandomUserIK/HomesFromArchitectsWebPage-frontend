@@ -22,9 +22,9 @@ export class HomeInstagramGalleryComponent implements OnInit {
       (results) => {
         this.loading = false;
         results.data.forEach((post) => {
-          if (this.posts.length < 6)
+          if (this.posts.length < 6 && !post.media_url.includes('video'))
             this.posts.push({path: post.media_url});
-        })
+        });
       },
       () => {
         this.loading = false;
