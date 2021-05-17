@@ -51,7 +51,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
     this.searchHeaderState$.unsubscribe();
   }
 
-  private handleProjectsList(currentPage: number, categoryId: string, query: string): Observable<PageableProjectMessageResource> {
+  private handleProjectsList(currentPage: number, projectCategory: string, query: string): Observable<PageableProjectMessageResource> {
     this.loading = true;
     this.autoScrollService.scrollToTop();
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, projectCategory, query);
