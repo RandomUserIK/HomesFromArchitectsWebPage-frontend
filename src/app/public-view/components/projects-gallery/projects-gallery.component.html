@@ -3,6 +3,12 @@
   <div class="mb-5">
     <app-search-header></app-search-header>
   </div>
+  <div *ngIf="!isCommon">
+    <app-individual-interior-project-title-text [isIndividualProject]="isIndividual"
+                                                [titleTextData]="isIndividual ?
+                                                individualProjectTitleTextData : interiorProjectTitleTextData">
+    </app-individual-interior-project-title-text>
+  </div>
   <div [@spinner]="loading">
     <app-loading></app-loading>
   </div>
