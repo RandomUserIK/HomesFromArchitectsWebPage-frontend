@@ -16,6 +16,8 @@ import {IndividualInteriorProjectModule} from './components/project/components/i
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
 import {PublicViewComponent} from './public-view.component';
+import {ProjectContentModule} from './components/content/project-content.module';
+import {ProjectContentComponent} from './components/content/project-content.component';
 import {GdprComponent} from './components/gdpr/gdpr/gdpr.component';
 import {GdprModule} from './components/gdpr/gdpr/gdpr.module';
 
@@ -54,6 +56,10 @@ const routes: Routes = [
         component: IndividualInteriorProjectComponent,
       },
       {
+        path: 'obsah-projektu',
+        component: ProjectContentComponent
+      },
+      {
         path: 'kontakty',
         component: ContactFormWrapperComponent
       },
@@ -76,6 +82,7 @@ const routes: Routes = [
     FooterComponent
   ],
   imports: [
+    ProjectContentModule,
     CommonModule,
     HomeModule,
     CommonProjectModule,

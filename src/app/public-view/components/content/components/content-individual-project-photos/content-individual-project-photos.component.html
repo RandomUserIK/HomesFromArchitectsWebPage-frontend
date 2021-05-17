@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row justify-content-center" *ngIf="loading">
+    <div class="col-1">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!loading">
+    <img *ngFor="let photo of photos" [src]="photo" alt="project-images" class="col-4">
+  </div>
+  <div class="alert alert-warning text-center" role="alert" *ngIf="photos.length === 0 && !loading">
+    Žiadne fotky nie sú k dispozícií.
+  </div>
+</div>
+
+

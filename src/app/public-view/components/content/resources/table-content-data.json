@@ -1,0 +1,54 @@
+{
+  "table" :[
+    {
+      "name" : "Architektonické a stavebné riešenie",
+      "basic": true,
+      "advanced" : true
+    },
+    {
+      "name" : "Projekt statiky",
+      "basic": true,
+      "advanced" : true
+    },
+    {
+      "name" : "Projekt zdravotechniky, vykurovania\n, domového plynovodu a rekuperácie",
+      "basic": true,
+      "advanced" : true
+    },
+    {
+      "name" : "Projekt elektroinštalácie",
+      "basic": true,
+      "advanced" : true
+    },
+    {
+      "name" : "Projekt protipožiarnej bezpečnosti",
+      "basic": true,
+      "advanced" : true
+    },
+    {
+      "name" : "Energetické hodnotenie stavby A0",
+      "basic": true,
+      "advanced" : true
+    },
+    {
+      "name" : "Projekt osadenia rodinného domu na pozemok",
+      "basic": "+ 200 €",
+      "advanced" : true
+    },
+    {
+      "name" : "Projekt prípojkok inžinierskych sietí",
+      "basic": "od 100€ / prípojka",
+      "advanced" : true
+    },
+    {
+      "name" : "Výkaz výmer a podrobný položkový rozpočet",
+      "basic": "+ 250 €",
+      "advanced" : true
+    },
+    {
+      "name" : "Interiérový dizajn na mieru podľa vás",
+      "basic": "dohodu",
+      "advanced" : "dohodu"
+    }
+  ]
+}
