@@ -8,6 +8,8 @@ import {AdminProjectsGalleryComponent} from './components/admin-projects-gallery
 import {AuthGuardService} from '../auth/services/auth-guard.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ConfigurationService} from '../configuration/services/configuration-service';
+import {BlogComponent} from "./components/blog/blog.component";
+import {BlogModule} from "./components/blog/blog.module";
 import {CreateProjectComponent} from './components/create-project/create-project.component';
 import {CreateProjectModule} from './components/create-project/create-project.module';
 import {AdminProjectsGalleryModule} from './components/admin-projects-gallery/admin-projects-gallery.module';
@@ -36,6 +38,10 @@ const routes: Routes = [
       {
         path: 'vytvor',
         component: CreateProjectComponent
+      },
+      {
+        path: 'blog',
+        component: BlogComponent
       }
     ]
   },
@@ -52,7 +58,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     CreateProjectModule,
-    AdminProjectsGalleryModule
+    AdminProjectsGalleryModule,
+    BlogModule
   ],
   providers: [
     ConfigurationService

@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {IvyGalleryModule} from 'angular-gallery';
+import {QuillModule} from "ngx-quill";
 
 import {AppComponent} from './app.component';
 import {AuthModule} from './auth/auth.module';
@@ -32,6 +33,7 @@ const routes: Routes = [
     NgbModule,
     NotFoundModule,
     RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
+    QuillModule.forRoot()
   ],
   providers: [
     {
