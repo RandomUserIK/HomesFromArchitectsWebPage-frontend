@@ -13,32 +13,33 @@ export class CreateProjectFormInitializerService {
 
   public initialize(formConfig: DataField[], form: FormGroup, projectData: Project): void {
     formConfig.forEach(dataField => {
-
-      const formControl = form.get(dataField.formControlName)
-
-      switch (dataField.type) {
-        case DataFieldType.IMAGE:
-          this.initializeImage(formControl, projectData[dataField.formControlName]);
-          break;
-        case DataFieldType.DYNAMIC_PHOTO_GALLERY:
-          this.initializePhotoGallery(formControl, projectData[dataField.formControlName]);
-          break;
-        case DataFieldType.DYNAMIC_TEXT_SECTION:
-          // TODO: implement as NgxEditor
-          break;
-        case DataFieldType.ENUMERATION:
-          this.initializeFormControlWithStringValue(formControl, projectData[dataField.formControlName]);
-          break;
-        case DataFieldType.MULTICHOICE:
-          this.initializeMultichoice(formControl, projectData[dataField.formControlName]);
-          break;
-        case DataFieldType.PRIMITIVE_TYPE:
-          this.initializeFormControlWithStringValue(formControl, projectData[dataField.formControlName]);
-          break;
-        default:
-          throw Error('Invalid type of data field provided');
-      }
+      this.resolveDataField(dataField, form.get(dataField.formControlName), projectData);
     });
+  }
+
+  private resolveDataField(dataField: DataField, formControl: AbstractControl, projectData: Project): void {
+    switch (dataField.type) {
+      case DataFieldType.IMAGE:
+        this.initializeImage(formControl, projectData[dataField.formControlName]);
+        break;
+      case DataFieldType.DYNAMIC_PHOTO_GALLERY:
+        this.initializePhotoGallery(formControl, projectData[dataField.formControlName]);
+        break;
+      case DataFieldType.DYNAMIC_TEXT_SECTION:
+        // TODO: implement as NgxEditor
+        break;
+      case DataFieldType.ENUMERATION:
+        this.initializeFormControlWithStringValue(formControl, projectData[dataField.formControlName]);
+        break;
+      case DataFieldType.MULTICHOICE:
+        this.initializeMultichoice(formControl, projectData[dataField.formControlName]);
+        break;
+      case DataFieldType.PRIMITIVE_TYPE:
+        this.initializeFormControlWithStringValue(formControl, projectData[dataField.formControlName]);
+        break;
+      default:
+        throw Error('Invalid type of data field provided');
+    }
   }
 
   private initializeImage(formControl: AbstractControl, imagePath: string): void {
