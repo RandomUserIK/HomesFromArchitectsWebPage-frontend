@@ -4,9 +4,9 @@ import {Observable, Subscription} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {SearchHeaderService} from '../components/search-header/services/search-header.service';
 import {ProjectsService} from '../services/projects-service';
-import {PageableProjectsData} from './pageable-projects-data';
 import {Project} from './project/project.model';
 import {AutoScrollService} from '../services/auto-scroll.service';
+import {PageableProjectMessageResource} from './web/response-bodies/project/pageable-project-message-resource';
 
 @Directive()
 export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
@@ -17,7 +17,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
   public totalElements: number;
   public categoryTitle: string;
   public loading: boolean;
-  public categoryId: string;
+  public projectCategory: string;
   private query: string;
   private searchHeaderState$: Subscription;
 
@@ -32,9 +32,9 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
       .pipe(
         switchMap(data => {
           this.categoryTitle = data.projectsTitle;
-          this.categoryId = data.projectsCategoryId;
+          this.projectCategory = data.projectsCategoryId;
           this.autoScrollService.scrollToTop();
-          return this.handleProjectsList(1, this.categoryId, '');
+          return this.handleProjectsList(1, this.projectCategory, '');
         })
       ).subscribe(this.processData());
 
@@ -42,7 +42,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
       .pipe(
         switchMap((query) => {
           this.query = query;
-          return this.handleProjectsList(1, this.categoryId, this.query);
+          return this.handleProjectsList(1, this.projectCategory, this.query);
         })
       ).subscribe(this.processData());
   }
@@ -51,10 +51,10 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
     this.searchHeaderState$.unsubscribe();
   }
 
-  private handleProjectsList(currentPage: number, categoryId: string, query: string): Observable<PageableProjectsData> {
+  private handleProjectsList(currentPage: number, projectCategory: string, query: string): Observable<PageableProjectMessageResource> {
     this.loading = true;
     this.autoScrollService.scrollToTop();
-    return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, categoryId, query);
+    return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, projectCategory, query);
   }
 
   private processData() {
@@ -67,6 +67,6 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
   }
 
   onPageChange(): void {
-    this.handleProjectsList(this.currentPage, this.categoryId, this.query).subscribe(this.processData());
+    this.handleProjectsList(this.currentPage, this.projectCategory, this.query).subscribe(this.processData());
   }
 }

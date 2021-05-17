@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class AdminProjectGalleryComponent {
 
   @Input() project: Project;
+  @Input() projectCategory: string;
   @Output() projectRemoval: EventEmitter<number> = new EventEmitter();
 
   constructor(private _projectService: ProjectsService,
@@ -22,7 +23,7 @@ export class AdminProjectGalleryComponent {
     this._router.navigate(['admin/vytvor'],
       {
         state: {projectData: this.project},
-        queryParams: {projectType: 'COMMON'}
+        queryParams: {projectCategory: this.projectCategory}
       });
   }
 
