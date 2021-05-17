@@ -19,7 +19,7 @@ export abstract class AbstractProjectView {
     this.isLoading = true
     this._projectService.getProject(projectId).subscribe(
       (project) => {
-        this.project = project;
+        this.project = project.project;
         this.isLoading = false;
       }, (error) => {
         this.error = error;

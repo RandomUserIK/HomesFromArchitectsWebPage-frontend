@@ -27,7 +27,7 @@ export class MultichoiceFieldComponent implements OnInit {
   }
 
   private initializeValidator(): void {
-    if (this.dataField.validator === Validators.required || (this.dataField.validator as ValidatorFn[]).includes(Validators.required)) {
+    if (this.dataField.validator === Validators.required || (this.dataField.validator as ValidatorFn[])?.includes(Validators.required)) {
       this.form.get(this.dataField.formControlName).valueChanges.subscribe((choices: { [key: string]: boolean }) => {
         if (!Object.values(choices).includes(true)) {
           this.form.controls[this.dataField.formControlName].setErrors({incorrect: true});
