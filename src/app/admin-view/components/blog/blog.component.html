@@ -1,3 +1,23 @@
-<p>blog works!</p>
+<div class="container content">
+  <div class="title-text mb-5 text-center">Nový príspevok</div>
+  <app-form-alert *ngIf="uploadMessage"
+                  [uploadMessage]="uploadMessage"
+                  [validationSuccess]="validationSuccess">
+  </app-form-alert>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <quill-editor [modules]="modules"
+                  [format]="FORMAT"
+                  [formControl]="form.get(EDITOR_CONTROL)"></quill-editor>
+    <div class="row mt-5">
+      <div class="col-12">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="form.invalid">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+          Vytvoriť príspevok
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 
-<quill-editor></quill-editor>

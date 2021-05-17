@@ -34,16 +34,6 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
     this.resolveTitle();
   }
 
-  private resolveTitle() {
-    if (this.projectType === 'COMMON') {
-      this.title = 'Katalógový projekt';
-    } else if (this.projectType === 'INDIVIDUAL') {
-      this.title = 'Individuálny projekt';
-    } else {
-      this.title = 'Interierový projekt';
-    }
-  }
-
   ngOnInit() {
     this.form = new FormGroup({});
   }
@@ -53,7 +43,6 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
       this.initDataFields(history.state.projectData);
     }
   }
-
 
   // TODO:Tu bude redirect s info hlaskou
   public onSubmit(): void {
@@ -77,11 +66,20 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
     this.autoScrollService.scrollToTop();
   }
 
+  private resolveTitle() {
+    if (this.projectType === 'COMMON') {
+      this.title = 'Katalógový projekt';
+    } else if (this.projectType === 'INDIVIDUAL') {
+      this.title = 'Individuálny projekt';
+    } else {
+      this.title = 'Interierový projekt';
+    }
+  }
+
   private initDataFields(project: Project): void {
     setTimeout(() => {
       this.createProjectFormInitializerService.initialize(this.dataFields[this.projectType], this.form, project);
     })
   }
-
 
 }

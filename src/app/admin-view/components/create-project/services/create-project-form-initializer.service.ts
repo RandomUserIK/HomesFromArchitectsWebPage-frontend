@@ -12,7 +12,7 @@ export class CreateProjectFormInitializerService {
   }
 
   public initialize(formConfig: DataField[], form: FormGroup, projectData: Project): void {
-    formConfig.forEach(dataField => {
+    formConfig.forEach((dataField) => {
 
       const formControl = form.get(dataField.formControlName)
 
