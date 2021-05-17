@@ -6,24 +6,21 @@ img {
 
 .img-wrapper {
   position: relative;
-  float: left;
 }
 
-/* Child Text Container */
 .img-wrapper div {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: black;
+  background: #313131;
   color: white;
   font-family: sans-serif;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: visibility 0s, opacity 0.5s linear;
-  transition: visibility 0s, opacity 0.5s linear;
+  -webkit-transition: visibility 0s, opacity 0.3s linear;
+  transition: visibility 0s, opacity 0.3s linear;
 }
 
-/* Hover on Parent Container */
 .img-wrapper:hover {
   cursor: pointer;
 }
@@ -44,3 +41,12 @@ img {
   height: 20rem;
   background: #f6f6f6;
 }
+
+.font-size {
+  font-size: 1.1rem;
+}
+
+
+
+
+
