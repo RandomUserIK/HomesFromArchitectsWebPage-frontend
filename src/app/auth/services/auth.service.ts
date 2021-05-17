@@ -1,14 +1,14 @@
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {Auth} from '../../configuration/models/application-properties';
-import {AuthRequest} from '../models/auth-request';
-import {AuthenticationMessageResource} from '../../models/web/response-bodies/auth/authentication-message-resource';
-import {catchError, tap} from 'rxjs/operators';
-import {User} from '../models/user';
-import {UserStorageData} from '../../models/user/user-storage-data';
 import {Router} from '@angular/router';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
+import {Auth} from '../../configuration/models/application-properties';
+import {User} from '../../models/user/user';
+import {UserStorageData} from '../../models/user/user-storage-data';
+import {AuthRequest} from '../../models/web/request-bodies/auth-request';
+import {AuthenticationMessageResource} from '../../models/web/response-bodies/auth/authentication-message-resource';
 
 @Injectable({
   providedIn: 'root'
