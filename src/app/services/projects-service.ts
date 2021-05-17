@@ -2,10 +2,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {EndpointConfigData} from '../configuration/models/enpoint-config-data';
-import {ConfigurationService} from '../configuration/services/configuration-service';
 import {PageableProjectsData} from '../models/pageable-projects-data';
 import {Project} from '../models/project/project.model';
-
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +13,8 @@ export class ProjectsService {
 
   private resource: EndpointConfigData;
 
-  constructor(private _httpClient: HttpClient,
-              private _applicationConfigService: ConfigurationService) {
-    this.resource = this._applicationConfigService.endpoints.find(resource => resource.name === 'project-endpoint');
+  constructor(private _httpClient: HttpClient) {
+    this.resource = environment.providers.resources.find(resource => resource.name === 'project-endpoint');
   }
 
   public createProject(data: Project): Observable<Project> {
