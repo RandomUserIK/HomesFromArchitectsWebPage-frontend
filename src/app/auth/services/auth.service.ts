@@ -1,13 +1,14 @@
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {Auth} from '../../configuration/models/application-properties';
-import {AuthRequest} from '../models/auth-request';
-import {AuthResponse} from '../models/auth-response';
-import {catchError, tap} from 'rxjs/operators';
-import {User} from '../models/user';
 import {Router} from '@angular/router';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
+import {Auth} from '../../configuration/models/application-properties';
+import {User} from '../../models/user/user';
+import {UserStorageData} from '../../models/user/user-storage-data';
+import {AuthRequest} from '../../models/web/request-bodies/auth-request';
+import {AuthenticationMessageResource} from '../../models/web/response-bodies/auth/authentication-message-resource';
 
 @Injectable({
   providedIn: 'root'
@@ -24,20 +25,20 @@ export class AuthService {
     this._resource = environment.providers.auth;
   }
 
-  public login(username: string, password: string): Observable<AuthResponse> {
+  public login(username: string, password: string): Observable<AuthenticationMessageResource> {
     const request: AuthRequest = {username, password};
-    return this._httpClient.post<AuthResponse>(
+    return this._httpClient.post<AuthenticationMessageResource>(
       this._resource.address + this._resource.endpoints[this.ENDPOINT_LOGIN], request)
       .pipe(
         catchError(this.handleError),
         tap(response => this.handleAuth(response)));
   }
 
-  private handleAuth(response: AuthResponse): void {
-    const expirationDate = new Date(new Date().getTime() + 36000 * 1000);
-    const user = new User(response.id, response.token, expirationDate);
+  private handleAuth(response: AuthenticationMessageResource): void {
+    const expirationDate = new Date(new Date().getTime() + response.jwtExpiration);
+    const user = new User(response.id, response.jwtToken.replace('Bearer ', ''), expirationDate);
     this.user.next(user);
-    this.autoLogout(20 * 1000);
+    this.autoLogout(response.jwtExpiration);
     localStorage.setItem('user', JSON.stringify(user));
   }
 
@@ -52,11 +53,7 @@ export class AuthService {
   }
 
   public autoLogin(): void {
-    const userData: {
-      id: number,
-      _token: string,
-      _tokenExpirationDate: string
-    } = JSON.parse(localStorage.getItem('user'));
+    const userData: UserStorageData = JSON.parse(localStorage.getItem('user'));
 
     if (!userData) {
       return;
@@ -64,13 +61,13 @@ export class AuthService {
 
     const loadedUser = new User(
       userData.id,
-      userData._token,
-      new Date(userData._tokenExpirationDate)
+      userData.token,
+      new Date(userData.tokenExpirationDate)
     );
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
-      const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+      const expirationDuration = new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
       this.autoLogout(expirationDuration);
       this.router.navigate(['/admin']);
     }
@@ -85,11 +82,10 @@ export class AuthService {
     }
   }
 
-  // TODO add duration from response
   public autoLogout(expirationDuration: number): void {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
-    }, 100000000000);
+    }, expirationDuration);
   }
 
 }
