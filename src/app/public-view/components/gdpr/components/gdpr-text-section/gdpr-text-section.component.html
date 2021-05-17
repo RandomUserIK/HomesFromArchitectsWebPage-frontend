@@ -1,0 +1,18 @@
+<div class="container">
+  <h2 class="text-center padding-small">Zásady spracovania a ochrany osobných údajov</h2>
+  <div *ngFor="let gdprTextSection of gdprTextSections">
+    <div class="text-center text-font padding-small">
+      <h3>{{gdprTextSection.title}}</h3>
+    </div>
+    <ol>
+      <div *ngFor="let text of gdprTextSection.texts">
+        <li class="text-font">{{text.text}}</li>
+        <ul *ngFor="let subsections of text.subTextList">
+          <li class="text-font">{{subsections}}</li>
+        </ul>
+      </div>
+    </ol>
+  </div>
+  <p class="text-center text-font">Tieto podmienky nadobúdajú účinnosť dňom 01.04.2019.</p>
+</div>
+
