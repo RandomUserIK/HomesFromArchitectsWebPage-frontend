@@ -3,7 +3,7 @@
   <span class="spinner-border spinner-border-lg"></span>
   </div>
 </div>
-<div *ngIf="!loading" class="img-wrapper">
+<div *ngIf="!loading" class="img-wrapper" (click)="onProjectClick()">
   <img [src]="image" alt="test-project-image">
   <div class="text-center align-middle font-weight-bold line-height text-light"></div>
 </div>
