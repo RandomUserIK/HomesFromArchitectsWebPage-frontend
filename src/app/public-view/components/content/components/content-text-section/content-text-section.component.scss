@@ -1,0 +1,19 @@
+@import 'src/app/public-view/components/content/project-content.component.scss';
+
+.line-under-text {
+  height: 0.2em;
+  border-width: 0;
+  background-color: #f36c36;
+}
+
+.title-text {
+  opacity: 0.5;
+}
+
+.text-font {
+  font-family: titleFontSection, serif;
+}
+
+.padding-bottom {
+  padding-bottom: 3%;
+}
