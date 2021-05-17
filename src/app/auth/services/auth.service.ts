@@ -2,12 +2,12 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {Auth} from '../../configuration/models/application-properties';
-import {ConfigurationService} from '../../configuration/services/configuration-service';
 import {AuthRequest} from '../models/auth-request';
 import {AuthResponse} from '../models/auth-response';
 import {catchError, tap} from 'rxjs/operators';
 import {User} from '../models/user';
 import {Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,8 @@ export class AuthService {
   private tokenExpirationTimer: any;
 
   constructor(private _httpClient: HttpClient,
-              private _config: ConfigurationService,
               private router: Router) {
-    this._resource = this._config.get().providers.auth;
+    this._resource = environment.providers.auth;
   }
 
   public login(username: string, password: string): Observable<AuthResponse> {

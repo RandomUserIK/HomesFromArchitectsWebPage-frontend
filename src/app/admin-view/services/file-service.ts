@@ -4,8 +4,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {ProjectsService} from '../../services/projects-service';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import {ConfigurationService} from '../../configuration/services/configuration-service';
 import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,9 @@ export class FileService {
   private resource: EndpointConfigData;
 
   constructor(private httpClient: HttpClient,
-              private applicationConfigService: ConfigurationService,
               private projectService: ProjectsService,
               private sanitizer: DomSanitizer) {
-    this.resource = this.applicationConfigService.endpoints.find(resource => resource.name === 'photo-endpoint');
+    this.resource = environment.providers.resources.find(resource => resource.name === 'photo-endpoint');
   }
 
   public postFile(fileToUpload: File, projectId: number, type: string): Observable<string> {

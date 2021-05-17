@@ -7,7 +7,6 @@ import {AdminViewComponent} from './admin-view.component';
 import {AdminProjectsGalleryComponent} from './components/admin-projects-gallery/admin-projects-gallery.component';
 import {AuthGuardService} from '../auth/services/auth-guard.service';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ConfigurationService} from '../configuration/services/configuration-service';
 import {CreateProjectComponent} from './components/create-project/create-project.component';
 import {CreateProjectModule} from './components/create-project/create-project.module';
 import {AdminProjectsGalleryModule} from './components/admin-projects-gallery/admin-projects-gallery.module';
@@ -39,7 +38,7 @@ const routes: Routes = [
       }
     ]
   },
-]
+];
 
 @NgModule({
   declarations: [
@@ -53,9 +52,6 @@ const routes: Routes = [
     HttpClientModule,
     CreateProjectModule,
     AdminProjectsGalleryModule
-  ],
-  providers: [
-    ConfigurationService
   ]
 })
 export class AdminViewModule {
