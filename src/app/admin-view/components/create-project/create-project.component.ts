@@ -20,9 +20,10 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
   public form: FormGroup;
   public loading = false;
   public uploadMessage = '';
-  public projectType: string;
+  public projectCategory: string;
   public validationSuccess: boolean;
   public title = '';
+  public projectId: number;
 
   constructor(private autoScrollService: AutoScrollService,
               private activatedRoute: ActivatedRoute,
@@ -30,14 +31,13 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
               private createCommonProjectService: CreateProjectService,
               private createProjectFormInitializerService: CreateProjectFormInitializerService,
               @Inject(PROJECT_DATA_FIELDS_CONFIG) public dataFields: DataGroupMap) {
-    this.projectType = this.activatedRoute.snapshot.queryParams.projectType;
-    this.resolveTitle();
+    this.projectCategory = this.activatedRoute.snapshot.queryParams.projectCategory;
   }
 
-  private resolveTitle() {
-    if (this.projectType === 'COMMON') {
+  private resolveTitle(): void {
+    if (this.projectCategory === 'COMMON') {
       this.title = 'Katalógový projekt';
-    } else if (this.projectType === 'INDIVIDUAL') {
+    } else if (this.projectCategory === 'INDIVIDUAL') {
       this.title = 'Individuálny projekt';
     } else {
       this.title = 'Interierový projekt';
@@ -45,6 +45,7 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.resolveTitle();
     this.form = new FormGroup({});
   }
 
@@ -54,18 +55,16 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
     }
   }
 
-
-  // TODO:Tu bude redirect s info hlaskou
   public onSubmit(): void {
     this.loading = true;
     if (this.form.valid) {
-      this.createCommonProjectService.createProject(
-        this.form, this.dataFields[this.projectType], this.projectType
+      this.createCommonProjectService.submitProject(
+        this.form, this.dataFields[this.projectCategory], this.projectCategory, this.projectId
       ).subscribe(() => {
         this.loading = false;
         this.form.reset();
         this.validationSuccess = true;
-        this.uploadMessage = 'Projekt bol úspešne vytvorený';
+        this.uploadMessage = 'Projekt bol úspešne odoslaný';
       }, () => {
         this.loading = false;
         this.uploadMessage = 'Projekt sa nepodarilo vytvoriť, skúste neskôr';
@@ -79,9 +78,9 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
 
   private initDataFields(project: Project): void {
     setTimeout(() => {
-      this.createProjectFormInitializerService.initialize(this.dataFields[this.projectType], this.form, project);
+      this.projectId = project.id;
+      this.createProjectFormInitializerService.initialize(this.dataFields[this.projectCategory], this.form, project);
     })
   }
-
 
 }
