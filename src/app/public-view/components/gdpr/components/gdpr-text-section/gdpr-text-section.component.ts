@@ -6,13 +6,8 @@ import {GdprTextSection} from '../models/GdprTextSection';
   templateUrl: './gdpr-text-section.component.html',
   styleUrls: ['./gdpr-text-section.component.scss']
 })
-export class GdprTextSectionComponent implements OnInit {
+export class GdprTextSectionComponent {
 
   @Input() gdprTextSections: GdprTextSection[];
-
-  constructor() {}
-
-  ngOnInit(): void {
-  }
 
 }

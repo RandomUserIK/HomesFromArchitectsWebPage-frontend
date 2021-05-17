@@ -7,12 +7,7 @@ import data from 'src/app/public-view/components/gdpr/components/models/gdpr-dat
   templateUrl: './gdpr.component.html',
   styleUrls: ['./gdpr.component.scss']
 })
-export class GdprComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class GdprComponent{
 
   public prepareGDPRTexts() : GdprTextSection[]{
     return (data as GdprTextSection[]);

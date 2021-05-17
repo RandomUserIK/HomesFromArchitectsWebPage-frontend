@@ -62,7 +62,7 @@ const routes: Routes = [
         component: OrderComponent
       },
       {
-        path: 'app-gdpr',
+        path: 'gdpr',
         component: GdprComponent
       }
     ]
