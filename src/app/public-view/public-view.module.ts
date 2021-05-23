@@ -64,7 +64,7 @@ const routes: Routes = [
         component: ContactFormWrapperComponent
       },
       {
-        path: 'order',
+        path: 'objednavka/:id',
         component: OrderComponent
       },
       {

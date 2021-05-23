@@ -23,7 +23,6 @@ import {CreateProjectFormInitializerService} from './services/create-project-for
     CreateProjectComponent
   ],
   providers:[
-    CreateProjectService,
     CreateProjectFormInitializerService
   ]
 })
