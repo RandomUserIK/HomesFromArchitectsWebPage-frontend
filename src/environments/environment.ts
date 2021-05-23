@@ -33,6 +33,11 @@ export const environment = {
         name: 'contact-endpoint',
         address: 'http://localhost:8090/api/form/contact',
         format: 'application/json'
+      },
+      {
+        name: 'instagram-endpoint',
+        address: 'http://localhost:8090/api/instagram',
+        format: 'application/json'
       }
     ]
   }

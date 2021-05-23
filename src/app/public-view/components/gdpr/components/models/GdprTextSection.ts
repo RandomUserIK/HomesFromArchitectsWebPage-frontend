@@ -3,7 +3,7 @@ export interface GdprTextSection {
   texts: GdprTexts[];
 }
 
-export interface GdprTexts {
+interface GdprTexts {
   text: string;
   subTextList: string[];
 }
