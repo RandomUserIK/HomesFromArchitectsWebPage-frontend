@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {ImageUploadMessageResource} from '../../models/web/response-bodies/image/image-upload-message-resource';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {ProjectsService} from '../../services/projects-service';
+import {Injectable, SecurityContext} from '@angular/core';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
+import {Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
+import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
+import {ImageUploadMessageResource} from '../../models/web/response-bodies/image/image-upload-message-resource';
+import {ProjectsService} from '../../services/projects-service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,9 @@ export class FileService {
 
   private resource: EndpointConfigData;
 
-  constructor(private httpClient: HttpClient,
-              private projectService: ProjectsService,
-              private sanitizer: DomSanitizer) {
+  constructor(private _httpClient: HttpClient,
+              private _projectService: ProjectsService,
+              private _sanitizer: DomSanitizer) {
     this.resource = environment.providers.resources.find(resource => resource.name === 'photo-endpoint');
   }
 
@@ -26,7 +26,7 @@ export class FileService {
     formData.append('file', fileToUpload);
     formData.append('projectId', projectId.toString());
     formData.append('type', type);
-    return this.httpClient
+    return this._httpClient
       .post<ImageUploadMessageResource>(this.resource.address + '/upload', formData, {
         headers: new HttpHeaders({Accept: 'application/json'}),
         responseType: 'json'
@@ -34,19 +34,21 @@ export class FileService {
   }
 
   public getFileFromPathAsSafeUrl(path: string): Observable<SafeUrl> {
-    return this.getFileFromPath(path).pipe(map((image) => {
-      return this.sanitizer.bypassSecurityTrustUrl(
-        URL.createObjectURL(new Blob([image],
-          {type: 'application/octet-stream'}))
+    return this.getFileFromPath(path)
+      .pipe(
+        map((image) => {
+          return this._sanitizer.bypassSecurityTrustUrl(
+            URL.createObjectURL(new Blob([image], {type: 'application/octet-stream'}))
+          );
+        })
       );
-    }));
   }
 
   public getFileFromPath(path: string): Observable<Blob> {
-    return this.httpClient
+    return this._httpClient
       .get(`${this.resource.address}?path=${path}`, {
         headers: new HttpHeaders({Accept: 'application/octet-stream'}),
-        responseType: 'blob',
+        responseType: 'blob'
       });
   }
 
@@ -55,16 +57,14 @@ export class FileService {
     this.postFile(files.item(0), +projectId, type).subscribe();
   }
 
-  public getAllPhotosOfProject(projectId: number): Observable<SafeUrl[]> {
-    const images = new Array<SafeUrl>();
-    this.projectService.getProject(projectId).subscribe((projectMessageResource) => {
-      projectMessageResource.project.imagePaths.forEach(path => {
-        this.getFileFromPath(path).subscribe(photo => {
-          images.push(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))));
-        });
+  public getAllImagesAsSafeUrl(imagePaths: Array<string>): Observable<Array<SafeUrl>> {
+    const imagesAsSafeUrl: Array<SafeUrl> = [];
+    imagePaths.forEach((path) => {
+      this.getFileFromPathAsSafeUrl(path).subscribe((imageAsSafeUrl) => {
+        imagesAsSafeUrl.push(imageAsSafeUrl);
       });
     });
-    return of(images);
+    return of(imagesAsSafeUrl);
   }
 
 }
