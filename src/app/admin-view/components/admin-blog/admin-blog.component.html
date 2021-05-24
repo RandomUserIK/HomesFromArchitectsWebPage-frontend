@@ -7,12 +7,19 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <quill-editor [modules]="modules"
                   [format]="FORMAT"
-                  [formControl]="form.get(EDITOR_CONTROL)"></quill-editor>
+                  [placeholder]="PLACEHOLDER"
+                  [formControlName]="EDITOR_CONTROL" >
+    </quill-editor>
+    <div *ngIf="form.get(EDITOR_CONTROL).hasError('required') &&
+                form.get(EDITOR_CONTROL).touched"
+                class="text-danger mt-1">
+      Povinný údaj
+    </div>
     <div class="row mt-5">
       <div class="col-12">
         <button type="submit"
                 class="btn btn-primary"
-                [disabled]="form.invalid">
+                [disabled]="form.invalid || isLoading">
           <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
           Vytvoriť príspevok
         </button>
@@ -20,4 +27,3 @@
     </div>
   </form>
 </div>
-

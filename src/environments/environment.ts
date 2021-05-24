@@ -33,6 +33,11 @@ export const environment = {
         name: 'contact-endpoint',
         address: 'http://localhost:8090/api/form/contact',
         format: 'application/json'
+      },
+      {
+        name: 'blog-endpoint',
+        address: 'http://localhost:8090/api/blog',
+        format: 'application/json'
       }
     ]
   }

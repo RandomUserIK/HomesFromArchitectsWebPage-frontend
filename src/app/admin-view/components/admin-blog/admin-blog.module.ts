@@ -3,23 +3,20 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {QuillModule} from 'ngx-quill';
 import {FormAlertModule} from '../../../components/form-alert/form-alert.module';
-import {BlogComponent} from './blog.component';
+import {AdminBlogComponent} from './admin-blog.component';
 
 
 @NgModule({
   declarations: [
-    BlogComponent
+    AdminBlogComponent
   ],
   imports: [
     CommonModule,
     QuillModule,
-    FormsModule,
     FormAlertModule,
+    FormsModule,
     ReactiveFormsModule
-  ],
-  exports: [
-    BlogComponent
   ]
 })
-export class BlogModule {
+export class AdminBlogModule {
 }

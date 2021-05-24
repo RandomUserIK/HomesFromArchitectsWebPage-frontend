@@ -4,24 +4,26 @@ import {QuillModules} from 'ngx-quill';
 import {Delta} from 'quill';
 import {Observable, of} from 'rxjs';
 import {AutoScrollService} from '../../../services/auto-scroll.service';
+import {BlogService} from '../../../services/blog.service';
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
+  selector: 'app-admin-blog',
+  templateUrl: './admin-blog.component.html',
+  styleUrls: ['./admin-blog.component.scss']
 })
-export class BlogComponent implements OnInit {
+export class AdminBlogComponent implements OnInit {
 
   public readonly EDITOR_CONTROL = 'editor';
   public readonly FORMAT = 'object';
-  public article: Delta;
+  public readonly PLACEHOLDER = 'Napíšte obsah príspevku'
   public form: FormGroup;
   public modules: QuillModules;
   public validationSuccess: boolean;
   public isLoading: boolean;
   public uploadMessage: string;
 
-  constructor(private _autoScrollService: AutoScrollService) {
+  constructor(private _blogService: BlogService,
+              private _autoScrollService: AutoScrollService) {
   }
 
   ngOnInit(): void {
@@ -29,13 +31,13 @@ export class BlogComponent implements OnInit {
     this.uploadMessage = '';
     this.form = new FormGroup({});
     this.initializeEditorToolbar();
-    this.insertEditorFormControl();
+    this.insertEditorAsFormControl();
   }
 
   public onSubmit(): void {
     this.isLoading = true;
     if (this.form.valid) {
-      this.submitDummyFunc().subscribe(
+      this._blogService.createBlogArticle(this.form.get(this.EDITOR_CONTROL).value).subscribe(
         () => {
           this.isLoading = false;
           this.form.reset();
@@ -54,6 +56,7 @@ export class BlogComponent implements OnInit {
   }
 
   private initializeEditorToolbar(): void {
+    // TODO: this ought to be initialized in a more convenient manner
     this.modules = {
       toolbar: {
         container: [
@@ -76,15 +79,8 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  private insertEditorFormControl(): void {
-    this.form.addControl(this.EDITOR_CONTROL, new FormControl(this.article, [Validators.required]));
-    this.form.get(this.EDITOR_CONTROL).valueChanges.subscribe(data => {
-      console.log(data);
-    })
-  }
-
-  private submitDummyFunc(): Observable<boolean> {
-    return of(true);
+  private insertEditorAsFormControl(): void {
+    this.form.addControl(this.EDITOR_CONTROL, new FormControl(null, Validators.required));
   }
 
 }
