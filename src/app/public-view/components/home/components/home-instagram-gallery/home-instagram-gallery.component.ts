@@ -18,12 +18,11 @@ export class HomeInstagramGalleryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.instagramSearchService.search().subscribe(
+    this.instagramSearchService.search(6).subscribe(
       (results) => {
         this.loading = false;
         results.data.forEach((post) => {
-          if (this.posts.length < 6 && !post.media_url.includes('video'))
-            this.posts.push({path: post.media_url});
+          this.posts.push({path: post.media_url});
         });
       },
       () => {
