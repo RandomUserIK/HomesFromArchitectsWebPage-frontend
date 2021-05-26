@@ -32,7 +32,7 @@ export class ImageCarouselComponent implements OnInit {
     });
   }
 
-  onImageClick(index: number): void {
+  public onImageClick(index: number): void {
     this.imageClicked.emit(index);
   }
 
