@@ -3,20 +3,17 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {SearchHeaderService} from '../components/search-header/services/search-header.service';
-import {ProjectsService} from '../services/projects-service';
-import {Project} from './project/project.model';
 import {AutoScrollService} from '../services/auto-scroll.service';
+import {ProjectsService} from '../services/projects-service';
+import {AbstractGallery} from './abstract-gallery';
+import {Project} from './project/project.model';
 import {PageableProjectMessageResource} from './web/response-bodies/project/pageable-project-message-resource';
 
 @Directive()
-export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestroy {
+export abstract class AbstractProjectGalleryDirective extends AbstractGallery implements OnInit, OnDestroy {
 
-  public currentPage = 1;
-  public pageSize = 10;
   public projects: Array<Project> = [];
-  public totalElements: number;
   public categoryTitle: string;
-  public loading: boolean;
   public projectCategory: string;
   private query: string;
   private searchHeaderState$: Subscription;
@@ -25,6 +22,7 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
               protected activatedRoute: ActivatedRoute,
               protected projectsService: ProjectsService,
               protected searchHeaderService: SearchHeaderService) {
+    super();
   }
 
   ngOnInit(): void {
@@ -51,6 +49,10 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
     this.searchHeaderState$.unsubscribe();
   }
 
+  public onPageChange(): void {
+    this.handleProjectsList(this.currentPage, this.projectCategory, this.query).subscribe(this.processData());
+  }
+
   private handleProjectsList(currentPage: number, projectCategory: string, query: string): Observable<PageableProjectMessageResource> {
     this.loading = true;
     this.autoScrollService.scrollToTop();
@@ -66,7 +68,4 @@ export abstract class AbstractProjectGalleryDirective implements OnInit, OnDestr
     };
   }
 
-  onPageChange(): void {
-    this.handleProjectsList(this.currentPage, this.projectCategory, this.query).subscribe(this.processData());
-  }
 }
