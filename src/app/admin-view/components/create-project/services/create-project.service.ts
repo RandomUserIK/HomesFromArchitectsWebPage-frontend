@@ -8,12 +8,10 @@ import {FormGroup} from '@angular/forms';
 import {DataField} from '../../../../components/data-fields/models/data-field';
 import {RequestEntityPreparationService} from '../../../../services/request-entity-preparation.service';
 import {Project} from '../../../../models/project/project.model';
-import {PhotoFile} from '../../../../models/web/request-bodies/photo-file';
+import {ImageFile} from '../../../../models/web/request-bodies/image-file';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CreateProjectService {
 
   constructor(private _httpClient: HttpClient,
@@ -33,7 +31,7 @@ export class CreateProjectService {
     return this.sendProject(this._preparationService.requestEntity, this._preparationService.photoFiles);
   }
 
-  private sendProject(requestEntity: Project, photoFiles: PhotoFile[]): Observable<string[]> {
+  private sendProject(requestEntity: Project, photoFiles: ImageFile[]): Observable<string[]> {
     return this._projectService.createProject(requestEntity)
       .pipe(
         exhaustMap(
@@ -42,7 +40,7 @@ export class CreateProjectService {
         ));
   }
 
-  private createPhotoFileObservables(photoFiles: PhotoFile[], projectId: number): Observable<string>[] {
+  private createPhotoFileObservables(photoFiles: ImageFile[], projectId: number): Observable<string>[] {
     const photoFileObservables = [];
     photoFiles.forEach(photoFile => {
       photoFileObservables.push(this._fileService.postFile(photoFile.value, projectId, photoFile.type.toString()));

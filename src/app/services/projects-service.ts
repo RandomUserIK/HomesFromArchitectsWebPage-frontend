@@ -28,7 +28,6 @@ export class ProjectsService {
 
 
   public getAllOnPageAndCategoryAndQuery(page: number, categoryId: string, query: string): Observable<PageableProjectMessageResource> {
-    console.log(this.resource.address)
     return this._httpClient
       .get<PageableProjectMessageResource>(`${this.resource.address}/filter?page=${page}&${query}&category=${categoryId}`);
   }

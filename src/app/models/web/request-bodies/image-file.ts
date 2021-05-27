@@ -1,6 +1,6 @@
 import {ImageType} from '../../../components/data-fields/models/image-type.enum';
 
-export interface PhotoFile {
+export interface ImageFile {
   type: ImageType;
   value: File;
 }

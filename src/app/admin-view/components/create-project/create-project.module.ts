@@ -5,6 +5,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DataFieldsModule} from '../../../components/data-fields/data-fields.module';
 import {FormAlertModule} from '../../../components/form-alert/form-alert.module';
 import {CreateProjectFormInitializerService} from './services/create-project-form-initializer.service';
+import {CreateProjectService} from './services/create-project.service';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {CreateProjectFormInitializerService} from './services/create-project-for
     CreateProjectComponent
   ],
   providers: [
-    CreateProjectFormInitializerService
+    CreateProjectFormInitializerService,
+    CreateProjectService
   ]
 })
 export class CreateProjectModule {

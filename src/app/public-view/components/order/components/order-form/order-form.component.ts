@@ -31,7 +31,6 @@ export class OrderFormComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.submitButtonField = this.orderDataFieldsConfig.thirdSection.find(field => field.formControlName === 'submitButton');
     this.form = new FormGroup({});
-    this.form.valueChanges.subscribe(val => console.log(val))
   }
 
   ngAfterViewInit(): void {

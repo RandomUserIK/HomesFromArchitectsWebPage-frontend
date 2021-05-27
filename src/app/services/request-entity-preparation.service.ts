@@ -3,7 +3,7 @@ import {Project} from '../models/project/project.model';
 import {FormGroup} from '@angular/forms';
 import {DataField} from '../components/data-fields/models/data-field';
 import {DataFieldType} from '../components/data-fields/models/data-field-type.enum';
-import {PhotoFile} from '../models/web/request-bodies/photo-file';
+import {ImageFile} from '../models/web/request-bodies/image-file';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,9 @@ import {PhotoFile} from '../models/web/request-bodies/photo-file';
 export class RequestEntityPreparationService {
 
   private _requestEntity: Project;
-  private _photoFiles: PhotoFile[];
+  private _photoFiles: ImageFile[];
 
-  get photoFiles(): PhotoFile[] {
+  get photoFiles(): ImageFile[] {
     return this._photoFiles;
   }
 
