@@ -1,7 +1,7 @@
-import {Delta} from 'quill';
+import {BlogArticle} from '../../../blog/blog-article';
 
 export interface PageableBlogArticleMessageResource {
-  blogArticles: Array<Delta>;
+  blogArticles: Array<BlogArticle>;
   currentPage: number;
   totalElements: number;
   elementsPerPage: number;

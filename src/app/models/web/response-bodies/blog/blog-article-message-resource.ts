@@ -1,5 +1,5 @@
-import {Delta} from 'quill';
+import {BlogArticle} from '../../../blog/blog-article';
 
 export interface BlogArticleMessageResource {
-  blogArticle: Delta;
+  blogArticle: BlogArticle;
 }

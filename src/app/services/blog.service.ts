@@ -1,9 +1,10 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Delta} from 'quill';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
+import {FileService} from '../admin-view/services/file-service';
 import {EndpointConfigData} from '../configuration/models/enpoint-config-data';
+import {BlogArticleFormData} from '../models/blog/blog-article-form-data';
 import {CreateBlogArticleMessageResource} from '../models/web/request-bodies/create-blog-article-message-resource';
 import {BlogArticleMessageResource} from '../models/web/response-bodies/blog/blog-article-message-resource';
 import {PageableBlogArticleMessageResource} from '../models/web/response-bodies/blog/pageable-blog-article-message-resource';
@@ -18,13 +19,19 @@ export class BlogService {
 
   private resource: EndpointConfigData;
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _httpClient: HttpClient,
+              private _fileService: FileService) {
     this.resource = environment.providers.resources.find(resource => resource.name === 'blog-endpoint');
   }
 
-  public createBlogArticle(data: Delta): Observable<BlogArticleMessageResource> {
+  public createBlogArticle(data: BlogArticleFormData): Observable<BlogArticleMessageResource> {
+    // TODO: configure blog article title image submission
     const requestData: CreateBlogArticleMessageResource = {
-      blogArticle: data
+      blogArticle: {
+        title: data.title,
+        titleImage: '',
+        content: data.content.ops
+      }
     };
     return this._httpClient
       .post<BlogArticleMessageResource>(this.resource.address, requestData, {
