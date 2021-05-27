@@ -13,9 +13,9 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
 
   public blogArticles: Array<BlogArticle> = [];
 
-  constructor(protected autoScrollService: AutoScrollService,
-              protected activatedRoute: ActivatedRoute,
-              protected blogService: BlogService) {
+  protected constructor(protected autoScrollService: AutoScrollService,
+                        protected activatedRoute: ActivatedRoute,
+                        protected blogService: BlogService) {
     super();
   }
 
@@ -34,7 +34,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
   }
 
   private handleBlogArticleList(currentPage: number): Observable<PageableBlogArticleMessageResource> {
-    this.loading = true;
+    this.isLoading = true;
     this.autoScrollService.scrollToTop();
     return this.blogService.getBlogArticlesOnPage(currentPage - 1, this.pageSize);
   }
@@ -44,7 +44,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
       this.blogArticles = data.blogArticles;
       this.currentPage = data.currentPage + 1;
       this.totalElements = data.totalElements;
-      this.loading = false;
+      this.isLoading = false;
     };
   }
 

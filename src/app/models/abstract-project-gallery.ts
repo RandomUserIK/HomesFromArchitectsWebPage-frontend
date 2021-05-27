@@ -54,7 +54,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
   }
 
   private handleProjectsList(currentPage: number, projectCategory: string, query: string): Observable<PageableProjectMessageResource> {
-    this.loading = true;
+    this.isLoading = true;
     this.autoScrollService.scrollToTop();
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, projectCategory, query);
   }
@@ -64,7 +64,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
       this.projects = data.projects;
       this.currentPage = data.currentPage + 1;
       this.totalElements = data.totalElements;
-      this.loading = false;
+      this.isLoading = false;
     };
   }
 

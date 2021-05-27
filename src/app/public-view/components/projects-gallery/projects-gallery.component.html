@@ -9,10 +9,10 @@
                                                 individualProjectTitleTextData : interiorProjectTitleTextData">
     </app-individual-interior-project-title-text>
   </div>
-  <div [@spinner]="loading">
+  <div [@spinner]="isLoading">
     <app-loading></app-loading>
   </div>
-  <div [@gallery]="loading">
+  <div [@gallery]="isLoading">
     <div *ngIf="projects?.length > 0; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
       <div class="row mt-4">
