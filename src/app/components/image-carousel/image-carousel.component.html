@@ -1,8 +1,12 @@
-<ngb-carousel [interval]="dataInterval" [pauseOnFocus]="pauseOnFocus" [pauseOnHover]="pauseOnHover">
-  <ng-template ngbSlide *ngFor="let img of carouselItems; let index = index">
+<div class="container" *ngIf="isLoading">
+  <div class="col-12 text-center">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+  </div>
+</div>
+<ngb-carousel [interval]="dataInterval" [pauseOnFocus]="pauseOnFocus" [pauseOnHover]="pauseOnHover" *ngIf="!isLoading">
+  <ng-template ngbSlide *ngFor="let img of imagesAsSafeUrl; let index = index">
     <div class="picsum-img-wrapper">
-      <!-- TODO: remove 'assets/' from path -->
-      <img [src]="'assets/' + img"
+      <img [src]="img"
            [alt]="index"
            [ngClass]="shouldDisplayAnimation ? 'w-100 image-animation' : 'w-100'"
            (click)="onImageClick(index)">
