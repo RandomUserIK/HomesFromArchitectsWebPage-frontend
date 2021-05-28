@@ -21,7 +21,7 @@ export class AdminBlogArticleComponent implements AdminGalleryElement {
   edit(): void {
     this._router.navigate(['admin/blog/prispevok'],
       {
-        state: {projectData: this.blogArticle}
+        state: {blogArticle: this.blogArticle}
       });
   }
 
@@ -33,7 +33,8 @@ export class AdminBlogArticleComponent implements AdminGalleryElement {
         },
         () => {
           this.blogArticleRemoved.emit(undefined);
-        });
+        }
+      );
     }
   }
 

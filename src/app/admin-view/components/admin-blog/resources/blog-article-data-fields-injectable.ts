@@ -20,14 +20,14 @@ export const BLOG_ARTICLE_DATA_FIELDS: DataGroupMap = {
       type: DataFieldType.PRIMITIVE_TYPE,
       validator: Validators.required,
       label: 'Názov príspevku *',
-      fullWidth: false,
+      fullWidth: true,
       placeholder: 'Nový príspevok'
     },
     {
       formControlName: 'titleImage',
       type: DataFieldType.IMAGE,
       validator: Validators.required,
-      imgType: ImageType.TITLE_IMAGE,
+      imgType: ImageType.BLOG_ARTICLE_TITLE_IMAGE,
       label: 'Vyberte titulnú fotku...',
       fullWidth: true,
       imageTitle: 'Titulná fotka'
@@ -39,13 +39,6 @@ export const BLOG_ARTICLE_DATA_FIELDS: DataGroupMap = {
       label: 'Obsah príspevku *',
       fullWidth: true,
       placeholder: 'Napíšte obsah príspevku'
-    },
-    {
-      formControlName: 'submitButton',
-      type: DataFieldType.SUBMIT_BUTTON,
-      label: 'Vytvoriť príspevok',
-      fullWidth: true,
-      placeholder: null,
     }
   ]
 }

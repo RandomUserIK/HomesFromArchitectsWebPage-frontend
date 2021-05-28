@@ -25,13 +25,13 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
   public title = '';
   public projectId: number;
 
-  constructor(private autoScrollService: AutoScrollService,
-              private activatedRoute: ActivatedRoute,
-              private httpClient: HttpClient,
-              private createCommonProjectService: CreateProjectService,
-              private createProjectFormInitializerService: CreateProjectFormInitializerService,
+  constructor(private _autoScrollService: AutoScrollService,
+              private _activatedRoute: ActivatedRoute,
+              private _httpClient: HttpClient,
+              private _createCommonProjectService: CreateProjectService,
+              private _createProjectFormInitializerService: CreateProjectFormInitializerService,
               @Inject(PROJECT_DATA_FIELDS_CONFIG) public dataFields: DataGroupMap) {
-    this.projectCategory = this.activatedRoute.snapshot.queryParams.projectCategory;
+    this.projectCategory = this._activatedRoute.snapshot.queryParams.projectCategory;
   }
 
   ngOnInit() {
@@ -49,7 +49,7 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
   public onSubmit(): void {
     this.loading = true;
     if (this.form.valid) {
-      this.createCommonProjectService.submitProject(
+      this._createCommonProjectService.submitProject(
         this.form, this.dataFields[this.projectCategory], this.projectCategory, this.projectId
       ).subscribe(() => {
         this.loading = false;
@@ -64,7 +64,7 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
       this.loading = false;
       this.uploadMessage = 'Niektoré polia niesú správne vyplnené';
     }
-    this.autoScrollService.scrollToTop();
+    this._autoScrollService.scrollToTop();
   }
 
   private resolveTitle() {
@@ -80,8 +80,8 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
   private initDataFields(project: Project): void {
     setTimeout(() => {
       this.projectId = project.id;
-      this.createProjectFormInitializerService.initialize(this.dataFields[this.projectCategory], this.form, project);
-    })
+      this._createProjectFormInitializerService.initialize(this.dataFields[this.projectCategory], this.form, project);
+    });
   }
 
 }

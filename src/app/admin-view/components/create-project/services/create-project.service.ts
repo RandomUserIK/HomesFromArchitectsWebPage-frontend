@@ -5,21 +5,17 @@ import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
 import {DataField} from '../../../../components/data-fields/models/data-field';
 import {DataFieldType} from '../../../../components/data-fields/models/data-field-type.enum';
-import {ImageType} from '../../../../components/data-fields/models/image-type.enum';
+import {ImageFile} from '../../../../models/image/image-file.model';
 import {Project} from '../../../../models/project/project.model';
 import {ProjectsService} from '../../../../services/projects-service';
 import {FileService} from '../../../services/file-service';
 
-interface PhotoFile {
-  type: ImageType;
-  value: File;
-}
 
 @Injectable()
 export class CreateProjectService {
 
   private requestEntity: Project;
-  private photoFiles: PhotoFile[];
+  private imageFiles: ImageFile[];
 
   constructor(private _httpClient: HttpClient,
               private _fileService: FileService,
@@ -31,7 +27,7 @@ export class CreateProjectService {
                        category: string,
                        projectId: number): Observable<string[]> {
     this.requestEntity = {};
-    this.photoFiles = [];
+    this.imageFiles = [];
 
     formConfig.forEach(dataField => {
       this.resolveDataField(dataField, form.get(dataField.formControlName).value);
@@ -68,7 +64,7 @@ export class CreateProjectService {
   }
 
   private prepareImage(dataField: DataField, formValue: File): void {
-    this.photoFiles.push({type: dataField.imgType, value: formValue})
+    this.imageFiles.push({type: dataField.imgType, value: formValue})
   }
 
   private prepareImages(dataField: DataField, formValue: File[]) {
@@ -102,7 +98,7 @@ export class CreateProjectService {
 
   private createPhotoFileObservables(projectId: number): Observable<string>[] {
     const photoFileObservables = [];
-    this.photoFiles.forEach(photoFile => {
+    this.imageFiles.forEach(photoFile => {
       photoFileObservables.push(this._fileService.postFile(photoFile.value, projectId, photoFile.type.toString()));
     });
     return photoFileObservables;
