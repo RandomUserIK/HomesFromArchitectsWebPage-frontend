@@ -1,0 +1,19 @@
+<div class="container content">
+  <div class="title-text mb-5 text-center">Nový príspevok</div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-10">
+        <app-form-alert
+          *ngIf="uploadMessage != undefined"
+          [validationSuccess]="validationSuccess"
+          [uploadMessage]="uploadMessage">
+        </app-form-alert>
+        <app-data-fields-group
+          class="row"
+          [dataGroup]="blogArticleDataFieldsConfig.formGroup"
+          [form]="form">
+        </app-data-fields-group>
+      </div>
+    </div>
+  </form>
+</div>

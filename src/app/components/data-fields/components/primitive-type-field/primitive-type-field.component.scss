@@ -14,6 +14,6 @@
   border-color: #000;
 }
 
-.apply-validation.ng-invalid:not(form){
+.apply-validation.ng-invalid:not(form) {
   border-bottom: 5px solid #ff5663;
 }

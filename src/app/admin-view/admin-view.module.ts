@@ -1,15 +1,17 @@
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
-import {AdminViewComponent} from './admin-view.component';
-import {AdminProjectsGalleryComponent} from './components/admin-projects-gallery/admin-projects-gallery.component';
-import {AuthGuardService} from '../auth/services/auth-guard.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+import {AuthGuardService} from '../auth/services/auth-guard.service';
+import {AdminViewComponent} from './admin-view.component';
+import {AdminBlogComponent} from './components/admin-blog/admin-blog.component';
+import {AdminBlogModule} from './components/admin-blog/admin-blog.module';
+import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
+import {AdminProjectsGalleryComponent} from './components/admin-projects-gallery/admin-projects-gallery.component';
+import {AdminProjectsGalleryModule} from './components/admin-projects-gallery/admin-projects-gallery.module';
 import {CreateProjectComponent} from './components/create-project/create-project.component';
 import {CreateProjectModule} from './components/create-project/create-project.module';
-import {AdminProjectsGalleryModule} from './components/admin-projects-gallery/admin-projects-gallery.module';
 
 const routes: Routes = [
   {
@@ -20,7 +22,7 @@ const routes: Routes = [
       {
         path: 'individualne-projekty',
         component: AdminProjectsGalleryComponent,
-        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'},
+        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'}
       },
       {
         path: 'katalogove-projekty',
@@ -35,9 +37,13 @@ const routes: Routes = [
       {
         path: 'vytvor',
         component: CreateProjectComponent
+      },
+      {
+        path: 'blog',
+        component: AdminBlogComponent
       }
     ]
-  },
+  }
 ];
 
 @NgModule({
@@ -51,7 +57,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     CreateProjectModule,
-    AdminProjectsGalleryModule
+    AdminProjectsGalleryModule,
+    AdminBlogModule
   ]
 })
 export class AdminViewModule {

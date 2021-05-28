@@ -34,16 +34,6 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
     this.projectCategory = this.activatedRoute.snapshot.queryParams.projectCategory;
   }
 
-  private resolveTitle(): void {
-    if (this.projectCategory === 'COMMON') {
-      this.title = 'Katalógový projekt';
-    } else if (this.projectCategory === 'INDIVIDUAL') {
-      this.title = 'Individuálny projekt';
-    } else {
-      this.title = 'Interierový projekt';
-    }
-  }
-
   ngOnInit() {
     this.resolveTitle();
     this.form = new FormGroup({});
@@ -55,6 +45,7 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // TODO:Tu bude redirect s info hlaskou
   public onSubmit(): void {
     this.loading = true;
     if (this.form.valid) {
@@ -74,6 +65,16 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
       this.uploadMessage = 'Niektoré polia niesú správne vyplnené';
     }
     this.autoScrollService.scrollToTop();
+  }
+
+  private resolveTitle() {
+    if (this.projectCategory === 'COMMON') {
+      this.title = 'Katalógový projekt';
+    } else if (this.projectCategory === 'INDIVIDUAL') {
+      this.title = 'Individuálny projekt';
+    } else {
+      this.title = 'Interierový projekt';
+    }
   }
 
   private initDataFields(project: Project): void {
