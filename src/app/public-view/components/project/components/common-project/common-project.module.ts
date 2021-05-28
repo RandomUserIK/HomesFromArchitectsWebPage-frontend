@@ -14,6 +14,7 @@ import {CommonProjectInteriorComponent} from './common-project-interior/common-p
 import {CommonProjectPriceComparisonComponent} from './common-project-price-comparison/common-project-price-comparison.component';
 import {CommonProjectPriceInfoComponent} from './common-project-price-info/common-project-price-info.component';
 import {CommonProjectComponent} from './common-project.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -28,14 +29,15 @@ import {CommonProjectComponent} from './common-project.component';
     CommonProjectPriceInfoComponent,
     CommonProjectImageCarouselComponent
   ],
-  imports: [
-    CommonModule,
-    ProjectModule,
-    LightboxModule,
-    ImageCarouselModule,
-    LoadingModule,
-    NotFoundModule
-  ]
+    imports: [
+        CommonModule,
+        ProjectModule,
+        LightboxModule,
+        ImageCarouselModule,
+        LoadingModule,
+        NotFoundModule,
+        RouterModule
+    ]
 })
 export class CommonProjectModule {
 }
