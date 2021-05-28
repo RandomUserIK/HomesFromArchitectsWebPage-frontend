@@ -25,7 +25,7 @@ export class DynamicTextSectionFieldComponent implements OnInit {
   private createTextSection(): FormGroup {
     return this.fb.group({
       title: [null, [Validators.required,Validators.maxLength(100)]],
-      text: [null, [Validators.required,Validators.maxLength(450)]]
+      text: [null, [Validators.required,Validators.maxLength(800)]]
     });
   }
 
