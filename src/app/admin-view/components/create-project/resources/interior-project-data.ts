@@ -6,7 +6,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'title',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(6)],
     label: 'Názov projektu *',
     fullWidth: false,
     placeholder: 'Zadajte názov projektu'
@@ -14,7 +14,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'builtUpArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(6)],
     label: 'Zastavaná plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -22,7 +22,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'persons',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(2)],
     label: 'Počet osôb *',
     fullWidth: false,
     placeholder: 'Zadajte pre koľko osôb je projekt stavaný'
@@ -30,7 +30,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'usableArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(6)],
     label: 'Celková plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -89,4 +89,4 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
     label: 'Galéria',
     fullWidth: true
   }
-]
+];
