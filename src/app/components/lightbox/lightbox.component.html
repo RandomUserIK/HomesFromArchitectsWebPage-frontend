@@ -1,7 +1,13 @@
+<div class="container" *ngIf="isLoading">
+  <div class="col-12 text-center">
+    <span class="spinner-border spinner-border-sm mr-1"></span>
+  </div>
+</div>
 <app-image-carousel [carouselItems]="imagePaths"
                     [dataInterval]="dataInterval"
                     [pauseOnHover]="pauseOnHover"
                     [pauseOnFocus]="pauseOnFocus"
                     [shouldDisplayAnimation]="shouldDisplayAnimation"
-                    (imageClicked)="onImageClick($event)">
+                    (imageClicked)="onImageClick($event)"
+                    *ngIf="!isLoading">
 </app-image-carousel>
