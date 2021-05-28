@@ -33,7 +33,7 @@ export class CreateBlogArticleService {
       id: blogArticleId,
       title: form.get('title').value,
       titleImage: '',
-      content: (form.get('content').value as Delta).ops
+      content: form.get('content').value.ops
     };
 
     this.blogArticleTitleImage = {
