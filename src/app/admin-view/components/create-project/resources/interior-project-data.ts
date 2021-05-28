@@ -14,7 +14,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'builtUpArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6)],
+    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
     label: 'Zastavaná plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'

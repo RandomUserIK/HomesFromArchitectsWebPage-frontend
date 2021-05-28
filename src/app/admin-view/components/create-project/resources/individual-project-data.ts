@@ -14,7 +14,7 @@ export const INDIVIDUAL_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'builtUpArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6)],
+    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
     label: 'Zastavaná plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -22,7 +22,7 @@ export const INDIVIDUAL_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'usableArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6)],
+    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
     label: 'Celková plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -30,7 +30,7 @@ export const INDIVIDUAL_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'persons',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(2)],
+    validator: [Validators.required, Validators.maxLength(2), Validators.min(0)],
     label: 'Počet osôb *',
     fullWidth: false,
     placeholder: 'Zadajte pre koľko osôb je projekt stavaný'
