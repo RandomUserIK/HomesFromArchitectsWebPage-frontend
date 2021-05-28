@@ -5,8 +5,7 @@ import {DataField} from '../../models/data-field';
 
 @Component({
   selector: 'app-text-editor-field',
-  templateUrl: './text-editor-field.component.html',
-  styleUrls: ['./text-editor-field.component.scss']
+  templateUrl: './text-editor-field.component.html'
 })
 export class TextEditorFieldComponent implements OnInit {
 

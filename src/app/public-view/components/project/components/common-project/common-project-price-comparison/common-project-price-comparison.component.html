@@ -14,7 +14,8 @@
     <a href="#" class="comparison-link">Porovnajte si čo obsahujú <br> jednotlivé rozdelenia typov projektov.</a>
   </div>
   <div class="col-md-3 col-12 text-center comparison-button-container">
-    <!-- TODO: upravit referenciu na stranku -->
-    <a class="btn btn-primary comparison-button" href="#" role="button">Mám záujem</a>
+    <button class="btn btn-primary comparison-button" [routerLink]="'/objednavka/' + project.title" role="button">
+      Mám záujem
+    </button>
   </div>
 </div>

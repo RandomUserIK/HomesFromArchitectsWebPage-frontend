@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {ORDER_DATA_FIELDS_CONFIG} from './resources/order-data-fields-injectable';
 import {DataGroupMap} from '../../../../../components/data-fields/models/data-group-map';
@@ -11,14 +11,16 @@ import {AutoScrollService} from '../../../../../services/auto-scroll.service';
   selector: 'app-order-form',
   templateUrl: './order-form.component.html'
 })
-export class OrderFormComponent implements OnInit {
+export class OrderFormComponent implements OnInit, AfterViewInit {
 
-  public form: FormGroup;
+  @Input()
+  public title: string;
+
   private submitButtonField: DataField;
+  public form: FormGroup;
   public loading = false;
   public validationSuccess: boolean;
   public uploadMessage: string;
-
 
   constructor(private autoScrollService: AutoScrollService,
               private orderFormService: OrderFormService,
@@ -31,10 +33,20 @@ export class OrderFormComponent implements OnInit {
     this.form = new FormGroup({});
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.form.controls.projectTitle.setValue(this.title);
+    })
+  }
+
   onSubmit(): void {
     this.loading = true;
     this.submitButtonField.loading = true;
-    this.orderFormService.createOrder(this.form.value).subscribe(
+    this.orderFormService.createOrder(this.form, [
+      ...this.orderDataFieldsConfig.firstSection,
+      ...this.orderDataFieldsConfig.secondSection,
+      ...this.orderDataFieldsConfig.thirdSection
+    ]).subscribe(
       () => {
         this.form.reset();
         this.validationSuccess = true;
