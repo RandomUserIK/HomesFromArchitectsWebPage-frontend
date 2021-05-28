@@ -1,7 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {Delta} from 'quill';
 import {Observable} from 'rxjs';
 import {exhaustMap, map} from 'rxjs/operators';
 import {ImageType} from '../../../../components/data-fields/models/image-type.enum';
