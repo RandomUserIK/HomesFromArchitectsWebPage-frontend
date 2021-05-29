@@ -6,7 +6,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'title',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(50)],
     label: 'Názov projektu *',
     fullWidth: false,
     placeholder: 'Zadajte názov projektu'
@@ -14,7 +14,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'builtUpArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
     label: 'Zastavaná plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -22,7 +22,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'persons',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(2), Validators.min(0)],
     label: 'Počet osôb *',
     fullWidth: false,
     placeholder: 'Zadajte pre koľko osôb je projekt stavaný'
@@ -30,7 +30,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'rooms',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(2), Validators.min(0)],
     label: 'Počet izieb *',
     fullWidth: false,
     placeholder: 'Zadajte počet izieb v projekte'
@@ -38,7 +38,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'usableArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
     label: 'Celková plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -46,7 +46,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'totalLivingArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
     label: 'Úžitková plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -54,7 +54,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'selfHelpBuildPrice',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(7), Validators.min(0)],
     label: 'Svojpomocná výstavba *',
     fullWidth: false,
     placeholder: 'Zadajte cenu  €'
@@ -62,7 +62,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'onKeyPrice',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(7), Validators.min(0)],
     label: 'Cena na kľúč *',
     fullWidth: false,
     placeholder: 'Zadajte cenu v €'
@@ -70,7 +70,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'basicProjectPrice',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(7), Validators.min(0)],
     label: 'Cena základného projektu *',
     fullWidth: false,
     placeholder: 'Zadajte cenu  €'
@@ -78,7 +78,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'extendedProjectPrice',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(7), Validators.min(0)],
     label: 'Cena rozšíreného projektu *',
     fullWidth: false,
     placeholder: 'Zadajte cenu v €'
@@ -86,7 +86,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'roofPitch',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(2), Validators.min(0)],
     label: 'Sklon strechy *',
     fullWidth: false,
     placeholder: 'Zadajte sklon v %'
@@ -94,7 +94,7 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'minimumParcelWidth',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: Validators.required,
+    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
     label: 'Minimálnu šírku pozemku *',
     fullWidth: false,
     placeholder: 'Zadajte šírku v m'
@@ -190,4 +190,4 @@ export const COMMON_PROJECT_DATA_FIELDS = [
     label: 'Galéria',
     fullWidth: true
   }
-]
+];

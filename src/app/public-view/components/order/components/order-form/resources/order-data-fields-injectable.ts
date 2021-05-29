@@ -20,7 +20,7 @@ const ORDER_DATA_FIELDS: DataGroupMap = {
     {
       formControlName: 'projectTitle',
       type: DataFieldType.PRIMITIVE_TYPE,
-      validator: Validators.required,
+      validator: [Validators.required, Validators.maxLength(50)],
       label: 'Názov projektu *',
       fullWidth: true,
       placeholder: 'Palisander'
@@ -28,7 +28,7 @@ const ORDER_DATA_FIELDS: DataGroupMap = {
     {
       formControlName: 'constructionPlace',
       type: DataFieldType.PRIMITIVE_TYPE,
-      validator: Validators.required,
+      validator: [Validators.required, Validators.maxLength(35)],
       label: 'Miesto výstavby *',
       fullWidth: false,
       placeholder: 'Bratislava'
@@ -36,7 +36,7 @@ const ORDER_DATA_FIELDS: DataGroupMap = {
     {
       formControlName: 'cadastralAreaAndParcelNumber',
       type: DataFieldType.PRIMITIVE_TYPE,
-      validator: Validators.required,
+      validator: [Validators.required, Validators.maxLength(30)],
       label: 'Katastrálne územie / parcelné číslo *',
       fullWidth: false,
       placeholder: '123 / 23'
@@ -86,4 +86,4 @@ const ORDER_DATA_FIELDS: DataGroupMap = {
     },
   ],
   thirdSection: CONTACT_DATA_FIELDS.formGroup
-}
+};

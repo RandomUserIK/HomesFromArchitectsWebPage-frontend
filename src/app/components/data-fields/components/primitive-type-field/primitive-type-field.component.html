@@ -14,7 +14,7 @@
       <div *ngIf="!form.get(dataField.formControlName).hasError('required') &&
                    form.get(dataField.formControlName).invalid &&
                    form.get(dataField.formControlName).touched" class="text-danger">
-        Zadaná hodnota nemá správny formát
+        Zadaná hodnota nemá správny formát, alebo presiahla maximálnu povolenú dĺžku
       </div>
     </div>
 </ng-container>

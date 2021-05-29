@@ -19,7 +19,7 @@ export const CONTACT_DATA_FIELDS: DataGroupMap = {
     {
       formControlName: 'name',
       type: DataFieldType.PRIMITIVE_TYPE,
-      validator: Validators.required,
+      validator: [Validators.required, Validators.maxLength(20)],
       label: 'Meno *',
       fullWidth: false,
       placeholder: 'Jozef'
@@ -27,7 +27,7 @@ export const CONTACT_DATA_FIELDS: DataGroupMap = {
     {
       formControlName: 'surname',
       type: DataFieldType.PRIMITIVE_TYPE,
-      validator: Validators.required,
+      validator: [Validators.required, Validators.maxLength(20)],
       label: 'Priezvisko *',
       fullWidth: false,
       placeholder: 'Mrkvička'
@@ -54,7 +54,7 @@ export const CONTACT_DATA_FIELDS: DataGroupMap = {
     {
       formControlName: 'text',
       type: DataFieldType.TEXT_AREA,
-      validator: [Validators.required],
+      validator: [Validators.required, Validators.maxLength(450)],
       label: null,
       fullWidth: true,
       placeholder: 'Napíšte nám správu *'
@@ -86,4 +86,4 @@ export const CONTACT_DATA_FIELDS: DataGroupMap = {
       placeholder: null,
     },
   ]
-}
+};

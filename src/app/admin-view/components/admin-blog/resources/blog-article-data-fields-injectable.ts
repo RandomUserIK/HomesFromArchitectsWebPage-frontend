@@ -18,7 +18,7 @@ export const BLOG_ARTICLE_DATA_FIELDS: DataGroupMap = {
     {
       formControlName: 'title',
       type: DataFieldType.PRIMITIVE_TYPE,
-      validator: Validators.required,
+      validator: [Validators.required, Validators.maxLength(50)],
       label: 'Názov príspevku *',
       fullWidth: true,
       placeholder: 'Nový príspevok'
@@ -41,4 +41,4 @@ export const BLOG_ARTICLE_DATA_FIELDS: DataGroupMap = {
       placeholder: 'Napíšte obsah príspevku'
     }
   ]
-}
+};
