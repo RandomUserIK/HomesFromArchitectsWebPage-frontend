@@ -22,7 +22,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
   ngOnInit(): void {
     this.activatedRoute.data
       .pipe(
-        switchMap(data => {
+        switchMap((data) => {
           this.autoScrollService.scrollToTop();
           return this.handleBlogArticleList(1);
         })
@@ -39,7 +39,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
     return this.blogService.getBlogArticlesOnPage(currentPage - 1, this.pageSize);
   }
 
-  private processData() {
+  private processData(): (data: any) => void {
     return (data) => {
       this.blogArticles = data.blogArticles;
       this.currentPage = data.currentPage + 1;

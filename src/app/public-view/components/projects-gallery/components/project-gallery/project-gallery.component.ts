@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {FileService} from '../../../../../admin-view/services/file-service';
-import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import {Project} from '../../../../../models/project/project.model';
 import {registerLocaleData} from '@angular/common';
 import localeSk from '@angular/common/locales/sk';
+import {Component, Input, OnInit} from '@angular/core';
+import {SafeUrl} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {FileService} from '../../../../../admin-view/services/file-service';
+import {Project} from '../../../../../models/project/project.model';
 
 @Component({
   selector: 'app-project-gallery',
@@ -16,23 +16,21 @@ export class ProjectGalleryComponent implements OnInit {
   @Input() project: Project;
 
   public image: SafeUrl;
-  public loading = false;
+  public isLoading = false;
 
   constructor(private _fileService: FileService,
-              private _sanitizer: DomSanitizer,
               private _router: Router) {
     registerLocaleData(localeSk, 'sk');
   }
 
   ngOnInit(): void {
-    this.loading = true;
-    this._fileService.getFileFromPath(this.project.titleImage).subscribe(
-      (photo) => {
-        this.image = this._sanitizer.bypassSecurityTrustUrl(
-          URL.createObjectURL(new Blob([photo], {type: 'application/octet-stream'}))
-        );
-        this.loading = false;
-      });
+    this.isLoading = true;
+    this._fileService.getFileFromPathAsSafeUrl(this.project.titleImage).subscribe(
+      (imageAsSafeUrl) => {
+        this.image = imageAsSafeUrl;
+        this.isLoading = false;
+      }
+    );
   }
 
   public onProjectClick(): void {

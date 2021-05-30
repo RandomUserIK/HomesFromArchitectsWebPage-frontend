@@ -1,9 +1,9 @@
-<div *ngIf="loading"  class="d-flex img-loading-wrapper justify-content-center">
+<div *ngIf="isLoading" class="d-flex img-loading-wrapper justify-content-center">
   <div class="row align-content-center">
-  <span class="spinner-border spinner-border-lg"></span>
+    <span class="spinner-border spinner-border-lg"></span>
   </div>
 </div>
-<div *ngIf="!loading" class="img-wrapper" (click)="onProjectClick()">
+<div *ngIf="!isLoading" class="img-wrapper" (click)="onProjectClick()">
   <img [src]="image" alt="test-project-image">
   <div class="text-center align-middle font-weight-bold line-height text-light"></div>
 </div>

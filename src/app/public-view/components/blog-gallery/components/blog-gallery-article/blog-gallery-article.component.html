@@ -1,0 +1,19 @@
+<div *ngIf="isLoading" class="d-flex img-loading-wrapper justify-content-center">
+  <div class="row align-content-center">
+    <span class="spinner-border spinner-border-lg"></span>
+  </div>
+</div>
+<div class="card card-width mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="titleImage" alt="titleImage" (click)="onBlogArticleImageClick()">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title font-weight-bold">{{blogArticle.title}}</h3>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <a [href]="'blog/' + blogArticle.id" class="stretched-link"></a>
+      </div>
+    </div>
+  </div>
+</div>
