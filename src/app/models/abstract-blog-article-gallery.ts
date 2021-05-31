@@ -24,7 +24,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
       .pipe(
         switchMap((data) => {
           this.autoScrollService.scrollToTop();
-          return this.handleBlogArticleList(1);
+          return this.handleBlogArticleList(0);
         })
       ).subscribe(this.processData());
   }
@@ -36,7 +36,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
   private handleBlogArticleList(currentPage: number): Observable<PageableBlogArticleMessageResource> {
     this.isLoading = true;
     this.autoScrollService.scrollToTop();
-    return this.blogService.getBlogArticlesOnPage(currentPage - 1, this.pageSize);
+    return this.blogService.getBlogArticlesOnPage(currentPage, this.pageSize);
   }
 
   private processData(): (data: any) => void {

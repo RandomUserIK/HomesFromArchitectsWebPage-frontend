@@ -16,6 +16,7 @@ export class CreateBlogArticleFormInitializerService {
 
   private initializePrimitiveFields(form: FormGroup, blogArticle: BlogArticle): void {
     form.get('title').setValue(blogArticle.title);
+    form.get('description').setValue(blogArticle.description);
     form.get('content').setValue({ops: blogArticle.content});
   }
 

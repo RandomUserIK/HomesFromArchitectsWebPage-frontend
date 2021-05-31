@@ -11,6 +11,9 @@ img {
   box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
   transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
   cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card:hover {
@@ -18,6 +21,23 @@ img {
   box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 }
 
-.card-width {
-  width: 40rem;
+.card-title {
+  font-size: calc(1.1rem + 1vmin);
+}
+
+.card-text {
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 767px) {
+  .row-align {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card-text {
+    display: none;
+  }
 }
