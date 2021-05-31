@@ -1,14 +1,14 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 import {forkJoin, Observable} from 'rxjs';
 import {exhaustMap} from 'rxjs/operators';
-import {ProjectsService} from '../../../../services/projects-service';
-import {FileService} from '../../../services/file-service';
-import {FormGroup} from '@angular/forms';
 import {DataField} from '../../../../components/data-fields/models/data-field';
-import {RequestEntityPreparationService} from '../../../../services/request-entity-preparation.service';
+import {ImageFile} from '../../../../models/image/image-file.model';
 import {Project} from '../../../../models/project/project.model';
-import {ImageFile} from '../../../../models/web/request-bodies/image-file';
+import {ProjectsService} from '../../../../services/projects-service';
+import {RequestEntityPreparationService} from '../../../../services/request-entity-preparation.service';
+import {FileService} from '../../../services/file-service';
 
 
 @Injectable()

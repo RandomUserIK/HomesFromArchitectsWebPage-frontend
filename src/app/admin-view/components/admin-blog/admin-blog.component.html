@@ -1,18 +1,26 @@
 <div class="container content">
   <div class="title-text mb-5 text-center">Nový príspevok</div>
+  <app-form-alert *ngIf="uploadMessage"
+                  [uploadMessage]="uploadMessage"
+                  [validationSuccess]="validationSuccess">
+  </app-form-alert>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-10">
-        <app-form-alert
-          *ngIf="uploadMessage != undefined"
-          [validationSuccess]="validationSuccess"
-          [uploadMessage]="uploadMessage">
-        </app-form-alert>
-        <app-data-fields-group
-          class="row"
-          [dataGroup]="blogArticleDataFieldsConfig.formGroup"
-          [form]="form">
-        </app-data-fields-group>
+    <app-data-fields-group
+      class="row"
+      [dataGroup]="blogArticleDataFieldsConfig.formGroup"
+      [form]="form">
+    </app-data-fields-group>
+    <div class="row">
+      <div class="col-12">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="form.invalid || isLoading">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+          <span *ngIf="blogArticleId; else elseBlock">Upraviť príspevok</span>
+          <ng-template #elseBlock>
+            <span>Vytvoriť príspevok</span>
+          </ng-template>
+        </button>
       </div>
     </div>
   </form>

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Project} from '../models/project/project.model';
 import {FormGroup} from '@angular/forms';
 import {DataField} from '../components/data-fields/models/data-field';
 import {DataFieldType} from '../components/data-fields/models/data-field-type.enum';
-import {ImageFile} from '../models/web/request-bodies/image-file';
+import {ImageFile} from '../models/image/image-file.model';
+import {Project} from '../models/project/project.model';
 
 @Injectable({
   providedIn: 'root'

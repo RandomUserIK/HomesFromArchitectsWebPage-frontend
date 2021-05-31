@@ -4,12 +4,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProjectsService} from '../../../services/projects-service';
 import {SearchHeaderService} from '../../../components/search-header/services/search-header.service';
 import {AutoScrollService} from '../../../services/auto-scroll.service';
+import {AdminGallery} from '../admin-gallery/admin-gallery';
 
 @Component({
   selector: 'app-admin-projects-gallery',
   templateUrl: './admin-projects-gallery.component.html'
 })
-export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirective {
+export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirective implements AdminGallery {
 
   public message: string;
   public projectRemoved: boolean;
@@ -18,11 +19,11 @@ export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirecti
               activatedRoute: ActivatedRoute,
               projectsService: ProjectsService,
               searchHeaderService: SearchHeaderService,
-              private router: Router) {
+              private _router: Router) {
     super(autoScrollService, activatedRoute, projectsService, searchHeaderService);
   }
 
-  public removeProject($event: number): void {
+  public remove($event: number): void {
     if ($event === undefined) {
       this.message = 'Projekt sa nepodarilo odstrániť';
       this.projectRemoved = false;
@@ -33,7 +34,8 @@ export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirecti
     }
   }
 
-  public onAddProject(): void {
-    this.router.navigate(['admin/vytvor'], {queryParams: {projectCategory: this.projectCategory}});
+  public add(): void {
+    this._router.navigate(['admin/vytvor'], {queryParams: {projectCategory: this.projectCategory}});
   }
+
 }

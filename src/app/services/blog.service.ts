@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {FileService} from '../admin-view/services/file-service';
 import {EndpointConfigData} from '../configuration/models/enpoint-config-data';
-import {BlogArticleFormData} from '../models/blog/blog-article-form-data';
+import {BlogArticle} from '../models/blog/blog-article';
 import {CreateBlogArticleMessageResource} from '../models/web/request-bodies/create-blog-article-message-resource';
 import {BlogArticleMessageResource} from '../models/web/response-bodies/blog/blog-article-message-resource';
 import {PageableBlogArticleMessageResource} from '../models/web/response-bodies/blog/pageable-blog-article-message-resource';
@@ -24,14 +24,9 @@ export class BlogService {
     this.resource = environment.providers.resources.find(resource => resource.name === 'blog-endpoint');
   }
 
-  public createBlogArticle(data: BlogArticleFormData): Observable<BlogArticleMessageResource> {
-    // TODO: configure blog article title image submission
+  public createBlogArticle(data: BlogArticle): Observable<BlogArticleMessageResource> {
     const requestData: CreateBlogArticleMessageResource = {
-      blogArticle: {
-        title: data.title,
-        titleImage: '',
-        content: data.content.ops
-      }
+      blogArticle: data
     };
     return this._httpClient
       .post<BlogArticleMessageResource>(this.resource.address, requestData, {

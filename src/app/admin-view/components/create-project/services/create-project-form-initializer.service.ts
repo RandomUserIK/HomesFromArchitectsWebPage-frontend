@@ -8,7 +8,7 @@ import {FileService} from '../../../services/file-service';
 @Injectable()
 export class CreateProjectFormInitializerService {
 
-  constructor(private fileService: FileService) {
+  constructor(private _fileService: FileService) {
   }
 
   public initialize(formConfig: DataField[], form: FormGroup, projectData: Project): void {
@@ -43,7 +43,7 @@ export class CreateProjectFormInitializerService {
   }
 
   private initializeImage(formControl: AbstractControl, imagePath: string): void {
-    this.fileService.getFileFromPath(imagePath).subscribe((photoBlob) => {
+    this._fileService.getFileFromPath(imagePath).subscribe((photoBlob) => {
       const file = new File([photoBlob], imagePath.split('/').pop());
       formControl.setValue(file);
     });
@@ -51,7 +51,7 @@ export class CreateProjectFormInitializerService {
 
   private initializePhotoGallery(formControl: AbstractControl, photoPaths: Array<string>): void {
     photoPaths.forEach((photoPath) => {
-      this.fileService.getFileFromPath(photoPath).subscribe((photoBlob) => {
+      this._fileService.getFileFromPath(photoPath).subscribe((photoBlob) => {
         const file = new File([photoBlob], photoPath.split('/').pop());
         (formControl as FormArray).push(new FormControl(file)); // NOSONAR
       });

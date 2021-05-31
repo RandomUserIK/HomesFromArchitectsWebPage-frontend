@@ -21,10 +21,10 @@ export class FileService {
     this.resource = environment.providers.resources.find(resource => resource.name === 'photo-endpoint');
   }
 
-  public postFile(fileToUpload: File, projectId: number, type: string): Observable<ImageUploadMessageResource> {
+  public postFile(fileToUpload: File, entityId: number, type: string): Observable<ImageUploadMessageResource> {
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload);
-    formData.append('projectId', projectId.toString());
+    formData.append('entityId', entityId.toString());
     formData.append('type', type);
     return this._httpClient
       .post<ImageUploadMessageResource>(this.resource.address + '/upload', formData, {

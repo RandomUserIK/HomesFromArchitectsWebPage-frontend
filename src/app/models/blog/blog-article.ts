@@ -1,7 +1,8 @@
 import {DeltaOperation} from 'quill';
 
 export interface BlogArticle {
-  title: string;
-  titleImage: string;
-  content: Array<DeltaOperation>;
+  id?: number;
+  title?: string;
+  titleImage?: string;
+  content?: Array<DeltaOperation>;
 }

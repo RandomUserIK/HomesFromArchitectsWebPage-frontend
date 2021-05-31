@@ -5,6 +5,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from '../auth/services/auth-guard.service';
 import {AdminViewComponent} from './admin-view.component';
+import {AdminBlogArticlesGalleryComponent} from './components/admin-blog-articles-gallery/admin-blog-articles-gallery.component';
+import {AdminBlogArticlesGalleryModule} from './components/admin-blog-articles-gallery/admin-blog-articles-gallery.module';
 import {AdminBlogComponent} from './components/admin-blog/admin-blog.component';
 import {AdminBlogModule} from './components/admin-blog/admin-blog.module';
 import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
@@ -40,6 +42,10 @@ const routes: Routes = [
       },
       {
         path: 'blog',
+        component: AdminBlogArticlesGalleryComponent
+      },
+      {
+        path: 'blog/prispevok',
         component: AdminBlogComponent
       }
     ]
@@ -58,7 +64,8 @@ const routes: Routes = [
     HttpClientModule,
     CreateProjectModule,
     AdminProjectsGalleryModule,
-    AdminBlogModule
+    AdminBlogModule,
+    AdminBlogArticlesGalleryModule
   ]
 })
 export class AdminViewModule {

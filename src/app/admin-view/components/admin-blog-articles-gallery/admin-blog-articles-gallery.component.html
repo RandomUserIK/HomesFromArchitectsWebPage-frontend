@@ -1,17 +1,18 @@
 <div class="mt-4">
-  <app-search-header></app-search-header>
-  <app-form-alert *ngIf="message" [uploadMessage]="message" [validationSuccess]="projectRemoved"></app-form-alert>
+  <app-form-alert *ngIf="message"
+                  [uploadMessage]="message"
+                  [validationSuccess]="isBlogArticleRemoved">
+  </app-form-alert>
   <app-admin-gallery-loading *ngIf="isLoading"></app-admin-gallery-loading>
-  <div class="card mt-1" *ngFor="let project of projects">
-    <app-admin-project-gallery [project]="project"
-                               [projectCategory]="projectCategory"
-                               (projectRemoval)="remove($event)">
-    </app-admin-project-gallery>
+  <div class="card mt-1" *ngFor="let blogArticle of blogArticles">
+    <app-admin-blog-article [blogArticle]="blogArticle"
+                            (blogArticleRemoved)="remove($event)">
+    </app-admin-blog-article>
   </div>
   <div class="mt-2 row">
     <div class="col-auto form-group">
       <button class="btn btn-primary" (click)="add()">
-        Pridať nový projekt
+        Pridať nový príspevok
       </button>
     </div>
     <ngb-pagination class="col d-flex justify-content-end"
