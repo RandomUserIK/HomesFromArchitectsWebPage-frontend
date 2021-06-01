@@ -61,13 +61,13 @@ export class AuthService {
 
     const loadedUser = new User(
       userData.id,
-      userData.token,
-      new Date(userData.tokenExpirationDate)
+      userData._token,
+      new Date(userData._tokenExpirationDate)
     );
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
-      const expirationDuration = new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
+      const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
       this.autoLogout(expirationDuration);
       this.router.navigate(['/admin']);
     }

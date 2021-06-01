@@ -12,7 +12,7 @@
       <div class="card-body">
         <span class="card-title font-weight-bold">{{blogArticle.title}}</span>
         <p class="card-text">{{blogArticle.description}}</p>
-        <a [href]="'blog/' + blogArticle.id" class="stretched-link"></a>
+        <a (click)="onBlogArticleImageClick()" class="stretched-link"></a>
       </div>
     </div>
   </div>

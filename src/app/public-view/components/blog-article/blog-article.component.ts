@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BlogArticle} from '../../../models/blog/blog-article';
 
 @Component({
   selector: 'app-blog-article',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogArticleComponent implements OnInit {
 
-  constructor() { }
+  public blogArticle: BlogArticle;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+    console.log(history.state);
+    this.blogArticle = history.state;
   }
 
 }
