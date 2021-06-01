@@ -21,6 +21,7 @@ export class BlogGalleryComponent extends AbstractBlogArticleGalleryDirective im
   }
 
   ngOnInit(): void {
+    this.isGalleryPreview = true;
     super.ngOnInit();
   }
 
