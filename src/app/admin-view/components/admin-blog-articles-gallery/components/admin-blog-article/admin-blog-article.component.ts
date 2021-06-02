@@ -18,14 +18,14 @@ export class AdminBlogArticleComponent implements AdminGalleryElement {
               private _router: Router) {
   }
 
-  edit(): void {
+  public edit(): void {
     this._router.navigate(['admin/blog/prispevok'],
       {
         state: {blogArticle: this.blogArticle}
       });
   }
 
-  remove(): void {
+  public remove(): void {
     if (confirm(`Ste si istý, že chcete vymazať príspevok ${this.blogArticle.title}?`)) {
       this._blogService.removeBlogArticle(this.blogArticle.id).subscribe(
         () => {

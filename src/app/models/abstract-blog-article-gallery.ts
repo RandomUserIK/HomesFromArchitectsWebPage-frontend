@@ -12,6 +12,7 @@ import {PageableBlogArticleMessageResource} from './web/response-bodies/blog/pag
 export abstract class AbstractBlogArticleGalleryDirective extends AbstractGallery implements OnInit {
 
   public blogArticles: Array<BlogArticle> = [];
+  public isGalleryPreview = false;
 
   protected constructor(protected autoScrollService: AutoScrollService,
                         protected activatedRoute: ActivatedRoute,
@@ -22,9 +23,9 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
   ngOnInit(): void {
     this.activatedRoute.data
       .pipe(
-        switchMap(data => {
+        switchMap((data) => {
           this.autoScrollService.scrollToTop();
-          return this.handleBlogArticleList(1);
+          return this.handleBlogArticleList(0);
         })
       ).subscribe(this.processData());
   }
@@ -36,10 +37,14 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
   private handleBlogArticleList(currentPage: number): Observable<PageableBlogArticleMessageResource> {
     this.isLoading = true;
     this.autoScrollService.scrollToTop();
-    return this.blogService.getBlogArticlesOnPage(currentPage - 1, this.pageSize);
+
+    if (this.isGalleryPreview)
+      return this.blogService.getBlogArticlesOnPageForGalleryPreview(currentPage, this.pageSize);
+
+    return this.blogService.getBlogArticlesOnPage(currentPage, this.pageSize);
   }
 
-  private processData() {
+  private processData(): (data: any) => void {
     return (data) => {
       this.blogArticles = data.blogArticles;
       this.currentPage = data.currentPage + 1;

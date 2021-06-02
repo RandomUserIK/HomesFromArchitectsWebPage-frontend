@@ -7,7 +7,6 @@ import {ProjectContentComponent} from './project-content/project-content.compone
 import {ProjectCustomizedProposalComponent} from './project-customized-proposal/project-customized-proposal.component';
 import {ProjectTextSectionComponent} from './project-description/components/project-text-section/project-text-section.component';
 import {ProjectDescriptionComponent} from './project-description/project-description.component';
-import {ProjectNotFoundComponent} from './project-not-found/project-not-found.component';
 import {ProjectPriceInfoComponent} from './project-price-info/project-price-info.component';
 import {ProjectTitleImageComponent} from './project-title-image/project-title-image.component';
 import {ProjectCustomerRequestComponent} from './project-customer-request/project-customer-request.component';
@@ -19,7 +18,6 @@ import {ProjectCustomerRequestComponent} from './project-customer-request/projec
     ProjectCustomizedProposalComponent,
     ProjectTextSectionComponent,
     ProjectPriceInfoComponent,
-    ProjectNotFoundComponent,
     ProjectTitleImageComponent,
     ProjectCustomerRequestComponent
   ],
@@ -28,7 +26,6 @@ import {ProjectCustomerRequestComponent} from './project-customer-request/projec
     ProjectContentComponent,
     ProjectCustomizedProposalComponent,
     ProjectPriceInfoComponent,
-    ProjectNotFoundComponent,
     ProjectTitleImageComponent,
     ProjectCustomerRequestComponent
   ],

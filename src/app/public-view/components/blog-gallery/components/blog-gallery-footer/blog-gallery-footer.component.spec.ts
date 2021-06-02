@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ProjectNotFoundComponent} from './project-not-found.component';
+import {BlogGalleryFooterComponent} from './blog-gallery-footer.component';
 
-describe('ProjectNotFoundComponent', () => {
-  let component: ProjectNotFoundComponent;
-  let fixture: ComponentFixture<ProjectNotFoundComponent>;
+describe('BlogGalleryFooterComponent', () => {
+  let component: BlogGalleryFooterComponent;
+  let fixture: ComponentFixture<BlogGalleryFooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProjectNotFoundComponent]
+      declarations: [BlogGalleryFooterComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProjectNotFoundComponent);
+    fixture = TestBed.createComponent(BlogGalleryFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

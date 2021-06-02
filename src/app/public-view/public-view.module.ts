@@ -2,8 +2,16 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SearchHeaderModule} from '../components/search-header/search-header.module';
+import {BlogArticleComponent} from './components/blog-article/blog-article.component';
+import {BlogArticleModule} from './components/blog-article/blog-article.module';
+import {BlogGalleryComponent} from './components/blog-gallery/blog-gallery.component';
+import {BlogGalleryModule} from './components/blog-gallery/blog-gallery.module';
 import {ContactFormWrapperComponent} from './components/contact-form-wrapper/contact-form-wrapper.component';
+import {ProjectContentComponent} from './components/content/project-content.component';
+import {ProjectContentModule} from './components/content/project-content.module';
 import {FooterComponent} from './components/footer/footer.component';
+import {GdprComponent} from './components/gdpr/gdpr/gdpr.component';
+import {GdprModule} from './components/gdpr/gdpr/gdpr.module';
 import {HeaderComponent} from './components/header/header.component';
 import {HomeComponent} from './components/home/home.component';
 import {HomeModule} from './components/home/home.module';
@@ -16,10 +24,6 @@ import {IndividualInteriorProjectModule} from './components/project/components/i
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
 import {PublicViewComponent} from './public-view.component';
-import {ProjectContentModule} from './components/content/project-content.module';
-import {ProjectContentComponent} from './components/content/project-content.component';
-import {GdprComponent} from './components/gdpr/gdpr/gdpr.component';
-import {GdprModule} from './components/gdpr/gdpr/gdpr.module';
 
 const routes: Routes = [
   {
@@ -45,15 +49,15 @@ const routes: Routes = [
       },
       {
         path: 'individualne-projekty/:id',
-        component: IndividualInteriorProjectComponent,
+        component: IndividualInteriorProjectComponent
       },
       {
         path: 'katalogove-projekty/:id',
-        component: CommonProjectComponent,
+        component: CommonProjectComponent
       },
       {
         path: 'interierovy-dizajn/:id',
-        component: IndividualInteriorProjectComponent,
+        component: IndividualInteriorProjectComponent
       },
       {
         path: 'obsah-projektu',
@@ -68,11 +72,19 @@ const routes: Routes = [
         component: OrderComponent
       },
       {
+        path: 'blog',
+        component: BlogGalleryComponent
+      },
+      {
+        path: 'blog/:id',
+        component: BlogArticleComponent
+      },
+      {
         path: 'gdpr',
         component: GdprComponent
       }
     ]
-  },
+  }
 ]
 
 @NgModule({
@@ -91,7 +103,9 @@ const routes: Routes = [
     GdprModule,
     SearchHeaderModule,
     OrderModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    BlogArticleModule,
+    BlogGalleryModule
   ]
 })
 export class PublicViewModule {
