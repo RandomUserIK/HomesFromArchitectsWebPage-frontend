@@ -1,0 +1,27 @@
+<div class="container">
+  <div [@spinner]="isLoading">
+    <app-loading></app-loading>
+  </div>
+  <div [@gallery]="isLoading">
+    <div *ngIf="blogArticles?.length > 0; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <div class="row mt-4 justify-content-center">
+        <div *ngFor="let blogArticle of blogArticles" class="col-md-12 mb-2 justify-content-center">
+          <app-blog-gallery-article [blogArticle]="blogArticle"></app-blog-gallery-article>
+        </div>
+      </div>
+      <div class="mt-2 row">
+        <ngb-pagination class="col d-flex justify-content-end"
+                        [pageSize]="pageSize"
+                        [(page)]="currentPage"
+                        [collectionSize]="totalElements"
+                        (pageChange)="onPageChange()">
+        </ngb-pagination>
+      </div>
+    </ng-template>
+    <ng-template #elseBlock>
+      <app-empty-search-result [displayText]="blogArticlesNotFoundMessage"></app-empty-search-result>
+    </ng-template>
+  </div>
+  <app-blog-gallery-footer></app-blog-gallery-footer>
+</div>

@@ -32,6 +32,7 @@ export class CreateBlogArticleService {
       id: blogArticleId,
       title: form.get('title').value,
       titleImage: '',
+      description: form.get('description').value,
       content: form.get('content').value.ops
     };
 

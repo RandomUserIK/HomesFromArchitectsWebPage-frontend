@@ -1,0 +1,11 @@
+<div class="container">
+  <ng-template [ngIf]="isLoading">
+    <app-loading></app-loading>
+  </ng-template>
+  <ng-template [ngIf]="!isLoading && !error">
+    <!-- TODO: display blog editor content -->
+  </ng-template>
+  <ng-template [ngIf]="!isLoading && error">
+    <app-not-found [displayText]="blogArticleNotFoundMessage"></app-not-found>
+  </ng-template>
+</div>

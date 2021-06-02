@@ -24,6 +24,14 @@ export const BLOG_ARTICLE_DATA_FIELDS: DataGroupMap = {
       placeholder: 'Nový príspevok'
     },
     {
+      formControlName: 'description',
+      type: DataFieldType.TEXT_AREA,
+      validator: [Validators.required, Validators.maxLength(200)],
+      label: 'Popis príspevku *',
+      fullWidth: true,
+      placeholder: 'Krátky popis príspevku'
+    },
+    {
       formControlName: 'titleImage',
       type: DataFieldType.IMAGE,
       validator: Validators.required,

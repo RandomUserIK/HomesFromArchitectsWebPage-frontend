@@ -1,10 +1,11 @@
 <ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName)">
   <div class="form-group">
-  <textarea [formControlName]="dataField.formControlName"
-            [placeholder]="dataField.placeholder"
-            class="form-control"
-            rows="3">
-  </textarea>
+    <label class="col-form-label" *ngIf="dataField.label">{{dataField.label}}</label>
+    <textarea [formControlName]="dataField.formControlName"
+              [placeholder]="dataField.placeholder"
+              class="form-control"
+              rows="3">
+    </textarea>
     <div *ngIf="form.get(dataField.formControlName).invalid &&
               form.get(dataField.formControlName).touched" class="text-danger">
       Povinný údaj

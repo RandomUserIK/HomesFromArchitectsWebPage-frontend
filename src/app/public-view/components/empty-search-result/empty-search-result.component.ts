@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-empty-search-result',
@@ -6,4 +6,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./empty-search-result.component.scss']
 })
 export class EmptySearchResultComponent {
+
+  @Input() displayText: string;
+
 }

@@ -41,9 +41,16 @@ export class BlogService {
       });
   }
 
-  public getBlogArticlesOnPage(page: number, pageSize: number = 10): Observable<PageableBlogArticleMessageResource> {
+  // tslint:disable-next-line:max-line-length
+  public getBlogArticlesOnPage(page: number, pageSize: number = 10, galleryPreview: string = ''): Observable<PageableBlogArticleMessageResource> {
     return this._httpClient
-      .get<PageableBlogArticleMessageResource>(`${this.resource.address}?page=${page}&size=${pageSize}`);
+      // tslint:disable-next-line:max-line-length
+      .get<PageableBlogArticleMessageResource>(`${this.resource.address}${galleryPreview}?page=${page}&size=${pageSize}`);
+  }
+
+  // tslint:disable-next-line:max-line-length
+  public getBlogArticlesOnPageForGalleryPreview(page: number, pageSize: number = 10): Observable<PageableBlogArticleMessageResource> {
+    return this.getBlogArticlesOnPage(page, pageSize, '/galleryPreview');
   }
 
   public removeBlogArticle(blogArticleId: number): Observable<DeleteEntityMessageResource> {
