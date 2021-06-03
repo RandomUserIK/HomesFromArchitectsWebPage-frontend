@@ -38,10 +38,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
     this.isLoading = true;
     this.autoScrollService.scrollToTop();
 
-    if (this.isGalleryPreview)
-      return this.blogService.getBlogArticlesOnPageForGalleryPreview(currentPage, this.pageSize);
-
-    return this.blogService.getBlogArticlesOnPage(currentPage, this.pageSize);
+    return this.blogService.getBlogArticlesOnPage(currentPage, this.pageSize, this.isGalleryPreview);
   }
 
   private processData(): (data: any) => void {
