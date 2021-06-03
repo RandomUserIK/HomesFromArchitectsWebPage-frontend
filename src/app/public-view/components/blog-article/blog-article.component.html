@@ -1,6 +1,16 @@
 <div class="container">
-  <div class="row justify-content-center mt-4">
-    <span class="col-auto title-text">{{blogArticle.title}}</span>
-  </div>
-  <quill-view [content]="blogArticle.content" format="object" theme="snow"></quill-view>
+  <ng-template [ngIf]="isLoading">
+    <app-loading></app-loading>
+  </ng-template>
+  <ng-template [ngIf]="!isLoading && !error">
+    <div class="container">
+      <div class="row justify-content-center mt-4">
+        <span class="col-auto title-text">{{blogArticle.title}}</span>
+      </div>
+      <quill-view [content]="blogArticle.content" format="object" theme="snow"></quill-view>
+    </div>
+  </ng-template>
+  <ng-template [ngIf]="!isLoading && error">
+    <app-not-found [displayText]="blogArticleNotFoundMessage"></app-not-found>
+  </ng-template>
 </div>

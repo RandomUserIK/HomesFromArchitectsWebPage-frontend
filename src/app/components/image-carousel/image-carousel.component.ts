@@ -12,7 +12,8 @@ export class ImageCarouselComponent implements OnInit {
   @Input() carouselItems: Array<string>;
   @Input() dataInterval: number;
   @Input() pauseOnFocus: boolean;
-  @Input() pauseOnHover: boolean
+  @Input() pauseOnHover: boolean;
+  @Input() fetchFromServer: boolean;
   @Input() shouldDisplayAnimation: boolean;
 
   @Output() imageClicked: EventEmitter<number> = new EventEmitter<number>();
@@ -26,10 +27,15 @@ export class ImageCarouselComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.imagesAsSafeUrl = [];
-    this._fileService.getAllImagesAsSafeUrl(this.carouselItems).subscribe((result) => {
-      this.imagesAsSafeUrl = result;
+    if (this.fetchFromServer) {
+      this._fileService.getAllImagesAsSafeUrl(this.carouselItems).subscribe((result) => {
+        this.imagesAsSafeUrl = result;
+        this.isLoading = false;
+      });
+    } else {
+      this.imagesAsSafeUrl = this.carouselItems;
       this.isLoading = false;
-    });
+    }
   }
 
   public onImageClick(index: number): void {

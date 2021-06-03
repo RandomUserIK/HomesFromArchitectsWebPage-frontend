@@ -31,9 +31,7 @@ export class BlogGalleryArticleComponent implements OnInit {
   }
 
   public onBlogArticleImageClick(): void {
-    this._router.navigate([`blog/${this.blogArticle.id}`], {
-      state: this.blogArticle
-    });
+    this._router.navigate([`blog/${this.blogArticle.id}`]);
   }
 
 }
