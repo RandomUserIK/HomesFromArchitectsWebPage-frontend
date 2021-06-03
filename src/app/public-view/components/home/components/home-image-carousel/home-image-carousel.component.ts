@@ -5,6 +5,5 @@ import {Component} from '@angular/core';
   templateUrl: './home-image-carousel.component.html'
 })
 export class HomeImageCarouselComponent {
-  // TODO: remove
-  carouselItems = ['slide1.png', 'slide2.png'];
+  carouselItems = ['assets/slide1.png', 'assets/slide2.png'];
 }
