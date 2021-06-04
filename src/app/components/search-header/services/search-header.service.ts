@@ -1,18 +1,21 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchHeaderService {
 
-  private _searchHeaderState: Subject<string> = new Subject<string>();
+  private _searchHeaderState: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   get searchHeaderState(): Subject<string> {
     return this._searchHeaderState;
   }
 
   public buildQuery(searchFormValue: any): string {
+    if (!searchFormValue) {
+      return '';
+    }
     const title = searchFormValue.projectName &&
       `title=${searchFormValue.projectName}` ||
       null;

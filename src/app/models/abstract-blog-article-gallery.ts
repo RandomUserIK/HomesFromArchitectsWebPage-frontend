@@ -1,4 +1,4 @@
-import {Directive, OnInit} from '@angular/core';
+import {Directive, Injector, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
@@ -7,17 +7,24 @@ import {BlogService} from '../services/blog.service';
 import {AbstractGallery} from './abstract-gallery';
 import {BlogArticle} from './blog/blog-article';
 import {PageableBlogArticleMessageResource} from './web/response-bodies/blog/pageable-blog-article-message-resource';
+import {BlogGalleryStateService} from '../public-view/components/blog-gallery/services/blog-gallery-state.service';
 
 @Directive()
 export abstract class AbstractBlogArticleGalleryDirective extends AbstractGallery implements OnInit {
 
+  public stateService: BlogGalleryStateService;
+  private autoScrollService: AutoScrollService;
+  private activatedRoute: ActivatedRoute;
+  private blogService: BlogService;
   public blogArticles: Array<BlogArticle> = [];
   public isGalleryPreview = false;
 
-  protected constructor(protected autoScrollService: AutoScrollService,
-                        protected activatedRoute: ActivatedRoute,
-                        protected blogService: BlogService) {
+  protected constructor(injector: Injector) {
     super();
+    this.stateService = injector.get(BlogGalleryStateService);
+    this.autoScrollService = injector.get(AutoScrollService);
+    this.activatedRoute = injector.get(ActivatedRoute);
+    this.blogService = injector.get(BlogService);
   }
 
   ngOnInit(): void {
@@ -31,7 +38,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
   }
 
   public onPageChange(): void {
-    this.handleBlogArticleList(this.currentPage).subscribe(this.processData());
+    this.handleBlogArticleList(this.stateService.currentPage).subscribe(this.processData());
   }
 
   private handleBlogArticleList(currentPage: number): Observable<PageableBlogArticleMessageResource> {
@@ -44,7 +51,6 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
   private processData(): (data: any) => void {
     return (data) => {
       this.blogArticles = data.blogArticles;
-      this.currentPage = data.currentPage + 1;
       this.totalElements = data.totalElements;
       this.isLoading = false;
     };

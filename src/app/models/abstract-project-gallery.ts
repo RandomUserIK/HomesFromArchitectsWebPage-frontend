@@ -1,4 +1,4 @@
-import {Directive, OnDestroy, OnInit} from '@angular/core';
+import {Directive, Injector, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
@@ -8,21 +8,30 @@ import {ProjectsService} from '../services/projects-service';
 import {AbstractGallery} from './abstract-gallery';
 import {Project} from './project/project.model';
 import {PageableProjectMessageResource} from './web/response-bodies/project/pageable-project-message-resource';
+import {ProjectsGalleryStateService} from '../public-view/components/projects-gallery/services/projects-gallery-state.service';
 
 @Directive()
 export abstract class AbstractProjectGalleryDirective extends AbstractGallery implements OnInit, OnDestroy {
 
+  public stateService: ProjectsGalleryStateService;
+  protected autoScrollService: AutoScrollService;
+  protected activatedRoute: ActivatedRoute;
+  protected projectsService: ProjectsService;
+  protected searchHeaderService: SearchHeaderService;
   public projects: Array<Project> = [];
   public categoryTitle: string;
   public projectCategory: string;
   private query: string;
   private searchHeaderState$: Subscription;
 
-  constructor(protected autoScrollService: AutoScrollService,
-              protected activatedRoute: ActivatedRoute,
-              protected projectsService: ProjectsService,
-              protected searchHeaderService: SearchHeaderService) {
+
+  protected constructor(injector: Injector) {
     super();
+    this.stateService = injector.get(ProjectsGalleryStateService);
+    this.autoScrollService = injector.get(AutoScrollService);
+    this.activatedRoute = injector.get(ActivatedRoute);
+    this.projectsService = injector.get(ProjectsService);
+    this.searchHeaderService = injector.get(SearchHeaderService);
   }
 
   ngOnInit(): void {
@@ -32,7 +41,10 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
           this.categoryTitle = data.projectsTitle;
           this.projectCategory = data.projectCategory;
           this.autoScrollService.scrollToTop();
-          return this.handleProjectsList(1, this.projectCategory, '');
+          return this.handleProjectsList(
+            this.stateService.currentPage,
+            this.projectCategory,
+            this.searchHeaderService.buildQuery(this.stateService.searchFormValue));
         })
       ).subscribe(this.processData());
 
@@ -40,7 +52,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
       .pipe(
         switchMap((query) => {
           this.query = query;
-          return this.handleProjectsList(1, this.projectCategory, this.query);
+          return this.handleProjectsList(this.stateService.currentPage, this.projectCategory, this.query);
         })
       ).subscribe(this.processData());
   }
@@ -50,7 +62,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
   }
 
   public onPageChange(): void {
-    this.handleProjectsList(this.currentPage, this.projectCategory, this.query).subscribe(this.processData());
+    this.handleProjectsList(this.stateService.currentPage, this.projectCategory, this.query).subscribe(this.processData());
   }
 
   private handleProjectsList(currentPage: number, projectCategory: string, query: string): Observable<PageableProjectMessageResource> {
@@ -62,7 +74,6 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
   private processData() {
     return (data) => {
       this.projects = data.projects;
-      this.currentPage = data.currentPage + 1;
       this.totalElements = data.totalElements;
       this.isLoading = false;
     };

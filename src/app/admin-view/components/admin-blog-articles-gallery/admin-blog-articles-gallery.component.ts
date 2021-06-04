@@ -1,8 +1,6 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, Injector} from '@angular/core';
+import {Router} from '@angular/router';
 import {AbstractBlogArticleGalleryDirective} from '../../../models/abstract-blog-article-gallery';
-import {AutoScrollService} from '../../../services/auto-scroll.service';
-import {BlogService} from '../../../services/blog.service';
 import {AdminGallery} from '../admin-gallery/admin-gallery';
 
 @Component({
@@ -14,11 +12,9 @@ export class AdminBlogArticlesGalleryComponent extends AbstractBlogArticleGaller
   public message: string;
   public isBlogArticleRemoved: boolean;
 
-  constructor(autoScrollService: AutoScrollService,
-              activatedRoute: ActivatedRoute,
-              blogService: BlogService,
+  constructor(injector: Injector,
               private _router: Router) {
-    super(autoScrollService, activatedRoute, blogService);
+    super(injector);
   }
 
   public add(): void {
