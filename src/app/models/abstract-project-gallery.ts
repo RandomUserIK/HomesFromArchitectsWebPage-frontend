@@ -30,7 +30,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
       .pipe(
         switchMap(data => {
           this.categoryTitle = data.projectsTitle;
-          this.projectCategory = data.projectsCategoryId;
+          this.projectCategory = data.projectCategory;
           this.autoScrollService.scrollToTop();
           return this.handleProjectsList(1, this.projectCategory, '');
         })

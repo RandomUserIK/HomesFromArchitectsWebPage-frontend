@@ -42,15 +42,10 @@ export class BlogService {
   }
 
   // tslint:disable-next-line:max-line-length
-  public getBlogArticlesOnPage(page: number, pageSize: number = 10, galleryPreview: string = ''): Observable<PageableBlogArticleMessageResource> {
+  public getBlogArticlesOnPage(page: number, pageSize: number = 10, isGalleryPreview = false): Observable<PageableBlogArticleMessageResource> {
     return this._httpClient
       // tslint:disable-next-line:max-line-length
-      .get<PageableBlogArticleMessageResource>(`${this.resource.address}${galleryPreview}?page=${page}&size=${pageSize}`);
-  }
-
-  // tslint:disable-next-line:max-line-length
-  public getBlogArticlesOnPageForGalleryPreview(page: number, pageSize: number = 10): Observable<PageableBlogArticleMessageResource> {
-    return this.getBlogArticlesOnPage(page, pageSize, '/galleryPreview');
+      .get<PageableBlogArticleMessageResource>(`${this.resource.address}?page=${page}&size=${pageSize}&isGalleryPreview=${isGalleryPreview}`);
   }
 
   public removeBlogArticle(blogArticleId: number): Observable<DeleteEntityMessageResource> {

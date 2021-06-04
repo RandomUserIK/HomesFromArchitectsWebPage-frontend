@@ -22,11 +22,11 @@ export class SearchHeaderService {
     const price = searchFormValue.enumerationFilters.price &&
       `price=${searchFormValue.enumerationFilters.price}` ||
       null;
-    let queryParams = [title, personsCount, price]
+    let queryParams = [title, personsCount, price];
 
     queryParams = queryParams.filter((it) => it != null);
 
-    return queryParams.join('&')
+    return queryParams.join('&');
   }
 
 }

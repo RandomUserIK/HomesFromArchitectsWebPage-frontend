@@ -6,13 +6,13 @@
 <div class="card card-width mb-3">
   <div class="row row-align g-0">
     <div class="col-md-4 col-6">
-      <img [src]="titleImage" alt="titleImage" (click)="onBlogArticleImageClick()">
+      <img [src]="titleImage" alt="titleImage" (click)="onBlogArticleClick()">
     </div>
     <div class="col-md-8 col-6">
       <div class="card-body">
         <span class="card-title font-weight-bold">{{blogArticle.title}}</span>
         <p class="card-text">{{blogArticle.description}}</p>
-        <a [href]="'blog/' + blogArticle.id" class="stretched-link"></a>
+        <a (click)="onBlogArticleClick()" class="stretched-link"></a>
       </div>
     </div>
   </div>

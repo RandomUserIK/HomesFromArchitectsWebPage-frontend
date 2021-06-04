@@ -24,17 +24,17 @@ const routes: Routes = [
       {
         path: 'individualne-projekty',
         component: AdminProjectsGalleryComponent,
-        data: {projectsTitle: 'Individuálne projekty', projectsCategoryId: 'INDIVIDUAL'}
+        data: {projectsTitle: 'Individuálne projekty', projectCategory: 'INDIVIDUAL'}
       },
       {
         path: 'katalogove-projekty',
         component: AdminProjectsGalleryComponent,
-        data: {projectsTitle: 'Katalógové projekty', projectsCategoryId: 'COMMON'}
+        data: {projectsTitle: 'Katalógové projekty', projectCategory: 'COMMON'}
       },
       {
         path: 'interierovy-dizajn',
         component: AdminProjectsGalleryComponent,
-        data: {projectsTitle: 'Interiérový dizajn', projectsCategoryId: 'INTERIOR_DESIGN'}
+        data: {projectsTitle: 'Interiérový dizajn', projectCategory: 'INTERIOR_DESIGN'}
       },
       {
         path: 'vytvor',

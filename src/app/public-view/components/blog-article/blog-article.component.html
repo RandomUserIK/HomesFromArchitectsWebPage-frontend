@@ -3,7 +3,12 @@
     <app-loading></app-loading>
   </ng-template>
   <ng-template [ngIf]="!isLoading && !error">
-    <!-- TODO: display blog editor content -->
+    <div class="blog-container">
+      <div class="row justify-content-center mt-4">
+        <span class="col-auto title-text">{{blogArticle.title}}</span>
+      </div>
+      <quill-view [content]="blogArticle.content" format="object" theme="snow"></quill-view>
+    </div>
   </ng-template>
   <ng-template [ngIf]="!isLoading && error">
     <app-not-found [displayText]="blogArticleNotFoundMessage"></app-not-found>
