@@ -22,11 +22,18 @@ export class SearchHeaderService {
     const price = searchFormValue.enumerationFilters.price &&
       `price=${searchFormValue.enumerationFilters.price}` ||
       null;
-    let queryParams = [title, personsCount, price];
+    const rooms = searchFormValue.enumerationFilters.rooms &&
+      `rooms=${searchFormValue.enumerationFilters.rooms}` ||
+      null;
+    const hasGarage = searchFormValue.enumerationFilters.hasGarage &&
+      `hasGarage=${searchFormValue.enumerationFilters.hasGarage}` ||
+      null;
+    const hasStorey = searchFormValue.enumerationFilters.hasStorey &&
+      `hasStorey=${searchFormValue.enumerationFilters.hasStorey}` ||
+      null;
+    const queryParams = [title, personsCount, price, rooms, hasGarage, hasStorey];
 
-    queryParams = queryParams.filter((it) => it != null);
-
-    return queryParams.join('&');
+    return queryParams.filter((it) => it != null).join('&');
   }
 
 }

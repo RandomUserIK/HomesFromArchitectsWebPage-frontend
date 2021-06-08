@@ -1,6 +1,6 @@
 <form [formGroup]="searchForm">
   <div class="row justify-content-md-center">
-    <div class="col-md-4 col-12">
+    <div class="col-md-6 col-12">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text border-right-0 bg-white" id="search-text-icon-wrapper">
@@ -11,7 +11,9 @@
                aria-describedby="search-text-icon-wrapper">
       </div>
     </div>
-    <div class="col-md-6 col-12" formGroupName="enumerationFilters">
+  </div>
+  <div class="row text-center">
+    <div class="col-12" formGroupName="enumerationFilters">
       <div class="d-inline mr-2" *ngFor="let filter of enumerationFilters">
         <button class="btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
@@ -24,9 +26,9 @@
               class="custom-control-input"
               type="radio"
               [formControlName]="filter.formControlId"
-              [id]="value"
+              [id]="filter.formControlId + '-' + value"
               [value]="value">
-            <label class="custom-control-label" [for]="value">{{value}}</label>
+            <label class="custom-control-label" [for]="filter.formControlId + '-' + value">{{value}}</label>
           </div>
         </div>
       </div>

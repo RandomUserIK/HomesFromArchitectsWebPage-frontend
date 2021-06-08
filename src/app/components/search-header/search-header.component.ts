@@ -10,7 +10,7 @@ import {SearchHeaderService} from './services/search-header.service';
 })
 export class SearchHeaderComponent implements OnInit {
 
-  searchForm: FormGroup;
+  public searchForm: FormGroup;
 
   constructor(@Inject(ENUMERATION_FILTERS) public enumerationFilters: Array<EnumerationFilterModel>,
               private _searchHeaderService: SearchHeaderService) {
@@ -19,12 +19,18 @@ export class SearchHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.searchForm = new FormGroup({
       projectName: new FormControl(),
-      enumerationFilters: new FormGroup(this.getEnumerationFilterIds()),
+      enumerationFilters: new FormGroup(this.getEnumerationFilterIds())
     });
-    this.searchForm.valueChanges.subscribe(searchFormValue => {
+    console.log(this.searchForm)
+    this.searchForm.valueChanges.subscribe((searchFormValue) => {
       const query = this._searchHeaderService.buildQuery(searchFormValue);
       this._searchHeaderService.searchHeaderState.next(query);
-    })
+      console.log(this.searchForm)
+    });
+  }
+
+  public resetFilters(): void {
+    this.searchForm.reset();
   }
 
   private getEnumerationFilterIds(): { [key: string]: AbstractControl } {
@@ -35,7 +41,4 @@ export class SearchHeaderComponent implements OnInit {
     return formControls;
   }
 
-  public resetFilters(): void {
-    this.searchForm.reset();
-  }
 }
