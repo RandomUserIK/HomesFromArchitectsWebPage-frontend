@@ -9,6 +9,7 @@
       </div>
       <quill-view [content]="blogArticle.content" format="object" theme="snow"></quill-view>
     </div>
+    <app-another-blog-articles></app-another-blog-articles>
   </ng-template>
   <ng-template [ngIf]="!isLoading && error">
     <app-not-found [displayText]="blogArticleNotFoundMessage"></app-not-found>

@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-4 p-2" *ngFor="let blog of blogsTitleImages">
+    <div class="card">
+      <a href="/blog/{{blog.id}}" class="thumb">
+        <img [src]="blog.titlePhoto" class="gallery-img img-fluid d-none d-md-block grid-img"/>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">{{blog.title}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
