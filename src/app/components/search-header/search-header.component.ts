@@ -35,7 +35,6 @@ export class SearchHeaderComponent implements OnInit {
 
   private initializeFormSubscription(): void {
     this.searchForm.valueChanges.subscribe(searchFormValue => {
-      console.log(searchFormValue);
       this._stateService.searchFormValue = searchFormValue;
       const query = this._searchHeaderService.buildQuery(searchFormValue);
       this._searchHeaderService.searchHeaderState.next(query);
