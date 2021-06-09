@@ -30,3 +30,8 @@ li {
 .nav-item > a:hover {
   color: map_get($theme-colors, "primary");
 }
+
+.nav-link {
+  font-family: "texgyreadventor-regular", Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+}

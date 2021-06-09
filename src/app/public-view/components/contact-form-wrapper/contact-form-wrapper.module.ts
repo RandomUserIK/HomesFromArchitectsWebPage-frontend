@@ -7,13 +7,15 @@ import {RecaptchaFormsModule, RecaptchaModule} from 'ng-recaptcha';
 import {ContactsService} from './services/contacts.service';
 import {DataFieldsModule} from '../../../components/data-fields/data-fields.module';
 import {FormAlertModule} from '../../../components/form-alert/form-alert.module';
+import {BillingInformationComponent} from './billing-information/billing-information.component';
 
 
 
 @NgModule({
   declarations: [
     ContactFormWrapperComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    BillingInformationComponent
   ],
   imports: [
     CommonModule,
