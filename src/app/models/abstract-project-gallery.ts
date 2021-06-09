@@ -37,7 +37,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
   ngOnInit(): void {
     this.activatedRoute.data
       .pipe(
-        switchMap(data => {
+        switchMap((data) => {
           this.categoryTitle = data.projectsTitle;
           this.projectCategory = data.projectCategory;
           this.autoScrollService.scrollToTop();
