@@ -71,7 +71,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, projectCategory, query);
   }
 
-  private processData() {
+  private processData(): (data: any) => void {
     return (data) => {
       this.projects = data.projects;
       this.totalElements = data.totalElements;

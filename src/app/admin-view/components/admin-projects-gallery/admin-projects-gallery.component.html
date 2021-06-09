@@ -15,6 +15,7 @@
       </button>
     </div>
     <ngb-pagination class="col d-flex justify-content-end"
+                    *ngIf="totalElements"
                     [pageSize]="pageSize"
                     [(page)]="stateService.currentPage"
                     [collectionSize]="totalElements"
