@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {AbstractProjectGalleryDirective} from '../../../models/abstract-project-gallery';
 import {IndividualInteriorProjectTitleTextData} from '../../../models/project/individual-interior-project-title-text-data';
 import {loadingAnimation} from './animations/loading.animation';
@@ -33,9 +33,12 @@ export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective im
   }
 
   public readonly projectsNotFoundMessage: string = 'PRE ZADANÝ FILTER SA NENAŠLI ŽIADNE PROJEKTY';
-
   public isIndividual = false;
   public isCommon = false;
+
+  constructor(injector: Injector) {
+    super(injector);
+  }
 
   ngOnInit() {
     super.ngOnInit();
