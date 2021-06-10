@@ -1,8 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, Injector, OnInit} from '@angular/core';
 import {AbstractBlogArticleGalleryDirective} from '../../../models/abstract-blog-article-gallery';
-import {AutoScrollService} from '../../../services/auto-scroll.service';
-import {BlogService} from '../../../services/blog.service';
 import {loadingAnimation} from '../projects-gallery/animations/loading.animation';
 
 @Component({
@@ -14,10 +11,8 @@ export class BlogGalleryComponent extends AbstractBlogArticleGalleryDirective im
 
   public readonly blogArticlesNotFoundMessage = 'NEPODARILO SA NÁJSŤ ŽIADNE PRÍSPEVKY';
 
-  constructor(autoScrollService: AutoScrollService,
-              activatedRoute: ActivatedRoute,
-              blogService: BlogService) {
-    super(autoScrollService, activatedRoute, blogService);
+  constructor(injector: Injector) {
+    super(injector);
   }
 
   ngOnInit(): void {

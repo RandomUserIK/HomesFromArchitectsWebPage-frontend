@@ -13,7 +13,7 @@
       <div class="mt-2 row">
         <ngb-pagination class="col d-flex justify-content-end"
                         [pageSize]="pageSize"
-                        [(page)]="currentPage"
+                        [(page)]="stateService.currentPage"
                         [collectionSize]="totalElements"
                         (pageChange)="onPageChange()">
         </ngb-pagination>
