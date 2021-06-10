@@ -1,9 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Injector} from '@angular/core';
 import {AbstractProjectGalleryDirective} from '../../../models/abstract-project-gallery';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ProjectsService} from '../../../services/projects-service';
-import {SearchHeaderService} from '../../../components/search-header/services/search-header.service';
-import {AutoScrollService} from '../../../services/auto-scroll.service';
+import {Router} from '@angular/router';
 import {AdminGallery} from '../admin-gallery/admin-gallery';
 
 @Component({
@@ -15,12 +12,8 @@ export class AdminProjectsGalleryComponent extends AbstractProjectGalleryDirecti
   public message: string;
   public projectRemoved: boolean;
 
-  constructor(autoScrollService: AutoScrollService,
-              activatedRoute: ActivatedRoute,
-              projectsService: ProjectsService,
-              searchHeaderService: SearchHeaderService,
-              private _router: Router) {
-    super(autoScrollService, activatedRoute, projectsService, searchHeaderService);
+  constructor(injector: Injector, private _router: Router) {
+    super(injector);
   }
 
   public remove($event: number): void {
