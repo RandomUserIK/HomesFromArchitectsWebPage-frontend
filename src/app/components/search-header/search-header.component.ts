@@ -6,6 +6,7 @@ import {SearchHeaderService} from './services/search-header.service';
 @Component({
   selector: 'app-search-header',
   templateUrl: './search-header.component.html',
+  styleUrls: ['./search-header.component.scss'],
   providers: [{provide: ENUMERATION_FILTERS, useValue: ENUMERATION_FILTERS}]
 })
 export class SearchHeaderComponent implements OnInit {
@@ -21,11 +22,9 @@ export class SearchHeaderComponent implements OnInit {
       projectName: new FormControl(),
       enumerationFilters: new FormGroup(this.getEnumerationFilterIds())
     });
-    console.log(this.searchForm)
     this.searchForm.valueChanges.subscribe((searchFormValue) => {
       const query = this._searchHeaderService.buildQuery(searchFormValue);
       this._searchHeaderService.searchHeaderState.next(query);
-      console.log(this.searchForm)
     });
   }
 

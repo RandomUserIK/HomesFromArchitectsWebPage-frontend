@@ -16,12 +16,6 @@ export class SearchHeaderService {
     const title = searchFormValue.projectName &&
       `title=${searchFormValue.projectName}` ||
       null;
-    const personsCount = searchFormValue.enumerationFilters.persons &&
-      `persons=${searchFormValue.enumerationFilters.persons}` ||
-      null;
-    const price = searchFormValue.enumerationFilters.price &&
-      `price=${searchFormValue.enumerationFilters.price}` ||
-      null;
     const rooms = searchFormValue.enumerationFilters.rooms &&
       `rooms=${searchFormValue.enumerationFilters.rooms}` ||
       null;
@@ -31,7 +25,7 @@ export class SearchHeaderService {
     const hasStorey = searchFormValue.enumerationFilters.hasStorey &&
       `hasStorey=${searchFormValue.enumerationFilters.hasStorey}` ||
       null;
-    const queryParams = [title, personsCount, price, rooms, hasGarage, hasStorey];
+    const queryParams = [title, rooms, hasGarage, hasStorey];
 
     return queryParams.filter((it) => it != null).join('&');
   }

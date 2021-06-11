@@ -22,7 +22,7 @@ export class ProjectTitleImageComponent implements OnInit {
     this._fileService.getFileFromPathAsSafeUrl(this.titleImagePath).subscribe((imageSafeUrl) => {
       this.titleImagePreview = imageSafeUrl;
       this.isLoading = false;
-    })
+    });
   }
 
 }

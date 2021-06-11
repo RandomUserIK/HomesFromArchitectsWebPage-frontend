@@ -147,6 +147,18 @@ export const COMMON_PROJECT_DATA_FIELDS = [
     ]
   },
   {
+    formControlName: 'hasStorey',
+    label: 'Je poschodový ? *',
+    validator: Validators.required,
+    type: DataFieldType.ENUMERATION,
+    fullWidth: false,
+    placeholder: 'Vyberte jednu z možností',
+    values: [
+      'Áno',
+      'Nie'
+    ]
+  },
+  {
     formControlName: 'entryOrientation',
     label: 'Orientácia projektu *',
     type: DataFieldType.MULTICHOICE,

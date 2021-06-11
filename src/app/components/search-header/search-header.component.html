@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row text-center">
-    <div class="col-12" formGroupName="enumerationFilters">
+    <div class="col-12 header-element" formGroupName="enumerationFilters">
       <div class="d-inline mr-2" *ngFor="let filter of enumerationFilters">
         <button class="btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" (click)="resetFilters()">
+      <button type="button" class="btn btn-primary header-element" (click)="resetFilters()">
         <em class="bi bi-bootstrap-reboot"></em>
         Reset
       </button>
