@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="text-center mt-3 mb-5">{{categoryTitle}}</h1>
-  <div class="mb-5">
+  <div class="mb-5" *ngIf="isCommon">
     <app-search-header></app-search-header>
   </div>
   <div *ngIf="!isCommon">
@@ -23,7 +23,7 @@
       <div class="mt-2 row">
         <ngb-pagination class="col d-flex justify-content-end"
                         [pageSize]="pageSize"
-                        [(page)]="currentPage"
+                        [(page)]="stateService.currentPage"
                         [collectionSize]="totalElements"
                         (pageChange)="onPageChange()">
         </ngb-pagination>

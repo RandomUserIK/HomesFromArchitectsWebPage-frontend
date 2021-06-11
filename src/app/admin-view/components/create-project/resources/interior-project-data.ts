@@ -12,14 +12,6 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
     placeholder: 'Zadajte názov projektu'
   },
   {
-    formControlName: 'builtUpArea',
-    type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
-    label: 'Zastavaná plocha *',
-    fullWidth: false,
-    placeholder: 'Zadajte veľkosť m2'
-  },
-  {
     formControlName: 'persons',
     type: DataFieldType.PRIMITIVE_TYPE,
     validator: [Validators.required, Validators.maxLength(2)],
@@ -34,37 +26,6 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
     label: 'Celková plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
-  },
-  {
-    formControlName: 'energeticClass',
-    type: DataFieldType.ENUMERATION,
-    validator: Validators.required,
-    label: 'Energetická trieda projektu *',
-    fullWidth: false,
-    placeholder: 'Vyberte energetickú triedu projektu',
-    values: [
-      'A1',
-      'A0',
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G'
-    ]
-  },
-  {
-    formControlName: 'hasGarage',
-    label: 'Obsahuje projekt garáž ? *',
-    validator: Validators.required,
-    type: DataFieldType.ENUMERATION,
-    fullWidth: false,
-    placeholder: 'Vyberte jednu z možností',
-    values: [
-      'Áno',
-      'Nie'
-    ]
   },
   {
     formControlName: 'textSections',
