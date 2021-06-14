@@ -13,7 +13,7 @@ import {BlogGalleryStateService} from '../public-view/components/blog-gallery/se
 export abstract class AbstractBlogArticleGalleryDirective extends AbstractGallery implements OnInit {
 
   public stateService: BlogGalleryStateService;
-  private autoScrollService: AutoScrollService;
+  private scrollService: AutoScrollService;
   private activatedRoute: ActivatedRoute;
   private blogService: BlogService;
   public blogArticles: Array<BlogArticle> = [];
@@ -22,7 +22,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
   protected constructor(injector: Injector) {
     super();
     this.stateService = injector.get(BlogGalleryStateService);
-    this.autoScrollService = injector.get(AutoScrollService);
+    this.scrollService = injector.get(AutoScrollService);
     this.activatedRoute = injector.get(ActivatedRoute);
     this.blogService = injector.get(BlogService);
   }
@@ -31,7 +31,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
     this.activatedRoute.data
       .pipe(
         switchMap(() => {
-          this.autoScrollService.scrollToTop();
+          this.scrollService.scrollToTop();
           return this.handleBlogArticleList(this.stateService.currentPage);
         })
       ).subscribe(this.processData());
@@ -43,6 +43,7 @@ export abstract class AbstractBlogArticleGalleryDirective extends AbstractGaller
 
   private handleBlogArticleList(currentPage: number): Observable<PageableBlogArticleMessageResource> {
     this.isLoading = true;
+    this.scrollService.scrollToTop();
     return this.blogService.getBlogArticlesOnPage(currentPage - 1, this.pageSize, this.isGalleryPreview);
   }
 

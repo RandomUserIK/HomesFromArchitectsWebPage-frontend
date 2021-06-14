@@ -7,6 +7,7 @@ import {IndividualInteriorProjectTitleTextComponent} from './individual-interior
 import {IndividualInteriorProjectComponent} from './individual-interior-project.component';
 import {IndividualProjectInfoComponent} from './individual-project/individual-project-info/individual-project-info.component';
 import {InteriorProjectInfoComponent} from './interior-project/interior-project-info/interior-project-info.component';
+import {AnimateModule} from '../../../../../animate/animate.module';
 
 
 @NgModule({
@@ -16,13 +17,14 @@ import {InteriorProjectInfoComponent} from './interior-project/interior-project-
     IndividualInteriorProjectComponent,
     IndividualInteriorProjectTitleTextComponent
   ],
-  imports: [
-    CommonModule,
-    CommonModule,
-    ProjectModule,
-    LoadingModule,
-    NotFoundModule
-  ],
+    imports: [
+        CommonModule,
+        CommonModule,
+        ProjectModule,
+        LoadingModule,
+        NotFoundModule,
+        AnimateModule
+    ],
   exports: [
     IndividualInteriorProjectTitleTextComponent
   ]

@@ -24,6 +24,7 @@ import {IndividualInteriorProjectModule} from './components/project/components/i
 import {ProjectsGalleryComponent} from './components/projects-gallery/projects-gallery.component';
 import {ProjectsGalleryModule} from './components/projects-gallery/projects-gallery.module';
 import {PublicViewComponent} from './public-view.component';
+import {AnimateModule} from '../animate/animate.module';
 
 const routes: Routes = [
   {
@@ -105,7 +106,7 @@ const routes: Routes = [
     OrderModule,
     RouterModule.forChild(routes),
     BlogArticleModule,
-    BlogGalleryModule
+    BlogGalleryModule,
   ]
 })
 export class PublicViewModule {

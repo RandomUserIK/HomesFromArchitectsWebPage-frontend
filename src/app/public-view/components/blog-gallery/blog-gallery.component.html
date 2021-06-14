@@ -6,7 +6,8 @@
     <div *ngIf="blogArticles?.length > 0; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
       <div class="row mt-4 justify-content-center">
-        <div *ngFor="let blogArticle of blogArticles" class="col-md-12 mb-2 justify-content-center">
+        <div *ngFor="let blogArticle of blogArticles" class="col-md-12 mb-2 justify-content-center"
+             wmAnimate="fadeIn" speed="faster" aos>
           <app-blog-gallery-article [blogArticle]="blogArticle"></app-blog-gallery-article>
         </div>
       </div>

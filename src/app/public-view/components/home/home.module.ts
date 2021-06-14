@@ -12,6 +12,7 @@ import {HomeComponent} from './home.component';
 import {instagramSearchInjectables} from './services/Instagram-search-injectables';
 import {InstagramSearchService} from './services/instagram-search.service';
 import { HomeImageCarouselComponent } from './components/home-image-carousel/home-image-carousel.component';
+import {AnimateModule} from '../../../animate/animate.module';
 
 
 @NgModule({
@@ -31,12 +32,13 @@ import { HomeImageCarouselComponent } from './components/home-image-carousel/hom
     InstagramSearchService,
     instagramSearchInjectables
   ],
-  imports: [
-    CommonModule,
-    ContactModule,
-    RouterModule,
-    ImageCarouselModule
-  ]
+    imports: [
+        CommonModule,
+        ContactModule,
+        RouterModule,
+        ImageCarouselModule,
+        AnimateModule
+    ]
 })
 export class HomeModule {
 }

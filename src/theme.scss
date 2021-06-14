@@ -4,11 +4,6 @@ $theme-colors: (
   "light-grey": #656565
 );
 
-.title-text {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
 .italic-text {
   font-size: 1rem;
   color: map_get($theme-colors, "light-grey");

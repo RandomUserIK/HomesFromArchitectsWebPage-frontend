@@ -1,6 +1,8 @@
 <div class="container">
-  <h1 class="text-center mt-3 mb-5">{{categoryTitle}}</h1>
-  <div class="mb-5" *ngIf="isCommon">
+  <div wmAnimate="fadeIn" speed="faster" aos>
+    <h1 class="text-center mt-3 mb-5">{{categoryTitle}}</h1>
+  </div>
+  <div class="mb-5" *ngIf="isCommon" wmAnimate="fadeIn" speed="faster" aos>
     <app-search-header></app-search-header>
   </div>
   <div *ngIf="!isCommon">
@@ -16,7 +18,7 @@
     <div *ngIf="projects?.length > 0; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
       <div class="row mt-4">
-        <div *ngFor="let project of projects" class="col-md-6 mb-2">
+        <div *ngFor="let project of projects" class="col-md-6 mb-2" wmAnimate="fadeIn" speed="faster" aos>
           <app-project-gallery [project]="project"></app-project-gallery>
         </div>
       </div>

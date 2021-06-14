@@ -8,6 +8,7 @@ import {ContactsService} from './services/contacts.service';
 import {DataFieldsModule} from '../../../components/data-fields/data-fields.module';
 import {FormAlertModule} from '../../../components/form-alert/form-alert.module';
 import {BillingInformationComponent} from './billing-information/billing-information.component';
+import {AnimateModule} from '../../../animate/animate.module';
 
 
 
@@ -17,14 +18,15 @@ import {BillingInformationComponent} from './billing-information/billing-informa
     ContactFormComponent,
     BillingInformationComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RecaptchaModule,
-    RecaptchaFormsModule,
-    DataFieldsModule,
-    FormAlertModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RecaptchaModule,
+        RecaptchaFormsModule,
+        DataFieldsModule,
+        FormAlertModule,
+        AnimateModule
+    ],
   providers: [
     ContactsService
   ],

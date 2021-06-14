@@ -9,6 +9,7 @@ import {EmptySearchResultModule} from '../empty-search-result/empty-search-resul
 import {IndividualInteriorProjectModule} from '../project/components/individual-interior-project/individual-interior-project.module';
 import {ProjectGalleryComponent} from './components/project-gallery/project-gallery.component';
 import {ProjectsGalleryComponent} from './projects-gallery.component';
+import {AnimateModule} from '../../../animate/animate.module';
 
 
 @NgModule({
@@ -16,16 +17,17 @@ import {ProjectsGalleryComponent} from './projects-gallery.component';
     ProjectsGalleryComponent,
     ProjectGalleryComponent
   ],
-  imports: [
-    CommonModule,
-    SearchHeaderModule,
-    ContactModule,
-    NgbPaginationModule,
-    LoadingModule,
-    ContactFormWrapperModule,
-    IndividualInteriorProjectModule,
-    EmptySearchResultModule
-  ],
+    imports: [
+        CommonModule,
+        SearchHeaderModule,
+        ContactModule,
+        NgbPaginationModule,
+        LoadingModule,
+        ContactFormWrapperModule,
+        IndividualInteriorProjectModule,
+        EmptySearchResultModule,
+        AnimateModule
+    ],
   exports: [
     ProjectsGalleryComponent
   ]
