@@ -1,24 +1,23 @@
-<table class="table" >
-  <caption></caption>
+<table class="table" wmAnimate="fadeIn" speed="faster" aos>
   <thead>
   <tr>
-    <th class="first-col align-middle" scope="col"></th>
-    <th class="second-col col-text-center align-middle" scope="col">Základný projekt</th>
-    <th class="second-col col-text-center align-middle" scope="col">Rozšírený projekt</th>
+    <th class="align-middle" scope="col"></th>
+    <th class="col-text-center" scope="col">Základný projekt</th>
+    <th class="col-text-center" scope="col">Rozšírený projekt</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let data of getTableData()">
-    <td class="align-baseline align-middle first-col content-text">{{data.name}}</td>
-    <td class="second-col col-text-center align-middle">
+    <td class="align-baseline align-middle content-text">{{data.name}}</td>
+    <td class="col-text-center align-middle">
       <em class="bi bi-check table-icon-size"
           *ngIf="!isString(data.basic)"></em>
-      <p class="content-text" *ngIf="isString(data.basic)">{{data.basic}}</p>
+      <span class="content-text" *ngIf="isString(data.basic)">{{data.basic}}</span>
     </td>
-    <td class="second-col col-text-center align-middle">
+    <td class="col-text-center align-middle">
       <em class="bi bi-check table-icon-size"
           *ngIf="!isString(data.advanced)"></em>
-      <p class="content-text" *ngIf="isString(data.advanced)">{{data.advanced}}</p>
+      <span class="content-text" *ngIf="isString(data.advanced)">{{data.advanced}}</span>
     </td>
   </tr>
   </tbody>
