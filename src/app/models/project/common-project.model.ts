@@ -12,5 +12,6 @@ export interface CommonProject extends Project {
   heatingSource?: string;
   heatingType?: string;
   entryOrientation?: string;
+  hasStorey?: string;
   floorPlanImagePaths?: Array<string>;
 }
