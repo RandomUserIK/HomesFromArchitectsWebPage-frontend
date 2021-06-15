@@ -6,10 +6,13 @@
 <ngb-carousel [interval]="dataInterval" [pauseOnFocus]="pauseOnFocus" [pauseOnHover]="pauseOnHover" *ngIf="!isLoading">
   <ng-template ngbSlide *ngFor="let img of imagesAsSafeUrl; let index = index">
     <div class="picsum-img-wrapper">
-      <img [src]="img"
+      <img [src]="withText ? img.image : img"
            [alt]="index"
            [ngClass]="shouldDisplayAnimation ? 'w-100 image-animation' : 'w-100'"
            (click)="onImageClick(index)">
+      <div *ngIf="withText" class="carousel-caption">
+        <h3 class="carousel-image"><span>{{img.href}}</span></h3>
+      </div>
     </div>
   </ng-template>
 </ngb-carousel>

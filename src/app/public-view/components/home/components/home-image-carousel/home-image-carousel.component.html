@@ -1,6 +1,5 @@
-<app-image-carousel [carouselItems]="carouselItems"
+<app-image-carousel *ngIf="fetched" [carouselItems]="carouselItems"
                     [dataInterval]="10000"
-                    [fetchFromServer]="false"
                     [pauseOnHover]="true"
                     [pauseOnFocus]="true"
                     [shouldDisplayAnimation]="true">
