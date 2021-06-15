@@ -9,9 +9,8 @@ import {CarouselProject} from "../../models/CarouselProject";
   templateUrl: './home-image-carousel.component.html'
 })
 export class HomeImageCarouselComponent implements OnInit {
-  carouselItems: CarouselProject[];
-  fetched = false;
-  // carouselItems = ['assets/slide1.png', 'assets/slide2.png'];
+  public carouselItems: CarouselProject[];
+  public fetched = false;
 
   constructor(private projectsService: ProjectsService) {
   }
@@ -19,11 +18,11 @@ export class HomeImageCarouselComponent implements OnInit {
   ngOnInit(): void {
     this.projectsService.getSpecifiedNumberOfProjects(0, 'COMMON', 5)
       .subscribe((response: PageableProjectMessageResource) => {
-        this.carouselItems = []
-        response.projects.forEach(value => {
-            this.carouselItems.push({href: value.id, image: value.titleImage})
+          this.carouselItems = []
+          response.projects.forEach(value => {
+            this.carouselItems.push({id: value.id, image: value.titleImage, title: value.title})
           })
-        this.fetched = true
+          this.fetched = true
         }
       )
   }

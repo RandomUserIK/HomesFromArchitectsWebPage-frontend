@@ -16,37 +16,42 @@ export class ImageCarouselComponent implements OnInit {
   @Input() pauseOnFocus: boolean;
   @Input() pauseOnHover: boolean;
   @Input() shouldDisplayAnimation: boolean;
-
   @Output() imageClicked: EventEmitter<number> = new EventEmitter<number>();
 
   public isLoading = false;
-  public imagesAsSafeUrl: Array<SafeUrl> | Array<CarouselProject>
+  public carouselData: Array<SafeUrl> | Array<CarouselProject>
 
   constructor(private _fileService: FileService) {
   }
 
+  private prepareSafeUrlArrayForCarousel(): void {
+    this.withText = false;
+    this._fileService.getAllImagesAsSafeUrl((this.carouselItems as Array<string>))
+      .subscribe((result) => {
+        this.carouselData = result;
+        this.isLoading = false;
+      });
+  }
+
+  private prepareCarouselProjectArrayForCarousel(): void {
+    this.withText = true;
+    (this.carouselItems as Array<CarouselProject>).forEach(value => {
+      this._fileService.getFileFromPathAsSafeUrl(value.image as string)
+        .subscribe(safeUrl => {
+          value.image = safeUrl;
+        })
+    })
+    this.carouselData = this.carouselItems;
+    this.isLoading = false;
+  }
+
   ngOnInit(): void {
     this.isLoading = true;
-    this.imagesAsSafeUrl = [];
-    if (this.carouselItems.length > 0) {
-      if (typeof this.carouselItems[0] === 'string') {
-        this.withText = false;
-        this._fileService.getAllImagesAsSafeUrl((this.carouselItems as Array<string>))
-          .subscribe((result) => {
-            this.imagesAsSafeUrl = result;
-            this.isLoading = false;
-          });
-      } else {
-        this.withText = true;
-        (this.carouselItems as Array<CarouselProject>).forEach(value => {
-          this._fileService.getFileFromPathAsSafeUrl(value.image as string).subscribe(safeUrl => {
-            console.log(safeUrl)
-            value.image = safeUrl;
-          })
-        })
-        this.imagesAsSafeUrl = this.carouselItems;
-        this.isLoading = false;
-      }
+    this.carouselData = [];
+    if (typeof this.carouselItems[0] === 'string') {
+      this.prepareSafeUrlArrayForCarousel()
+    } else {
+      this.prepareCarouselProjectArrayForCarousel()
     }
   }
 

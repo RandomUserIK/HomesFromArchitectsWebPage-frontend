@@ -1,6 +1,7 @@
 import {SafeUrl} from '@angular/platform-browser';
 
 export interface CarouselProject {
-  href: number;
+  id: number;
   image: string | SafeUrl;
+  title: string;
 }
