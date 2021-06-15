@@ -11,7 +11,6 @@ $theme-colors: (
 
 .italic-text {
   font-size: 1rem;
-  font-style: italic;
   color: map_get($theme-colors, "light-grey");
 }
 
