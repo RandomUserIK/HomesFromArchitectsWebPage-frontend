@@ -41,6 +41,11 @@ export class BlogService {
       });
   }
 
+  public getRandomBlogArticle(size: number): Observable<PageableBlogArticleMessageResource> {
+    return this._httpClient
+      .get<PageableBlogArticleMessageResource>(`${this.resource.address}/random?size=${size}`);
+  }
+
   // tslint:disable-next-line:max-line-length
   public getBlogArticlesOnPage(page: number, pageSize: number = 10, isGalleryPreview = false): Observable<PageableBlogArticleMessageResource> {
     return this._httpClient
