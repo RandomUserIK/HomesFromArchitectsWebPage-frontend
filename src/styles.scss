@@ -3,12 +3,26 @@
 @import "~ngx-lightbox/lightbox.css";
 
 @font-face {
-  font-family: "OpenSans";
-  src: local("OpenSans"), url(assets/fonts/OpenSans.ttf) format("truetype");
+  font-family: "tisapro";
+  src: local("tisapro"), url(assets/fonts/tisapro.woff) format("truetype");
+}
+
+@font-face {
+  font-family: "texgyreadventor-bold";
+  src: local("texgyreadventor-bold"), url(assets/fonts/texgyreadventor-bold.otf) format("truetype");
+}
+
+@font-face {
+  font-family: "texgyreadventor-regular";
+  src: local("texgyreadventor-regular"), url(assets/fonts/texgyreadventor-regular.otf) format("truetype");
 }
 
 * {
-  font-family: "OpenSans", Arial, Helvetica, sans-serif;
+  font-family: "tisapro", Arial, Helvetica, sans-serif;
+
+  .title-text {
+    font-family: "texgyreadventor-bold", Arial, Helvetica, sans-serif;
+  }
 }
 
 @media (min-width: 576px) {

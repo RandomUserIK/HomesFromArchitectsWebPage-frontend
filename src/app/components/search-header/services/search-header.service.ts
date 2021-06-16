@@ -19,17 +19,18 @@ export class SearchHeaderService {
     const title = searchFormValue.projectName &&
       `title=${searchFormValue.projectName}` ||
       null;
-    const personsCount = searchFormValue.enumerationFilters.persons &&
-      `persons=${searchFormValue.enumerationFilters.persons}` ||
+    const rooms = searchFormValue.enumerationFilters.rooms &&
+      `rooms=${searchFormValue.enumerationFilters.rooms}` ||
       null;
-    const price = searchFormValue.enumerationFilters.price &&
-      `price=${searchFormValue.enumerationFilters.price}` ||
+    const hasGarage = searchFormValue.enumerationFilters.hasGarage &&
+      `hasGarage=${searchFormValue.enumerationFilters.hasGarage}` ||
       null;
-    let queryParams = [title, personsCount, price];
+    const hasStorey = searchFormValue.enumerationFilters.hasStorey &&
+      `hasStorey=${searchFormValue.enumerationFilters.hasStorey}` ||
+      null;
+    const queryParams = [title, rooms, hasGarage, hasStorey];
 
-    queryParams = queryParams.filter((it) => it != null);
-
-    return queryParams.join('&');
+    return queryParams.filter((it) => it != null).join('&');
   }
 
 }

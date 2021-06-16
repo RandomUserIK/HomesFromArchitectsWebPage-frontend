@@ -34,12 +34,12 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
     this.projectCategory = this._activatedRoute.snapshot.queryParams.projectCategory;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.resolveTitle();
     this.form = new FormGroup({});
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     if (history.state.projectData) {
       this.initDataFields(history.state.projectData);
     }
@@ -67,7 +67,7 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
     this._autoScrollService.scrollToTop();
   }
 
-  private resolveTitle() {
+  private resolveTitle(): void {
     if (this.projectCategory === 'COMMON') {
       this.title = 'Katalógový projekt';
     } else if (this.projectCategory === 'INDIVIDUAL') {
