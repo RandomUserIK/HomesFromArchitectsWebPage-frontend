@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-interior-description',
@@ -6,4 +7,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./home-interior-description.component.scss']
 })
 export class HomeInteriorDescriptionComponent {
+
+  constructor(private _router: Router) {
+  }
+
+  onLinkClick(): void {
+    this._router.navigate(['/interierovy-dizajn']);
+  }
+
 }

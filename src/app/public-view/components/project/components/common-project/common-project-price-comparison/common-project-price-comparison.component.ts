@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Router} from '@angular/router';
 import {CommonProject} from '../../../../../../models/project/common-project.model';
 
 @Component({
@@ -9,5 +10,12 @@ import {CommonProject} from '../../../../../../models/project/common-project.mod
 export class CommonProjectPriceComparisonComponent {
 
   @Input() project: CommonProject;
+
+  constructor(private _router: Router) {
+  }
+
+  onLinkClick(): void {
+    this._router.navigate(['/obsah-projektu']);
+  }
 
 }
