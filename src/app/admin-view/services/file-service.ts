@@ -37,7 +37,7 @@ export class FileService {
     return this.getFileFromPath(path)
       .pipe(
         map((image) => {
-          return this._sanitizer.bypassSecurityTrustUrl(
+          return this._sanitizer.bypassSecurityTrustUrl( // NOSONAR
             URL.createObjectURL(new Blob([image], {type: 'application/octet-stream'}))
           );
         })
