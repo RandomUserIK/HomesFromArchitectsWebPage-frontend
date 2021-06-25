@@ -13,7 +13,7 @@ export class ProjectCustomerRequestComponent {
   constructor(private _router: Router) {
   }
 
-  onButtonClick(): void {
+  public onButtonClick(): void {
     this._router.navigate([`/objednavka/${this.projectTitle}`]);
   }
 

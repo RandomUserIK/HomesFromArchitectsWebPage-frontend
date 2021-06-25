@@ -11,7 +11,7 @@ export class FooterComponent {
   constructor(private _router: Router) {
   }
 
-  onLinkClick(): void {
+  public onLinkClick(): void {
     this._router.navigate(['/gdpr']);
   }
 

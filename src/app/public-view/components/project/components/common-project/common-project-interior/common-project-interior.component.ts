@@ -12,7 +12,7 @@ export class CommonProjectInteriorComponent {
   constructor(private _router: Router) {
   }
 
-  onLinkClick(): void {
+  public onLinkClick(): void {
     this._router.navigate(['/interierovy-dizajn']);
   }
 
