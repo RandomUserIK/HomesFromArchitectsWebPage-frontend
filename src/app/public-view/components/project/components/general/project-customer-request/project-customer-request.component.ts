@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-customer-request',
@@ -6,4 +7,14 @@ import {Component} from '@angular/core';
   styleUrls: ['./project-customer-request.component.scss']
 })
 export class ProjectCustomerRequestComponent {
+
+  @Input() projectTitle: string;
+
+  constructor(private _router: Router) {
+  }
+
+  public onButtonClick(): void {
+    this._router.navigate([`/objednavka/${this.projectTitle}`]);
+  }
+
 }
