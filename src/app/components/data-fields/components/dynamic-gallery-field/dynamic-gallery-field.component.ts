@@ -63,7 +63,7 @@ export class DynamicGalleryFieldComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.galleryPreviews.push(this.sanitizer.bypassSecurityTrustUrl(reader.result as string));
+      this.galleryPreviews.push(this.sanitizer.bypassSecurityTrustUrl(reader.result as string)); // NOSONAR
     }
   }
 

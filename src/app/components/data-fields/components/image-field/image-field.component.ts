@@ -44,7 +44,7 @@ export class ImageFieldComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(photoFile);
     reader.onload = () => {
-      this.dataField.imgSrc = this.sanitizer.bypassSecurityTrustUrl(reader.result as string)
+      this.dataField.imgSrc = this.sanitizer.bypassSecurityTrustUrl(reader.result as string) // NOSONAR
     }
   }
 
