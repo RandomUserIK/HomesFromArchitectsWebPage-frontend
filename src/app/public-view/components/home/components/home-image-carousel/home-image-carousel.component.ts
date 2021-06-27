@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectsService} from '../../../../../services/projects-service';
 import {PageableProjectMessageResource} from '../../../../../models/web/response-bodies/project/pageable-project-message-resource';
-import {CarouselProject} from "../../models/CarouselProject";
+import {CarouselProject} from '../../models/CarouselProject';
 
 
 @Component({
