@@ -32,7 +32,9 @@
       </div>
     </ng-template>
     <ng-template #elseBlock>
-      <app-empty-search-result [displayText]="projectsNotFoundMessage"></app-empty-search-result>
+      <app-empty-search-result
+        [displayText]="isCommon ? commonProjectsNotFoundMessage : projectsNotFoundMessage">
+      </app-empty-search-result>
     </ng-template>
   </div>
   <app-contact></app-contact>

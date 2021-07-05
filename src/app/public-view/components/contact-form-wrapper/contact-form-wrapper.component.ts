@@ -7,12 +7,11 @@ import {AutoScrollService} from '../../../services/auto-scroll.service';
 })
 export class ContactFormWrapperComponent implements OnInit {
 
-  constructor(private _scrollService: AutoScrollService) {
+  constructor(private _autoScrollService: AutoScrollService) {
   }
 
   ngOnInit(): void {
-    this._scrollService.scrollToTop();
+    this._autoScrollService.scrollToTop();
   }
 
 }
-

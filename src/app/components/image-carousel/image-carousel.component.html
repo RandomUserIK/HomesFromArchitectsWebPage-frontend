@@ -4,12 +4,15 @@
   </div>
 </div>
 <ngb-carousel [interval]="dataInterval" [pauseOnFocus]="pauseOnFocus" [pauseOnHover]="pauseOnHover" *ngIf="!isLoading">
-  <ng-template ngbSlide *ngFor="let img of imagesAsSafeUrl; let index = index">
+  <ng-template ngbSlide *ngFor="let data of carouselData; let index = index">
     <div class="picsum-img-wrapper">
-      <img [src]="img"
+      <img [src]="withText ? data.image : data"
            [alt]="index"
            [ngClass]="shouldDisplayAnimation ? 'w-100 image-animation' : 'w-100'"
            (click)="onImageClick(index)">
+      <div *ngIf="withText" class="carousel-caption">
+        <h3 class="carousel-image"><a href="/katalogove-projekty/{{data.id}}">{{data.title}}</a></h3>
+      </div>
     </div>
   </ng-template>
 </ngb-carousel>

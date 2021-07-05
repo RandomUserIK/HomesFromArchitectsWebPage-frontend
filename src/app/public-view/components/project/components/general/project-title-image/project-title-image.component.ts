@@ -4,8 +4,7 @@ import {FileService} from '../../../../../../admin-view/services/file-service';
 
 @Component({
   selector: 'app-project-title-image',
-  templateUrl: './project-title-image.component.html',
-  styleUrls: ['./project-title-image.component.scss']
+  templateUrl: './project-title-image.component.html'
 })
 export class ProjectTitleImageComponent implements OnInit {
 
@@ -22,7 +21,7 @@ export class ProjectTitleImageComponent implements OnInit {
     this._fileService.getFileFromPathAsSafeUrl(this.titleImagePath).subscribe((imageSafeUrl) => {
       this.titleImagePreview = imageSafeUrl;
       this.isLoading = false;
-    })
+    });
   }
 
 }

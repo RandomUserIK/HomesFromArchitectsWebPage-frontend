@@ -32,7 +32,8 @@ export class ProjectsGalleryComponent extends AbstractProjectGalleryDirective im
       'presne podľa vašich požiadaviek.'
   }
 
-  public readonly projectsNotFoundMessage: string = 'PRE ZADANÝ FILTER SA NENAŠLI ŽIADNE PROJEKTY';
+  public readonly projectsNotFoundMessage: string = 'NENAŠLI SA ŽIADNE PROJEKTY';
+  public readonly commonProjectsNotFoundMessage: string = 'PRE ZADANÝ FILTER SA NENAŠLI ŽIADNE PROJEKTY';
   public isIndividual = false;
   public isCommon = false;
 
