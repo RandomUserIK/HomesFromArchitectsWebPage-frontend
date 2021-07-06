@@ -1,60 +1,30 @@
 import {Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
-import {beat, bounce, flip, headShake, heartBeat, jello, pulse, rubberBand, shake, swing, tada, wobble} from './attention-seekers';
 import {delay, distinctUntilChanged, map, startWith, takeWhile} from 'rxjs/operators';
 import {coerceBooleanProperty, coerceNumberProperty} from '@angular/cdk/coercion';
 import {Subject, Subscription} from 'rxjs';
 import {state, style, trigger} from '@angular/animations';
 import {AnimateService} from './animate.service';
-import {bounceIn, bumpIn, fadeIn, flipIn, jackInTheBox, landing, rollIn, zoomIn} from './entrances';
-import {bounceOut, fadeOut, hinge, rollOut, zoomOut} from './exits';
+import {fadeIn, zoomIn} from './entrances';
+import {fadeOut, hinge, zoomOut} from './exits';
 
 export type wmAnimateSpeed = 'slower' | 'slow' | 'normal' | 'fast' | 'faster';
 export type wmAnimations =
-  'beat'
-  | 'bounce'
-  | 'flip'
-  | 'headShake'
-  | 'heartBeat'
-  | 'jello'
-  | 'pulse'
-  | 'rubberBand'
-  | 'shake'
-  | 'swing'
-  | 'tada'
-  | 'wobble'
-  | 'bumpIn'
-  | 'bounceIn'
-  | 'bounceInDown'
-  | 'bounceInLeft'
-  | 'bounceInUp'
-  | 'bounceInRight'
   | 'fadeIn'
   | 'fadeInRight'
   | 'fadeInLeft'
   | 'fadeInUp'
   | 'fadeInDown'
-  | 'flipInX'
-  | 'flipInY'
-  | 'jackInTheBox'
-  | 'landing'
-  | 'rollIn'
   | 'zoomIn'
   | 'zoomInDown'
   | 'zoomInLeft'
   | 'zoomInUp'
   | 'zoomInRight'
-  | 'bounceOut'
-  | 'bounceOutDown'
-  | 'bounceOutUp'
-  | 'bounceOutRight'
-  | 'bounceOutLeft'
   | 'fadeOut'
   | 'fadeOutRight'
   | 'fadeOutLeft'
   | 'fadeOutDown'
   | 'fadeOutUp'
   | 'hinge'
-  | 'rollOut'
   | 'zoomOut'
   | 'zoomOutDown'
   | 'zoomOutRight'
@@ -66,12 +36,10 @@ export type wmAnimations =
   selector: '[wmAnimate]',
   template: '<ng-content></ng-content>',
   animations: [trigger('animate', [
-    // Attention seekers
-    ...beat, ...bounce, ...flip, ...headShake, ...heartBeat, ...jello, ...pulse, ...rubberBand, ...shake, ...swing, ...tada, ...wobble,
     // Entrances
-    ...bumpIn, ...bounceIn, ...fadeIn, ...flipIn, ...jackInTheBox, ...landing, ...rollIn, ...zoomIn,
+    ...fadeIn, ...zoomIn,
     // Exits
-    ...bounceOut, ...fadeOut, ...hinge, ...rollOut, ...zoomOut,
+    ...fadeOut, ...hinge, ...zoomOut,
     // None
     state('none', style('*')), state('idle-none', style('*'))
   ])]

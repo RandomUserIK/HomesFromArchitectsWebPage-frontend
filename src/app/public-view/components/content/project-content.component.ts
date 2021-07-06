@@ -6,7 +6,6 @@ import {AutoScrollService} from '../../../services/auto-scroll.service';
 @Component({
   selector: 'app-project-content',
   templateUrl: './project-content.component.html',
-  styleUrls: ['./project-content.component.scss']
 })
 export class ProjectContentComponent implements OnInit {
 

@@ -1,23 +1,33 @@
-import { Directive, Input, OnChanges, SimpleChanges, Optional, Inject, ElementRef, forwardRef, NgZone } from '@angular/core';
-import { ScrollDispatcher, ViewportRuler } from '@angular/cdk/scrolling';
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
-import { AnimateConfig, ANIMATE_CONFIG } from './animate.config'
-import { AnimateService } from './animate.service';
+import {
+  Directive,
+  ElementRef,
+  forwardRef,
+  Inject,
+  Input,
+  NgZone,
+  OnChanges,
+  Optional,
+  SimpleChanges
+} from '@angular/core';
+import {ScrollDispatcher, ViewportRuler} from '@angular/cdk/scrolling';
+import {coerceBooleanProperty, coerceNumberProperty} from '@angular/cdk/coercion';
+import {ANIMATE_CONFIG, AnimateConfig} from './animate.config'
+import {AnimateService} from './animate.service';
 
 @Directive({
   selector: '[wmAnimateView]',
-   providers: [
+  providers: [
     // Provides the AnimateDirective as the service, so, for the children components to trigger within a modified viewport
-    { provide: AnimateService, useExisting: forwardRef(() => AnimateDirective) },
+    {provide: AnimateService, useExisting: forwardRef(() => AnimateDirective)},
   ]
 })
 export class AnimateDirective extends AnimateService implements OnChanges {
 
   constructor(private elref: ElementRef<HTMLElement>,
-                      scroll: ScrollDispatcher,
-                      port: ViewportRuler,
-                      zone: NgZone,
-                      @Optional() @Inject(ANIMATE_CONFIG) config?: AnimateConfig) {
+              scroll: ScrollDispatcher,
+              port: ViewportRuler,
+              zone: NgZone,
+              @Optional() @Inject(ANIMATE_CONFIG) config?: AnimateConfig) {
     // Constructs the parent AnimateService
     super(scroll, port, zone, config);
   }
