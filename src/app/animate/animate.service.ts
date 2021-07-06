@@ -1,8 +1,8 @@
-import { map, startWith, distinctUntilChanged, take, scan, switchMap, debounceTime, shareReplay } from 'rxjs/operators';
-import { AnimateConfig, ANIMATE_CONFIG, animateConfigFactory } from './animate.config'
-import { Injectable, ElementRef, NgZone, Inject, Optional } from '@angular/core';
-import { ScrollDispatcher, ViewportRuler } from '@angular/cdk/scrolling';
-import { Observable, BehaviorSubject, of, OperatorFunction } from 'rxjs';
+import {map, startWith, distinctUntilChanged, take, scan, switchMap, debounceTime, shareReplay} from 'rxjs/operators';
+import {AnimateConfig, ANIMATE_CONFIG, animateConfigFactory} from './animate.config'
+import {Injectable, ElementRef, NgZone, Inject, Optional} from '@angular/core';
+import {ScrollDispatcher, ViewportRuler} from '@angular/cdk/scrolling';
+import {Observable, BehaviorSubject, of, OperatorFunction} from 'rxjs';
 
 /** Configures alternative containers for AOS triggering */
 export interface AnimateOptions {
@@ -38,7 +38,7 @@ export class AnimateService {
   }
 
   constructor(private scroll: ScrollDispatcher, private viewPort: ViewportRuler, private zone: NgZone,
-  @Optional() @Inject(ANIMATE_CONFIG) private config?: AnimateConfig) {
+              @Optional() @Inject(ANIMATE_CONFIG) private config?: AnimateConfig) {
 
     // Gets the module configuration
     this.config = animateConfigFactory(config);
@@ -46,11 +46,11 @@ export class AnimateService {
     // Computes a common view observable to support the 'scrolling' triggering method
     this.view$ = this.options$.pipe(
       // Tracks for viewport changes giving it 100ms time to accurately update for orientation changes
-      switchMap( options => viewPort.change(100).pipe(
+      switchMap(options => viewPort.change(100).pipe(
         // Starts with a value
-        startWith( null ),
+        startWith(null),
         // Gets the viewport
-        map( () => {
+        map(() => {
           // Picks the ClientRect of the relevant container
           const rt = (options.root instanceof Element) ? options.root.getBoundingClientRect() : this.viewPort.getViewportRect();
           // Combines the various options to build the final container
@@ -59,7 +59,7 @@ export class AnimateService {
           const right = rt.right + (options.right || this.config.offsetRight || 0);
           const bottom = rt.bottom + (options.bottom || this.config.offsetBottom || 0);
           // Returns the reultins client rect
-          return { top, left, bottom, right, height: bottom - top, width: right - left };
+          return {top, left, bottom, right, height: bottom - top, width: right - left};
         }),
         // Debounces to aggregate fast changes (like during orientation changes)
         debounceTime(20),
@@ -77,20 +77,22 @@ export class AnimateService {
       // Waits just once
       take(1),
       // Triggers the play and replay requests
-      switchMap( () => source ),
+      switchMap(() => source),
       // Triggers upon the most suitable method
-      switchMap( trigger =>
-        // Simply return the sourced trigger when threshold is 0
-        (threshold <= 0) ? of(trigger) : (
-          // Check upon the configured method otherwise
-          this.useIntersectionObserver ?
-          // Triggers upon element intersection (IntersectionObserver API)
-          this.intersecting(elm, threshold) :
-          // Triggers upon cdk/scrolling
-          this.scrolling(elm ,threshold)
-        )
+      switchMap(trigger => {
+          // Simply return the sourced trigger when threshold is 0
+          if (threshold <= 0) {
+            return of(trigger);
+          } else {
+            if (this.useIntersectionObserver) {
+              return this.intersecting(elm, threshold);
+            } else {
+              return this.scrolling(elm, threshold);
+            }
+          }
+        }
       )
-    );
+    )
   }
 
   // Triggers the animation on intersection (using the IntersectionObserver API)
@@ -98,7 +100,7 @@ export class AnimateService {
 
     return this.options$.pipe(
       // Turns the options into a suitable configuration for the IntersectionObserver AnimateOptions
-      map( options => {
+      map(options => {
         // Identifies an optional element to be used as the container
         const root = options.root || null;
         // Merges the margins from both the global config and the local options
@@ -109,27 +111,31 @@ export class AnimateService {
         // Computes the rootMargin string acordingly
         const rootMargin = `${-top}px ${-right}px ${-bottom}px ${-left}px`;
         // Returns the proper initialization object
-        return { root, rootMargin } as IntersectionObserverInit;
+        return {root, rootMargin} as IntersectionObserverInit;
       }),
       // Observes the element
-      switchMap( options => this.observe(elm, threshold, options) )
+      switchMap(options => this.observe(elm, threshold, options))
     );
   }
 
   /** Builds an Obsevable out of the IntersectionObserver API */
   private observe(elm: ElementRef<HTMLElement>, threshold: number, options: IntersectionObserverInit): Observable<boolean> {
 
-    return new Observable<boolean>( subscriber => {
+    return new Observable<boolean>(subscriber => {
       // Creates a single entry observer
-      const observer = new IntersectionObserver( entries => {
+      const observer = new IntersectionObserver(entries => {
         // Monitors the only enry intesection ratio
         const ratio = entries[0].intersectionRatio;
         // Emits true whenever the intersection cross the threashold (making sure to run in the angular zone)
-        if(ratio >= threshold) { this.zone.run( () => subscriber.next(true) ); }
+        if (ratio >= threshold) {
+          this.zone.run(() => subscriber.next(true));
+        }
         // Emits false whenever the intersection cross back to full invisibility (making sure to run in the angular zone)
-        if(ratio <= 0) { this.zone.run( () => subscriber.next(false) ); }
-      // Initializes the observer with the given parameters
-      }, { ...options, threshold: [ 0, threshold ] });
+        if (ratio <= 0) {
+          this.zone.run(() => subscriber.next(false));
+        }
+        // Initializes the observer with the given parameters
+      }, {...options, threshold: [0, threshold]});
 
       // Starts observing the target element
       observer.observe(elm.nativeElement);
@@ -145,13 +151,13 @@ export class AnimateService {
       // Makes sure triggering the start no matter there's no scroll event hits yet
       startWith(0),
       // Maps the scrolling to the element visibility value
-      switchMap( () => this.visibility(elm) ),
+      switchMap(() => this.visibility(elm)),
       // Applies an hysteresys, so, to trigger the animation on based on the treshold while off on full invisibility
       scan((result, visiblility) => (visiblility >= threshold) || (result && visiblility > 0), false),
       // Distincts the resulting triggers
       distinctUntilChanged(),
       // Runs within the angular zone to trigger change detection back on
-      source => new Observable( subscriber => source.subscribe( value => this.zone.run( () => subscriber.next(value) ) ) )
+      source => new Observable(subscriber => source.subscribe(value => this.zone.run(() => subscriber.next(value))))
     );
   }
 
@@ -159,14 +165,16 @@ export class AnimateService {
   private visibility(elm: ElementRef<HTMLElement>): Observable<number> {
 
     // Resolves from the latest viewport
-    return this.view$.pipe( map( view => {
+    return this.view$.pipe(map(view => {
 
       // Gets the element's bounding rect
       const rect = elm && elm.nativeElement && elm.nativeElement.getBoundingClientRect();
-      if(!rect) { return 0; }
+      if (!rect) {
+        return 0;
+      }
 
       // Return 1.0 when the element is fully within the viewport
-      if(rect.left > view.left - 1 && rect.top > view.top - 1 && rect.right < view.right + 1 && rect.bottom < view.bottom + 1) {
+      if (rect.left > view.left - 1 && rect.top > view.top - 1 && rect.right < view.right + 1 && rect.bottom < view.bottom + 1) {
         return 1;
       }
 

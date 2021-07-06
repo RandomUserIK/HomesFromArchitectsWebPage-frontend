@@ -5,7 +5,7 @@ import {Subject, Subscription} from 'rxjs';
 import {state, style, trigger} from '@angular/animations';
 import {AnimateService} from './animate.service';
 import {fadeIn, zoomIn} from './entrances';
-import {fadeOut, hinge, zoomOut} from './exits';
+import {fadeOut, hinge} from './exits';
 
 export type wmAnimateSpeed = 'slower' | 'slow' | 'normal' | 'fast' | 'faster';
 export type wmAnimations =
@@ -25,11 +25,6 @@ export type wmAnimations =
   | 'fadeOutDown'
   | 'fadeOutUp'
   | 'hinge'
-  | 'zoomOut'
-  | 'zoomOutDown'
-  | 'zoomOutRight'
-  | 'zoomOutUp'
-  | 'zoomOutLeft'
   | 'none';
 
 @Component({
@@ -39,7 +34,7 @@ export type wmAnimations =
     // Entrances
     ...fadeIn, ...zoomIn,
     // Exits
-    ...fadeOut, ...hinge, ...zoomOut,
+    ...fadeOut, ...hinge,
     // None
     state('none', style('*')), state('idle-none', style('*'))
   ])]
