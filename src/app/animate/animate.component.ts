@@ -4,7 +4,7 @@ import {coerceBooleanProperty, coerceNumberProperty} from '@angular/cdk/coercion
 import {Subject, Subscription} from 'rxjs';
 import {state, style, trigger} from '@angular/animations';
 import {AnimateService} from './animate.service';
-import {fadeIn, zoomIn} from './entrances';
+import {fadeIn} from './entrances';
 import {fadeOut, hinge} from './exits';
 
 export type wmAnimateSpeed = 'slower' | 'slow' | 'normal' | 'fast' | 'faster';
@@ -14,11 +14,6 @@ export type wmAnimations =
   | 'fadeInLeft'
   | 'fadeInUp'
   | 'fadeInDown'
-  | 'zoomIn'
-  | 'zoomInDown'
-  | 'zoomInLeft'
-  | 'zoomInUp'
-  | 'zoomInRight'
   | 'fadeOut'
   | 'fadeOutRight'
   | 'fadeOutLeft'
@@ -32,7 +27,7 @@ export type wmAnimations =
   template: '<ng-content></ng-content>',
   animations: [trigger('animate', [
     // Entrances
-    ...fadeIn, ...zoomIn,
+    ...fadeIn,
     // Exits
     ...fadeOut, ...hinge,
     // None
