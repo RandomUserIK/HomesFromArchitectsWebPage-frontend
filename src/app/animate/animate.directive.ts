@@ -33,7 +33,7 @@ export class AnimateDirective extends AnimateService implements OnChanges {
   }
 
   /** When true instructs the directive to use the element's bounding rect as the animation view */
-  @Input() useElement: boolean = false;
+  @Input() useElement = false;
 
   /** Optional top offset */
   @Input() top: number;
