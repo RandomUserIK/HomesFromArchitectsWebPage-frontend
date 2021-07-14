@@ -1,5 +1,4 @@
-<div class="container padding-bottom">
-  <h3 class="text-center font-weight-bold title-style text-font">{{textSection.title}}</h3>
-  <hr class="line-under-text" [style.width]="textSection.separatingLineWidth">
-  <p class="text-center title-text font-weight-light text-font" [innerHTML]="textSection.text"></p>
+<div class="container mt-5 mb-5 pb-2" wmAnimate="fadeIn" speed="faster" aos>
+  <h1 class="text-center">{{textSection.title}}</h1>
+  <p class="text-center" [innerHTML]="textSection.text"></p>
 </div>

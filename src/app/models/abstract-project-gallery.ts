@@ -14,7 +14,7 @@ import {ProjectsGalleryStateService} from '../public-view/components/projects-ga
 export abstract class AbstractProjectGalleryDirective extends AbstractGallery implements OnInit, OnDestroy {
 
   public stateService: ProjectsGalleryStateService;
-  protected autoScrollService: AutoScrollService;
+  protected scrollService: AutoScrollService;
   protected activatedRoute: ActivatedRoute;
   protected projectsService: ProjectsService;
   protected searchHeaderService: SearchHeaderService;
@@ -28,7 +28,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
   protected constructor(injector: Injector) {
     super();
     this.stateService = injector.get(ProjectsGalleryStateService);
-    this.autoScrollService = injector.get(AutoScrollService);
+    this.scrollService = injector.get(AutoScrollService);
     this.activatedRoute = injector.get(ActivatedRoute);
     this.projectsService = injector.get(ProjectsService);
     this.searchHeaderService = injector.get(SearchHeaderService);
@@ -40,7 +40,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
         switchMap((data) => {
           this.categoryTitle = data.projectsTitle;
           this.projectCategory = data.projectCategory;
-          this.autoScrollService.scrollToTop();
+          this.scrollService.scrollToTop();
           return this.handleProjectsList(
             this.stateService.currentPage,
             this.projectCategory,
@@ -67,7 +67,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
 
   private handleProjectsList(currentPage: number, projectCategory: string, query: string): Observable<PageableProjectMessageResource> {
     this.isLoading = true;
-    this.autoScrollService.scrollToTop();
+    this.scrollService.scrollToTop();
     return this.projectsService.getAllOnPageAndCategoryAndQuery(currentPage - 1, projectCategory, query);
   }
 

@@ -1,5 +1,10 @@
 {
   "extends": "tslint:recommended",
+  "linterOptions": {
+    "exclude": [
+      "src/app/animate/animate.component.ts"
+    ]
+  },
   "rulesDirectory": [
     "codelyzer"
   ],

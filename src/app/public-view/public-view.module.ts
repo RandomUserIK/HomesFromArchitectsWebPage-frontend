@@ -105,7 +105,7 @@ const routes: Routes = [
     OrderModule,
     RouterModule.forChild(routes),
     BlogArticleModule,
-    BlogGalleryModule
+    BlogGalleryModule,
   ]
 })
 export class PublicViewModule {

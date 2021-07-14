@@ -7,6 +7,7 @@ import {EmptySearchResultModule} from '../empty-search-result/empty-search-resul
 import {BlogGalleryComponent} from './blog-gallery.component';
 import {BlogGalleryArticleComponent} from './components/blog-gallery-article/blog-gallery-article.component';
 import {BlogGalleryFooterComponent} from './components/blog-gallery-footer/blog-gallery-footer.component';
+import {AnimateModule} from '../../../animate/animate.module';
 
 
 @NgModule({
@@ -15,13 +16,14 @@ import {BlogGalleryFooterComponent} from './components/blog-gallery-footer/blog-
     BlogGalleryFooterComponent,
     BlogGalleryArticleComponent
   ],
-  imports: [
-    CommonModule,
-    ContactModule,
-    LoadingModule,
-    NgbPaginationModule,
-    EmptySearchResultModule
-  ]
+    imports: [
+        CommonModule,
+        ContactModule,
+        LoadingModule,
+        NgbPaginationModule,
+        EmptySearchResultModule,
+        AnimateModule
+    ]
 })
 export class BlogGalleryModule {
 }

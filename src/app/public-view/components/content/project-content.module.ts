@@ -7,6 +7,7 @@ import {ExtendedContentHeaderComponent} from './components/extended-content-head
 import {ExtendedContentComponent} from './components/extended-content/extended-content.component';
 import {ContactModule} from '../contact/contact.module';
 import {ContentIndividualProjectPhotosComponent} from './components/content-individual-project-photos/content-individual-project-photos.component';
+import {AnimateModule} from '../../../animate/animate.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {ContentIndividualProjectPhotosComponent} from './components/content-indi
   ],
   imports: [
     CommonModule,
-    ContactModule
+    ContactModule,
+    AnimateModule
   ],
   exports: [
     ProjectContentComponent,
