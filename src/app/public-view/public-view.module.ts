@@ -30,17 +30,75 @@ const routes: Routes = [
     path: '', component: PublicViewComponent, children: [
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        data: {
+          seo: {
+            title: 'Home Page Of ',
+            id: '',
+            metaTags: [
+              {
+                name: 'description',
+                content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
+              },
+              {property: 'og:title', content: 'GOT Home Page ⚔'},
+              {
+                proprety: 'og:description',
+                content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
+              },
+              {name: "og:url", content: "summary_large_image"},
+              //{ name: "og:image", content: "summary_large_image" },
+              {name: "og:image:alt", content: "summary_large_image"},
+              {name: "og:image:height", content: "summary_large_image"},
+              {name: "og:image:width", content: "summary_large_image"},
+              {name: "twitter:card", content: "summary_large_image"},
+              {name: "twitter:title", content: "summary_large_image"},
+              {name: "twitter:description", content: "summary_large_image"},
+              //{ name: "twitter:image", content: "summary_large_image" },
+              {name: "twitter:site", content: "@samvloeberghs"}
+            ]
+          }
+        }
       },
       {
         path: 'individualne-projekty',
         component: ProjectsGalleryComponent,
-        data: {projectsTitle: 'Individuálne projekty', projectCategory: 'INDIVIDUAL'}
+        data: {
+          projectsTitle: 'Individuálne projekty',
+          projectCategory: 'INDIVIDUAL'
+        }
       },
       {
         path: 'katalogove-projekty',
         component: ProjectsGalleryComponent,
-        data: {projectsTitle: 'Katalógové projekty', projectCategory: 'COMMON'}
+        data: {
+          projectsTitle: 'Katalógové projekty',
+          projectCategory: 'COMMON',
+          seo: {
+            title: 'Home Page Of ',
+            metaTags: [
+              {
+                name: 'description',
+                content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
+              },
+              {property: 'og:title', content: 'GOT Home Page ⚔'},
+              {
+                proprety: 'og:description',
+                content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
+              },
+              {name: "og:url", content: "summary_large_image"},
+              //{ name: "og:image", content: "summary_large_image" },
+              {name: "og:image:alt", content: "summary_large_image"},
+              {name: "og:image:height", content: "summary_large_image"},
+              {name: "og:image:width", content: "summary_large_image"},
+              {name: "twitter:card", content: "summary_large_image"},
+              {name: "twitter:title", content: "summary_large_image"},
+              {name: "twitter:description", content: "summary_large_image"},
+              //{ name: "twitter:image", content: "summary_large_image" },
+              {name: "twitter:site", content: "@samvloeberghs"}
+            ]
+          }
+        }
+
       },
       {
         path: 'interierovy-dizajn',
@@ -53,7 +111,34 @@ const routes: Routes = [
       },
       {
         path: 'katalogove-projekty/:id',
-        component: CommonProjectComponent
+        component: CommonProjectComponent,
+        data: {
+          seo: {
+            title: 'Home Page Of KATALOGY',
+            id: '',
+            metaTags: [
+              {
+                name: 'description',
+                content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
+              },
+              {property: 'og:title', content: 'GOT Home Page ⚔'},
+              {
+                proprety: 'og:description',
+                content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
+              },
+              {name: "og:url", content: "summary_large_image"},
+              //{ name: "og:image", content: "summary_large_image" },
+              {name: "og:image:alt", content: "summary_large_image"},
+              {name: "og:image:height", content: "summary_large_image"},
+              {name: "og:image:width", content: "summary_large_image"},
+              {name: "twitter:card", content: "summary_large_image"},
+              {name: "twitter:title", content: "summary_large_image"},
+              {name: "twitter:description", content: "summary_large_image"},
+              //{ name: "twitter:image", content: "summary_large_image" },
+              {name: "twitter:site", content: "@samvloeberghs"}
+            ]
+          }
+        }
       },
       {
         path: 'interierovy-dizajn/:id',

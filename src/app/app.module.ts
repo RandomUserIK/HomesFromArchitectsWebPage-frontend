@@ -25,14 +25,14 @@ const routes: Routes = [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AuthModule,
     HttpClientModule,
     IvyGalleryModule,
     NgbModule,
     NotFoundModule,
-    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, initialNavigation: 'enabled' }),
     QuillModule.forRoot()
   ],
   providers: [

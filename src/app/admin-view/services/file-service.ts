@@ -52,6 +52,20 @@ export class FileService {
       });
   }
 
+  public getTitlePhotoFromPath(id: string, type: string): Observable<SafeUrl> {
+    return this._httpClient
+      .get(`${this.resource.address}/title?id=${id}&type=${type}`, {
+        headers: new HttpHeaders({Accept: 'application/octet-stream'}),
+        responseType: 'blob'
+      }).pipe(
+        map((image) => {
+          return this._sanitizer.bypassSecurityTrustUrl(
+            URL.createObjectURL(new Blob([image], {type: 'application/octet-stream'}))
+          );
+        })
+      )
+  }
+
   public handleFileInput(event: any, projectId: string, type: string): void {
     const files = event.target.files;
     this.postFile(files.item(0), +projectId, type).subscribe();
