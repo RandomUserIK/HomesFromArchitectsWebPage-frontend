@@ -51,5 +51,4 @@ export class ProjectGalleryComponent implements OnInit {
       this._router.navigate([`${navigateTo}/${this.project.id}`]);
     }
   }
-
 }

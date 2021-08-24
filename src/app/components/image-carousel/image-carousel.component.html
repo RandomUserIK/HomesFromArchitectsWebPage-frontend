@@ -11,7 +11,7 @@
            [ngClass]="shouldDisplayAnimation ? 'w-100 image-animation' : 'w-100'"
            (click)="onImageClick(index)">
       <div *ngIf="withText" class="carousel-caption">
-        <h3 class="carousel-image"><a href="/katalogove-projekty/{{data.id}}">{{data.title}}</a></h3>
+        <h3 class="carousel-image"><a routerLink="/katalogove-projekty/{{data.id}}">{{data.title}}</a></h3>
       </div>
     </div>
   </ng-template>

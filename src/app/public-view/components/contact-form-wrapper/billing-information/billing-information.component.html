@@ -9,7 +9,7 @@
           <ng-container *ngFor="let billingInformationContent of billingInformationEntry.content; let i = index">
             <div class="title-text offset-md-1 col-md-5 text-md-left col-12 text-center mt-2"
                  [class.offset-md-1]="i == 0"
-                 [class.offset-6]="i != 0">
+                 [class.offset-md-6]="i != 0">
               <span><strong>{{billingInformationContent.name}}</strong></span>
             </div>
             <div *ngFor="let information of billingInformationContent.information"

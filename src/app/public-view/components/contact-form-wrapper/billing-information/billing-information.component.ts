@@ -28,14 +28,15 @@ export class BillingInformationComponent {
     },
     {
       title: 'Fakturačné údaje',
-      content: [{
-        name: 'Ing. arch. Dávid Chaľ,',
-        information: [
-          'Laborecká 52, 06601 Humenné',
-          'IČO: 51 00 69 36',
-          'DIČ: 1123647998 Nie je platca DPH'
-        ]
-      },
+      content: [
+        {
+          name: 'Ing. arch. Dávid Chaľ,',
+          information: [
+            'Laborecká 52, 06601 Humenné',
+            'IČO: 51 00 69 36',
+            'DIČ: 1123647998 Nie je platca DPH'
+          ]
+        },
         {
           name: 'Ing. arch. Nikola Miklovičová,',
           information: [

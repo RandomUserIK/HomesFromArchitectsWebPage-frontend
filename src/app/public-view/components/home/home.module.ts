@@ -13,6 +13,7 @@ import {instagramSearchInjectables} from './services/Instagram-search-injectable
 import {InstagramSearchService} from './services/instagram-search.service';
 import { HomeImageCarouselComponent } from './components/home-image-carousel/home-image-carousel.component';
 import {AnimateModule} from '../../../animate/animate.module';
+import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {AnimateModule} from '../../../animate/animate.module';
         ContactModule,
         RouterModule,
         ImageCarouselModule,
-        AnimateModule
+        AnimateModule,
+        NgbCarouselModule
     ]
 })
 export class HomeModule {
