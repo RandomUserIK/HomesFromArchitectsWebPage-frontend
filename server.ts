@@ -1,20 +1,23 @@
 import 'zone.js/dist/zone-node';
 
-import { ngExpressEngine } from '@nguniversal/express-engine';
+import {ngExpressEngine} from '@nguniversal/express-engine';
 import express from 'express';
-import { join } from 'path';
-
-import { AppServerModule } from './src/main.server';
-import { APP_BASE_HREF } from '@angular/common';
-import { existsSync } from 'fs';
+import {join} from 'path';
+import {Blob} from 'buffer';
+import {AppServerModule} from './src/main.server';
+import {APP_BASE_HREF} from '@angular/common';
+import {existsSync} from 'fs';
 import isbot from 'isbot';
 import * as path from 'path';
-import { HOST_URL } from './src/app/tokens/host-url';
+import {HOST_URL} from './src/app/tokens/host-url';
+
 const MockBrowser = require('mock-browser').mocks.MockBrowser;
 const mock = new MockBrowser();
 
 global['document'] = mock.getDocument();
 global['window'] = mock.getWindow();
+global.Blob = require('blob');
+// global['blob'] = Blob;
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
@@ -53,12 +56,14 @@ export function app() {
     // check whether User-Agent is bot
     if (isbot(req.header('User-Agent'))) {
       console.log('SSR');
-      res.render(indexHtml, { req, providers: [
-          { provide: APP_BASE_HREF, useValue: req.baseUrl },
+      res.render(indexHtml, {
+        req, providers: [
+          {provide: APP_BASE_HREF, useValue: req.baseUrl},
 
           // inject hostUrl to become available in Angular DI system on the server
-          { provide: HOST_URL, useValue: hostUrl },
-      ] });
+          {provide: HOST_URL, useValue: hostUrl},
+        ]
+      });
     } else {
       console.log('No SSR');
       res.sendFile(path.join(__dirname, '../browser/index.html'));
