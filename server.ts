@@ -10,7 +10,11 @@ import { existsSync } from 'fs';
 import isbot from 'isbot';
 import * as path from 'path';
 import { HOST_URL } from './src/app/tokens/host-url';
+const MockBrowser = require('mock-browser').mocks.MockBrowser;
+const mock = new MockBrowser();
 
+global['document'] = mock.getDocument();
+global['window'] = mock.getWindow();
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();

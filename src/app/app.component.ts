@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Data, NavigationEnd, Params, Router} from '@angular/router';
-import {combineLatest, EMPTY, forkJoin, Observable, of} from 'rxjs';
-import {filter, isEmpty, map, mergeMap, switchMap} from 'rxjs/operators';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Observable, of} from 'rxjs';
+import {filter, map, mergeMap} from 'rxjs/operators';
 import {SeoService} from './services/SeoService.service';
 import {FileService} from './admin-view/services/file-service';
 
@@ -16,27 +16,26 @@ export interface RouteData {
 })
 export class AppComponent implements OnInit {
   title = 'HomesFromArchitectsWebPage-frontend';
-  private data: RouteData;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute,
               private seoService: SeoService, private fileService: FileService) {
   }
 
-  // private checkIfFetchTitlePhoto(): RouteData{
-  //   if(route.snapshot.routeConfig.path.includes('katalogove-projekty')){
-  //
-  //   }else if(){
-  //
-  //   }else{
-  //     return {type: '', isProjectOrBlog: true};
-  //
-  //   }
-  // }
+  private checkIfActualRouteIsBlogOrProject(route: ActivatedRoute): RouteData {
+    if (route.snapshot.routeConfig.path.includes('katalogove-projekty')) {
+      return {type: 'project', isProjectOrBlog: true};
+    } else if (route.snapshot.routeConfig.path.includes('blog')) {
+      return {type: 'blog', isProjectOrBlog: true};
+    } else {
+      return {type: '', isProjectOrBlog: false};
+    }
+  }
 
 
   ngOnInit(): void {
-    const activatedRouteObservable: Observable<ActivatedRoute> = this.router.events.pipe(
-      filter(e => e instanceof NavigationEnd),
+    const activatedRouteObservable: Observable<ActivatedRoute> =
+      this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
       map(e => this.activatedRoute),
       map((route) => {
         while (route.firstChild) route = route.firstChild;
@@ -44,24 +43,22 @@ export class AppComponent implements OnInit {
       }),
       filter((route) => route.outlet === 'primary')
     )
-    console.log('si tu')
 
-    combineLatest([activatedRouteObservable.pipe(
+    activatedRouteObservable.pipe(
       mergeMap((route) => {
         return route.data;
-      })
-    ), activatedRouteObservable.pipe(
-      mergeMap((route) => {
-        // console.log(route.snapshot.routeConfig.path.includes('katalogove-projekty'))
-        return (route.snapshot.params.id) ?
-          this.fileService.getTitlePhotoFromPath(route.snapshot.params.id, 'project') : of({});
-      })
-    )]).subscribe(([data, menuItemsRes]) => {
-      console.log('tu si neni')
-      console.log(menuItemsRes)
+      })).subscribe(data => {
       this.seoService.updateTitle(data.seo.title);
       this.seoService.updateMetaTags(data.seo.metaTags);
-      this.seoService.updatePhotoMetaTags((Object.keys(menuItemsRes).length) ? menuItemsRes : 'assets/logo.png');
-    });
+    })
+
+    activatedRouteObservable.pipe(
+      mergeMap((route) => {
+        const data: RouteData = this.checkIfActualRouteIsBlogOrProject(route);
+        return (route.snapshot.params.id && data.isProjectOrBlog) ?
+          this.fileService.getTitlePhotoFromPath(route.snapshot.params.id, data.type) : of({});
+      })).subscribe(safeUrlOfPhoto => {
+      this.seoService.updatePhotoMetaTags((Object.keys(safeUrlOfPhoto).length) ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=" : 'assets/logo.png');
+    })
   }
 }
