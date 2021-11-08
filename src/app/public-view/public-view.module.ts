@@ -45,16 +45,16 @@ const routes: Routes = [
                 proprety: 'og:description',
                 content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
               },
-              {name: "og:url", content: "summary_large_image"},
-              //{ name: "og:image", content: "summary_large_image" },
-              {name: "og:image:alt", content: "summary_large_image"},
-              {name: "og:image:height", content: "summary_large_image"},
-              {name: "og:image:width", content: "summary_large_image"},
-              {name: "twitter:card", content: "summary_large_image"},
-              {name: "twitter:title", content: "summary_large_image"},
-              {name: "twitter:description", content: "summary_large_image"},
-              //{ name: "twitter:image", content: "summary_large_image" },
-              {name: "twitter:site", content: "@samvloeberghs"}
+              {name: 'og:url', content: 'summary_large_image'},
+              {name: 'og:image', content: 'summary_large_image'},
+              {name: 'og:image:alt', content: 'summary_large_image'},
+              {name: 'og:image:height', content: 'summary_large_image'},
+              {name: 'og:image:width', content: 'summary_large_image'},
+              {name: 'twitter:card', content: 'summary_large_image'},
+              {name: 'twitter:title', content: 'summary_large_image'},
+              {name: 'twitter:description', content: 'summary_large_image'},
+              {name: 'twitter:image', content: 'summary_large_image'},
+              {name: 'twitter:site', content: '@samvloeberghs'}
             ]
           }
         }
@@ -85,16 +85,16 @@ const routes: Routes = [
                 proprety: 'og:description',
                 content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
               },
-              {name: "og:url", content: "summary_large_image"},
-              //{ name: "og:image", content: "summary_large_image" },
-              {name: "og:image:alt", content: "summary_large_image"},
-              {name: "og:image:height", content: "summary_large_image"},
-              {name: "og:image:width", content: "summary_large_image"},
-              {name: "twitter:card", content: "summary_large_image"},
-              {name: "twitter:title", content: "summary_large_image"},
-              {name: "twitter:description", content: "summary_large_image"},
-              //{ name: "twitter:image", content: "summary_large_image" },
-              {name: "twitter:site", content: "@samvloeberghs"}
+              {name: 'og:url', content: 'summary_large_image'},
+              {name: 'og:image', content: 'summary_large_image'},
+              {name: 'og:image:alt', content: 'summary_large_image'},
+              {name: 'og:image:height', content: 'summary_large_image'},
+              {name: 'og:image:width', content: 'summary_large_image'},
+              {name: 'twitter:card', content: 'summary_large_image'},
+              {name: 'twitter:title', content: 'summary_large_image'},
+              {name: 'twitter:description', content: 'summary_large_image'},
+              {name: 'twitter:image', content: 'summary_large_image'},
+              {name: 'twitter:site', content: '@samvloeberghs'}
             ]
           }
         }
@@ -126,16 +126,16 @@ const routes: Routes = [
                 proprety: 'og:description',
                 content: 'Game of Thrones Quotes : Winter is Coming, You know nothing Jon Snow, Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you'
               },
-              {name: "og:url", content: "summary_large_image"},
-              //{ name: "og:image", content: "summary_large_image" },
-              {name: "og:image:alt", content: "summary_large_image"},
-              {name: "og:image:height", content: "summary_large_image"},
-              {name: "og:image:width", content: "summary_large_image"},
-              {name: "twitter:card", content: "summary_large_image"},
-              {name: "twitter:title", content: "summary_large_image"},
-              {name: "twitter:description", content: "summary_large_image"},
-              //{ name: "twitter:image", content: "summary_large_image" },
-              {name: "twitter:site", content: "@samvloeberghs"}
+              {name: 'og:url', content: 'summary_large_image'},
+              {name: 'og:image', content: 'summary_large_image'},
+              {name: 'og:image:alt', content: 'summary_large_image'},
+              {name: 'og:image:height', content: 'summary_large_image'},
+              {name: 'og:image:width', content: 'summary_large_image'},
+              {name: 'twitter:card', content: 'summary_large_image'},
+              {name: 'twitter:title', content: 'summary_large_image'},
+              {name: 'twitter:description', content: 'summary_large_image'},
+              {name: 'twitter:image', content: 'summary_large_image'},
+              {name: 'twitter:site', content: '@samvloeberghs'}
             ]
           }
         }

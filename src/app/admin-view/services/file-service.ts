@@ -7,6 +7,7 @@ import {environment} from '../../../environments/environment';
 import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
 import {ImageUploadMessageResource} from '../../models/web/response-bodies/image/image-upload-message-resource';
 import {ProjectsService} from '../../services/projects-service';
+import {flatMap} from 'rxjs/internal/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -52,18 +53,29 @@ export class FileService {
       });
   }
 
-  public getTitlePhotoFromPath(id: string, type: string): Observable<SafeUrl> {
+  private blobTobase64(blob: Blob): Observable<string> {
+    return new Observable<string>(observer => {
+      const reader = new FileReader();
+      reader.onerror = observer.error;
+      reader.onabort = observer.error;
+      reader.onload = () => observer.next(reader.result as string);
+      reader.onloadend = observer.complete;
+      reader.readAsDataURL(blob);
+
+      return {
+        unsubscribe: reader.abort
+      }
+    });
+  }
+
+  public getTitlePhotoFromPath(id: string, type: string): Observable<string> {
     return this._httpClient
       .get(`${this.resource.address}/title?id=${id}&type=${type}`, {
         headers: new HttpHeaders({Accept: 'application/octet-stream'}),
         responseType: 'blob'
       }).pipe(
-        map((image) => {
-          return this._sanitizer.bypassSecurityTrustUrl(
-            URL.createObjectURL(new Blob([image], {type: 'application/octet-stream'}))
-          );
-        })
-      )
+        flatMap((image) => this.blobTobase64(image))
+      );
   }
 
   public handleFileInput(event: any, projectId: string, type: string): void {
