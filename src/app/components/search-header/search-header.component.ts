@@ -3,6 +3,7 @@ import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {ENUMERATION_FILTERS, EnumerationFilterModel} from './models/enumeration-filter-model';
 import {SearchHeaderService} from './services/search-header.service';
 import {ProjectsGalleryStateService} from '../../public-view/components/projects-gallery/services/projects-gallery-state.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search-header',
@@ -16,12 +17,14 @@ export class SearchHeaderComponent implements OnInit {
 
   constructor(@Inject(ENUMERATION_FILTERS) public enumerationFilters: Array<EnumerationFilterModel>,
               private _searchHeaderService: SearchHeaderService,
-              private _stateService: ProjectsGalleryStateService) {
+              private _stateService: ProjectsGalleryStateService,
+              private _activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.initializeForm();
     this.initializeFormSubscription();
+    this._activatedRoute.data.subscribe(() => this.searchForm.reset());
   }
 
   public resetFilters(): void {

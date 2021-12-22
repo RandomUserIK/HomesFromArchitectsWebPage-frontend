@@ -3,8 +3,11 @@ import localeSk from '@angular/common/locales/sk';
 import {Component, Input, OnInit} from '@angular/core';
 import {SafeUrl} from '@angular/platform-browser';
 import {Router} from '@angular/router';
-import {FileService} from '../../../../../admin-view/services/file-service';
 import {Project} from '../../../../../models/project/project.model';
+import {HttpClient} from '@angular/common/http';
+import {EndpointConfigData} from '../../../../../configuration/models/enpoint-config-data';
+import {environment} from '../../../../../../environments/environment';
+import {ImageService} from '../../../../../services/image.service';
 
 @Component({
   selector: 'app-project-gallery',
@@ -17,20 +20,18 @@ export class ProjectGalleryComponent implements OnInit {
 
   public image: SafeUrl;
   public isLoading = false;
+  public imageUrl: string;
+  private resource: EndpointConfigData;
 
-  constructor(private _fileService: FileService,
-              private _router: Router) {
+  constructor(private _httpClient: HttpClient,
+              private _router: Router,
+              private _imageService: ImageService) {
     registerLocaleData(localeSk, 'sk');
+    this.resource = environment.providers.resources.find(resource => resource.name === 'image-endpoint');
   }
 
   ngOnInit(): void {
-    this.isLoading = true;
-    this._fileService.getFileFromPathAsSafeUrl(this.project.titleImage).subscribe(
-      (imageAsSafeUrl) => {
-        this.image = imageAsSafeUrl;
-        this.isLoading = false;
-      }
-    );
+    this.imageUrl = this._imageService.getImageFullUrl(this.project.titleImage.id.toString());
   }
 
   public onProjectClick(): void {

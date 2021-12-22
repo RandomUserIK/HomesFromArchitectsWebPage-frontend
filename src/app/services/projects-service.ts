@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {EndpointConfigData} from '../configuration/models/enpoint-config-data';
-import {Project} from '../models/project/project.model';
 import {DeleteEntityMessageResource} from '../models/web/response-bodies/general/delete-entity-message-resource';
 import {PageableProjectMessageResource} from '../models/web/response-bodies/project/pageable-project-message-resource';
 import {ProjectMessageResource} from '../models/web/response-bodies/project/project-message-resource';
@@ -20,9 +19,16 @@ export class ProjectsService {
     this.resource = environment.providers.resources.find(resource => resource.name === 'project-endpoint');
   }
 
-  public createProject(data: Project): Observable<ProjectMessageResource> {
+  public updateProject(formData: FormData): Observable<ProjectMessageResource> {
     return this._httpClient
-      .post<ProjectMessageResource>(this.resource.address, data, {
+      .put<ProjectMessageResource>(`${this.resource.address}/${formData.get('category').toString().toLowerCase()}`, formData, {
+        headers: new HttpHeaders({Accept: '*/*'})
+      });
+  }
+
+  public createProject(formData: FormData): Observable<ProjectMessageResource> {
+    return this._httpClient
+      .post<ProjectMessageResource>(`${this.resource.address}/${formData.get('category').toString().toLowerCase()}`, formData, {
         headers: new HttpHeaders({Accept: '*/*'})
       });
   }

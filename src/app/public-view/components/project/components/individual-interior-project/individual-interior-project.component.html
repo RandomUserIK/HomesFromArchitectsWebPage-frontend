@@ -3,7 +3,7 @@
     <app-loading></app-loading>
   </ng-template>
   <ng-template [ngIf]="!isLoading && !error">
-    <app-project-title-image [titleImagePath]="project.titleImage"></app-project-title-image>
+    <app-project-title-image [titleImage]="project.titleImage"></app-project-title-image>
 
     <app-individual-project-info *ngIf="project.category === INDIVIDUAL_CATEGORY_ID"
                                  [project]="project"></app-individual-project-info>

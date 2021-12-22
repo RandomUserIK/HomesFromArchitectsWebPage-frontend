@@ -40,11 +40,10 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
         switchMap((data) => {
           this.categoryTitle = data.projectsTitle;
           this.projectCategory = data.projectCategory;
-          this.scrollService.scrollToTop();
           return this.handleProjectsList(
-            this.stateService.currentPage,
+            1,
             this.projectCategory,
-            this.searchHeaderService.buildQuery(this.stateService.searchFormValue));
+            '');
         })
       ).subscribe(this.processData());
 
@@ -72,6 +71,7 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
   }
 
   private processData(): (data: any) => void {
+    console.log('test');
     return (data) => {
       this.projects = data.projects;
       this.totalElements = data.totalElements;

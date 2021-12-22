@@ -6,7 +6,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'title',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6)],
+    validator: [Validators.required, Validators.maxLength(50)],
     label: 'Názov projektu *',
     fullWidth: false,
     placeholder: 'Zadajte názov projektu'
@@ -34,7 +34,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
     label: 'Textové sekcie'
   },
   {
-    formControlName: 'titleImage',
+    formControlName: 'titleImageFile',
     type: DataFieldType.IMAGE,
     validator: Validators.required,
     imgType: ImageType.TITLE_IMAGE,
@@ -43,7 +43,7 @@ export const INTERIOR_PROJECT_DATA_FIELDS = [
     imageTitle: 'Titulná fotka'
   },
   {
-    formControlName: 'imagePaths',
+    formControlName: 'galleryImageFiles',
     type: DataFieldType.DYNAMIC_PHOTO_GALLERY,
     validator: Validators.required,
     imgType: ImageType.GALLERY_IMAGES,

@@ -1,4 +1,5 @@
 import {Project} from './project.model';
+import {ImageModel} from './image-model';
 
 export interface CommonProject extends Project {
   rooms?: number;
@@ -13,5 +14,5 @@ export interface CommonProject extends Project {
   heatingType?: string;
   entryOrientation?: string;
   hasStorey?: string;
-  floorPlanImagePaths?: Array<string>;
+  floorPlanImages?: Array<ImageModel>;
 }

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SafeUrl} from '@angular/platform-browser';
-import {FileService} from '../../../../../../admin-view/services/file-service';
+import {ImageService} from '../../../../../../services/image.service';
+import {ImageModel} from '../../../../../../models/project/image-model';
 
 @Component({
   selector: 'app-project-title-image',
@@ -8,20 +8,18 @@ import {FileService} from '../../../../../../admin-view/services/file-service';
 })
 export class ProjectTitleImageComponent implements OnInit {
 
-  @Input() titleImagePath: string;
+  @Input() titleImage: ImageModel;
 
   public isLoading = false;
-  public titleImagePreview: SafeUrl;
+  public titleImagePathFullPath: string;
 
-  constructor(private _fileService: FileService) {
+  constructor(private _imageService: ImageService) {
   }
 
   ngOnInit(): void {
     this.isLoading = true;
-    this._fileService.getFileFromPathAsSafeUrl(this.titleImagePath).subscribe((imageSafeUrl) => {
-      this.titleImagePreview = imageSafeUrl;
-      this.isLoading = false;
-    });
+    this.titleImagePathFullPath = this._imageService.getImageFullUrl(this.titleImage.id.toString());
+    this.isLoading = false;
   }
 
 }

@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 import {EndpointConfigData} from '../../configuration/models/enpoint-config-data';
@@ -18,7 +18,7 @@ export class FileService {
   constructor(private _httpClient: HttpClient,
               private _projectService: ProjectsService,
               private _sanitizer: DomSanitizer) {
-    this.resource = environment.providers.resources.find(resource => resource.name === 'photo-endpoint');
+    this.resource = environment.providers.resources.find(resource => resource.name === 'image-endpoint');
   }
 
   public postFile(fileToUpload: File, entityId: number, type: string): Observable<ImageUploadMessageResource> {
@@ -50,21 +50,6 @@ export class FileService {
         headers: new HttpHeaders({Accept: 'application/octet-stream'}),
         responseType: 'blob'
       });
-  }
-
-  public handleFileInput(event: any, projectId: string, type: string): void {
-    const files = event.target.files;
-    this.postFile(files.item(0), +projectId, type).subscribe();
-  }
-
-  public getAllImagesAsSafeUrl(imagePaths: Array<string>): Observable<Array<SafeUrl>> {
-    const imagesAsSafeUrl: Array<SafeUrl> = [];
-    imagePaths.forEach((path) => {
-      this.getFileFromPathAsSafeUrl(path).subscribe((imageAsSafeUrl) => {
-        imagesAsSafeUrl.push(imageAsSafeUrl);
-      });
-    });
-    return of(imagesAsSafeUrl);
   }
 
 }

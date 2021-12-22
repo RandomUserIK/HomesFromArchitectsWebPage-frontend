@@ -2,28 +2,20 @@ import {Injectable} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {DataField} from '../components/data-fields/models/data-field';
 import {DataFieldType} from '../components/data-fields/models/data-field-type.enum';
-import {ImageFile} from '../models/image/image-file.model';
-import {Project} from '../models/project/project.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestEntityPreparationService {
 
-  private _requestEntity: Project;
-  private _photoFiles: ImageFile[];
+  private _formData: FormData;
 
-  get photoFiles(): ImageFile[] {
-    return this._photoFiles;
+  get formData(): FormData {
+    return this._formData;
   }
 
-  get requestEntity(): Project {
-    return this._requestEntity;
-  }
-
-  public prepareRequestEntity(form: FormGroup, formConfig: DataField[]): void {
-    this._requestEntity = {};
-    this._photoFiles = [];
+  public prepareFormData(form: FormGroup, formConfig: DataField[]): void {
+    this._formData = new FormData();
 
     formConfig.forEach(dataField => {
       if (form.get(dataField.formControlName)) {
@@ -66,7 +58,7 @@ export class RequestEntityPreparationService {
   }
 
   private prepareImage(dataField: DataField, formValue: File): void {
-    this._photoFiles.push({type: dataField.imgType, value: formValue})
+    this._formData.append(dataField.formControlName, formValue);
   }
 
   private prepareImages(dataField: DataField, formValue: File[]) {
@@ -76,16 +68,16 @@ export class RequestEntityPreparationService {
   }
 
   private prepareDataFieldWithStringValue(dataField: DataField, formValue: string): void {
-    this._requestEntity[dataField.formControlName] = formValue;
+    this.formData.append(dataField.formControlName, formValue);
   }
 
   private prepareMultichoice(dataField: DataField, formValue: { [key: string]: boolean }): void {
-    const checkedValues = []
+    const checkedValues = [];
     for (const [value, isChecked] of Object.entries(formValue)) {
       if (isChecked) {
         checkedValues.push(value);
       }
     }
-    this._requestEntity[dataField.formControlName] = checkedValues;
+    this._formData.append(dataField.formControlName, checkedValues.join());
   }
 }

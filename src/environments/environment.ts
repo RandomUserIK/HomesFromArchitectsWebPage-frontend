@@ -15,7 +15,7 @@ export const environment = {
     },
     resources: [
       {
-        name: 'photo-endpoint',
+        name: 'image-endpoint',
         address: 'http://localhost:8090/api/images',
         format: 'application/json'
       },

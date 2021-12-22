@@ -73,7 +73,7 @@ export const INDIVIDUAL_PROJECT_DATA_FIELDS = [
     label: 'Textové sekcie'
   },
   {
-    formControlName: 'titleImage',
+    formControlName: 'titleImageFile',
     type: DataFieldType.IMAGE,
     validator: Validators.required,
     imgType: ImageType.TITLE_IMAGE,
@@ -82,7 +82,7 @@ export const INDIVIDUAL_PROJECT_DATA_FIELDS = [
     imageTitle: 'Titulná fotka'
   },
   {
-    formControlName: 'imagePaths',
+    formControlName: 'galleryImageFiles',
     type: DataFieldType.DYNAMIC_PHOTO_GALLERY,
     validator: Validators.required,
     imgType: ImageType.GALLERY_IMAGES,

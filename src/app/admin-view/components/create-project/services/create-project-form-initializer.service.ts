@@ -4,11 +4,13 @@ import {DataField} from '../../../../components/data-fields/models/data-field';
 import {AbstractControl, FormArray, FormControl, FormGroup} from '@angular/forms';
 import {Project} from '../../../../models/project/project.model';
 import {FileService} from '../../../services/file-service';
+import {ImageService} from '../../../../services/image.service';
+import {ImageModel} from '../../../../models/project/image-model';
 
 @Injectable()
 export class CreateProjectFormInitializerService {
 
-  constructor(private _fileService: FileService) {
+  constructor(private _fileService: FileService, private _imageService: ImageService) {
   }
 
   public initialize(formConfig: DataField[], form: FormGroup, projectData: Project): void {
@@ -20,10 +22,10 @@ export class CreateProjectFormInitializerService {
   private resolveDataField(dataField: DataField, formControl: AbstractControl, projectData: Project): void {
     switch (dataField.type) {
       case DataFieldType.IMAGE:
-        this.initializeImage(formControl, projectData[dataField.formControlName]);
+        this.initializeImage(formControl, projectData.titleImage);
         break;
       case DataFieldType.DYNAMIC_PHOTO_GALLERY:
-        this.initializePhotoGallery(formControl, projectData[dataField.formControlName]);
+        this.initializePhotoGallery(formControl, projectData.galleryImages);
         break;
       case DataFieldType.DYNAMIC_TEXT_SECTION:
         // TODO: implement as NgxEditor
@@ -42,20 +44,17 @@ export class CreateProjectFormInitializerService {
     }
   }
 
-  private initializeImage(formControl: AbstractControl, imagePath: string): void {
-    this._fileService.getFileFromPath(imagePath).subscribe((photoBlob) => {
-      const file = new File([photoBlob], imagePath.split('/').pop());
-      formControl.setValue(file);
-    });
+  private initializeImage(formControl: AbstractControl, image: ImageModel): void {
+    this._imageService.getImageAsBlob(image.id.toString()).subscribe(
+      (imageFile: Blob) => formControl.setValue(imageFile));
   }
 
-  private initializePhotoGallery(formControl: AbstractControl, photoPaths: Array<string>): void {
-    photoPaths.forEach((photoPath) => {
-      this._fileService.getFileFromPath(photoPath).subscribe((photoBlob) => {
-        const file = new File([photoBlob], photoPath.split('/').pop());
-        (formControl as FormArray).push(new FormControl(file)); // NOSONAR
-      });
-    })
+  private initializePhotoGallery(formControl: AbstractControl, images: Array<ImageModel>): void {
+    images.forEach((image: ImageModel) => {
+      this._imageService.getImageAsBlob(image.id.toString()).subscribe((imageFile: Blob) => {
+        (formControl as FormArray).push(new FormControl(imageFile)); // NOSONAR
+      })
+    });
   }
 
   private initializeFormControlWithStringValue(formControl: AbstractControl, value: string): void {
