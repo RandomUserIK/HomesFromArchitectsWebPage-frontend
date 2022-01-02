@@ -27,16 +27,17 @@ export class AnotherBlogArticlesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._blogService.getRandomBlogArticle(3).pipe(
-      exhaustMap((data: any) => {
-          return data.blogArticles.forEach((value: BlogArticle) => {
-            this._fileService.getFileFromPathAsSafeUrl(value.titleImage).subscribe(
-              (imageAsSafeUrl) => {
-                this.blogsTitleImages.push({titlePhoto: imageAsSafeUrl, title: value.title, id: value.id});
-              }
-            );
-          });
-        }
-      )).subscribe();
+    // TODO
+    // this._blogService.getRandomBlogArticle(3).pipe(
+    //   exhaustMap((data: any) => {
+    //       return data.blogArticles.forEach((value: BlogArticle) => {
+    //         this._fileService.getFileFromPathAsSafeUrl(value.titleImage).subscribe(
+    //           (imageAsSafeUrl) => {
+    //             this.blogsTitleImages.push({titlePhoto: imageAsSafeUrl, title: value.title, id: value.id});
+    //           }
+    //         );
+    //       });
+    //     }
+    //   )).subscribe();
   }
 }

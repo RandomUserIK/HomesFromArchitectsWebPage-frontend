@@ -5,7 +5,7 @@ import {BlogArticle} from '../../../models/blog/blog-article';
 import {AutoScrollService} from '../../../services/auto-scroll.service';
 import {BLOG_ARTICLE_DATA_FIELDS_CONFIG} from './resources/blog-article-data-fields-injectable';
 import {CreateBlogArticleFormInitializerService} from './services/create-blog-article-form-initializer.service';
-import {CreateBlogArticleService} from './services/create-blog-article.service';
+import {BlogArticleService} from './services/blog-article.service';
 
 @Component({
   selector: 'app-admin-blog',
@@ -20,7 +20,7 @@ export class AdminBlogComponent implements OnInit, AfterViewInit {
   public isLoading: boolean;
   public blogArticleId: number;
 
-  constructor(private _createBlogArticleService: CreateBlogArticleService,
+  constructor(private _blogArticleService: BlogArticleService,
               private _createBlogArticleFormInitializerService: CreateBlogArticleFormInitializerService,
               private _autoScrollService: AutoScrollService,
               @Inject(BLOG_ARTICLE_DATA_FIELDS_CONFIG) public blogArticleDataFieldsConfig: DataGroupMap) {
@@ -39,7 +39,7 @@ export class AdminBlogComponent implements OnInit, AfterViewInit {
 
   public onSubmit(): void {
     this.isLoading = true;
-    this._createBlogArticleService.createBlogArticle(this.form, this.blogArticleId).subscribe(
+    this._blogArticleService.submitBlogArticle(this.form, this.blogArticleDataFieldsConfig.formGroup, this.blogArticleId).subscribe(
       () => {
         this.validationSuccess = true;
         this.uploadMessage = this.blogArticleId ?

@@ -24,12 +24,16 @@ export class BlogService {
     this.resource = environment.providers.resources.find(resource => resource.name === 'blog-endpoint');
   }
 
-  public createBlogArticle(data: BlogArticle): Observable<BlogArticleMessageResource> {
-    const requestData: CreateBlogArticleMessageResource = {
-      blogArticle: data
-    };
+  public createBlogArticle(formData: FormData): Observable<BlogArticleMessageResource> {
     return this._httpClient
-      .post<BlogArticleMessageResource>(this.resource.address, requestData, {
+      .post<BlogArticleMessageResource>(this.resource.address, formData, {
+        headers: new HttpHeaders({Accept: this.ACCEPT_JSON_HEADER_NAME})
+      });
+  }
+
+  public updateBlogArticle(formData: FormData): Observable<BlogArticleMessageResource> {
+    return this._httpClient
+      .put<BlogArticleMessageResource>(this.resource.address, formData, {
         headers: new HttpHeaders({Accept: this.ACCEPT_JSON_HEADER_NAME})
       });
   }

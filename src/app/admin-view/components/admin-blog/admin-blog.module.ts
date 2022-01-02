@@ -6,7 +6,7 @@ import {DataFieldsModule} from '../../../components/data-fields/data-fields.modu
 import {FormAlertModule} from '../../../components/form-alert/form-alert.module';
 import {AdminBlogComponent} from './admin-blog.component';
 import {CreateBlogArticleFormInitializerService} from './services/create-blog-article-form-initializer.service';
-import {CreateBlogArticleService} from './services/create-blog-article.service';
+import {BlogArticleService} from './services/blog-article.service';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import {CreateBlogArticleService} from './services/create-blog-article.service';
     DataFieldsModule
   ],
   providers: [
-    CreateBlogArticleService,
+    BlogArticleService,
     CreateBlogArticleFormInitializerService
   ]
 })

@@ -21,13 +21,14 @@ export class BlogGalleryArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoading = true;
-    this._fileService.getFileFromPathAsSafeUrl(this.blogArticle.titleImage).subscribe(
-      (imageAsSafeUrl) => {
-        this.titleImage = imageAsSafeUrl;
-        this.isLoading = false;
-      }
-    );
+    // TODO
+    // this.isLoading = true;
+    // this._fileService.getFileFromPathAsSafeUrl(this.blogArticle.titleImage).subscribe(
+    //   (imageAsSafeUrl) => {
+    //     this.titleImage = imageAsSafeUrl;
+    //     this.isLoading = false;
+    //   }
+    // );
   }
 
   public onBlogArticleClick(): void {
