@@ -13,7 +13,7 @@ export class CreateBlogArticleFormInitializerService {
 
   public initializeForm(form: FormGroup, blogArticle: BlogArticle) {
     this.initializePrimitiveFields(form, blogArticle);
-    // this.initializeTitleImage(form, blogArticle.titleImage); TODO
+    this.initializeTitleImage(form, blogArticle.titleImage.id.toString());
   }
 
   private initializePrimitiveFields(form: FormGroup, blogArticle: BlogArticle): void {
@@ -22,11 +22,9 @@ export class CreateBlogArticleFormInitializerService {
     form.get('content').setValue({ops: blogArticle.content});
   }
 
-  private initializeTitleImage(form: FormGroup, titleImagePath: string): void {
-    this._fileService.getFileFromPath(titleImagePath).subscribe((imageBlob) => {
-      const file = new File([imageBlob], titleImagePath.split('/').pop());
-      form.get('titleImage').setValue(file);
-    });
+  private initializeTitleImage(form: FormGroup, imageId: string): void {
+    this._imageService.getImageAsBlob(imageId).subscribe(
+      (imageFile: Blob) => form.get('titleImage').setValue(imageFile));
   }
 
 }
