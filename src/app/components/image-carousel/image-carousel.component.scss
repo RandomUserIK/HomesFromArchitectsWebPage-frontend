@@ -1,30 +1,8 @@
-@-webkit-keyframes zoom {
-  from {
-    -webkit-transform: scale(1, 1);
-  }
-  to {
-    -webkit-transform: scale(1.5, 1.5);
-  }
-}
-
-@keyframes zoom {
-  from {
-    transform: scale(1, 1);
-  }
-  to {
-    transform: scale(1.5, 1.5);
-  }
-}
-
-.image-animation {
-  -webkit-animation: zoom 20s;
-  animation: zoom 20s;
-}
-
 .carousel-image {
   text-align: center;
   color: black;
 }
+
 .carousel-image a {
   background-color: #ffbe00;
   color: #313131;

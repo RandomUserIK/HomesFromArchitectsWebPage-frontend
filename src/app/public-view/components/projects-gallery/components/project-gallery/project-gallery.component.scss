@@ -1,3 +1,5 @@
+@import "src/theme";
+
 img {
   width: 100%;
   height: 20rem;
@@ -39,11 +41,15 @@ img {
 .img-loading-wrapper {
   width: 100%;
   height: 20rem;
-  background: #f6f6f6;
+  background: #fcfcfc;
 }
 
 .font-size {
   font-size: 1.1rem;
+}
+
+.spinner-border {
+  color: map_get($theme-colors, "primary");
 }
 
 
