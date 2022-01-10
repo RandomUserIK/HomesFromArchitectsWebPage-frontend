@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {DataField} from '../components/data-fields/models/data-field';
 import {DataFieldType} from '../components/data-fields/models/data-field-type.enum';
+import {Delta} from 'quill';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,9 @@ export class RequestEntityPreparationService {
       case DataFieldType.RECAPTCHA:
         this.prepareDataFieldWithStringValue(dataField, formValue);
         break;
+      case DataFieldType.TEXT_EDITOR:
+        this.prepareTextEditor(dataField, formValue);
+        break;
       case DataFieldType.SUBMIT_BUTTON:
         break;
       default:
@@ -80,4 +84,9 @@ export class RequestEntityPreparationService {
     }
     this._formData.append(dataField.formControlName, checkedValues.join());
   }
+
+  private prepareTextEditor(dataField: DataField, formValue: Delta): void {
+    this.formData.append(dataField.formControlName, JSON.stringify(formValue.ops));
+  }
+
 }

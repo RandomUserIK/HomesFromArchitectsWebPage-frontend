@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {BlogArticle} from '../../../models/blog/blog-article';
 import {BlogService} from '../../../services/blog.service';
-import {FileService} from '../../../admin-view/services/file-service';
-import {SafeUrl} from '@angular/platform-browser';
-import {exhaustMap} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {ImageService} from '../../../services/image.service';
 
-interface BlogTitlePhotoAndID {
-  titlePhoto: SafeUrl;
+interface BlogTitleImageAndId {
+  titleImage: string;
   title: string;
   id: number;
 }
@@ -19,24 +17,19 @@ interface BlogTitlePhotoAndID {
 })
 export class AnotherBlogArticlesComponent implements OnInit {
 
-  public blogsTitleImages: Array<BlogTitlePhotoAndID> = [];
+  public blogTitleImages: Array<BlogTitleImageAndId> = [];
 
   constructor(private _blogService: BlogService,
-              private _fileService: FileService,
+              private _imageService: ImageService,
               private _router: Router) {
   }
 
   ngOnInit(): void {
-    this._blogService.getRandomBlogArticle(3).pipe(
-      exhaustMap((data: any) => {
-          return data.blogArticles.forEach((value: BlogArticle) => {
-            this._fileService.getFileFromPathAsSafeUrl(value.titleImage).subscribe(
-              (imageAsSafeUrl) => {
-                this.blogsTitleImages.push({titlePhoto: imageAsSafeUrl, title: value.title, id: value.id});
-              }
-            );
-          });
-        }
-      )).subscribe();
+    this._blogService.getRandomBlogArticle(3).subscribe((data: any) => {
+      return data.blogArticles.forEach((value: BlogArticle) => {
+        const imageUrl = this._imageService.getImageFullUrl(value.titleImage.id.toString());
+        this.blogTitleImages.push({titleImage: imageUrl, title: value.title, id: value.id});
+      });
+    });
   }
 }
