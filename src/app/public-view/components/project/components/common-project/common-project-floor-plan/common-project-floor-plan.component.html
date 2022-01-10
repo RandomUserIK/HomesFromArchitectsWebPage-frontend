@@ -1,8 +1,11 @@
-<div class="row mt-5 floor-plan">
-  <div class="col-md-12">
-    <app-lightbox [images]="project.floorPlanImages"
-                  [dataInterval]="0"
-                  [shouldDisplayAnimation]="false"
-    ></app-lightbox>
+<div class="row justify-content-center">
+  <div class="col-10">
+    <app-image-carousel [dataInterval]="10000"
+                        [imageModels]="project.floorPlanImages"
+                        [pauseOnFocus]="true"
+                        [pauseOnHover]="true"
+                        [customArrows]="true">
+    </app-image-carousel>
   </div>
 </div>
+

@@ -8,7 +8,7 @@ import {ImageModel} from '../../../../../../models/project/image-model';
 })
 export class CommonProjectInteriorComponent {
 
-  @Input() images: Array<ImageModel>;
+  @Input() imageModels: Array<ImageModel>;
 
   constructor(private _router: Router) {
   }

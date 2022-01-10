@@ -3,13 +3,13 @@
     <app-loading></app-loading>
   </ng-template>
   <ng-template [ngIf]="!isLoading && !error">
-    <app-common-project-image-carousel [images]="project.galleryImages"></app-common-project-image-carousel>
+    <app-common-project-image-carousel [imageModels]="project.galleryImages"></app-common-project-image-carousel>
     <app-common-project-info [project]="project"></app-common-project-info>
     <app-common-project-price-comparison [project]="project"></app-common-project-price-comparison>
     <app-project-description [textSections]="project.textSections"></app-project-description>
     <app-common-project-floor-plan [project]="project"></app-common-project-floor-plan>
     <app-common-project-building-info [project]="project"></app-common-project-building-info>
-    <app-common-project-interior [images]="project.galleryImages"></app-common-project-interior>
+    <app-common-project-interior [imageModels]="project.galleryImages"></app-common-project-interior>
     <app-common-project-changes></app-common-project-changes>
     <app-project-content></app-project-content>
   </ng-template>

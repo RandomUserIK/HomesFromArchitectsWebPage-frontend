@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@angular/router": "~10.2.4",
     "@ng-bootstrap/ng-bootstrap": "^8.0.4",
     "angular-gallery": "^1.0.2",
+    "angular-responsive-carousel": "^2.1.2",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.1",
     "bootstrap4-plus-jquery": "^4.0.0-alpha.2.4",

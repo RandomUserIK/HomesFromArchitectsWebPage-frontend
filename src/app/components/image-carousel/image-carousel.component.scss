@@ -1,9 +1,19 @@
-.carousel-image {
-  text-align: center;
-  color: black;
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  line-height: 1;
+  width: 100%;
 }
 
-.carousel-image a {
-  background-color: #ffbe00;
-  color: #313131;
+.custom-arrows {
+  ::ng-deep .carousel-control-prev-icon {
+    background-image: url('~src/assets/bold-left-arrow.svg');
+  }
+}
+
+.custom-arrows {
+  ::ng-deep .carousel-control-next-icon {
+    background-image: url('~src/assets/bold-right-arrow.svg');
+  }
 }

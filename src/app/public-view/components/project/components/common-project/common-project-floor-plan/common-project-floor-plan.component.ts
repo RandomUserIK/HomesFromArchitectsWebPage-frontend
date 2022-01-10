@@ -3,8 +3,7 @@ import {CommonProject} from '../../../../../../models/project/common-project.mod
 
 @Component({
   selector: 'app-common-project-floor-plan',
-  templateUrl: './common-project-floor-plan.component.html',
-  styleUrls: ['./common-project-floor-plan.component.scss']
+  templateUrl: './common-project-floor-plan.component.html'
 })
 export class CommonProjectFloorPlanComponent {
 

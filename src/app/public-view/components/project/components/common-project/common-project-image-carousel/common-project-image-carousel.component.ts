@@ -7,6 +7,6 @@ import {ImageModel} from '../../../../../../models/project/image-model';
 })
 export class CommonProjectImageCarouselComponent {
 
-  @Input() images: Array<ImageModel>;
+  @Input() imageModels: Array<ImageModel>;
 
 }

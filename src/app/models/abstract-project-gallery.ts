@@ -71,7 +71,6 @@ export abstract class AbstractProjectGalleryDirective extends AbstractGallery im
   }
 
   private processData(): (data: any) => void {
-    console.log('test');
     return (data) => {
       this.projects = data.projects;
       this.totalElements = data.totalElements;
