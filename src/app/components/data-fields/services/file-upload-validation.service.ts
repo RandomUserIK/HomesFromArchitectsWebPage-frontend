@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FileUploadValidationService {
 
-  private allowedFileTypes = ['image/png', 'image/jpeg', 'image/webp'];
+  private allowedFileTypes = ['image/png', 'image/jpeg', 'image/webp', 'image/jpg', 'image/bmp'];
   private UPLOAD_MAX_SIZE = 41943040;
 
 

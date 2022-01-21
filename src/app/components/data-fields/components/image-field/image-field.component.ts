@@ -52,7 +52,7 @@ export class ImageFieldComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(imageFile);
     reader.onload = () => {
-      this.imageUrl = reader.result as string; // NOSONAR
+      this.imageUrl = reader.result as string;
     }
   }
 

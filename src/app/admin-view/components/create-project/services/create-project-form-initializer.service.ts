@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {DataFieldType} from '../../../../components/data-fields/models/data-field-type.enum';
 import {DataField} from '../../../../components/data-fields/models/data-field';
-import {AbstractControl, FormArray, FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Project} from '../../../../models/project/project.model';
 import {FileService} from '../../../services/file-service';
 import {ImageService} from '../../../../services/image.service';
 import {ImageModel} from '../../../../models/project/image-model';
+import {TextSection} from '../../../../models/project/text-section.model';
 
 @Injectable()
 export class CreateProjectFormInitializerService {
@@ -28,7 +29,7 @@ export class CreateProjectFormInitializerService {
         this.initializePhotoGallery(formControl, projectData.galleryImages);
         break;
       case DataFieldType.DYNAMIC_TEXT_SECTION:
-        // TODO: implement as NgxEditor
+        this.initializeDynamicTextSection(formControl, projectData[dataField.formControlName]);
         break;
       case DataFieldType.ENUMERATION:
         this.initializeFormControlWithStringValue(formControl, projectData[dataField.formControlName]);
@@ -45,15 +46,25 @@ export class CreateProjectFormInitializerService {
   }
 
   private initializeImage(formControl: AbstractControl, image: ImageModel): void {
-    this._imageService.getImageAsBlob(image.id.toString()).subscribe(
-      (imageFile: Blob) => formControl.setValue(imageFile));
+    this._imageService.getImageAsFile(image.id.toString(), image.title).subscribe(
+      (imageFile: File) => formControl.setValue(imageFile)
+    );
   }
 
   private initializePhotoGallery(formControl: AbstractControl, images: Array<ImageModel>): void {
     images.forEach((image: ImageModel) => {
-      this._imageService.getImageAsBlob(image.id.toString()).subscribe((imageFile: Blob) => {
-        (formControl as FormArray).push(new FormControl(imageFile)); // NOSONAR
-      })
+      this._imageService.getImageAsFile(image.id.toString(), image.title).subscribe(
+        (imageFile: File) => (formControl as FormArray).push(new FormControl(imageFile))
+      );
+    });
+  }
+
+  private initializeDynamicTextSection(formControl: AbstractControl, textSections: Array<TextSection>) {
+    textSections.forEach((textSection: TextSection) => {
+      (formControl as FormArray).push(new FormGroup({
+        title: new FormControl(textSection.title, [Validators.required, Validators.maxLength(100)]),
+        text: new FormControl(textSection.text, [Validators.required, Validators.maxLength(800)])
+      }));
     });
   }
 

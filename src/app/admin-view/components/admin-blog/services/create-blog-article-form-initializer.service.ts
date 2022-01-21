@@ -1,19 +1,17 @@
 import {Injectable} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {BlogArticle} from '../../../../models/blog/blog-article';
-import {FileService} from '../../../services/file-service';
 import {ImageService} from '../../../../services/image.service';
 
 @Injectable()
 export class CreateBlogArticleFormInitializerService {
 
-  constructor(private _fileService: FileService,
-              private _imageService: ImageService) {
+  constructor(private _imageService: ImageService) {
   }
 
   public initializeForm(form: FormGroup, blogArticle: BlogArticle) {
     this.initializePrimitiveFields(form, blogArticle);
-    this.initializeTitleImage(form, blogArticle.titleImage.id.toString());
+    this.initializeTitleImage(form, blogArticle.titleImage.id.toString(), blogArticle.titleImage.title);
   }
 
   private initializePrimitiveFields(form: FormGroup, blogArticle: BlogArticle): void {
@@ -22,9 +20,9 @@ export class CreateBlogArticleFormInitializerService {
     form.get('content').setValue({ops: blogArticle.content});
   }
 
-  private initializeTitleImage(form: FormGroup, imageId: string): void {
-    this._imageService.getImageAsBlob(imageId).subscribe(
-      (imageFile: Blob) => form.get('titleImage').setValue(imageFile));
+  private initializeTitleImage(form: FormGroup, imageId: string, imageTitle: string): void {
+    this._imageService.getImageAsFile(imageId, imageTitle).subscribe(
+      (imageFile: File) => form.get('titleImage').setValue(imageFile));
   }
 
 }
