@@ -7,6 +7,7 @@ import {FileService} from '../../../services/file-service';
 import {ImageService} from '../../../../services/image.service';
 import {ImageModel} from '../../../../models/project/image-model';
 import {TextSection} from '../../../../models/project/text-section.model';
+import {CommonProject} from '../../../../models/project/common-project.model';
 
 @Injectable()
 export class CreateProjectFormInitializerService {
@@ -26,7 +27,11 @@ export class CreateProjectFormInitializerService {
         this.initializeImage(formControl, projectData.titleImage);
         break;
       case DataFieldType.DYNAMIC_PHOTO_GALLERY:
-        this.initializePhotoGallery(formControl, projectData.galleryImages);
+        if (dataField.formControlName === 'floorPlanImagePaths') {
+          this.initializePhotoGallery(formControl, (projectData as CommonProject).floorPlanImages);
+        } else {
+          this.initializePhotoGallery(formControl, projectData.galleryImages);
+        }
         break;
       case DataFieldType.DYNAMIC_TEXT_SECTION:
         this.initializeDynamicTextSection(formControl, projectData[dataField.formControlName]);
