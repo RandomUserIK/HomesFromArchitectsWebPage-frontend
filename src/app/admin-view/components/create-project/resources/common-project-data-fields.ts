@@ -14,7 +14,11 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'builtUpArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
+    validator: [
+      Validators.required,
+      Validators.maxLength(12),
+      Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Zastavaná plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -22,7 +26,11 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'persons',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(2), Validators.min(0)],
+    validator: [
+      Validators.required,
+      Validators.maxLength(2),
+      Validators.min(0),
+      Validators.pattern('^[0-9]*$')],
     label: 'Počet osôb *',
     fullWidth: false,
     placeholder: 'Zadajte pre koľko osôb je projekt stavaný'
@@ -30,7 +38,11 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'rooms',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(2), Validators.min(0)],
+    validator: [
+      Validators.required,
+      Validators.maxLength(2),
+      Validators.min(0),
+      Validators.pattern('^[0-9]*$')],
     label: 'Počet izieb *',
     fullWidth: false,
     placeholder: 'Zadajte počet izieb v projekte'
@@ -38,7 +50,11 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'usableArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
+    validator: [
+      Validators.required,
+      Validators.maxLength(12),
+      Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Celková plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -46,7 +62,10 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'totalLivingArea',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
+    validator: [Validators.required,
+      Validators.maxLength(12),
+      Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Úžitková plocha *',
     fullWidth: false,
     placeholder: 'Zadajte veľkosť m2'
@@ -54,7 +73,10 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'selfHelpBuildPrice',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(7), Validators.min(0)],
+    validator: [Validators.required,
+      Validators.maxLength(12),
+      Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Svojpomocná výstavba *',
     fullWidth: false,
     placeholder: 'Zadajte cenu  €'
@@ -62,7 +84,10 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'onKeyPrice',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(7), Validators.min(0)],
+    validator: [Validators.required,
+      Validators.maxLength(12),
+      Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Cena na kľúč *',
     fullWidth: false,
     placeholder: 'Zadajte cenu v €'
@@ -70,7 +95,10 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'basicProjectPrice',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(7), Validators.min(0)],
+    validator: [Validators.required,
+      Validators.maxLength(12),
+      Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Cena základného projektu *',
     fullWidth: false,
     placeholder: 'Zadajte cenu  €'
@@ -78,7 +106,11 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'extendedProjectPrice',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(7), Validators.min(0)],
+    validator: [
+      Validators.required,
+      Validators.maxLength(12),
+      Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Cena rozšíreného projektu *',
     fullWidth: false,
     placeholder: 'Zadajte cenu v €'
@@ -86,7 +118,9 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'roofPitch',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(2), Validators.min(0)],
+    validator: [Validators.required,
+      Validators.maxLength(12), Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Sklon strechy *',
     fullWidth: false,
     placeholder: 'Zadajte sklon v %'
@@ -94,7 +128,10 @@ export const COMMON_PROJECT_DATA_FIELDS = [
   {
     formControlName: 'minimumParcelWidth',
     type: DataFieldType.PRIMITIVE_TYPE,
-    validator: [Validators.required, Validators.maxLength(6), Validators.min(0)],
+    validator: [Validators.required,
+      Validators.maxLength(12),
+      Validators.min(0),
+      Validators.pattern('^[0-9]{1,12}(\.[0-9]*)?$')],
     label: 'Minimálnu šírku pozemku *',
     fullWidth: false,
     placeholder: 'Zadajte šírku v m'
