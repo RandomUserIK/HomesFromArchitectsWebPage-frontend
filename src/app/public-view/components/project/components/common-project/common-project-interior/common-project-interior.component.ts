@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
+import {ImageModel} from '../../../../../../models/project/image-model';
 
 @Component({
   selector: 'app-common-project-interior',
@@ -7,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class CommonProjectInteriorComponent {
 
-  @Input() projectImagePaths: Array<string>;
+  @Input() images: Array<ImageModel>;
 
   constructor(private _router: Router) {
   }

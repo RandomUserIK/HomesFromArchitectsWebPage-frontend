@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {DataField} from '../../models/data-field';
 import {FormControl, FormGroup} from '@angular/forms';
+import {EndpointConfigData} from '../../../../configuration/models/enpoint-config-data';
+import {environment} from '../../../../../environments/environment';
+import {ImageService} from '../../../../services/image.service';
 import {FileUploadValidationService} from '../../services/file-upload-validation.service';
-import {ImageCompressionService} from '../../services/image-compression.service';
-import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-file-field',
@@ -13,55 +14,52 @@ export class ImageFieldComponent implements OnInit {
 
   @Input() dataField: DataField;
   @Input() form: FormGroup;
-  public errorMessage = '';
+  @ViewChild('fileInput', {static: false}) inputFileRef: ElementRef;
   public touched = false;
+  public imageUrl: string;
+  public errorMessage: string = null;
+  private resource: EndpointConfigData;
 
-
-  constructor(private fileUploadValidationService: FileUploadValidationService,
-              private imageCompressService: ImageCompressionService,
-              private sanitizer: DomSanitizer) {
+  constructor(private _imageService: ImageService, private _fileUploadValidationService: FileUploadValidationService) {
+    this.resource = environment.providers.resources.find(resource => resource.name === 'image-endpoint');
   }
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.dataField.imgSrc = undefined;
       this.form.setControl(this.dataField.formControlName, new FormControl(null, this.dataField.validator));
-      this.form.get(this.dataField.formControlName).valueChanges.subscribe((photoFile: File) => {
-        this.handleImageChange(photoFile);
-      });
-    })
+      this.form.get(this.dataField.formControlName).valueChanges.subscribe(
+        (imageFile: Blob) => {
+          if (imageFile === null) {
+            this.resetDataField();
+          } else {
+            this.displayImage(imageFile);
+          }
+        })
+    });
   }
 
-  private handleImageChange(photoFile: File): void {
-    if (!photoFile) {
-      this.dataField.imgSrc = undefined;
-    } else {
-      this.displayImage(photoFile);
-    }
-  }
-
-  private displayImage(photoFile: File) {
-    const reader = new FileReader();
-    reader.readAsDataURL(photoFile);
-    reader.onload = () => {
-      this.dataField.imgSrc = this.sanitizer.bypassSecurityTrustUrl(reader.result as string) // NOSONAR
-    }
-  }
-
-  public onImageUpload(event: any, dataField: DataField): void {
-    if (event.target.files && event.target.files[0]) {
-      this.errorMessage = this.fileUploadValidationService.checkSizeAndFileFormat(event.target.files[0]);
-      if (this.errorMessage.length === 0) {
-        const reader = new FileReader();
-        reader.readAsDataURL(event.target.files[0]);
-        reader.onload = (fileReaderEvent) => {
-          this.imageCompressService.compressFile(fileReaderEvent.target.result.toString(), event.target.files[0])
-            .then(compressedData => {
-              this.form.controls[dataField.formControlName].setValue(compressedData.file);
-            });
-        };
+  public onFileSelect($event): void {
+    if ($event.target.files && $event.target.files[0]) {
+      this.errorMessage = this._fileUploadValidationService.checkSizeAndFileFormat($event.target.files[0]);
+      if (this.errorMessage !== null) {
+        return;
       }
+      this.form.controls[this.dataField.formControlName].setValue($event.target.files[0]);
     }
+  }
+
+  private displayImage(imageFile: File | Blob): void {
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onload = () => {
+      this.imageUrl = reader.result as string;
+    }
+  }
+
+  private resetDataField(): void {
+    this.inputFileRef.nativeElement.value = '';
+    this.imageUrl = undefined;
+    this.touched = false;
   }
 
 }

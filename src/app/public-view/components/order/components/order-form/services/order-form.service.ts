@@ -19,8 +19,8 @@ export class OrderFormService {
   }
 
   public createOrder(form: FormGroup, formConfig: DataField[]): Observable<string> {
-    this._preparationService.prepareRequestEntity(form, formConfig);
-    return this.httpClient.post<any>(`${this.resource.address}`, this._preparationService.requestEntity);
+    this._preparationService.prepareFormData(form, formConfig);
+    return this.httpClient.post<any>(`${this.resource.address}`, this._preparationService.formData);
   }
 
 }

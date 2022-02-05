@@ -4,7 +4,7 @@
   </div>
 </div>
 <div *ngIf="!isLoading" class="img-wrapper" (click)="onProjectClick()">
-  <img [src]="image" alt="test-project-image">
+  <img [src]="imageUrl" [alt]="project.title">
   <div class="text-center align-middle font-weight-bold line-height text-light"></div>
 </div>
 <div class="d-flex justify-content-between">

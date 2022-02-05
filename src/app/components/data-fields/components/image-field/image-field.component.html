@@ -1,18 +1,29 @@
 <ng-container [formGroup]="form" *ngIf="form.get(dataField.formControlName)">
   <label class="title-text">{{dataField.imageTitle}}</label>
-  <ng-container *ngIf="dataField.imgSrc !== undefined">
+
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage !== null">
+    {{errorMessage}}
+  </div>
+
+  <ng-container *ngIf="imageUrl !== undefined && errorMessage === null">
     <div class="row mb-4">
       <div class="col-md-4 col-12">
-        <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="dataField.imgSrc" [alt]="dataField.label">
+        <img class="img-fluid rounded mx-auto d-block gallery-img" [src]="imageUrl" [alt]="dataField.label">
       </div>
     </div>
   </ng-container>
+
   <div class="custom-file">
-    <input type="file" (change)="onImageUpload($event, dataField)" (click)="touched=true" class="custom-file-input"
-           id="validatedCustomFile">
-    <label class="custom-file-label" for="validatedCustomFile">{{dataField.label}}</label>
+    <input #fileInput
+           [id]="dataField.formControlName"
+           (click)="touched=true"
+           (change)="onFileSelect($event)"
+           type="file" class="custom-file-input"
+           aria-describedby="inputGroupFileAddon01">
+    <label class="custom-file-label" [for]="dataField.formControlName">{{dataField.label}}</label>
     <div *ngIf="form.get(dataField.formControlName).invalid && touched" class="text-danger">
       Povinný údaj
     </div>
   </div>
+
 </ng-container>

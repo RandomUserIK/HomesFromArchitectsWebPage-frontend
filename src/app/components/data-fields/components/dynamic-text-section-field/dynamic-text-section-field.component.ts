@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataField} from '../../models/data-field';
 
 @Component({
@@ -12,20 +12,20 @@ export class DynamicTextSectionFieldComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() dataField: DataField;
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
   }
 
   ngOnInit(): void {
     this.form.setControl(
-          this.dataField.formControlName,
-          this.fb.array([]),
-      );
+      this.dataField.formControlName,
+      new FormArray([]),
+    );
   }
 
   private createTextSection(): FormGroup {
-    return this.fb.group({
-      title: [null, [Validators.required,Validators.maxLength(100)]],
-      text: [null, [Validators.required,Validators.maxLength(800)]]
+    return new FormGroup({
+      title: new FormControl(null, [Validators.required, Validators.maxLength(100)]),
+      text: new FormControl(null, [Validators.required, Validators.maxLength(800)])
     });
   }
 

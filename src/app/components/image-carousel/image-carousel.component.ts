@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SafeUrl} from '@angular/platform-browser';
 import {FileService} from '../../admin-view/services/file-service';
 import {CarouselProject} from '../../public-view/components/home/models/CarouselProject';
+import {ImageModel} from '../../models/project/image-model';
 
 @Component({
   selector: 'app-image-carousel',
@@ -10,13 +11,13 @@ import {CarouselProject} from '../../public-view/components/home/models/Carousel
 })
 export class ImageCarouselComponent implements OnInit {
 
-  @Input() carouselItems: Array<string> | Array<CarouselProject>;
-  public withText: boolean;
+  @Input() carouselItems: Array<ImageModel> | Array<CarouselProject>;
   @Input() dataInterval: number;
   @Input() pauseOnFocus: boolean;
   @Input() pauseOnHover: boolean;
   @Input() shouldDisplayAnimation: boolean;
   @Output() imageClicked: EventEmitter<number> = new EventEmitter<number>();
+  public withText: boolean;
 
   public isLoading = false;
   public carouselData: Array<SafeUrl> | Array<CarouselProject>
@@ -26,11 +27,7 @@ export class ImageCarouselComponent implements OnInit {
 
   private prepareSafeUrlArrayForCarousel(): void {
     this.withText = false;
-    this._fileService.getAllImagesAsSafeUrl((this.carouselItems as Array<string>))
-      .subscribe((result) => {
-        this.carouselData = result;
-        this.isLoading = false;
-      });
+
   }
 
   private prepareCarouselProjectArrayForCarousel(): void {

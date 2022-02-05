@@ -48,7 +48,6 @@ export class AnimateService {
       // Tracks for viewport changes giving it 100ms time to accurately update for orientation changes
       switchMap(options => viewPort.change(100).pipe(
         // Starts with a value
-        startWith(null),
         // Gets the viewport
         map(() => {
           // Picks the ClientRect of the relevant container

@@ -22,7 +22,8 @@ export class ContentIndividualProjectPhotosComponent implements OnInit {
   private createPhotoFileObservables(individualProjects: Project[]): Observable<SafeUrl>[] {
     const photoFileObservables = [];
     individualProjects.forEach((value: Project) => {
-      photoFileObservables.push(this.fileService.getFileFromPathAsSafeUrl(value.titleImage));
+      // todo
+      // photoFileObservables.push(this.fileService.getFileFromPathAsSafeUrl(value.titleImagePath)); todo fix
     });
     if (photoFileObservables.length === 0)
       this.loading = false;

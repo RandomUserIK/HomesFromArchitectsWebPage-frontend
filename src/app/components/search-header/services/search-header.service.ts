@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchHeaderService {
 
-  private _searchHeaderState: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private _searchHeaderState: Subject<string> = new Subject<string>();
 
   get searchHeaderState(): Subject<string> {
     return this._searchHeaderState;

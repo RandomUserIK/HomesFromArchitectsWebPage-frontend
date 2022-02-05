@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {IAlbum, Lightbox, LightboxConfig} from 'ngx-lightbox';
 import {Subscription} from 'rxjs';
 import {LightboxService} from './services/lightbox.service';
+import {ImageModel} from '../../models/project/image-model';
 
 @Component({
   selector: 'app-lightbox',
@@ -10,7 +11,7 @@ import {LightboxService} from './services/lightbox.service';
 })
 export class LightboxComponent implements OnInit, OnDestroy {
 
-  @Input() imagePaths: Array<string>;
+  @Input() images: Array<ImageModel>;
   @Input() dataInterval: number;
   @Input() pauseOnFocus: boolean;
   @Input() pauseOnHover: boolean
@@ -36,9 +37,9 @@ export class LightboxComponent implements OnInit, OnDestroy {
       });
       this.isLoading = false;
     });
-    this.imagePaths.forEach((imagePath) => {
+    this.images.forEach((image: ImageModel) => {
       this.isLoading = true;
-      this._lightboxService.encodeImage(imagePath);
+      this._lightboxService.encodeImage(image.id.toString());
     });
   }
 

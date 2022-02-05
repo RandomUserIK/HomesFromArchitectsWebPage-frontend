@@ -45,7 +45,6 @@ export class CreateProjectComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // TODO:Tu bude redirect s info hlaskou
   public onSubmit(): void {
     this.loading = true;
     if (this.form.valid) {
