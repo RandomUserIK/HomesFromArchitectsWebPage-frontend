@@ -10,11 +10,11 @@
     [pauseOnFocus]="pauseOnFocus"
     [pauseOnHover]="pauseOnHover"
     [class.custom-arrows]="customArrows">
-    <ng-template ngbSlide *ngFor="let imageModel of imageModels; let index = index">
+    <ng-template ngbSlide *ngFor="let imageModel of imageModels">
       <div class="picsum-img-wrapper">
         <img [src]="getImage(imageModel.id)"
-             [alt]="index"
-             (click)="onImageClick(index)">
+             [alt]="imageModel.title"
+             (click)="onImageClick()">
       </div>
     </ng-template>
   </ngb-carousel>

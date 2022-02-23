@@ -23,13 +23,14 @@ export class ImageCarouselComponent {
   constructor(private _imageService: ImageService, private modalService: NgbModal) {
   }
 
-  public onImageClick(index: number): void {
-    this.modalService.open(this.modal, {size: 'xl'});
+  public onImageClick(): void {
+    if (!this.modalService.hasOpenModals()) {
+      this.modalService.open(this.modal, {size: 'xl'});
+    }
   }
 
   public getImage(id: number): string {
     return this._imageService.getImageFullUrl(id.toString());
   }
-
 
 }
