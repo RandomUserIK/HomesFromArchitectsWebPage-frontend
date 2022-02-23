@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {EndpointConfigData} from '../configuration/models/enpoint-config-data';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,18 @@ export class ImageService {
     return `${this._resource.address}/${imageUrl}`;
   }
 
-  public getImageAsBlob(imageUrl: string): Observable<Blob> {
+  public getImageAsFile(imageUrl: string, imageName: string): Observable<File> {
     return this._httpClient.get(
       `${this._resource.address}/${imageUrl}`,
-      {responseType: 'blob'});
+      {responseType: 'blob'})
+      .pipe(map(blob => new File(
+        [blob],
+        imageName,
+        {
+          lastModified: new Date().getTime(),
+          type: blob.type
+        }))
+      );
   }
 
 }

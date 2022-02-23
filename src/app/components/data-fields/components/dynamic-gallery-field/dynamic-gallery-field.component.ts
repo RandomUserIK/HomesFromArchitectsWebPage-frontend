@@ -63,7 +63,7 @@ export class DynamicGalleryFieldComponent implements OnInit {
       if (this.errorMessage !== null) {
         return;
       }
-      (this.form.get(this.dataField.formControlName) as FormArray).push(this._fb.control($event.target.files[0]));
+      (this.form.get(this.dataField.formControlName) as FormArray).push(this._fb.control($event.target.files[0])); // NOSONAR
     }
   }
 

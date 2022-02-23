@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {DataField} from '../components/data-fields/models/data-field';
 import {DataFieldType} from '../components/data-fields/models/data-field-type.enum';
+import {Delta} from 'quill';
+import {TextSection} from '../models/project/text-section.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +35,7 @@ export class RequestEntityPreparationService {
         this.prepareImages(dataField, formValue);
         break;
       case DataFieldType.DYNAMIC_TEXT_SECTION:
-        // TODO: implement as NgxEditor
+        this.prepareDynamicTextSections(dataField, formValue);
         break;
       case DataFieldType.ENUMERATION:
         this.prepareDataFieldWithStringValue(dataField, formValue);
@@ -49,6 +51,9 @@ export class RequestEntityPreparationService {
         break;
       case DataFieldType.RECAPTCHA:
         this.prepareDataFieldWithStringValue(dataField, formValue);
+        break;
+      case DataFieldType.TEXT_EDITOR:
+        this.prepareTextEditor(dataField, formValue);
         break;
       case DataFieldType.SUBMIT_BUTTON:
         break;
@@ -68,7 +73,7 @@ export class RequestEntityPreparationService {
   }
 
   private prepareDataFieldWithStringValue(dataField: DataField, formValue: string): void {
-    this.formData.append(dataField.formControlName, formValue);
+    this._formData.append(dataField.formControlName, formValue);
   }
 
   private prepareMultichoice(dataField: DataField, formValue: { [key: string]: boolean }): void {
@@ -80,4 +85,13 @@ export class RequestEntityPreparationService {
     }
     this._formData.append(dataField.formControlName, checkedValues.join());
   }
+
+  private prepareTextEditor(dataField: DataField, formValue: Delta): void {
+    this._formData.append(dataField.formControlName, JSON.stringify(formValue.ops));
+  }
+
+  private prepareDynamicTextSections(dataField: DataField, formValue: Array<TextSection>): void {
+    this._formData.append(dataField.formControlName, JSON.stringify(formValue));
+  }
+
 }

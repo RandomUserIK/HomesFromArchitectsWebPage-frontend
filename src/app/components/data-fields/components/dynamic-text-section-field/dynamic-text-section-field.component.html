@@ -8,7 +8,8 @@
              formControlName="title"
              placeholder="Zadajte názov sekcie">
       <div *ngIf="textSectionGroup.get('title').invalid && textSectionGroup.get('title').touched" class="text-danger">
-        <p *ngIf="textSectionGroup.get('title').value.length === 0; else outOfRangeTitleText">Povinný údaj</p>
+        <p *ngIf="textSectionGroup.get('title').value == null || textSectionGroup.get('title').value.length === 0;
+            else outOfRangeTitleText">Povinný údaj</p>
         <ng-template #outOfRangeTitleText>Presiahli ste maximálnu povolenú dĺžku znakov.</ng-template>
       </div>
     </div>
@@ -26,7 +27,8 @@
         placeholder="Napíšte text sekcie" formControlName="text">
         </textarea>
       <div *ngIf="textSectionGroup.get('text').invalid && textSectionGroup.get('text').touched" class="text-danger">
-        <p *ngIf="textSectionGroup.get('text').value.length === 0; else outOfRangeText">Povinný údaj</p>
+        <p *ngIf="textSectionGroup.get('text').value == null || textSectionGroup.get('text').value.length === 0;
+            else outOfRangeText">Povinný údaj</p>
         <ng-template #outOfRangeText>Presiahli ste maximálnu povolenú dĺžku znakov.</ng-template>
       </div>
     </div>

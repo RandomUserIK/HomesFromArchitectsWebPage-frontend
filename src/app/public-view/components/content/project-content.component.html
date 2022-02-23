@@ -2,10 +2,10 @@
   <app-content-text-section [textSection]="textSectionData['EXACTLY_MEASURE_CONTENT_DATA']"></app-content-text-section>
   <app-content-text-section
     [textSection]="textSectionData['CATALOGUE_PROJECT_CONTENT_DATA']"></app-content-text-section>
-  <h2 class="text-center mb-5" wmAnimate="fadeIn" speed="faster" aos>
+  <h2 class="text-center mb-5" wmAnimate="fadeIn" speed="faster" [once]="true" aos>
     Dokumentácia je spracovaná vo vysokej realizačnej podrobnosti.</h2>
   <project-content-table></project-content-table>
-  <p class="text-center mt-5 mb-5" wmAnimate="fadeIn" speed="faster" aos>
+  <p class="text-center mt-5 mb-5" wmAnimate="fadeIn" [once]="true" speed="faster" aos>
     Všetky ceny nájdete v našom rozšírenom prehľade. Uvádzané ceny sú konečné, dodávateľ nieje platcom DPH.
   </p>
   <app-extended-content-header
@@ -14,7 +14,7 @@
   </app-extended-content-header>
   <app-content-text-section [textSection]="textSectionData['INDIVIDUAL_PROJECT_CONTENT_DATA']"></app-content-text-section>
   <app-content-individual-project-photos class="mt-5"></app-content-individual-project-photos>
-  <div class="text-center mt-5" wmAnimate="fadeIn" speed="faster" aos>
+  <div class="text-center mt-5" wmAnimate="fadeIn" speed="faster" [once]="true" aos>
     <button type="button" class="btn btn-primary mr-3" (click)="router.navigate(['/individualne-projekty'])">
       Pozerať individuálne projekty
     </button>
