@@ -1,59 +1,36 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {SafeUrl} from '@angular/platform-browser';
-import {FileService} from '../../admin-view/services/file-service';
-import {CarouselProject} from '../../public-view/components/home/models/CarouselProject';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {ImageModel} from '../../models/project/image-model';
+import {ImageService} from '../../services/image.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-image-carousel',
   templateUrl: './image-carousel.component.html',
   styleUrls: ['./image-carousel.component.scss']
 })
-export class ImageCarouselComponent implements OnInit {
+export class ImageCarouselComponent {
 
-  @Input() carouselItems: Array<ImageModel> | Array<CarouselProject>;
+  @Input() imageModels: Array<ImageModel>;
   @Input() dataInterval: number;
   @Input() pauseOnFocus: boolean;
   @Input() pauseOnHover: boolean;
-  @Input() shouldDisplayAnimation: boolean;
-  @Output() imageClicked: EventEmitter<number> = new EventEmitter<number>();
-  public withText: boolean;
+  @Input() customArrows: boolean;
+  @ViewChild('modal', {static: false}) private modal: ElementRef;
+  @ViewChild('carousel', {static: false}) private carousel: ElementRef;
 
   public isLoading = false;
-  public carouselData: Array<SafeUrl> | Array<CarouselProject>
 
-  constructor(private _fileService: FileService) {
+  constructor(private _imageService: ImageService, private modalService: NgbModal) {
   }
 
-  private prepareSafeUrlArrayForCarousel(): void {
-    this.withText = false;
-
-  }
-
-  private prepareCarouselProjectArrayForCarousel(): void {
-    this.withText = true;
-    (this.carouselItems as Array<CarouselProject>).forEach(value => {
-      this._fileService.getFileFromPathAsSafeUrl(value.image as string)
-        .subscribe(safeUrl => {
-          value.image = safeUrl;
-        })
-    })
-    this.carouselData = this.carouselItems;
-    this.isLoading = false;
-  }
-
-  ngOnInit(): void {
-    this.isLoading = true;
-    this.carouselData = [];
-    if (typeof this.carouselItems[0] === 'string') {
-      this.prepareSafeUrlArrayForCarousel()
-    } else {
-      this.prepareCarouselProjectArrayForCarousel()
+  public onImageClick(): void {
+    if (!this.modalService.hasOpenModals()) {
+      this.modalService.open(this.modal, {size: 'xl'});
     }
   }
 
-  public onImageClick(index: number): void {
-    this.imageClicked.emit(index);
+  public getImage(id: number): string {
+    return this._imageService.getImageFullUrl(id.toString());
   }
 
 }

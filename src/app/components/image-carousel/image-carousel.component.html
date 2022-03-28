@@ -3,16 +3,25 @@
     <span class="spinner-border spinner-border-sm mr-1"></span>
   </div>
 </div>
-<ngb-carousel [interval]="dataInterval" [pauseOnFocus]="pauseOnFocus" [pauseOnHover]="pauseOnHover" *ngIf="!isLoading">
-  <ng-template ngbSlide *ngFor="let data of carouselData; let index = index">
-    <div class="picsum-img-wrapper">
-      <img [src]="withText ? data.image : data"
-           [alt]="index"
-           [ngClass]="shouldDisplayAnimation ? 'w-100 image-animation' : 'w-100'"
-           (click)="onImageClick(index)">
-      <div *ngIf="withText" class="carousel-caption">
-        <h3 class="carousel-image"><a routerLink="/katalogove-projekty/{{data.id}}">{{data.title}}</a></h3>
+
+<ng-template #carousel>
+  <ngb-carousel
+    [interval]="dataInterval"
+    [pauseOnFocus]="pauseOnFocus"
+    [pauseOnHover]="pauseOnHover"
+    [class.custom-arrows]="customArrows">
+    <ng-template ngbSlide *ngFor="let imageModel of imageModels">
+      <div class="picsum-img-wrapper">
+        <img [src]="getImage(imageModel.id)"
+             [alt]="imageModel.title"
+             (click)="onImageClick()">
       </div>
-    </div>
-  </ng-template>
-</ngb-carousel>
+    </ng-template>
+  </ngb-carousel>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="carousel"></ng-container>
+
+<ng-template #modal>
+  <ng-container *ngTemplateOutlet="carousel"></ng-container>
+</ng-template>

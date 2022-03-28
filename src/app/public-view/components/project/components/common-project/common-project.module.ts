@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ImageCarouselModule} from '../../../../../components/image-carousel/image-carousel.module';
-import {LightboxModule} from '../../../../../components/lightbox/lightbox.module';
 import {LoadingModule} from '../../../../../components/loading/loading.module';
 import {NotFoundModule} from '../../../../../components/not-found/not-found.module';
 import {ProjectModule} from '../general/project.module';
@@ -32,7 +31,6 @@ import {RouterModule} from '@angular/router';
     imports: [
         CommonModule,
         ProjectModule,
-        LightboxModule,
         ImageCarouselModule,
         LoadingModule,
         NotFoundModule,
